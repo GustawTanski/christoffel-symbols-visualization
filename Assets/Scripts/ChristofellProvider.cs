@@ -6,13 +6,22 @@ namespace Data {
         public SpaceTypeDictionary dict;
         public SpaceType space;
 
+        private string[, , ] tensor = new string[4, 4, 4];
+        private Matrix3D matrix;
+
         public string[, , ] Tensor {
-            get;
-            private set;
+            get {
+                return tensor;
+            }
+            private set {
+                tensor = value;
+            }
         }
 
         private void Start() {
+            matrix = GetComponent<Matrix3D>();
             GetTensor();
+            matrix.InitializeElements();
         }
 
         public void GetTensor() {
@@ -21,8 +30,5 @@ namespace Data {
             Tensor = JsonConvert.DeserializeObject<string[, , ]>(json);
         }
 
-        private void OnValidate() {
-            GetTensor();
-        }
     }
 }
