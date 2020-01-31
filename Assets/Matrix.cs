@@ -1,17 +1,12 @@
-﻿using System;
-using Data;
+﻿using Data;
 using Newtonsoft.Json;
-using RotaryHeart.Lib.SerializableDictionary;
 using UnityEngine;
-
-[Serializable]
-public class Dict : SerializableDictionaryBase<MatrixType, TextAsset> {}
 
 public class Matrix : MonoBehaviour {
     public LatexSprite template;
-    public MatrixType matrixType;
+    public SpaceType matrixType;
     public string color = "Black";
-    public Dict dict;
+    public SpaceTypeDictionary dict;
 
     private string[][] tensor;
 
