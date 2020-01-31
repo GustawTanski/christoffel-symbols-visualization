@@ -1,5 +1,6 @@
 ﻿using Data;
 using Newtonsoft.Json;
+using Latex;
 using UnityEngine;
 
 public class Matrix : MonoBehaviour {
