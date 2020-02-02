@@ -14,19 +14,12 @@ namespace Cube {
         private void Start() {
             christofell = new ChristofellProvider(dict, space);
             christofell.FetchTensor();
-            cube = new Cube(prefab, christofell.Tensor, CreateElement);
+            cube = new Cube(prefab, christofell.Tensor);
+            StartCoroutine(cube.InitializeElements(CreateElement));
         }
 
         private LatexSprite CreateElement(LatexSprite prefab) {
             return Instantiate(prefab, transform);
-        }
-
-        private void OnValidate() {
-            if (christofell != null) {
-                christofell.SetSpace(space);
-                christofell.SetDictionary(dict);
-                christofell.FetchTensor();
-            }
         }
     }
 }
