@@ -9,19 +9,19 @@ using UnityEngine.Networking;
 namespace Cube {
 
     internal class Cube {
-        private LatexSprite prefab;
-        private LatexSprite[, , ] elements = new LatexSprite[4, 4, 4];
+        private CubeElement cubePrefab;
+        private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
         private string[, , ] latexTensor;
         private Texture2D[, , ] textures = new Texture2D[4, 4, 4];
         private bool[, , ] textureDownloadFlags = new bool[4, 4, 4];
         private readonly float distance = 12;
 
-        public Cube(LatexSprite prefab, string[, , ] latexTensor) {
-            this.prefab = prefab;
+        public Cube(CubeElement cubePrefab, string[, , ] latexTensor) {
+            this.cubePrefab = cubePrefab;
             this.latexTensor = latexTensor;
         }
 
-        public IEnumerator InitializeElements(Func<LatexSprite, LatexSprite> creator) {
+        public IEnumerator InitializeElements(Func<CubeElement, CubeElement> creator) {
             ForEachElement(CreateElement(creator));
             yield return ChangeElementTextures();
         }
@@ -36,11 +36,12 @@ namespace Cube {
             }
         }
 
-        private Action<int, int, int> CreateElement(Func<LatexSprite, LatexSprite> creator) {
+        private Action<int, int, int> CreateElement(Func<CubeElement, CubeElement> creator) {
             return (i, j, k) => {
-                LatexSprite element = creator(prefab);
-                elements[i, j, k] = element;
-                element.LocalPosition = new Vector3(i * distance, -j * distance, k * distance);
+                CubeElement cubeElement = creator(cubePrefab);
+                elements[i, j, k] = cubeElement;
+                cubeElement.LocalPosition = new Vector3(i * distance, -j * distance, k * distance);
+                cubeElement.Initialize();
             };
         }
 
@@ -78,7 +79,13 @@ namespace Cube {
 
         private void SetTexture(int i, int j, int k) {
             Texture2D texture = textures[i, j, k];
-            elements[i, j, k].SetTexture(texture);
+            elements[i, j, k].FormulaTexture = texture;
+        }
+
+        public void SwitchIndexes() {
+            foreach (CubeElement cubeElement in elements) {
+                cubeElement.SwitchIndex();
+            }
         }
     }
 }

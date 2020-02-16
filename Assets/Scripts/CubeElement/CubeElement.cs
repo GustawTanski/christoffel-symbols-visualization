@@ -2,7 +2,7 @@ using Latex;
 using UnityEngine;
 
 namespace Cube {
-    class CubeElement : MonoBehaviour {
+    public class CubeElement : MonoBehaviour {
         public LatexSprite latexPrefab;
         public float distance = 12;
         private LatexSprite formula;
@@ -20,12 +20,25 @@ namespace Cube {
             }
         }
 
-        private void Start() {
-            formula = Instantiate(latexPrefab, transform);
-            formula.transform.localPosition = new Vector3(0.5f, -0.5f, 0.5f) * distance;
-            index = Instantiate(latexPrefab, transform);
-            index.transform.localPosition = new Vector3(0.5f, 0.2f, 0.5f) * distance;
+        public Vector3 LocalPosition {
+            set {
+                transform.localPosition = value;
+            }
+            get {
+                return transform.localPosition;
+            }
         }
 
+        public void Initialize() {
+            formula = Instantiate(latexPrefab, transform);
+            formula.LocalPosition = new Vector3(0.5f, -0.5f, 0.5f) * distance;
+            index = Instantiate(latexPrefab, transform);
+            index.LocalPosition = new Vector3(0.5f, -0.3f, 0.5f) * distance;
+            index.SwitchAppear();
+        }
+
+        public void SwitchIndex() {
+            index.SwitchAppear();
+        }
     }
 }

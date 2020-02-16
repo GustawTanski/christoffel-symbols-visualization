@@ -6,8 +6,7 @@ namespace Cube {
     public class Matrix3D : MonoBehaviour {
         public SpaceTypeDictionary dict;
         public SpaceType space;
-
-        public LatexSprite prefab;
+        public CubeElement cubePrefab;
         private ChristofellProvider christofell;
         private Cube cube;
 
@@ -22,12 +21,18 @@ namespace Cube {
         }
 
         private void InitializeCube() {
-            cube = new Cube(prefab, christofell.Tensor);
+            cube = new Cube(cubePrefab, christofell.Tensor);
             StartCoroutine(cube.InitializeElements(CreateElement));
         }
 
-        private LatexSprite CreateElement(LatexSprite prefab) {
+        private CubeElement CreateElement(CubeElement prefab) {
             return Instantiate(prefab, transform);
+        }
+
+        private void Update() {
+            if(Input.GetKeyUp(KeyCode.Tab)) {
+                cube.SwitchIndexes();
+            }
         }
     }
 }

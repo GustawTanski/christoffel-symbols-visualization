@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 namespace Latex {
 
     public class LatexSprite : MonoBehaviour {
-        // Start is called before the first frame update
 
         private Vector3 translation = new Vector3(0, 0, 0);
 
@@ -102,5 +101,8 @@ namespace Latex {
             transform.rotation = Camera.main.transform.rotation;
         }
 
+        public void SwitchAppear() {
+            gameObject.SetActive(!gameObject.activeInHierarchy);
+        }
     }
 }
