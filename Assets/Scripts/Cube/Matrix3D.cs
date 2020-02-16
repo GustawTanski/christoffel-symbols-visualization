@@ -28,11 +28,5 @@ namespace Cube {
         private CubeElement CreateElement(CubeElement prefab) {
             return Instantiate(prefab, transform);
         }
-
-        private void Update() {
-            if(Input.GetKeyUp(KeyCode.Tab)) {
-                cube.SwitchIndexes();
-            }
-        }
     }
 }

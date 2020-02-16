@@ -37,8 +37,10 @@ namespace Cube {
             index.SwitchAppear();
         }
 
-        public void SwitchIndex() {
-            index.SwitchAppear();
+        public void Update() {
+            if (Input.GetKeyDown(KeyCode.Tab)) {
+                index.SwitchAppear();
+            }
         }
     }
 }

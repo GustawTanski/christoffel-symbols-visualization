@@ -9,22 +9,7 @@ namespace Latex {
         private Vector3 translation = new Vector3(0, 0, 0);
 
         private Vector3 localPosition = new Vector3(0, 0, 0);
-
-        private string latex = "0";
         private Texture2D texture;
-
-        private UnityWebRequest www;
-
-        public string Latex {
-            get {
-                return latex;
-            }
-            set {
-                Debug.Log(value);
-                latex = value;
-                StartCoroutine(DownloadLatexTexture());
-            }
-        }
 
         public Vector3 LocalPosition {
             get {
@@ -60,29 +45,6 @@ namespace Latex {
             SetSprite();
         }
 
-        private IEnumerator DownloadLatexTexture() {
-            yield return FetchTexture();
-            LoadTexture();
-            SetSprite();
-        }
-
-        private UnityWebRequestAsyncOperation FetchTexture() {
-            www = UnityWebRequestTexture.GetTexture(GetUrl());
-            return www.SendWebRequest();
-        }
-
-        private string GetUrl() {
-            return $"https://latex.codecogs.com/png.latex?{GetLatexString()}";
-        }
-
-        private string GetLatexString() {
-            return @"\dpi{999}" + latex;
-        }
-
-        private void LoadTexture() {
-            texture = DownloadHandlerTexture.GetContent(www);
-        }
-
         private void SetSprite() {
             GetComponent<SpriteRenderer>().sprite = CreateSprite();
         }
@@ -103,6 +65,18 @@ namespace Latex {
 
         public void SwitchAppear() {
             gameObject.SetActive(!gameObject.activeInHierarchy);
+        }
+
+        public void Appear() {
+            if (!gameObject.activeInHierarchy) {
+                gameObject.SetActive(true);
+            }
+        }
+
+        public void Disappear() {
+            if (gameObject.activeInHierarchy) {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

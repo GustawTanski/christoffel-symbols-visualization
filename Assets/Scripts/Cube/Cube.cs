@@ -16,6 +16,8 @@ namespace Cube {
         private bool[, , ] textureDownloadFlags = new bool[4, 4, 4];
         private readonly float distance = 12;
 
+        private const string baseURL = @"https://latex.codecogs.com/png.latex?";
+
         public Cube(CubeElement cubePrefab, string[, , ] latexTensor) {
             this.cubePrefab = cubePrefab;
             this.latexTensor = latexTensor;
@@ -23,7 +25,8 @@ namespace Cube {
 
         public IEnumerator InitializeElements(Func<CubeElement, CubeElement> creator) {
             ForEachElement(CreateElement(creator));
-            yield return ChangeElementTextures();
+            SetIndexesTexture();
+            yield return ChangeElementsTexture();
         }
 
         private void ForEachElement(Action<int, int, int> action) {
@@ -45,7 +48,20 @@ namespace Cube {
             };
         }
 
-        public IEnumerator ChangeElementTextures() {
+        private void SetIndexesTexture() {
+            ForEachElement(FetchIndexTexture);
+        }
+
+        private void FetchIndexTexture(int i, int j, int k) {
+            UnityWebRequest www;
+            www = UnityWebRequestTexture.GetTexture(baseURL + DecorateLatex(@"(r,\:\phi,\:\theta)"));
+            www.SendWebRequest().completed += (operation) => {
+                Texture2D texture = DownloadHandlerTexture.GetContent(www);
+                elements[i, j, k].IndexTexture = texture;
+            };
+        }
+
+        public IEnumerator ChangeElementsTexture() {
             ForEachElement(FetchTexture);
             for (;;) {
                 if (AreTexturesFetched()) {
@@ -57,7 +73,7 @@ namespace Cube {
 
         private void FetchTexture(int i, int j, int k) {
             UnityWebRequest www;
-            www = UnityWebRequestTexture.GetTexture(CreateDownloadLink(i, j, k));
+            www = UnityWebRequestTexture.GetTexture(CreateFormulaDownloadLink(i, j, k));
             www.SendWebRequest().completed += (operation) => {
                 Texture2D texture = DownloadHandlerTexture.GetContent(www);
                 textures[i, j, k] = texture;
@@ -65,8 +81,12 @@ namespace Cube {
             };
         }
 
-        private string CreateDownloadLink(int i, int j, int k) {
-            return $"https://latex.codecogs.com/png.latex?{@"\dpi{999}{\color{white}" + latexTensor[i, j, k]}}}";
+        private string CreateFormulaDownloadLink(int i, int j, int k) {
+            return baseURL + DecorateLatex(latexTensor[i, j, k]);
+        }
+
+        private string DecorateLatex(string latex) {
+            return @"\dpi{999}{\color{white}" + latex + "}";
         }
 
         private bool AreTexturesFetched() {
@@ -80,12 +100,6 @@ namespace Cube {
         private void SetTexture(int i, int j, int k) {
             Texture2D texture = textures[i, j, k];
             elements[i, j, k].FormulaTexture = texture;
-        }
-
-        public void SwitchIndexes() {
-            foreach (CubeElement cubeElement in elements) {
-                cubeElement.SwitchIndex();
-            }
         }
     }
 }
