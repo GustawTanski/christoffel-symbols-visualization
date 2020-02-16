@@ -56,8 +56,9 @@ namespace Latex {
             Translate(new Vector3(x, y, z));
         }
 
-        void Start() {
-
+        public void SetTexture(Texture2D texture) {
+            this.texture = texture;
+            SetSprite();
         }
 
         private IEnumerator DownloadLatexTexture() {
