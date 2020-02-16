@@ -121,8 +121,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 38251446}
-  - component: {fileID: 38251447}
-  - component: {fileID: 38251448}
   - component: {fileID: 38251445}
   m_Layer: 0
   m_Name: Matrix
@@ -171,7 +169,7 @@ MonoBehaviour:
     _values:
     - {fileID: 4900000, guid: 3b44070c57ab9a24899a437a4d9c8aa4, type: 3}
     - {fileID: 4900000, guid: 3e34aee3cc39eff49bfed83edc99a3e5, type: 3}
-  space: 0
+  space: 1
   prefab: {fileID: 509625463}
 --- !u!4 &38251446
 Transform:
@@ -187,93 +185,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &38251447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38251444}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d443b69bad326f49a084bba8c3ce3af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  template: {fileID: 509625463}
-  color: White
-  distance: 15
-  christofell: {fileID: 0}
---- !u!114 &38251448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38251444}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f075ddf5382786c4fabbabbe669c8a9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dict:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
-      isExpanded: 1
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-      controlID: 0
-      elementRects: []
-      elementLabel:
-        m_Text: 
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      pressIndex: 0
-      dragging: 0
-      pressPosition: 0
-      dragPosition: 0
-      dragDirection: 0
-      dragDropControlID: 0
-      enablePages: 0
-      perPageCount: 0
-      currentPage: 0
-      pagesCount: 0
-      showPage: 0
-    reqReferences: {fileID: 0}
-    isExpanded: 1
-    _keyValues: 0100000000000000
-    _keys: 0100000000000000
-    _values:
-    - {fileID: 4900000, guid: 3b44070c57ab9a24899a437a4d9c8aa4, type: 3}
-    - {fileID: 4900000, guid: 3e34aee3cc39eff49bfed83edc99a3e5, type: 3}
-  space: 1
-  matrix: {fileID: 0}
 --- !u!1 &148965078
 GameObject:
   m_ObjectHideFlags: 0

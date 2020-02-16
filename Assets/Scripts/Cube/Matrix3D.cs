@@ -12,8 +12,16 @@ namespace Cube {
         private Cube cube;
 
         private void Start() {
+            InitializeChristofell();
+            InitializeCube();
+        }
+
+        private void InitializeChristofell() {
             christofell = new ChristofellProvider(dict, space);
             christofell.FetchTensor();
+        }
+
+        private void InitializeCube() {
             cube = new Cube(prefab, christofell.Tensor);
             StartCoroutine(cube.InitializeElements(CreateElement));
         }
