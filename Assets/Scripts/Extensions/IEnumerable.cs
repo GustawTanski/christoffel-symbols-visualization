@@ -19,4 +19,5 @@ namespace ForEach {
             ForEach(enumerable, (el, i, nothing) => cb());
         }
     }
+
 }

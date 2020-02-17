@@ -1,5 +1,5 @@
+using System.Threading.Tasks;
 using Data;
-using Latex;
 using UnityEngine;
 
 namespace Cube {
@@ -10,19 +10,19 @@ namespace Cube {
         private ChristofellProvider christofell;
         private Cube cube;
 
-        private void Start() {
+        private async void Start() {
             InitializeChristofell();
-            InitializeCube();
+            await InitializeCube();
         }
 
         private void InitializeChristofell() {
             christofell = new ChristofellProvider(dict, space);
-            christofell.FetchTensor();
+            christofell.FetchFormulas();
         }
 
-        private void InitializeCube() {
-            cube = new Cube(cubePrefab, christofell.Tensor);
-            StartCoroutine(cube.InitializeElements(CreateElement));
+        private async Task InitializeCube() {
+            cube = new Cube(cubePrefab, christofell.FormulaTensor, christofell.IndexesTensor);
+            await cube.Initialize(CreateElement);
         }
 
         private CubeElement CreateElement(CubeElement prefab) {
