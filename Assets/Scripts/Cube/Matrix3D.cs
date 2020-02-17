@@ -1,32 +1,31 @@
+using System.Threading.Tasks;
 using Data;
-using Latex;
 using UnityEngine;
 
 namespace Cube {
     public class Matrix3D : MonoBehaviour {
         public SpaceTypeDictionary dict;
         public SpaceType space;
-
-        public LatexSprite prefab;
+        public CubeElement cubePrefab;
         private ChristofellProvider christofell;
         private Cube cube;
 
-        private void Start() {
+        private async void Start() {
             InitializeChristofell();
-            InitializeCube();
+            await InitializeCube();
         }
 
         private void InitializeChristofell() {
             christofell = new ChristofellProvider(dict, space);
-            christofell.FetchTensor();
+            christofell.FetchFormulas();
         }
 
-        private void InitializeCube() {
-            cube = new Cube(prefab, christofell.Tensor);
-            StartCoroutine(cube.InitializeElements(CreateElement));
+        private async Task InitializeCube() {
+            cube = new Cube(cubePrefab, christofell.FormulaTensor, christofell.IndexesTensor);
+            await cube.Initialize(CreateElement);
         }
 
-        private LatexSprite CreateElement(LatexSprite prefab) {
+        private CubeElement CreateElement(CubeElement prefab) {
             return Instantiate(prefab, transform);
         }
     }
