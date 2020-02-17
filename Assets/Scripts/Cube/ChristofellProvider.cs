@@ -41,7 +41,7 @@ namespace Cube {
         }
 
         private string GetIndexLatex(int number) {
-            return IndexLatex.dictionary[number];
+            return LatexDictionaries.index[number];
         }
 
         public void FetchFormulas() {

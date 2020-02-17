@@ -33,7 +33,7 @@ namespace Cube {
             formula = Instantiate(latexPrefab, transform);
             formula.LocalPosition = new Vector3(0.5f, -0.5f, 0.5f) * distance;
             index = Instantiate(latexPrefab, transform);
-            index.LocalPosition = new Vector3(0.5f, -0.3f, 0.5f) * distance;
+            index.LocalPosition = new Vector3(0.5f, -0.25f, 0.5f) * distance;
             index.SwitchAppear();
         }
 

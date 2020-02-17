@@ -57,7 +57,7 @@ namespace Cube {
         }
 
         private async Task InitializeIndexes() {
-            indexTextures = await LaTeXTextureDownloader.Fetch(indexesTensor);
+            indexTextures = await LaTeXTextureDownloader.Fetch(indexesTensor, new TextureSettings() { size = Size.tiny });
             SetIndexTextures();
         }
 

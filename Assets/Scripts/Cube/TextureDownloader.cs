@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using BetterMultiDimensional;
+using Latex;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -8,14 +9,21 @@ namespace Cube {
 
         private const string baseURL = @"https://latex.codecogs.com/png.latex?";
         private string[, , ] laTeXTensor;
+        private TextureSettings settings;
 
-        public static Task<Texture2D[, , ]> Fetch(string[, , ] laTeX) {
-            LaTeXTextureDownloader downloader = new LaTeXTextureDownloader(laTeX);
+        public static Task<Texture2D[, , ]> Fetch(string[, , ] laTeX, TextureSettings? settings) {
+            LaTeXTextureDownloader downloader = new LaTeXTextureDownloader(laTeX, settings);
             return downloader.Fetch();
         }
 
-        private LaTeXTextureDownloader(string[, , ] laTeX) {
+        public static Task<Texture2D[, , ]> Fetch(string[, , ] laTeX) {
+            LaTeXTextureDownloader downloader = new LaTeXTextureDownloader(laTeX, null);
+            return downloader.Fetch();
+        }
+
+        private LaTeXTextureDownloader(string[, , ] laTeX, TextureSettings? settings) {
             this.laTeXTensor = laTeX;
+            this.settings = settings ?? new TextureSettings() { size = Size.normal };
         }
 
         private Task<Texture2D[, , ]> Fetch() {
@@ -30,7 +38,8 @@ namespace Cube {
         }
 
         private string DecorateLaTeX(string laTeX) {
-            return @"\dpi{999}{\color{white}" + laTeX + "}";
+            Debug.Log(LatexDictionaries.size[settings.size]);
+            return @"\dpi{999}" + LatexDictionaries.size[settings.size] + @"{\color{white}" + laTeX + "}";
         }
 
     }
