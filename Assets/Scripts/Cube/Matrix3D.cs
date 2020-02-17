@@ -28,5 +28,9 @@ namespace Cube {
         private CubeElement CreateElement(CubeElement prefab) {
             return Instantiate(prefab, transform);
         }
+
+        public void ToggleZeros() {
+            cube.ToggleZeros();
+        }
     }
 }

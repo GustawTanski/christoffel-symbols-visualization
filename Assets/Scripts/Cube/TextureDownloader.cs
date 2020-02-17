@@ -38,7 +38,6 @@ namespace Cube {
         }
 
         private string DecorateLaTeX(string laTeX) {
-            Debug.Log(LatexDictionaries.size[settings.size]);
             return @"\dpi{999}" + LatexDictionaries.size[settings.size] + @"{\color{white}" + laTeX + "}";
         }
 

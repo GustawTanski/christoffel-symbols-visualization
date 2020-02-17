@@ -67,5 +67,12 @@ namespace Cube {
             });
         }
 
+        public void ToggleZeros() {
+            elements
+                .Where((_, i, j, k) => formulasTensor[i, j, k] == "0")
+                .ToList()
+                .ForEach((element) => element.ToggleAppear());
+        }
+
     }
 }

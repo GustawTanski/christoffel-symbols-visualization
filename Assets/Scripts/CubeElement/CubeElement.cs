@@ -31,9 +31,9 @@ namespace Cube {
 
         public void Initialize() {
             formula = Instantiate(latexPrefab, transform);
-            formula.LocalPosition = new Vector3(0.5f, -0.5f, 0.5f) * distance;
+            formula.LocalPosition = new Vector3(0.5f, 0.5f, -0.5f) * distance;
             index = Instantiate(latexPrefab, transform);
-            index.LocalPosition = new Vector3(0.5f, -0.25f, 0.5f) * distance;
+            index.LocalPosition = new Vector3(0.5f, 0.75f, -0.5f) * distance;
             index.SwitchAppear();
         }
 
@@ -41,6 +41,24 @@ namespace Cube {
             if (Input.GetKeyDown(KeyCode.Tab)) {
                 index.SwitchAppear();
             }
+            transform.rotation = Camera.main.transform.rotation;
+        }
+
+        public void ToggleAppear() {
+            if (IsVisible()) Disappear();
+            else Appear();
+        }
+
+        public void Appear() {
+            transform.localScale = Vector3.one;
+        }
+
+        public void Disappear() {
+            transform.localScale = Vector3.zero;
+        }
+
+        private bool IsVisible() {
+            return transform.localScale == Vector3.one;
         }
     }
 }

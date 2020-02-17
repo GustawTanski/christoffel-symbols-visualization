@@ -59,10 +59,6 @@ namespace Latex {
             );
         }
 
-        private void Update() {
-            transform.rotation = Camera.main.transform.rotation;
-        }
-
         public void SwitchAppear() {
             gameObject.SetActive(!gameObject.activeInHierarchy);
         }
