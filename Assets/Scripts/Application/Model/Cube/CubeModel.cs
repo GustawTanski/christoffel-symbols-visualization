@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using Cube;
 using Data;
 using UnityEngine;
 public class CubeModel : ChristofellElement {
     public SpaceType space = SpaceType.PlainSpace;
     public SpaceTypeDictionary spaceDictionary;
     public float distance = 12;
+    public bool areZerosVisible;
 
     public string[, , ] IndexTensor {
         get;
@@ -28,7 +28,15 @@ public class CubeModel : ChristofellElement {
     }
 
     private void Awake() {
+        ResetIndexTensor();
+        ResetFormulaTensor();
+    }
+
+    public void ResetIndexTensor() {
         IndexTensor = TensorProvider.GetIndexTensor();
+    }
+
+    public void ResetFormulaTensor() {
         FormulaTensor = TensorProvider.GetFormulaTensor(GetJsonFile());
     }
 

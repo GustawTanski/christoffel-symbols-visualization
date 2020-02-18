@@ -1,3 +1,4 @@
+using System.Linq;
 using BetterMultidimensionalArray;
 using Cube;
 using UnityEngine;
@@ -38,6 +39,13 @@ public class CubeView : ChristofellElement {
                 element.ToggleIndex();
             });
         }
+    }
+
+    public void ToggleZeros() {
+        elements
+            .Where((_, i, j, k) => App.model.cube.FormulaTensor[i, j, k] == "0")
+            .ToList()
+            .ForEach((element) => element.ToggleAppear());
     }
 
 }
