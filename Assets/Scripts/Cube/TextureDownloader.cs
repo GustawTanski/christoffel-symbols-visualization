@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using BetterMultiDimensional;
+using BetterMultidimensionalArray;
 using Latex;
 using UnityEngine;
 using UnityEngine.Networking;

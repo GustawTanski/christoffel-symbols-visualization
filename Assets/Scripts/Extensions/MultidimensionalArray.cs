@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-namespace BetterMultiDimensional {
+namespace BetterMultidimensionalArray {
     static class MultidimensionalArrayExtension {
         static public void ForEach<T>(this T[, , ] array, Action<T, int, int, int> action) {
             for (int i = 0; i < array.GetLength(0); i++) {

@@ -16,7 +16,6 @@ namespace Data {
         private void PopulateList() {
             List<string> names = Enum.GetNames(typeof(SpaceType)).ToList();
             dropdown.AddOptions(names);
-            dropdown.value
         }
     }
 }

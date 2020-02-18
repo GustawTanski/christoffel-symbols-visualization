@@ -1,5 +1,5 @@
 using System.Linq;
-using BetterMultiDimensional;
+using BetterMultidimensionalArray;
 using Data;
 using Latex;
 using Newtonsoft.Json;

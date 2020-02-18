@@ -35,7 +35,6 @@ namespace Cube {
 
         public async void SetSpace(int space) {
             christofell.Space = (SpaceType) space;
-            Debug.Log((SpaceType) space);
             christofell.GetFormulas();
             cube.FormulaTensor = christofell.FormulaTensor;
             await cube.ChangeFormulaTextures();

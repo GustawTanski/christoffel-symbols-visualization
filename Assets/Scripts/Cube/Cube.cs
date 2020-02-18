@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using BetterMultiDimensional;
+using BetterMultidimensionalArray;
 using Latex;
 using UnityEngine;
 

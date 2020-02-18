@@ -38,10 +38,11 @@ namespace Cube {
         }
 
         public void Update() {
-            if (Input.GetKeyDown(KeyCode.Tab)) {
-                index.SwitchAppear();
-            }
             transform.rotation = Camera.main.transform.rotation;
+        }
+
+        public void ToggleIndex() {
+            index.SwitchAppear();
         }
 
         public void ToggleAppear() {
