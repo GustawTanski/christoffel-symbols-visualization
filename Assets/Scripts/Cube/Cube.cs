@@ -10,26 +10,29 @@ namespace Cube {
     internal class Cube {
         private CubeElement cubePrefab;
         private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
-        private string[, , ] formulasTensor;
-        private string[, , ] indexesTensor;
+        public string[, , ] FormulaTensor {
+            private get;
+            set;
+        }
+        private string[, , ] indexTensor;
         private Texture2D[, , ] formulaTextures;
         private Texture2D[, , ] indexTextures;
         private readonly float distance = 12;
 
         public Cube(CubeElement cubePrefab, string[, , ] formulasTensor, string[, , ] indexesTensor) {
             this.cubePrefab = cubePrefab;
-            this.formulasTensor = formulasTensor;
-            this.indexesTensor = indexesTensor;
+            this.FormulaTensor = formulasTensor;
+            this.indexTensor = indexesTensor;
         }
 
         public async Task Initialize(Func<CubeElement, CubeElement> creator) {
             InitializeElements(creator);
-            await InitializeFormulas();
+            await ChangeFormulaTextures();
             await InitializeIndexes();
         }
 
         private void InitializeElements(Func<CubeElement, CubeElement> creator) {
-            elements = formulasTensor.Select(CreateElement(creator));
+            elements = FormulaTensor.Select(CreateElement(creator));
             elements.ForEach(InitializeElement);
         }
 
@@ -45,9 +48,13 @@ namespace Cube {
             element.Initialize();
         }
 
-        private async Task InitializeFormulas() {
-            formulaTextures = await LaTeXTextureDownloader.Fetch(formulasTensor);
+        public async Task ChangeFormulaTextures() {
+            await FetchFormulaTextures();
             SetFormulaTextures();
+        }
+
+        private async Task FetchFormulaTextures() {
+            formulaTextures = await LaTeXTextureDownloader.Fetch(FormulaTensor);
         }
 
         private void SetFormulaTextures() {
@@ -57,7 +64,7 @@ namespace Cube {
         }
 
         private async Task InitializeIndexes() {
-            indexTextures = await LaTeXTextureDownloader.Fetch(indexesTensor, new TextureSettings() { size = Size.tiny });
+            indexTextures = await LaTeXTextureDownloader.Fetch(indexTensor, new TextureSettings() { size = Size.tiny });
             SetIndexTextures();
         }
 
@@ -69,7 +76,7 @@ namespace Cube {
 
         public void ToggleZeros() {
             elements
-                .Where((_, i, j, k) => formulasTensor[i, j, k] == "0")
+                .Where((_, i, j, k) => FormulaTensor[i, j, k] == "0")
                 .ToList()
                 .ForEach((element) => element.ToggleAppear());
         }

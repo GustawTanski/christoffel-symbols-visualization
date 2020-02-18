@@ -14,7 +14,9 @@ public class FlyingCamera : MonoBehaviour {
     private bool active = true;
 
     void Start() {
-        Screen.lockCursor = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
     }
 
     void Update() {
@@ -42,8 +44,16 @@ public class FlyingCamera : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            Screen.lockCursor = (Screen.lockCursor == false) ? true : false;
-            active = (active == false) ? true : false;
+            if (Cursor.lockState == CursorLockMode.Locked) {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                active = false;
+            } else {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                active = true;
+            }
+
         }
     }
 }

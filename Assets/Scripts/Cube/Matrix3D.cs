@@ -17,7 +17,7 @@ namespace Cube {
 
         private void InitializeChristofell() {
             christofell = new ChristofellProvider(dict, space);
-            christofell.FetchFormulas();
+            christofell.GetFormulas();
         }
 
         private async Task InitializeCube() {
@@ -31,6 +31,14 @@ namespace Cube {
 
         public void ToggleZeros() {
             cube.ToggleZeros();
+        }
+
+        public async void SetSpace(int space) {
+            christofell.Space = (SpaceType) space;
+            Debug.Log((SpaceType) space);
+            christofell.GetFormulas();
+            cube.FormulaTensor = christofell.FormulaTensor;
+            await cube.ChangeFormulaTextures();
         }
     }
 }

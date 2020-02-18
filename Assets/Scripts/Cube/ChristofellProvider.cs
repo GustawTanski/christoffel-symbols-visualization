@@ -44,7 +44,7 @@ namespace Cube {
             return LatexDictionaries.index[number];
         }
 
-        public void FetchFormulas() {
+        public void GetFormulas() {
             string json = SpaceLatexDict[Space].text;
             FormulaTensor = JsonConvert.DeserializeObject<string[, , ]>(json);
         }
