@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-
-namespace BetterMultiDimensional {
+namespace BetterMultidimensionalArray {
     static class MultidimensionalArrayExtension {
         static public void ForEach<T>(this T[, , ] array, Action<T, int, int, int> action) {
             for (int i = 0; i < array.GetLength(0); i++) {
@@ -17,7 +18,7 @@ namespace BetterMultiDimensional {
         }
 
         static public void ForEach<T>(this T[, , ] array, Action action) {
-            array.ForEach((element, i, j, k) => action());
+            array.ForEach((_, i, j, k) => action());
         }
 
         static public S[, , ] Select<T, S>(this T[, , ] array, Func<T, int, int, int, S> function) {
@@ -37,7 +38,7 @@ namespace BetterMultiDimensional {
         }
 
         static public S[, , ] Select<T, S>(this T[, , ] array, Func<S> function) {
-            return array.Select((element, i, j, k) => function());
+            return array.Select((_, i, j, k) => function());
         }
 
         static public async Task<T[, , ]> WaitForAll<T>(this Task<T>[, , ] taskArray) {
@@ -50,6 +51,24 @@ namespace BetterMultiDimensional {
                 }
             }
             return newArray;
+        }
+
+        static public IEnumerable<T> Where<T>(this T[, , ] array, Func<T, int, int, int, bool> predicate) {
+            List<T> newArray = new List<T>();
+            array.ForEach((element, i, j, k) => {
+                if (predicate(element, i, j, k)) {
+                    newArray.Add(element);
+                }
+            });
+            return newArray;
+        }
+
+        static public IEnumerable<T> Where<T>(this T[, , ] array, Func<T, bool> predicate) {
+            return array.Cast<T>().Where(predicate);
+        }
+
+        static public IEnumerable<T> Where<T>(this T[, , ] array, Func<bool> predicate) {
+            return array.Where((_) => predicate());
         }
 
     }
