@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Data {
-
     public class SpaceTypeDropdown : MonoBehaviour {
         public Dropdown dropdown;
 

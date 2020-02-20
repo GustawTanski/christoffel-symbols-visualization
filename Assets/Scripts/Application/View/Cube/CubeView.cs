@@ -1,6 +1,5 @@
 using System.Linq;
 using BetterMultidimensionalArray;
-using Cube;
 using UnityEngine;
 public class CubeView : ChristofellElement {
     public CubeElement cubeElementPrefab;

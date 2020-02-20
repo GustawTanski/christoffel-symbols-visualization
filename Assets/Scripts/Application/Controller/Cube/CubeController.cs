@@ -6,12 +6,12 @@ public class CubeController : ChristofellElement {
         if (!App.model.cube.areZerosVisible) App.view.cube.ToggleZeros();
     }
 
-    public void ToggleZeros() {
+    public void OnZeroToggleClicked() {
         App.model.cube.areZerosVisible = !App.model.cube.areZerosVisible;
         App.view.cube.ToggleZeros();
     }
 
-    public async void ChangeSpace(int space) {
+    public async void OnSpaceValueChanged(int space) {
         CubeModel model = App.model.cube;
         CubeView view = App.view.cube;
         model.space = (SpaceType) space;

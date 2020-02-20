@@ -19,7 +19,7 @@ public class UIController : ChristofellElement {
     }
 
     private void SetZerosToggleListener() {
-        App.view.UI.zerosToggle.onValueChanged.AddListener((_) => App.controller.cube.ToggleZeros());
+        App.view.UI.zerosToggle.onValueChanged.AddListener((_) => App.controller.cube.OnZeroToggleClicked());
     }
 
     private void InitializeDropdown() {
@@ -38,6 +38,6 @@ public class UIController : ChristofellElement {
     }
 
     private void SetDropdownListener() {
-        App.view.UI.dropdown.onValueChanged.AddListener(App.controller.cube.ChangeSpace);
+        App.view.UI.dropdown.onValueChanged.AddListener(App.controller.cube.OnSpaceValueChanged);
     }
 }

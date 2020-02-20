@@ -1,6 +1,6 @@
 using System.Linq;
 using BetterMultidimensionalArray;
-using Latex;
+using Data;
 using Newtonsoft.Json;
 using UnityEngine;
 

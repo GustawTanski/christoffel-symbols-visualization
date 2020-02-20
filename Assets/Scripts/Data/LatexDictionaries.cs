@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Cube;
-
-namespace Latex {
+namespace Data {
     public static class LatexDictionaries {
         static public Dictionary<int, string> index = new Dictionary<int, string>();
         static public Dictionary<Size, string> size = new Dictionary<Size, string>();

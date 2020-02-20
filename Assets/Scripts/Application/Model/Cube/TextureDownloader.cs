@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using BetterMultidimensionalArray;
-using Latex;
+using Data;
 using UnityEngine;
 using UnityEngine.Networking;
 
