@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace Data {
     public enum SpaceType {
-        PlainSpace,
-        Blackhole
+        Minkowski,
+        Schwarzschild,
+        AdsSchwarzschild,
+        Kerr
     }
 
     [Serializable]

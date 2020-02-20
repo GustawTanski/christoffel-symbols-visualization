@@ -3,17 +3,17 @@ public class CubeElement : ChristofellElement {
     public DynamicSprite dynamicSpritePrefab;
     private DynamicSprite formula;
     private DynamicSprite index;
-    private float distance;
+    private float size;
     private Vector3 position;
     private Vector3 translation;
 
-    public float Distance {
+    public float Size {
         get {
-            return distance;
+            return size;
         }
         set {
-            if (value <= 0) distance = 0;
-            else distance = value;
+            if (value <= 0) size = 0;
+            else size = value;
         }
     }
 
@@ -56,11 +56,11 @@ public class CubeElement : ChristofellElement {
     }
 
     public void Initialize() {
-        Distance = App.model.cube.distance;
+        Size = App.model.cube.distance;
         formula = Instantiate(dynamicSpritePrefab, transform);
-        formula.LocalPosition = new Vector3(0.5f, 0.5f, -0.5f) * Distance;
+        formula.LocalPosition = new Vector3(0.5f, 0.5f, -0.5f) * Size;
         index = Instantiate(dynamicSpritePrefab, transform);
-        index.LocalPosition = new Vector3(0.5f, 0.75f, -0.5f) * Distance;
+        index.LocalPosition = new Vector3(0.5f, 0.75f, -0.5f) * Size;
         index.ToggleAppear();
     }
 
