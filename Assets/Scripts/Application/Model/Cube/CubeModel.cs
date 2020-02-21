@@ -28,15 +28,15 @@ public class CubeModel : ChristofellElement {
     }
 
     private void Awake() {
-        ResetIndexTensor();
-        ResetFormulaTensor();
+        UpdateIndexTensor();
+        UpdateFormulas();
     }
 
-    public void ResetIndexTensor() {
+    public void UpdateIndexTensor() {
         IndexTensor = TensorProvider.GetIndexTensor();
     }
 
-    public void ResetFormulaTensor() {
+    public void UpdateFormulas() {
         FormulaTensor = TensorProvider.GetFormulaTensor(GetJsonFile());
     }
 

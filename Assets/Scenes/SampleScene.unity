@@ -1759,7 +1759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70becaf98401d6c4d8a37bf6848fc7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  space: 3
+  space: 0
   spaceDictionary:
     reorderableList:
       canAdd: 1

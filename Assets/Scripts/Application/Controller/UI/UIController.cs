@@ -48,6 +48,6 @@ public class UIController : ChristofellElement, INotifiable {
     }
 
     private void OnDropdownChanged(int value) {
-        App.Notify(ChristofellNotification.SpaceTypeChanged, App.view.UI.dropdown, value);
+        App.Notify(ChristofellNotification.SpaceTypeChanged, App.view.UI.dropdown, (SpaceType)value);
     }
 }

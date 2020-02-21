@@ -72,7 +72,7 @@ public class CubeElement : ChristofellElement {
         index.ToggleAppear();
     }
 
-    public void ToggleAppear() {
+    public void ToggleVisibility() {
         if (IsVisible()) Disappear();
         else Appear();
     }

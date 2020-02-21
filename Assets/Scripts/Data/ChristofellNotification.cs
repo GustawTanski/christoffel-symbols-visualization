@@ -1,4 +1,4 @@
 public enum ChristofellNotification {
-    ZeroHided,
-    SpaceTypeChanged
+    ZeroHided, // no data
+    SpaceTypeChanged // data: [ SpaceType newSpace ]
 }
