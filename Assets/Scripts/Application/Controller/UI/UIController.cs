@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Data;
 
-public class UIController : ChristofellElement {
+public class UIController : ChristofellElement, INotifiable {
+
+    public void OnNotification(ChristofellNotification notification, object target, params object[] data) {}
     private void Start() {
         InitializeToggle();
         InitializeDropdown();
@@ -19,7 +21,11 @@ public class UIController : ChristofellElement {
     }
 
     private void SetZerosToggleListener() {
-        App.view.UI.zerosToggle.onValueChanged.AddListener((_) => App.controller.cube.OnZeroToggleClicked());
+        App.view.UI.zerosToggle.onValueChanged.AddListener(OnZerosToggleChange);
+    }
+
+    private void OnZerosToggleChange(bool _) {
+        App.Notify(ChristofellNotification.ZeroHided, App.view.UI.zerosToggle);
     }
 
     private void InitializeDropdown() {
@@ -38,6 +44,10 @@ public class UIController : ChristofellElement {
     }
 
     private void SetDropdownListener() {
-        App.view.UI.dropdown.onValueChanged.AddListener(App.controller.cube.OnSpaceValueChanged);
+        App.view.UI.dropdown.onValueChanged.AddListener(OnDropdownChanged);
+    }
+
+    private void OnDropdownChanged(int value) {
+        App.Notify(ChristofellNotification.SpaceTypeChanged, App.view.UI.dropdown, value);
     }
 }
