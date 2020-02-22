@@ -1,13 +1,14 @@
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
-public class CubeController : ChristofellElement, INotifiable {
+public class CubeController : ChristofellElement {
 
     private CubeModel cubeModel;
     private CubeView cubeView;
 
     private async void Start() {
         SetReferences();
+        SetEventListeners();
         await FetchAllTextures();
         SetTextures();
         SetZerosVisibility();
@@ -16,6 +17,48 @@ public class CubeController : ChristofellElement, INotifiable {
     private void SetReferences() {
         cubeModel = App.model.cube;
         cubeView = App.view.cube;
+    }
+
+    private void SetEventListeners() {
+        App.zerosHidedEvent.AddListener(OnZerosHided);
+        App.spaceChangedEvent.AddListener(OnSpaceChanged);
+    }
+
+    private void OnZerosHided() {
+        ToggleZerosVisibilityState();
+        ToggleZerosVisibility();
+    }
+
+    private void ToggleZerosVisibilityState() {
+        cubeModel.areZerosVisible = !cubeModel.areZerosVisible;
+    }
+
+    private void ToggleZerosVisibility() {
+        cubeView.ToggleZeros();
+    }
+
+    private async void OnSpaceChanged(SpaceType space) {
+        SetSpaceState(space);
+        UpdateFormulasState();
+        await FetchFormulaTextures();
+        SetFormulaTextures();
+    }
+
+    private void SetSpaceState(SpaceType space) {
+        cubeModel.space = space;
+    }
+
+    private void UpdateFormulasState() {
+        cubeModel.UpdateFormulas();
+        if (!cubeModel.areZerosVisible) cubeView.UpdateZeros();
+    }
+
+    private async Task FetchFormulaTextures() {
+        await cubeModel.FetchFormulaTextures();
+    }
+
+    private void SetFormulaTextures() {
+        cubeView.SetFormulaTextures();
     }
 
     private async Task FetchAllTextures() {
@@ -40,53 +83,6 @@ public class CubeController : ChristofellElement, INotifiable {
 
     private void ToggleIndexes() {
         App.view.cube.ToggleIndexes();
-    }
-    public void OnNotification(ChristofellNotification notification, object target, params object[] data) {
-        switch (notification) {
-            case ChristofellNotification.ZeroHided:
-                OnZeroToggleClicked();
-                break;
-            case ChristofellNotification.SpaceTypeChanged:
-                OnSpaceValueChanged((SpaceType) data[0]);
-                break;
-        }
-    }
-
-    private void OnZeroToggleClicked() {
-        ToggleZerosVisibilityState();
-        ToggleZerosVisibility();
-    }
-
-    private void ToggleZerosVisibilityState() {
-        cubeModel.areZerosVisible = !cubeModel.areZerosVisible;
-    }
-
-    private void ToggleZerosVisibility() {
-        cubeView.ToggleZeros();
-    }
-
-    private async void OnSpaceValueChanged(SpaceType space) {
-        SetSpaceState(space);
-        UpdateFormulasState();
-        await FetchFormulaTextures();
-        SetFormulaTextures();
-    }
-
-    private void SetSpaceState(SpaceType space) {
-        cubeModel.space = space;
-    }
-
-    private void UpdateFormulasState() {
-        cubeModel.UpdateFormulas();
-        cubeView.UpdateZeros();
-    }
-
-    private async Task FetchFormulaTextures() {
-        await cubeModel.FetchFormulaTextures();
-    }
-
-    private void SetFormulaTextures() {
-        cubeView.SetFormulaTextures();
     }
 
 }
