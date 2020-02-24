@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class UIController : ChristofellElement {
 
+    private RaycastHit hit;
+    private bool isElementHit = false;
+    private bool isHit = false;
+
     private void Start() {
         InitializeToggle();
         InitializeDropdown();
@@ -56,11 +60,40 @@ public class UIController : ChristofellElement {
     }
 
     private void UpdateLine() {
-        if (WasMouseButtonPressed()) SetLineStart();
+        if (WasMouseButtonPressed()) {
+            Raycast();
+            if (IsElementHit()) AttachStartPivot();
+        }
+        if (IsMousePressed() && App.model.uI.LineStartPivot.IsAttached) {
+            Raycast();
+            if(IsElementHit()) {
+                AttachEndPivot();
+                DrawLine();
+            } else {
+                App.model.uI.LineEndPivot.Detach();
+                HideLine();
+            }
+        }
         if (WasMouseButtonReleased()) HideLine();
-        if (IsMousePressed()) DrawLine();
-
     }
+
+    private void Raycast() {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        isHit = Physics.Raycast(ray, out hit);
+    }
+
+    private bool IsElementHit() {
+        return isHit && hit.transform.GetComponent<CubeElement>() != null;
+    }
+
+    private void AttachStartPivot() {
+        App.model.uI.LineStartPivot = new Pivot(hit.point, true);
+    }
+
+    private void AttachEndPivot() {
+        App.model.uI.LineEndPivot = new Pivot(hit.point, true);
+    }
+
 
     private bool WasMouseButtonPressed() {
         return Input.GetMouseButtonDown(1);
@@ -74,20 +107,11 @@ public class UIController : ChristofellElement {
         return Input.GetMouseButton(1);
     }
 
-    private void SetLineStart() {
-        App.model.uI.LineStart = Input.mousePosition;
-    }
-
     private void HideLine() {
         App.view.uI.HideLine();
     }
 
     private void DrawLine() {
-        SetLineEnd();
         App.view.uI.UpdateLine();
-    }
-
-    private void SetLineEnd() {
-        App.model.uI.LineEnd = Input.mousePosition;
     }
 }

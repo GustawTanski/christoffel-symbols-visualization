@@ -1,17 +1,18 @@
 using UnityEngine;
 public class UIModel : ChristofellElement {
-    public Vector3 LineStart {
+    public Pivot LineStartPivot {
         get;
         set;
     }
-    public Vector3 LineEnd {
+    public Pivot LineEndPivot {
         get;
         set;
     }
 
     public Vector3 LineDifferenceVector {
         get {
-            return LineEnd - LineStart;
+            return LineEndPivot.Position - LineStartPivot.Position;
         }
     }
+
 }

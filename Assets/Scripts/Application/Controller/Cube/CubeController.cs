@@ -91,7 +91,6 @@ public class CubeController : ChristofellElement {
             if (differenceVector.magnitude > 0.1) {
                 Vector3 rotatedUp = cubeView.transform.rotation * Vector3.up;
                 var s = Vector3.Project(Quaternion.Inverse(Camera.main.transform.rotation) * differenceVector, rotatedUp).magnitude;
-                Debug.Log(s);
             }
         }
     }
