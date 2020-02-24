@@ -1,19 +1,15 @@
 using UnityEngine;
 public class CubeElement : ChristofellElement {
     public DynamicSprite dynamicSpritePrefab;
+    private GameObject spriteContainer;
     private DynamicSprite formula;
     private DynamicSprite index;
-    private float size;
-    private Vector3 position;
-    private Vector3 translation;
+    private Vector3 position = Vector3.zero;
+    private Vector3 translation = Vector3.zero;
 
-    public float Size {
+    private float Size {
         get {
-            return size;
-        }
-        set {
-            if (value <= 0) size = 0;
-            else size = value;
+            return App.model.cube.elementSize;
         }
     }
 
@@ -50,22 +46,50 @@ public class CubeElement : ChristofellElement {
         }
     }
 
-    private void Start() {
-        translation = Vector3.zero;
-        position = transform.localPosition;
+    private void Awake() {
+        InitializeSpriteContainer();
+        InitializeBoxCollider();
+        InitializeFormula();
+        InitializeIndex();
     }
 
-    public void Initialize() {
-        Size = App.model.cube.distance;
-        formula = Instantiate(dynamicSpritePrefab, transform);
-        formula.LocalPosition = new Vector3(0.5f, 0.5f, -0.5f) * Size;
-        index = Instantiate(dynamicSpritePrefab, transform);
-        index.LocalPosition = new Vector3(0.5f, 0.75f, -0.5f) * Size;
-        index.ToggleAppear();
+    private void InitializeSpriteContainer() {
+        spriteContainer = new GameObject();
+        spriteContainer.transform.SetParent(transform);
+        spriteContainer.transform.localPosition = Vector3.zero;
+    }
+
+    private void InitializeBoxCollider() {
+        BoxCollider collider = GetComponent<BoxCollider>();
+        collider.size = Vector3.one * Size;
+        collider.center = GetMiddlePosition();
+    }
+
+    private Vector3 GetMiddlePosition() {
+        return new Vector3(0.5f, 0.5f, -0.5f) * Size;
+    }
+
+    private void InitializeFormula() {
+        formula = Instantiate(dynamicSpritePrefab, spriteContainer.transform);
+        formula.LocalPosition = GetMiddlePosition();
+    }
+
+    private void InitializeIndex() {
+        index = Instantiate(dynamicSpritePrefab, spriteContainer.transform);
+        index.LocalPosition = GetIndexPosition();
+        index.Disappear();
+    }
+
+    private Vector3 GetIndexPosition() {
+        return GetMiddlePosition() + GetIndexTranslation();
+    }
+
+    private Vector3 GetIndexTranslation() {
+        return new Vector3(0, 0.25f, 0) * Size;
     }
 
     public void Update() {
-        transform.rotation = Camera.main.transform.rotation;
+        spriteContainer.transform.rotation = Camera.main.transform.rotation;
     }
 
     public void ToggleIndex() {
