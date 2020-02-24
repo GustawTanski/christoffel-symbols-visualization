@@ -27,6 +27,12 @@ public class CubeModel : ChristofellElement {
         private set;
     }
 
+    public Vector3Int SelectedCubeElementIndexes
+    {
+        get;
+        set;
+    } = Vector3Int.one * -1;
+
     private void Awake() {
         UpdateIndexTensor();
         UpdateFormulas();

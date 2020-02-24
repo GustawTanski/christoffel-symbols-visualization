@@ -71,5 +71,28 @@ namespace BetterMultidimensionalArray {
             return array.Where((_) => predicate());
         }
 
+        static public int[] FindIndex<T>(this T[, , ] array, Func<T, int, int, int, bool> predicate) {
+            bool breakFlag = false;
+            int[] indexes = null;
+            for (int i = 0; i < array.GetLength(0) && !breakFlag; i++) {
+                for (int j = 0; j < array.GetLength(1) && !breakFlag; j++) {
+                    for (int k = 0; k < array.GetLength(2) && !breakFlag; k++) {
+                        if (predicate(array[i, j, k], i, j, k)) {
+                            indexes = new [] { i, j, k };
+                            breakFlag = true;
+                        }
+                    }
+                }
+            }
+            return indexes;
+        }
+
+        static public int[] FindIndex<T>(this T[, , ] array, Func<T, bool> predicate) {
+            return array.FindIndex((element, i, j, k) => predicate(element));
+        }
+
+        static public int[] FindIndex<T>(this T[, , ] array, Func<bool> predicate) {
+            return array.FindIndex((_) => predicate());
+        }
     }
 }

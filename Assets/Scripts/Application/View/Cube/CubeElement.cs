@@ -112,4 +112,9 @@ public class CubeElement : ChristofellElement {
     private bool IsVisible() {
         return transform.localScale == Vector3.one;
     }
+
+    public void SetFormulaColor(Color color) {
+        formula.GetComponent<SpriteRenderer>().color = color;
+    }
+
 }

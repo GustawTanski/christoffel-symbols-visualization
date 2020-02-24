@@ -76,4 +76,9 @@ public class CubeView : ChristofellElement {
         element.Appear();
     }
 
+    public Vector3Int FindElementsIndexes(CubeElement cubeElement) {
+        int[] indexes = elements.FindIndex((element => element == cubeElement));
+        if (indexes == null) return Vector3Int.one * -1;
+        return new Vector3Int(indexes[0], indexes[1], indexes[2]);
+    }
 }

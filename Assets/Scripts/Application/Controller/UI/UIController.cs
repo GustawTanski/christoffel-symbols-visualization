@@ -63,15 +63,15 @@ public class UIController : ChristofellElement {
     }
 
     private bool WasMouseButtonPressed() {
-        return Input.GetMouseButtonDown(0);
+        return Input.GetMouseButtonDown(1);
     }
 
     private bool WasMouseButtonReleased() {
-        return Input.GetMouseButtonUp(0);
+        return Input.GetMouseButtonUp(1);
     }
 
     private bool IsMousePressed() {
-        return Input.GetMouseButton(0);
+        return Input.GetMouseButton(1);
     }
 
     private void SetLineStart() {
