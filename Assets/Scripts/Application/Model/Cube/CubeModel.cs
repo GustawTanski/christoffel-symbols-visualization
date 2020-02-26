@@ -4,7 +4,7 @@ using UnityEngine;
 public class CubeModel : ChristofellElement {
     public SpaceType space = SpaceType.Minkowski;
     public SpaceTypeDictionary spaceDictionary;
-    public float distance = 12;
+    public float elementSize = 12;
     public bool areZerosVisible;
 
     public string[, , ] IndexTensor {
@@ -26,6 +26,12 @@ public class CubeModel : ChristofellElement {
         get;
         private set;
     }
+
+    public Vector3Int SelectedCubeElementIndexes
+    {
+        get;
+        set;
+    } = Vector3Int.one * -1;
 
     private void Awake() {
         UpdateIndexTensor();

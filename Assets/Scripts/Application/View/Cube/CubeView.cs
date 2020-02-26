@@ -10,13 +10,13 @@ public class CubeView : ChristofellElement {
     }
     private CubeElement CreateElement(CubeElement _, int i, int j, int k) {
         CubeElement element = Instantiate(cubeElementPrefab, transform);
+        element.name = $"Cube Element [{i}, {j}, {k}]";
         element.LocalPosition = GetElementLocalPosition(i, j, k);
-        element.Initialize();
         return element;
     }
 
     private Vector3 GetElementLocalPosition(int i, int j, int k) {
-        return new Vector3(i, -j, k) * App.model.cube.distance;
+        return new Vector3(i, -j, k) * App.model.cube.elementSize;
     }
 
     public void ToggleIndexes() {
@@ -77,4 +77,9 @@ public class CubeView : ChristofellElement {
         element.Appear();
     }
 
+    public Vector3Int FindElementsIndexes(CubeElement cubeElement) {
+        int[] indexes = elements.FindIndex((element => element == cubeElement));
+        if (indexes == null) return Vector3Int.one * -1;
+        return new Vector3Int(indexes[0], indexes[1], indexes[2]);
+    }
 }
