@@ -5,9 +5,7 @@ using Data;
 using UnityEngine;
 
 public class UIController : ChristofellElement {
-
     private RaycastHit hit;
-    private bool isElementHit = false;
     private bool isHit = false;
 
     private void Start() {
@@ -62,11 +60,12 @@ public class UIController : ChristofellElement {
     private void UpdateLine() {
         if (WasMouseButtonPressed()) {
             Raycast();
+            CubeElement dog = hit.transform.GetComponent<CubeElement>();
             if (IsElementHit()) AttachStartPivot();
         }
         if (IsMousePressed() && App.model.uI.LineStartPivot.IsAttached) {
             Raycast();
-            if(IsElementHit()) {
+            if (IsElementHit() && IsSamePlane()) {
                 AttachEndPivot();
                 DrawLine();
             } else {
@@ -86,14 +85,17 @@ public class UIController : ChristofellElement {
         return isHit && hit.transform.GetComponent<CubeElement>() != null;
     }
 
+    private bool IsSamePlane() {
+        return hit.normal == App.model.uI.LineStartPivot.PlaneNormal;
+    }
+
     private void AttachStartPivot() {
-        App.model.uI.LineStartPivot = new Pivot(hit.point, true);
+        App.model.uI.LineStartPivot = new Pivot(hit.point, true, hit.normal);
     }
 
     private void AttachEndPivot() {
-        App.model.uI.LineEndPivot = new Pivot(hit.point, true);
+        App.model.uI.LineEndPivot = new Pivot(hit.point, true, hit.normal);
     }
-
 
     private bool WasMouseButtonPressed() {
         return Input.GetMouseButtonDown(1);

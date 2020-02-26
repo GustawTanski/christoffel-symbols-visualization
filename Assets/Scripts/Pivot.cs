@@ -10,9 +10,19 @@ public struct Pivot {
         set;
     }
 
-    public Pivot(Vector3 position = new Vector3(), bool isAttached = false) {
+    public Vector3 PlaneNormal {
+        get;
+        set;
+    }
+
+    public Pivot(
+        Vector3 position = new Vector3(), 
+        bool isAttached = false, 
+        Vector3 planeNormal = new Vector3()
+    ) {
         Position = position;
         IsAttached = isAttached;
+        PlaneNormal = planeNormal;
     }
 
     public void Attach() {

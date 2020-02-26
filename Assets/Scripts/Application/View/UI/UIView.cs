@@ -8,16 +8,12 @@ public class UIView : ChristofellElement {
 
     public LineRenderer line;
     public void HideLine() {
-        Debug.Log("pieski");
-        line.gameObject.SetActive(false);
+        // line.startWidth = line.endWidth = 0;
     }
 
     public void UpdateLine() {
-        // SetLineSize();
-        // SetLinePivot();
-        // SetLinePosition();
-        // SetLineRotation();
         line.gameObject.SetActive(true);
+        line.startWidth = line.endWidth = 0.1f;
         line.SetPositions(new Vector3[] { App.model.uI.LineStartPivot.Position, App.model.uI.LineEndPivot.Position });
     }
 

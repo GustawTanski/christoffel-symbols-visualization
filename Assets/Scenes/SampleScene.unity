@@ -1933,7 +1933,7 @@ GameObject:
   - component: {fileID: 1284996319}
   - component: {fileID: 1284996318}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1987,7 +1987,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.50704193
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0

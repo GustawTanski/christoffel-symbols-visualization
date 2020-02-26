@@ -55,6 +55,7 @@ public class CubeElement : ChristofellElement {
 
     private void InitializeSpriteContainer() {
         spriteContainer = new GameObject();
+        spriteContainer.name = "Sprite Container";
         spriteContainer.transform.SetParent(transform);
         spriteContainer.transform.localPosition = Vector3.zero;
     }
@@ -66,16 +67,18 @@ public class CubeElement : ChristofellElement {
     }
 
     private Vector3 GetMiddlePosition() {
-        return new Vector3(0.5f, 0.5f, -0.5f) * Size;
+        return Vector3.zero;
     }
 
     private void InitializeFormula() {
         formula = Instantiate(dynamicSpritePrefab, spriteContainer.transform);
+        formula.name = "Formula Sprite";
         formula.LocalPosition = GetMiddlePosition();
     }
 
     private void InitializeIndex() {
         index = Instantiate(dynamicSpritePrefab, spriteContainer.transform);
+        index.name = "Index Sprite";
         index.LocalPosition = GetIndexPosition();
         index.Disappear();
     }

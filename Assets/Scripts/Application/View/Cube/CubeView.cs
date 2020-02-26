@@ -10,6 +10,7 @@ public class CubeView : ChristofellElement {
     }
     private CubeElement CreateElement(CubeElement _, int i, int j, int k) {
         CubeElement element = Instantiate(cubeElementPrefab, transform);
+        element.name = $"Cube Element [{i}, {j}, {k}]";
         element.LocalPosition = GetElementLocalPosition(i, j, k);
         return element;
     }
