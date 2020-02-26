@@ -8,10 +8,10 @@ public class UIView : ChristofellElement {
 
     public LineRenderer line;
     public void HideLine() {
-        // line.startWidth = line.endWidth = 0;
+        line.startWidth = line.endWidth = 0;
     }
 
-    public void UpdateLine() {
+    public void DrawLine() {
         line.gameObject.SetActive(true);
         line.startWidth = line.endWidth = 0.1f;
         line.SetPositions(new Vector3[] { App.model.uI.LineStartPivot.Position, App.model.uI.LineEndPivot.Position });

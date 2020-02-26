@@ -58,62 +58,95 @@ public class UIController : ChristofellElement {
     }
 
     private void UpdateLine() {
-        if (WasMouseButtonPressed()) {
-            Raycast();
-            CubeElement dog = hit.transform.GetComponent<CubeElement>();
-            if (IsElementHit()) AttachStartPivot();
-        }
-        if (IsMousePressed() && App.model.uI.LineStartPivot.IsAttached) {
-            Raycast();
-            if (IsElementHit() && IsSamePlane()) {
-                AttachEndPivot();
-                DrawLine();
-            } else {
-                App.model.uI.LineEndPivot.Detach();
-                HideLine();
-            }
-        }
-        if (WasMouseButtonReleased()) HideLine();
-    }
-
-    private void Raycast() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        isHit = Physics.Raycast(ray, out hit);
-    }
-
-    private bool IsElementHit() {
-        return isHit && hit.transform.GetComponent<CubeElement>() != null;
-    }
-
-    private bool IsSamePlane() {
-        return hit.normal == App.model.uI.LineStartPivot.PlaneNormal;
-    }
-
-    private void AttachStartPivot() {
-        App.model.uI.LineStartPivot = new Pivot(hit.point, true, hit.normal);
-    }
-
-    private void AttachEndPivot() {
-        App.model.uI.LineEndPivot = new Pivot(hit.point, true, hit.normal);
+        if (WasMouseButtonPressed()) HandleMouseDown();
+        if (IsMousePressed()) HandleMousePressed();
+        if (WasMouseButtonReleased()) HandleMouseReleased();
     }
 
     private bool WasMouseButtonPressed() {
         return Input.GetMouseButtonDown(1);
     }
 
-    private bool WasMouseButtonReleased() {
-        return Input.GetMouseButtonUp(1);
+    private void HandleMouseDown() {
+        MouseRaycast();
+        if (IsElementHit()) AttachStartPivot();
+    }
+
+    private void MouseRaycast() {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        isHit = Physics.Raycast(ray, out hit);
+    }
+
+    // Should be used always after MouseRaycast 
+    private bool IsElementHit() {
+        return isHit && hit.transform.GetComponent<CubeElement>() != null;
+    }
+
+    private void AttachStartPivot() {
+        App.model.uI.LineStartPivot = new Pivot() {
+            Position = hit.point,
+            PlaneNormal = hit.normal,
+            IsAttached = true
+        };
+    }
+
+    private bool AreMousePressedAndStartPivotAttached() {
+        return IsMousePressed() && App.model.uI.LineStartPivot.IsAttached;
     }
 
     private bool IsMousePressed() {
         return Input.GetMouseButton(1);
     }
 
+    private void HandleMousePressed() {
+        if (App.model.uI.LineStartPivot.IsAttached) {
+            MouseRaycast();
+            if (IsElementHit() && IsSamePlane()) AttachEndPivotAndDrawLine();
+            else DetachEndPivotAndDrawLine();
+        }
+    }
+
+    private bool IsSamePlane() {
+        return hit.normal == App.model.uI.LineStartPivot.PlaneNormal;
+    }
+
+    private void AttachEndPivotAndDrawLine() {
+        AttachEndPivot();
+        DrawLine();
+    }
+
+    private void AttachEndPivot() {
+        App.model.uI.LineEndPivot = new Pivot() {
+            Position = hit.point,
+            PlaneNormal = hit.normal,
+            IsAttached = true
+        };
+    }
+
+    private void DrawLine() {
+        App.view.uI.DrawLine();
+    }
+
+    private void DetachEndPivotAndDrawLine() {
+        DetachEndPivot();
+        HideLine();
+    }
+
+    private void DetachEndPivot() {
+        App.model.uI.LineEndPivot.Detach();
+    }
+
     private void HideLine() {
         App.view.uI.HideLine();
     }
 
-    private void DrawLine() {
-        App.view.uI.UpdateLine();
+    private bool WasMouseButtonReleased() {
+        return Input.GetMouseButtonUp(1);
+    }
+
+    private void HandleMouseReleased() {
+        App.model.uI.LineStartPivot.Detach();
+        App.model.uI.LineEndPivot.Detach();
+        HideLine();
     }
 }
