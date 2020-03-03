@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Data;
 namespace BetterMultidimensionalArray {
     static class MultidimensionalArrayExtension {
         static public void ForEach<T>(this T[, , ] array, Action<T, int, int, int> action) {
@@ -93,6 +94,46 @@ namespace BetterMultidimensionalArray {
 
         static public int[] FindIndex<T>(this T[, , ] array, Func<bool> predicate) {
             return array.FindIndex((_) => predicate());
+        }
+
+        static public T[, ] GetPlane<T>(this T[, , ] array, Dimension constIndex, int planeIndex) {
+            switch (constIndex) {
+                case Dimension.x:
+                    return array.GetXPlane(planeIndex);
+                case Dimension.y:
+                    return array.GetYPlane(planeIndex);
+                case Dimension.z:
+                    return array.GetZPlane(planeIndex);
+                case Dimension.zero:
+                    throw new ArgumentException("Direction.zero is not a proper plane's const index.");
+                default:
+                    throw new ArgumentException("Not known value.");
+            }
+        }
+
+        static public T[, ] GetXPlane<T>(this T[, , ] array, int planeIndex) {
+            return array.SliceTo2DAndMap(1, 2, (i, j) => array[planeIndex, i, j]);
+        }
+        static public T[, ] GetYPlane<T>(this T[, , ] array, int planeIndex) {
+            return array.SliceTo2DAndMap(0, 2, (i, j) => array[i, planeIndex, j]);
+        }
+        static public T[, ] GetZPlane<T>(this T[, , ] array, int planeIndex) {
+            return array.SliceTo2DAndMap(0, 1, (i, j) => array[i, j, planeIndex]);
+        }
+
+        static private T[, ] SliceTo2DAndMap<T>(
+            this T[, , ] array,
+            int rowIndex,
+            int columnIndex,
+            Func<int, int, T> function
+        ) {
+            T[, ] plane = new T[array.GetLength(rowIndex), array.GetLength(columnIndex)];
+            for (int i = 0; i < array.GetLength(rowIndex); i++) {
+                for (int j = 0; j < array.GetLength(columnIndex); j++) {
+                    plane[i, j] = function(i, j);
+                }
+            }
+            return plane;
         }
     }
 }

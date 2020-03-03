@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using BetterMultidimensionalArray;
+using Data;
 using UnityEngine;
 public class CubeView : ChristofellElement {
     public CubeElement cubeElementPrefab;
-    private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
+    public CubeElement[, , ] elements = new CubeElement[4, 4, 4];
     private void Awake() {
         elements = elements.Select(CreateElement);
     }
@@ -77,9 +78,13 @@ public class CubeView : ChristofellElement {
         element.Appear();
     }
 
-    public Vector3Int FindElementsIndexes(CubeElement cubeElement) {
+    public Vector3Int IndexesOf(CubeElement cubeElement) {
         int[] indexes = elements.FindIndex((element => element == cubeElement));
         if (indexes == null) return Vector3Int.one * -1;
         return new Vector3Int(indexes[0], indexes[1], indexes[2]);
+    }
+
+    public CubeElement[, ] GetPlane(Dimension constIndex, int planeIndex) {
+        return elements.GetPlane(constIndex, planeIndex);
     }
 }
