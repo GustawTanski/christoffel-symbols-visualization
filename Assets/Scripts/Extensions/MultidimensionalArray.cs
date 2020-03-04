@@ -96,15 +96,15 @@ namespace BetterMultidimensionalArray {
             return array.FindIndex((_) => predicate());
         }
 
-        static public T[, ] GetPlane<T>(this T[, , ] array, Dimension constIndex, int planeIndex) {
+        static public T[, ] GetPlane<T>(this T[, , ] array, Direction constIndex, int planeIndex) {
             switch (constIndex) {
-                case Dimension.x:
+                case Direction.x:
                     return array.GetXPlane(planeIndex);
-                case Dimension.y:
+                case Direction.y:
                     return array.GetYPlane(planeIndex);
-                case Dimension.z:
+                case Direction.z:
                     return array.GetZPlane(planeIndex);
-                case Dimension.zero:
+                case Direction.zero:
                     throw new ArgumentException("Direction.zero is not a proper plane's const index.");
                 default:
                     throw new ArgumentException("Not known value.");

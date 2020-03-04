@@ -84,7 +84,7 @@ public class CubeView : ChristofellElement {
         return new Vector3Int(indexes[0], indexes[1], indexes[2]);
     }
 
-    public CubeElement[, ] GetPlane(Dimension constIndex, int planeIndex) {
+    public CubeElement[, ] GetPlane(Direction constIndex, int planeIndex) {
         return elements.GetPlane(constIndex, planeIndex);
     }
 }

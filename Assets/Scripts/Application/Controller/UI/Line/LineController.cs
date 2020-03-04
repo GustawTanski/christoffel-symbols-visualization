@@ -30,7 +30,7 @@ public class LineController : ChristofellElement {
     }
 
     // Should be used always after MouseRaycast 
-    private bool IsElementHit() {
+    public bool IsElementHit() {
         return isHit && hit.transform.GetComponent<CubeElement>() != null;
     }
 
