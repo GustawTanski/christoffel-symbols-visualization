@@ -82,7 +82,7 @@ public class CubeController : ChristofellElement {
         foreach (var element in cubeView.elements) {
             element.SetFormulaColor(Color.white);
         }
-        foreach(var plane in cubePlaneSlicer.SelectedPlanes) {
+        foreach (var plane in cubePlaneSlicer.SelectedPlanes) {
             foreach (var element in plane) {
                 element.SetFormulaColor(Color.red);
             }

@@ -27,8 +27,7 @@ public class CubeModel : ChristofellElement {
         private set;
     }
 
-    public Vector3Int SelectedCubeElementIndexes
-    {
+    public Vector3Int SelectedCubeElementIndexes {
         get;
         set;
     } = Vector3Int.one * -1;

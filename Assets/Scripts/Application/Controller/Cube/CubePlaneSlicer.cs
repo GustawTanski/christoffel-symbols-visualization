@@ -64,14 +64,24 @@ public class CubePlaneSlicer : ChristofellElement {
     private IOrderedEnumerable < (Vector3 vector, float projection) > GetOnPlaneDirectionsProjectionSorted() {
         return GetAllDirections()
             .Select(dir => new Dimension(dir).DirVector)
+            .Select(RotateAsCube)
             .Where(IsOnHitPlane)
+            .Select(DerotateFromCube)
             .Select(GetVectorProjectionPair)
             .OrderBy(pair => pair.projection);
     }
 
+    private Vector3 RotateAsCube(Vector3 dirVector) {
+        return App.view.cube.Rotation * dirVector;
+    }
+
     private bool IsOnHitPlane(Vector3 vector) {
         Vector3 projection = Vector3.ProjectOnPlane(vector, App.model.uI.LineStartPivot.PlaneNormal);
-        return projection.sqrMagnitude != 0;
+        return projection.magnitude > 1E-4;
+    }
+
+    private Vector3 DerotateFromCube(Vector3 rotatedDirVector) {
+        return Quaternion.Inverse(App.view.cube.Rotation) * rotatedDirVector;
     }
 
     private(Vector3 vector, float projection) GetVectorProjectionPair(Vector3 vector) {

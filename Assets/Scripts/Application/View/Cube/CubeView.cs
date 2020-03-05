@@ -6,6 +6,15 @@ using UnityEngine;
 public class CubeView : ChristofellElement {
     public CubeElement cubeElementPrefab;
     public CubeElement[, , ] elements = new CubeElement[4, 4, 4];
+
+    public Quaternion Rotation {
+        get {
+            return transform.rotation;
+        }
+        set {
+            transform.rotation = value;
+        }
+    }
     private void Awake() {
         elements = elements.Select(CreateElement);
     }
