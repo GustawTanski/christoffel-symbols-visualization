@@ -5,7 +5,7 @@ using Data;
 using UnityEngine;
 public class CubeView : ChristofellElement {
     public CubeElement cubeElementPrefab;
-    public CubeElement[, , ] elements = new CubeElement[4, 4, 4];
+    private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
 
     public Quaternion Rotation {
         get {
@@ -26,7 +26,9 @@ public class CubeView : ChristofellElement {
     }
 
     private Vector3 GetElementLocalPosition(int i, int j, int k) {
-        return new Vector3(i, -j, k) * App.model.cube.elementSize;
+        Vector3 absolutePosition = new Vector3(i, j, -k) * App.model.cube.elementSize;
+        Vector3 translation = -new Vector3(1, 1, -1) * elements.GetLength(0) * App.model.cube.elementSize / 2;
+        return absolutePosition + translation;
     }
 
     public void ToggleIndexes() {
@@ -95,5 +97,9 @@ public class CubeView : ChristofellElement {
 
     public CubeElement[, ] GetPlane(Direction constIndex, int planeIndex) {
         return elements.GetPlane(constIndex, planeIndex);
+    }
+
+    public void DeselectAllElements() {
+        elements.ForEach(element => element.Deselect());
     }
 }

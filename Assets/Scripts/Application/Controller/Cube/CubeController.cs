@@ -79,12 +79,10 @@ public class CubeController : ChristofellElement {
 
     private void Update() {
         if (IsTabKeyUp()) ToggleIndexes();
-        foreach (var element in cubeView.elements) {
-            element.SetFormulaColor(Color.white);
-        }
+        cubeView.DeselectAllElements();
         foreach (var plane in cubePlaneSlicer.SelectedPlanes) {
             foreach (var element in plane) {
-                element.SetFormulaColor(Color.red);
+                element.Select();
             }
         }
     }
