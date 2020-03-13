@@ -1,5 +1,9 @@
+using System.Linq;
 using UnityEngine;
 public class CubeElement : ChristofellElement {
+
+    public Material invisibleMaterial;
+    public Material visibleMaterial;
     public DynamicSprite dynamicSpritePrefab;
     private GameObject spriteContainer;
     private DynamicSprite formula;
@@ -47,10 +51,18 @@ public class CubeElement : ChristofellElement {
     }
 
     private void Awake() {
+        IfThereAreDeleteSpriteContainerChildren();
         InitializeSpriteContainer();
-        InitializeBoxCollider();
         InitializeFormula();
         InitializeIndex();
+    }
+
+    private void IfThereAreDeleteSpriteContainerChildren() {
+        Transform[] children = GetComponentsInChildren<Transform>();
+        children
+            .Where(child => child.name == "Sprite Container")
+            .ToList()
+            .ForEach(child => Destroy(child.gameObject));
     }
 
     private void InitializeSpriteContainer() {
@@ -60,14 +72,8 @@ public class CubeElement : ChristofellElement {
         spriteContainer.transform.localPosition = Vector3.zero;
     }
 
-    private void InitializeBoxCollider() {
-        BoxCollider collider = GetComponent<BoxCollider>();
-        collider.size = Vector3.one * Size;
-        collider.center = GetMiddlePosition();
-    }
-
     private Vector3 GetMiddlePosition() {
-        return Vector3.zero;
+        return new Vector3(1, 1, -1) * Size * 0.5f;
     }
 
     private void InitializeFormula() {
@@ -118,6 +124,14 @@ public class CubeElement : ChristofellElement {
 
     public void SetFormulaColor(Color color) {
         formula.GetComponent<SpriteRenderer>().color = color;
+    }
+
+    public void Select() {
+        GetComponent<MeshRenderer>().material = visibleMaterial;
+    }
+
+    public void Deselect() {
+        GetComponent<MeshRenderer>().material = invisibleMaterial;
     }
 
 }

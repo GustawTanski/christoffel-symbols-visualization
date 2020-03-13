@@ -1,10 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using BetterMultidimensionalArray;
+using Data;
 using UnityEngine;
 public class CubeView : ChristofellElement {
     public CubeElement cubeElementPrefab;
     private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
+
+    public Quaternion Rotation {
+        get {
+            return transform.rotation;
+        }
+        set {
+            transform.rotation = value;
+        }
+    }
     private void Awake() {
         elements = elements.Select(CreateElement);
     }
@@ -16,7 +26,9 @@ public class CubeView : ChristofellElement {
     }
 
     private Vector3 GetElementLocalPosition(int i, int j, int k) {
-        return new Vector3(i, -j, k) * App.model.cube.elementSize;
+        Vector3 absolutePosition = new Vector3(i, j, -k) * App.model.cube.elementSize;
+        Vector3 translation = -new Vector3(1, 1, -1) * elements.GetLength(0) * App.model.cube.elementSize / 2;
+        return absolutePosition + translation;
     }
 
     public void ToggleIndexes() {
@@ -77,9 +89,17 @@ public class CubeView : ChristofellElement {
         element.Appear();
     }
 
-    public Vector3Int FindElementsIndexes(CubeElement cubeElement) {
+    public Vector3Int IndexesOf(CubeElement cubeElement) {
         int[] indexes = elements.FindIndex((element => element == cubeElement));
         if (indexes == null) return Vector3Int.one * -1;
         return new Vector3Int(indexes[0], indexes[1], indexes[2]);
+    }
+
+    public CubeElement[, ] GetPlane(Direction constIndex, int planeIndex) {
+        return elements.GetPlane(constIndex, planeIndex);
+    }
+
+    public void DeselectAllElements() {
+        elements.ForEach(element => element.Deselect());
     }
 }

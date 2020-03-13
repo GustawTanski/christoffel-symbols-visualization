@@ -1,22 +1,26 @@
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
+
 public class CubeController : ChristofellElement {
+    public CubePlaneSlicer cubePlaneSlicer;
 
     private CubeModel cubeModel;
     private CubeView cubeView;
 
-    private async void Start() {
+    private void Awake() {
         SetReferences();
+    }
+    private void SetReferences() {
+        cubeModel = App.model.cube;
+        cubeView = App.view.cube;
+    }
+
+    private async void Start() {
         SetEventListeners();
         await FetchAllTextures();
         SetTextures();
         SetZerosVisibility();
-    }
-
-    private void SetReferences() {
-        cubeModel = App.model.cube;
-        cubeView = App.view.cube;
     }
 
     private void SetEventListeners() {
@@ -75,22 +79,10 @@ public class CubeController : ChristofellElement {
 
     private void Update() {
         if (IsTabKeyUp()) ToggleIndexes();
-        if (Input.GetMouseButtonDown(1)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                CubeElement element = hit.transform.GetComponent<CubeElement>();
-                if (element != null) {
-                    Vector3Int indexes = App.view.cube.FindElementsIndexes(element);
-                    cubeModel.SelectedCubeElementIndexes = indexes;
-                }
-            }
-        }
-        if (Input.GetMouseButton(1)) {
-            Vector3 differenceVector = App.model.uI.LineDifferenceVector;
-            if (differenceVector.magnitude > 0.1) {
-                Vector3 rotatedUp = cubeView.transform.rotation * Vector3.up;
-                var s = Vector3.Project(Quaternion.Inverse(Camera.main.transform.rotation) * differenceVector, rotatedUp).magnitude;
+        cubeView.DeselectAllElements();
+        foreach (var plane in cubePlaneSlicer.SelectedPlanes) {
+            foreach (var element in plane) {
+                element.Select();
             }
         }
     }
