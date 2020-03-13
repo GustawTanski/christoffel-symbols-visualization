@@ -54,7 +54,7 @@ public class CubeModel : ChristofellElement {
     }
 
     public async Task FetchIndexTextures() {
-        IndexTextures = await LaTeXTextureDownloader.Fetch(IndexTensor, new TextureSettings { size = Size.tiny });
+        IndexTextures = await LaTeXTextureDownloader.Fetch(IndexTensor, new TextureSettings { size = Size.normal });
     }
 
     public async Task FetchFormulaTextures() {
