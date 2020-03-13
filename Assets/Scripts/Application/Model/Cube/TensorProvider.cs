@@ -11,8 +11,8 @@ public static class TensorProvider {
     }
 
     private static string IndexesToLatex(string el, int i, int j, int k) {
-        string[] latexArray = new int[] { i, j, k }.Select(GetIndexLatex).ToArray();
-        return "(" + string.Join(", ", latexArray) + ")";
+        string[] indexes = new int[] { i, j, k }.Select(GetIndexLatex).ToArray();
+        return $"\\Gamma^{indexes[0]}_{{{indexes[1]} {indexes[2]}}}";
     }
 
     private static string GetIndexLatex(int number) {
