@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
@@ -24,11 +25,11 @@ public class CubeController : ChristofellElement {
     }
 
     private void SetEventListeners() {
-        App.zerosHidedEvent.AddListener(OnZerosHided);
-        App.spaceChangedEvent.AddListener(OnSpaceChanged);
+        App.zerosHidedEvent.listOfHandlers += OnZerosHided;
+        App.spaceChangedEvent.listOfHandlers += OnSpaceChanged;
     }
 
-    private void OnZerosHided() {
+    private void OnZerosHided(object sender, EventArgs e) {
         ToggleZerosVisibilityState();
         ToggleZerosVisibility();
     }
@@ -41,8 +42,8 @@ public class CubeController : ChristofellElement {
         cubeView.ToggleZeros();
     }
 
-    private async void OnSpaceChanged(SpaceType space) {
-        SetSpaceState(space);
+    private async void OnSpaceChanged(object sender, SpaceChangedArgs e) {
+        SetSpaceState(e.space);
         UpdateFormulasState();
         await FetchFormulaTextures();
         SetFormulaTextures();
