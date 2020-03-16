@@ -25,7 +25,7 @@ public class UIController : ChristofellElement {
     }
 
     private void OnZerosToggleChange(bool _) {
-        App.zerosHidedEvent.DispatchEvent();
+        App.zerosHidedEvent.DispatchEvent(this, new ZerosHidedArgs());
     }
 
     private void InitializeDropdown() {
@@ -48,7 +48,8 @@ public class UIController : ChristofellElement {
     }
 
     private void OnDropdownChanged(int value) {
-        App.spaceChangedEvent.DispatchEvent((SpaceType) value);
+        SpaceChangedArgs e = new SpaceChangedArgs((SpaceType) value);
+        App.spaceChangedEvent.DispatchEvent(this, e);
     }
 
 }
