@@ -10,15 +10,3 @@ public class ChristofellApplication : MonoBehaviour {
     public ChristofellEvent<SpaceChangedArgs> spaceChangedEvent = new ChristofellEvent<SpaceChangedArgs>();
 
 }
-
-public class ZerosHidedArgs: EventArgs {
-
-}
-
-public class SpaceChangedArgs : EventArgs {
-    public SpaceType space;
-
-    public SpaceChangedArgs(SpaceType space) {
-        this.space = space;
-    }
-}
