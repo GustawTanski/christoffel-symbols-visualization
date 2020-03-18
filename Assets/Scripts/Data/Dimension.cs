@@ -2,13 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 namespace Data {
-    public enum Direction {
-        zero,
-        x,
-        y,
-        z
-    }
-
     public class Dimension {
         public Direction Dir {
             get;
@@ -17,7 +10,9 @@ namespace Data {
 
         public Vector3 DirVector {
             get {
-                return vectorToDimension.FirstOrDefault(el => el.Value == Dir).Key;
+                if (vectorToDimension.ContainsValue(Dir))
+                    return vectorToDimension.KeyByValue(Dir);
+                else return Vector3.zero;
             }
         }
 
@@ -35,14 +30,24 @@ namespace Data {
         }
 
         private void SetDirectionFromVector3(Vector3 dirVector) {
-            Dir = vectorToDimension.FirstOrDefault(el => el.Key == dirVector).Value;
+            Dir = ConvertVector3ToDirection(dirVector);
+        }
+
+        private Direction ConvertVector3ToDirection(Vector3 dirVector) {
+            if (vectorToDimension.ContainsKey(dirVector))
+                return vectorToDimension[dirVector];
+            else return Direction.zero;
         }
 
         public void SetDirection(Vector3 dirVector) {
             SetDirectionFromVector3(dirVector);
         }
 
-        static public float GetProjection(Vector3 vector, Dimension dim) {
+        static public int Project(Vector3Int vector, Dimension dim) {
+            return (int) Project((Vector3) vector, dim);
+        }
+
+        static public float Project(Vector3 vector, Dimension dim) {
             switch (dim.Dir) {
                 case Direction.x:
                     return vector.x;
@@ -53,10 +58,6 @@ namespace Data {
                 default:
                     return 0;
             }
-        }
-
-        static public int Project(Vector3Int vector, Dimension dim) {
-            return (int) GetProjection((Vector3) vector, dim);
         }
     }
 }
