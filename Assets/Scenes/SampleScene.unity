@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 148965079}
   - component: {fileID: 148965082}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Flying Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,12 +618,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148965078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.7, y: -4, z: -50.4}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.270475, y: -14.27, z: -32.520004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 754690147}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 770699507}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &148965082
@@ -635,14 +635,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 148965078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bf24073f0f9dfb49a807fa869ebc256, type: 3}
+  m_Script: {fileID: 11500000, guid: 7eb21d11ac0749d4093f65d4c76ed3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSensitivity: 130
-  climbSpeed: 50
-  normalMoveSpeed: 50
-  slowMoveFactor: 0.25
-  fastMoveFactor: 3
 --- !u!1 &200848126
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +681,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4996a1c400ee14044a777be9ccf429cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &225690785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 225690787}
+  - component: {fileID: 225690786}
+  m_Layer: 0
+  m_Name: Flying Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &225690786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225690785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ee46ea45494a4409998b7f1d6d70f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &225690787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225690785}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -25.6748, y: 33.401363, z: -46.44063}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1253399014}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235485711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,6 +1646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 21185588}
   uI: {fileID: 1311657704}
+  flyingCamera: {fileID: 148965082}
 --- !u!4 &770699507
 Transform:
   m_ObjectHideFlags: 0
@@ -1621,6 +1660,7 @@ Transform:
   m_Children:
   - {fileID: 21185589}
   - {fileID: 1311657703}
+  - {fileID: 148965081}
   m_Father: {fileID: 1080909478}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1688,7 +1728,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &870166564
 GameObject:
@@ -1931,7 +1971,54 @@ Transform:
   - {fileID: 770699507}
   - {fileID: 1253399014}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1236036696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236036698}
+  - component: {fileID: 1236036697}
+  m_Layer: 0
+  m_Name: Flying Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1236036697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236036696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3cd031f33429c543bd9bd762b3b6995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSensitivity: 90
+  normalMoveSpeed: 20
+  slowMoveFactor: 0.25
+  fastMoveFactor: 3
+--- !u!4 &1236036698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236036696}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -25.6748, y: 33.401363, z: -46.44063}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2059815168}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1240500695
 GameObject:
@@ -2331,6 +2418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 1328064707}
   UI: {fileID: 952104624}
+  flyingCamera: {fileID: 225690786}
 --- !u!4 &1253399014
 Transform:
   m_ObjectHideFlags: 0
@@ -2344,6 +2432,7 @@ Transform:
   m_Children:
   - {fileID: 1328064708}
   - {fileID: 952104623}
+  - {fileID: 225690787}
   m_Father: {fileID: 1080909478}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3407,6 +3496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 1256681820}
   uI: {fileID: 1240500696}
+  flyingCamera: {fileID: 1236036697}
 --- !u!4 &2059815168
 Transform:
   m_ObjectHideFlags: 0
@@ -3420,6 +3510,7 @@ Transform:
   m_Children:
   - {fileID: 1256681821}
   - {fileID: 1240500697}
+  - {fileID: 1236036698}
   m_Father: {fileID: 1080909478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

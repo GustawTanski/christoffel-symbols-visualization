@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class ChristofellElement : MonoBehaviour {
-    public ChristofellApplication App {
+    protected ChristofellApplication App {
         get {
             return GameObject.FindObjectOfType<ChristofellApplication>();
         }
