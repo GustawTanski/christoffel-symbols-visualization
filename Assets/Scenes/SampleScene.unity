@@ -2003,7 +2003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSensitivity: 90
-  normalMoveSpeed: 20
+  normalMoveSpeed: 30
   slowMoveFactor: 0.25
   fastMoveFactor: 3
 --- !u!4 &1236036698

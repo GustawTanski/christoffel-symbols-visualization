@@ -16,6 +16,7 @@ public partial class FlyingCameraController : ChristofellElement {
     }
     private void Start() {
         InitializeTranslationCalculator();
+        InitializeRotationCalculator();
         HideAndLockCursor();
     }
 
