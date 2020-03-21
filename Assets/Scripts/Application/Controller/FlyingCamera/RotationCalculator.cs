@@ -10,7 +10,7 @@ public class RotationCalculator {
         this.model = model;
     }
 
-    public void CalculateRotation() {
+    public void Calculate() {
         ComputeAxisAngles();
         Rotation = Quaternion.AngleAxis(model.FromXAxisAngle, Vector3.up);
         Rotation *= Quaternion.AngleAxis(model.FromYAxisAngle, Vector3.left);

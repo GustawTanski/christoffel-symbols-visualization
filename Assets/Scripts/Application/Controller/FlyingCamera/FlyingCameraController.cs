@@ -52,12 +52,12 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void Rotate() {
-        rotationCalculator.CalculateRotation();
+        rotationCalculator.Calculate();
         View.RotateTo(rotationCalculator.Rotation);
     }
 
     private void Move() {
-        translationCalculator.CalculateTranslation();
+        translationCalculator.Calculate();
         View.Translate(translationCalculator.Translation);
     }
 

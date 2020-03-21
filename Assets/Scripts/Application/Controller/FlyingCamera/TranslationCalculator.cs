@@ -12,7 +12,7 @@ public class TranslationCalculator {
         this.model = model;
     }
 
-    public void CalculateTranslation() {
+    public void Calculate() {
         Translation = Vector3.zero;
         Translation += GetForwardTranslation();
         Translation += GetHorizontalTranslation();
