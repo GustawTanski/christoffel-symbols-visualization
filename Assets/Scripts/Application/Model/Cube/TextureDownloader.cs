@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,11 +49,19 @@ public class LaTeXTextureDownloader {
     }
 
     private async Task<Texture2D> FetchTexture(string laTeX) {
-        UnityWebRequest www = GeneratePutRequest(laTeX);
-        await www.SendWebRequest();
-        www = UnityWebRequestTexture.GetTexture(GetUrlFromResponse(www));
-        await www.SendWebRequest();
-        return DownloadHandlerTexture.GetContent(www);
+        try
+        {
+            UnityWebRequest www = GeneratePutRequest(laTeX);
+            await www.SendWebRequest();
+            Debug.Log(GetUrlFromResponse(www));
+            www = UnityWebRequestTexture.GetTexture(GetUrlFromResponse(www));
+            await www.SendWebRequest();
+            return DownloadHandlerTexture.GetContent(www);
+        }catch(InvalidOperationException e) {
+            Debug.LogError(e);
+            Debug.Log(e.Message);
+            throw;
+        }
     }
 
     private UnityWebRequest GeneratePutRequest(string laTeX) {
