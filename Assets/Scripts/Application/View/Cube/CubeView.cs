@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BetterMultidimensionalArray;
 using Data;
 using UnityEngine;
 public class CubeView : ChristofellElement {
     public CubeElement cubeElementPrefab;
     private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
+    private readonly Quaternion zeroRotation = Quaternion.Euler(0, -90, 90);
 
     public Quaternion Rotation {
         get {
@@ -17,6 +19,7 @@ public class CubeView : ChristofellElement {
     }
     private void Awake() {
         elements = elements.Select(CreateElement);
+        transform.rotation = zeroRotation;
     }
     private CubeElement CreateElement(CubeElement _, int i, int j, int k) {
         CubeElement element = Instantiate(cubeElementPrefab, transform);

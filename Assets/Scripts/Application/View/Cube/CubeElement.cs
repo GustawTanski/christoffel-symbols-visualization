@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
-public class CubeElement : ChristofellElement {
+public class CubeElement : ChristofellElement
+{
 
     public Material invisibleMaterial;
     public Material visibleMaterial;
@@ -11,53 +12,67 @@ public class CubeElement : ChristofellElement {
     private Vector3 position = Vector3.zero;
     private Vector3 translation = Vector3.zero;
 
-    private float Size {
-        get {
+    private float Size
+    {
+        get
+        {
             return App.model.cube.elementSize;
         }
     }
 
-    public Texture2D IndexTexture {
-        set {
+    public Texture2D IndexTexture
+    {
+        set
+        {
             index.SetTexture(value);
         }
     }
 
-    public Texture2D FormulaTexture {
-        set {
+    public Texture2D FormulaTexture
+    {
+        set
+        {
             formula.SetTexture(value);
         }
     }
 
-    public Vector3 LocalPosition {
-        get {
+    public Vector3 LocalPosition
+    {
+        get
+        {
             return position;
         }
-        set {
+        set
+        {
             position = value;
             transform.localPosition = value + translation;
         }
     }
 
-    public Vector3 Translation {
-        get {
+    public Vector3 Translation
+    {
+        get
+        {
             return translation;
         }
 
-        set {
+        set
+        {
             translation = value;
             transform.localPosition = value + position;
         }
     }
 
-    private void Awake() {
+    private void Awake()
+    {
         IfThereAreDeleteSpriteContainerChildren();
         InitializeSpriteContainer();
         InitializeFormula();
         InitializeIndex();
     }
 
-    private void IfThereAreDeleteSpriteContainerChildren() {
+    private void IfThereAreDeleteSpriteContainerChildren()
+    {
         Transform[] children = GetComponentsInChildren<Transform>();
         children
             .Where(child => child.name == "Sprite Container")
@@ -65,34 +80,36 @@ public class CubeElement : ChristofellElement {
             .ForEach(child => Destroy(child.gameObject));
     }
 
-    private void InitializeSpriteContainer() {
+    private void InitializeSpriteContainer()
+    {
         spriteContainer = new GameObject();
         spriteContainer.name = "Sprite Container";
         spriteContainer.transform.SetParent(transform);
-        spriteContainer.transform.localPosition = Vector3.zero;
+        spriteContainer.transform.localPosition = GetMiddlePosition();
     }
 
-    private Vector3 GetMiddlePosition() {
+    private Vector3 GetMiddlePosition()
+    {
         return new Vector3(1, 1, -1) * Size * 0.5f;
     }
 
-    private void InitializeFormula() {
+    private void InitializeFormula()
+    {
         formula = Instantiate(dynamicSpritePrefab, spriteContainer.transform);
         formula.name = "Formula Sprite";
-        formula.LocalPosition = GetMiddlePosition();
+        formula.LocalPosition = GetFormulaTranslation();
     }
 
-    private void InitializeIndex() {
+    private Vector3 GetFormulaTranslation() {
+        return Vector3.zero;
+    }
+
+private void InitializeIndex() {
         index = Instantiate(dynamicSpritePrefab, spriteContainer.transform);
         index.name = "Index Sprite";
-        index.LocalPosition = GetIndexPosition();
+        index.LocalPosition = GetIndexTranslation();
         index.Disappear();
     }
-
-    private Vector3 GetIndexPosition() {
-        return GetMiddlePosition() + GetIndexTranslation();
-    }
-
     private Vector3 GetIndexTranslation() {
         return new Vector3(0, 0.25f, 0) * Size;
     }
