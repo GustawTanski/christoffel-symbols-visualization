@@ -86,6 +86,7 @@ public class CubeElement : ChristofellElement
         spriteContainer.name = "Sprite Container";
         spriteContainer.transform.SetParent(transform);
         spriteContainer.transform.localPosition = GetMiddlePosition();
+        spriteContainer.AddComponent<CameraFacer>();
     }
 
     private Vector3 GetMiddlePosition()
@@ -112,10 +113,6 @@ private void InitializeIndex() {
     }
     private Vector3 GetIndexTranslation() {
         return new Vector3(0, 0.25f, 0) * Size;
-    }
-
-    public void Update() {
-        spriteContainer.transform.rotation = Camera.main.transform.rotation;
     }
 
     public void ToggleIndex() {
