@@ -12,6 +12,5 @@ public class MiniCubeView : ChristofellElement {
     }
     private void Start() {
         zeroRotation = transform.localRotation;
-        Debug.Log(LocalRotation.eulerAngles);
     }
 }

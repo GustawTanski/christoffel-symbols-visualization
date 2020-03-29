@@ -54,41 +54,33 @@ public class CubePlaneSlicer : ChristofellElement {
     }
 
     private Dimension CalculatePlaneDimension() {
-        var temp = GetOnPlaneDirectionsProjectionSorted().ToList();
-        return temp.First().dimension;
+        return GetOnPlaneDimensionsProjectionSorted().First().dimension;
     }
 
-    private IOrderedEnumerable < (Dimension dimension, float projection) > GetOnPlaneDirectionsProjectionSorted() {
-        return GetAllDirections()
-            .Select(dir => new Dimension(dir).DirVector)
-            .Select(RotateAsCube)
+    private IOrderedEnumerable < (Dimension dimension, float projection) > GetOnPlaneDimensionsProjectionSorted() {
+        return GetAllCubeDirectionVectors()
             .Where(IsOnHitPlane)
             .Select(GetDimensionProjectionPair)
             .OrderBy(pair => pair.projection);
     }
-    private Direction[] GetAllDirections() {
-        return new [] { Direction.x, Direction.y, Direction.z };
+    private IEnumerable<Vector3> GetAllCubeDirectionVectors() {
+        return new [] { Direction.x, Direction.y, Direction.z }
+            .Select(dir => new Dimension(dir).DirVector)
+            .Select(RotateAsCube);
     }
 
     private Vector3 RotateAsCube(Vector3 dirVector) {
-        var temp = App.view.cube.transform.rotation * dirVector;
-        return temp;
+        return App.view.cube.transform.rotation * dirVector;
     }
 
     private bool IsOnHitPlane(Vector3 vector) {
-        
         Vector3 projection = Vector3.ProjectOnPlane(vector, App.model.uI.LineStartPivot.PlaneNormal);
         return projection.magnitude > 1E-4;
     }
 
-    private Vector3 DerotateFromCube(Vector3 rotatedDirVector) {
-        var temp = Quaternion.Inverse(App.view.cube.transform.rotation) * rotatedDirVector;
-        return temp;
-    }
-
-    private(Dimension dimension, float projection) GetDimensionProjectionPair(Vector3 vector) {
-        float projection = ProjectOnDifferenceVector(vector);
-        Dimension dimension = new Dimension((DerotateFromCube(vector)));
+    private(Dimension dimension, float projection) GetDimensionProjectionPair(Vector3 rotatedVector) {
+        float projection = ProjectOnDifferenceVector(rotatedVector);
+        Dimension dimension = new Dimension((DerotateFromCube(rotatedVector)));
         return (
             dimension,
             projection
@@ -98,6 +90,10 @@ public class CubePlaneSlicer : ChristofellElement {
     private float ProjectOnDifferenceVector(Vector3 vector) {
         Vector3 normalizedDifference = App.model.uI.LineDifferenceVector.normalized;
         return Vector3.Project(normalizedDifference, vector).magnitude;
+    }
+
+    private Vector3 DerotateFromCube(Vector3 rotatedDirVector) {
+        return Quaternion.Inverse(App.view.cube.transform.rotation) * rotatedDirVector;
     }
 
     private void SetPlaneIndex() {
