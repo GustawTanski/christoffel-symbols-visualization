@@ -9,17 +9,16 @@ public class CubeView : ChristofellElement {
     private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
     private readonly Quaternion zeroRotation = Quaternion.Euler(0, -90, 90);
 
-    public Quaternion Rotation {
+    public Quaternion LocalRotation {
         get {
-            return transform.rotation;
+            return transform.localRotation * Quaternion.Inverse(zeroRotation);
         }
         set {
-            transform.rotation = value;
+            transform.localRotation = value * zeroRotation;
         }
     }
     private void Awake() {
         elements = elements.Select(CreateElement);
-        transform.rotation = zeroRotation;
     }
     private CubeElement CreateElement(CubeElement _, int i, int j, int k) {
         CubeElement element = Instantiate(cubeElementPrefab, transform);
@@ -32,6 +31,15 @@ public class CubeView : ChristofellElement {
         Vector3 absolutePosition = new Vector3(i, j, -k) * App.model.cube.elementSize;
         Vector3 translation = -new Vector3(1, 1, -1) * elements.GetLength(0) * App.model.cube.elementSize / 2;
         return absolutePosition + translation;
+    }
+
+    private void Start() {
+        transform.localRotation = zeroRotation;
+        Debug.Log(LocalRotation.eulerAngles);
+    }
+
+    private void Update() {
+        LocalRotation = App.view.flyingCamera.miniCube.LocalRotation;
     }
 
     public void ToggleIndexes() {

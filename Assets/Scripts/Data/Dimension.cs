@@ -34,9 +34,11 @@ namespace Data {
         }
 
         private Direction ConvertVector3ToDirection(Vector3 dirVector) {
-            if (vectorToDimension.ContainsKey(dirVector))
-                return vectorToDimension[dirVector];
-            else return Direction.zero;
+            foreach (Vector3 dimensionVector in vectorToDimension.Keys) {
+                if ((dimensionVector - dirVector).magnitude < 0.01)
+                    return vectorToDimension[dimensionVector];
+            }
+            return Direction.zero;
         }
 
         public void SetDirection(Vector3 dirVector) {

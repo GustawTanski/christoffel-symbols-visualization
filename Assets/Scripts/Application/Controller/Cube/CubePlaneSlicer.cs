@@ -50,44 +50,47 @@ public class CubePlaneSlicer : ChristofellElement {
     }
 
     private void SetPlaneDimension() {
-        planeDimension = new Dimension(GetOnSurfacePlaneDirectionVector());
+        planeDimension = CalculatePlaneDimension();
     }
 
-    private Vector3 GetOnSurfacePlaneDirectionVector() {
-        return GetOnPlaneDirectionsProjectionSorted().First().vector;
+    private Dimension CalculatePlaneDimension() {
+        var temp = GetOnPlaneDirectionsProjectionSorted().ToList();
+        return temp.First().dimension;
     }
 
-    private Direction[] GetAllDirections() {
-        return new [] { Direction.x, Direction.y, Direction.z };
-    }
-
-    private IOrderedEnumerable < (Vector3 vector, float projection) > GetOnPlaneDirectionsProjectionSorted() {
+    private IOrderedEnumerable < (Dimension dimension, float projection) > GetOnPlaneDirectionsProjectionSorted() {
         return GetAllDirections()
             .Select(dir => new Dimension(dir).DirVector)
             .Select(RotateAsCube)
             .Where(IsOnHitPlane)
-            .Select(DerotateFromCube)
-            .Select(GetVectorProjectionPair)
+            .Select(GetDimensionProjectionPair)
             .OrderBy(pair => pair.projection);
+    }
+    private Direction[] GetAllDirections() {
+        return new [] { Direction.x, Direction.y, Direction.z };
     }
 
     private Vector3 RotateAsCube(Vector3 dirVector) {
-        return App.view.cube.Rotation * dirVector;
+        var temp = App.view.cube.transform.rotation * dirVector;
+        return temp;
     }
 
     private bool IsOnHitPlane(Vector3 vector) {
+        
         Vector3 projection = Vector3.ProjectOnPlane(vector, App.model.uI.LineStartPivot.PlaneNormal);
         return projection.magnitude > 1E-4;
     }
 
     private Vector3 DerotateFromCube(Vector3 rotatedDirVector) {
-        return Quaternion.Inverse(App.view.cube.Rotation) * rotatedDirVector;
+        var temp = Quaternion.Inverse(App.view.cube.transform.rotation) * rotatedDirVector;
+        return temp;
     }
 
-    private(Vector3 vector, float projection) GetVectorProjectionPair(Vector3 vector) {
+    private(Dimension dimension, float projection) GetDimensionProjectionPair(Vector3 vector) {
         float projection = ProjectOnDifferenceVector(vector);
+        Dimension dimension = new Dimension((DerotateFromCube(vector)));
         return (
-            vector,
+            dimension,
             projection
         );
     }

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class FlyingCameraView : ChristofellElement {
+    public MiniCubeView miniCube;
     public void RotateTo(Quaternion rotation) {
         transform.localRotation = rotation;
     }
