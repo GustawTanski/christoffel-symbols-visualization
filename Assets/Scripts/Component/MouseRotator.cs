@@ -6,7 +6,7 @@ public class MouseRotator : MonoBehaviour {
 
     #region ROTATE
 
-    public GameObject target;
+    public MiniCubeView target;
 
     public float horizontalSpeed = 2.0F;
     public float verticalSpeed = 2.0F;
@@ -14,22 +14,22 @@ public class MouseRotator : MonoBehaviour {
 
     #endregion
 
-    void Update() {
-        if (_isRotating) {
+    // void Update() {
+    //     if (_isRotating) {
 
-            float h = horizontalSpeed * Input.GetAxis("Mouse X");
-            float v = verticalSpeed * Input.GetAxis("Mouse Y");
-            target.transform.Rotate(v, h, 0);
+    //         float h = horizontalSpeed * Input.GetAxis("Mouse X");
+    //         float v = verticalSpeed * Input.GetAxis("Mouse Y");
+    //         target.transform.Rotate(v, h, 0);
 
-        }
-    }
+    //     }
+    // }
 
-    void OnMouseDown() {
-        _isRotating = true;
-    }
+    // void OnMouseDown() {
+    //     _isRotating = true;
+    // }
 
     void OnMouseUp() {
-        _isRotating = false;
+        target.RotateAroundY(90);
     }
 
 }
