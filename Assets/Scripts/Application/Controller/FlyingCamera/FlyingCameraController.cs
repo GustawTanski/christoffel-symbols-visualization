@@ -1,19 +1,12 @@
 using UnityEngine;
 public partial class FlyingCameraController : ChristofellElement {
 
-    public TranslationCalculator translationCalculator;
-    public RotationCalculator rotationCalculator;
-    private FlyingCameraModel Model {
-        get {
-            return App.model.flyingCamera;
-        }
-    }
+    public MiniCubeController miniCube;
+    private TranslationCalculator translationCalculator;
+    private RotationCalculator rotationCalculator;
+    private FlyingCameraModel Model => App.model.flyingCamera;
+    private FlyingCameraView View => App.view.flyingCamera;
 
-    private FlyingCameraView View {
-        get {
-            return App.view.flyingCamera;
-        }
-    }
     private void Start() {
         InitializeTranslationCalculator();
         InitializeRotationCalculator();

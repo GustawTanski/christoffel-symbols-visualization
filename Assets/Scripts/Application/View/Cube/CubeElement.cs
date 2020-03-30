@@ -1,8 +1,8 @@
 using System.Linq;
 using UnityEngine;
-public class CubeElement : ChristofellElement
-{
 
+[RequireComponent(typeof(MeshRenderer))]
+public class CubeElement : ChristofellElement {
     public Material invisibleMaterial;
     public Material visibleMaterial;
     public DynamicSprite dynamicSpritePrefab;
@@ -12,67 +12,49 @@ public class CubeElement : ChristofellElement
     private Vector3 position = Vector3.zero;
     private Vector3 translation = Vector3.zero;
 
-    private float Size
-    {
-        get
-        {
-            return App.model.cube.elementSize;
-        }
-    }
+    private float Size => App.model.cube.elementSize;
 
-    public Texture2D IndexTexture
-    {
-        set
-        {
+    public Texture2D IndexTexture {
+        set {
             index.SetTexture(value);
         }
     }
 
-    public Texture2D FormulaTexture
-    {
-        set
-        {
+    public Texture2D FormulaTexture {
+        set {
             formula.SetTexture(value);
         }
     }
 
-    public Vector3 LocalPosition
-    {
-        get
-        {
+    public Vector3 LocalPosition {
+        get {
             return position;
         }
-        set
-        {
+        set {
             position = value;
             transform.localPosition = value + translation;
         }
     }
 
-    public Vector3 Translation
-    {
-        get
-        {
+    public Vector3 Translation {
+        get {
             return translation;
         }
 
-        set
-        {
+        set {
             translation = value;
             transform.localPosition = value + position;
         }
     }
 
-    private void Awake()
-    {
+    private void Awake() {
         IfThereAreDeleteSpriteContainerChildren();
         InitializeSpriteContainer();
         InitializeFormula();
         InitializeIndex();
     }
 
-    private void IfThereAreDeleteSpriteContainerChildren()
-    {
+    private void IfThereAreDeleteSpriteContainerChildren() {
         Transform[] children = GetComponentsInChildren<Transform>();
         children
             .Where(child => child.name == "Sprite Container")
@@ -80,8 +62,7 @@ public class CubeElement : ChristofellElement
             .ForEach(child => Destroy(child.gameObject));
     }
 
-    private void InitializeSpriteContainer()
-    {
+    private void InitializeSpriteContainer() {
         spriteContainer = new GameObject();
         spriteContainer.name = "Sprite Container";
         spriteContainer.transform.SetParent(transform);
@@ -89,13 +70,11 @@ public class CubeElement : ChristofellElement
         spriteContainer.AddComponent<CameraFacer>();
     }
 
-    private Vector3 GetMiddlePosition()
-    {
+    private Vector3 GetMiddlePosition() {
         return new Vector3(1, 1, -1) * Size * 0.5f;
     }
 
-    private void InitializeFormula()
-    {
+    private void InitializeFormula() {
         formula = Instantiate(dynamicSpritePrefab, spriteContainer.transform);
         formula.name = "Formula Sprite";
         formula.LocalPosition = GetFormulaTranslation();
@@ -105,7 +84,7 @@ public class CubeElement : ChristofellElement
         return Vector3.zero;
     }
 
-private void InitializeIndex() {
+    private void InitializeIndex() {
         index = Instantiate(dynamicSpritePrefab, spriteContainer.transform);
         index.name = "Index Sprite";
         index.LocalPosition = GetIndexTranslation();

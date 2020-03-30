@@ -38,7 +38,7 @@ public class CubeView : ChristofellElement {
     }
 
     private void Update() {
-        LocalRotation = App.view.flyingCamera.miniCube.LocalRotation;
+        LocalRotation = App.model.flyingCamera.miniCube.LocalRotation;
     }
 
     public void ToggleIndexes() {

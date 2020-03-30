@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
+
 public class DynamicSprite : MonoBehaviour {
 
     private Texture2D texture;

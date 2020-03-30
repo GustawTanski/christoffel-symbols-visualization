@@ -1,8 +1,8 @@
+using Data;
 using UnityEngine;
-
 [RequireComponent(typeof(MeshCollider))]
 
-public class MouseRotator : MonoBehaviour {
+public class MouseRotator : ChristofellElement {
 
     #region ROTATE
 
@@ -29,7 +29,7 @@ public class MouseRotator : MonoBehaviour {
     // }
 
     void OnMouseUp() {
-        target.RotateAroundY(90);
+        App.cubeRotationStartedEvent.DispatchEvent(this, new CubeRotationStartedEventArgs(Dimension.Y, -90));
     }
 
 }

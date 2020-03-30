@@ -4,6 +4,10 @@ using UnityEngine;
 namespace Data {
     public class Dimension {
 
+        public static Dimension X => new Dimension(Direction.x);
+        public static Dimension Y => new Dimension(Direction.y);
+        public static Dimension Z => new Dimension(Direction.z);
+
         private const float MINIMAL_DIFFERENCE_MAGNITUDE = 0.1f;
         public Direction Dir {
             get;
