@@ -1,3 +1,4 @@
+using UnityEngine;
 public class FlyingCameraModel : ChristofellElement {
 
     public MiniCubeModel miniCube;

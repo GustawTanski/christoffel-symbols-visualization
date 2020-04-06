@@ -16,6 +16,7 @@ public class CubeView : ChristofellElement {
             transform.localRotation = value * zeroRotation;
         }
     }
+    
     private void Awake() {
         elements = elements.Select(CreateElement);
     }

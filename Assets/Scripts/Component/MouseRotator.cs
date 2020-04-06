@@ -29,7 +29,8 @@ public class MouseRotator : ChristofellElement {
     // }
 
     void OnMouseUp() {
-        App.cubeRotationStartedEvent.DispatchEvent(this, new CubeRotationStartedEventArgs(Dimension.Y, -90));
+        App.cubeRotationStartedEvent.DispatchEvent(this, new CubeRotationStartedEventArgs(Dimension.Z, -90));
+        App.cubeRotationStartedEvent.DispatchEvent(this, new CubeRotationStartedEventArgs(Dimension.X, 90));
     }
 
 }

@@ -34,6 +34,7 @@ public class MiniCubeController : ChristofellElement {
 
     private void Update() {
         if (!IsTargetRotationReached()) DoLittleRotationTowardsTarget();
+        UpdateRotationRegardingCameraPosition();
     }
 
     private bool IsTargetRotationReached() {
@@ -42,14 +43,31 @@ public class MiniCubeController : ChristofellElement {
 
     private void DoLittleRotationTowardsTarget() {
         Model.LocalRotation = CalculateLittleRotationTowardsTarget();
-        RotateView();
+        UpdateViewRotation();
     }
 
     private Quaternion CalculateLittleRotationTowardsTarget() {
         return Quaternion.Slerp(Model.LocalRotation, Model.TargetRotation, Time.deltaTime);
     }
 
-    private void RotateView() {
-        View.transform.localRotation = Model.LocalRotation * Model.ZeroRotation;
+    private void UpdateViewRotation() {
+        View.transform.localRotation = Model.RelativeToCubeRotation * Model.LocalRotation * Model.ZeroRotation;
+    }
+
+    private void UpdateRotationRegardingCameraPosition() {
+        Model.RelativeToCubeRotation = CalculateRelativeToCubeRotationAroundYAxis();
+        UpdateViewRotation();
+    }
+
+    private Quaternion CalculateRelativeToCubeRotationAroundYAxis() {
+        return Quaternion.FromToRotation(CalculateRelativePositionProjectOnXZPlane(), Vector3.back);
+    }
+
+    private Vector3 CalculateRelativePositionProjectOnXZPlane() {
+        return Vector3.ProjectOnPlane(CalculateRelativePositionBetweenCameraAndCubeCenter(), Vector3.up);
+    }
+
+    private Vector3 CalculateRelativePositionBetweenCameraAndCubeCenter() {
+        return App.view.flyingCamera.transform.position - App.view.cube.transform.position;
     }
 }
