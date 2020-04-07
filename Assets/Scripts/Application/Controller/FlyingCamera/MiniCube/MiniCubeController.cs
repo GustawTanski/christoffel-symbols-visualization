@@ -18,6 +18,7 @@ public class MiniCubeController : ChristofellElement {
 
     private void SetEventListener() {
         App.miniCubeRotatorClicked.listOfHandlers += OnCubeRotationStarted;
+        App.resetButtonClicked.listOfHandlers += OnResetButtonClicked;
     }
 
     private void OnCubeRotationStarted(object sender, MiniCubeRotatorClickedEventArgs e) {
@@ -35,6 +36,10 @@ public class MiniCubeController : ChristofellElement {
     private void Update() {
         if (!IsTargetRotationReached()) DoLittleRotationTowardsTarget();
         UpdateRotationRegardingCameraPosition();
+    }
+
+    private void OnResetButtonClicked(object caller, ResetButtonClickedArgs e) {
+        Model.TargetRotation = Quaternion.identity;
     }
 
     private bool IsTargetRotationReached() {

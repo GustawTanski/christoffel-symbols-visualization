@@ -16,9 +16,12 @@ public class MouseFocuser : MonoBehaviour {
     }
 
     private void SetMaterialOnAllChildren(Material material) {
-        foreach (Transform child in transform) {
-            child.GetComponent<Renderer>().materials = new [] { material };
-        }
+        foreach (Transform child in transform) SetMaterialOnChild(material, child);
+    }
+
+    private void SetMaterialOnChild(Material material, Transform child) {
+        Renderer renderer = child.GetComponent<Renderer>();
+        if (renderer != null) renderer.materials = new [] { material };
     }
 
     private void OnMouseExit() {

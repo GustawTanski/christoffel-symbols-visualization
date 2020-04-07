@@ -9,4 +9,5 @@ public class FlyingCameraModel : ChristofellElement {
     public bool IsActive { get; set; } = true;
     public float FromXAxisAngle { get; set; }
     public float FromYAxisAngle { get; set; }
+    public Vector3 InitialPosition { get; set; }
 }
