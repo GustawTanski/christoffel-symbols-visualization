@@ -17,15 +17,15 @@ public class MiniCubeController : ChristofellElement {
     }
 
     private void SetEventListener() {
-        App.cubeRotationStartedEvent.listOfHandlers += OnCubeRotationStarted;
+        App.miniCubeRotatorClicked.listOfHandlers += OnCubeRotationStarted;
     }
 
-    private void OnCubeRotationStarted(object sender, CubeRotationStartedEventArgs e) {
+    private void OnCubeRotationStarted(object sender, MiniCubeRotatorClickedEventArgs e) {
         RotateAroundAxis(e.axis, e.angle);
     }
 
     private void RotateAroundAxis(Dimension axis, float angle) {
-        AddToTargetRotation(Quaternion.AngleAxis(angle, axis.DirVector));
+        AddToTargetRotation(Quaternion.AngleAxis(angle, Model.TargetRotation * axis.DirVector));
     }
 
     private void AddToTargetRotation(Quaternion rotation) {

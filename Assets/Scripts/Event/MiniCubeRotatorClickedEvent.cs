@@ -1,11 +1,11 @@
 using System;
 using Data;
 
-public class CubeRotationStartedEventArgs : EventArgs {
+public class MiniCubeRotatorClickedEventArgs : EventArgs {
     public Dimension axis;
     public float angle;
 
-    public CubeRotationStartedEventArgs(Dimension axis, float angle) {
+    public MiniCubeRotatorClickedEventArgs(Dimension axis, float angle) {
         this.axis = axis;
         this.angle = angle;
     }

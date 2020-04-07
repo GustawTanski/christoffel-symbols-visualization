@@ -6,7 +6,7 @@ public class ChristofellApplication : MonoBehaviour {
     public ChristofellController controller;
     public ChristofellEvent<ZerosHidedArgs> zerosHidedEvent = new ChristofellEvent<ZerosHidedArgs>();
     public ChristofellEvent<SpaceChangedArgs> spaceChangedEvent = new ChristofellEvent<SpaceChangedArgs>();
-    public ChristofellEvent<CubeRotationStartedEventArgs> cubeRotationStartedEvent 
-        = new ChristofellEvent<CubeRotationStartedEventArgs>();
+    public ChristofellEvent<MiniCubeRotatorClickedEventArgs> miniCubeRotatorClicked 
+        = new ChristofellEvent<MiniCubeRotatorClickedEventArgs>();
 
 }
