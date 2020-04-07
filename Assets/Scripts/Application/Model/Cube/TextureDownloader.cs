@@ -53,13 +53,13 @@ public class LaTeXTextureDownloader {
         {
             UnityWebRequest www = GeneratePutRequest(laTeX);
             await www.SendWebRequest();
-            Debug.Log(GetUrlFromResponse(www));
+            // Debug.Log(GetUrlFromResponse(www));
             www = UnityWebRequestTexture.GetTexture(GetUrlFromResponse(www));
             await www.SendWebRequest();
             return DownloadHandlerTexture.GetContent(www);
         }catch(InvalidOperationException e) {
-            Debug.LogError(e);
-            Debug.Log(e.Message);
+            // Debug.LogError(e);
+            // Debug.Log(e.Message);
             throw;
         }
     }

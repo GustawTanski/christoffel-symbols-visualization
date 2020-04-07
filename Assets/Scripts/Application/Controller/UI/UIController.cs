@@ -9,6 +9,7 @@ public class UIController : ChristofellElement {
     private void Start() {
         InitializeToggle();
         InitializeDropdown();
+        InitializeResetButton();
     }
 
     private void InitializeToggle() {
@@ -49,7 +50,16 @@ public class UIController : ChristofellElement {
 
     private void OnDropdownChanged(int value) {
         SpaceChangedArgs e = new SpaceChangedArgs((SpaceType) value);
-        App.spaceChangedEvent.DispatchEvent(this, e);
+        App.spaceChangedEvent.DispatchEvent(App.view.uI.dropdown, e);
+    }
+
+    private void InitializeResetButton() {
+        App.view.uI.resetButton.onClick.AddListener(OnResetButtonPressed);
+    }
+
+    public void OnResetButtonPressed() {
+        ResetButtonClickedArgs e = new ResetButtonClickedArgs();
+        App.resetButtonClicked.DispatchEvent(App.view.uI.resetButton, e);
     }
 
 }

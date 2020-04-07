@@ -3,20 +3,26 @@ using System.Linq;
 using UnityEngine;
 namespace Data {
     public class Dimension {
+
+        public static Dimension X => new Dimension(Direction.x);
+        public static Dimension Y => new Dimension(Direction.y);
+        public static Dimension Z => new Dimension(Direction.z);
+
+        private const float MINIMAL_DIFFERENCE_MAGNITUDE = 0.1f;
         public Direction Dir {
             get;
             private set;
         }
 
-        public Vector3 DirVector {
-            get {
-                if (vectorToDimension.ContainsValue(Dir))
-                    return vectorToDimension.KeyByValue(Dir);
-                else return Vector3.zero;
-            }
+        public Vector3 DirVector => ConverDirectionToVector(Dir);
+
+        private Vector3 ConverDirectionToVector(Direction dir) {
+            if (vectorToDirection.ContainsValue(dir))
+                return vectorToDirection.KeyByValue(dir);
+            else return Vector3.zero;
         }
 
-        private Dictionary<Vector3, Direction> vectorToDimension = new Dictionary<Vector3, Direction>() {
+        static private Dictionary<Vector3, Direction> vectorToDirection = new Dictionary<Vector3, Direction>() {
             [Vector3.right] = Direction.x, [Vector3.up] = Direction.y, [Vector3.forward] = Direction.z
         };
 
@@ -33,10 +39,14 @@ namespace Data {
             Dir = ConvertVector3ToDirection(dirVector);
         }
 
-        private Direction ConvertVector3ToDirection(Vector3 dirVector) {
-            if (vectorToDimension.ContainsKey(dirVector))
-                return vectorToDimension[dirVector];
-            else return Direction.zero;
+        static private Direction ConvertVector3ToDirection(Vector3 dirVector) {
+            return vectorToDirection
+                .FirstOrDefault(keyValuePair => AreVectorsAlmostEqual(keyValuePair.Key, dirVector))
+                .Value;
+        }
+
+        static private bool AreVectorsAlmostEqual(Vector3 first, Vector3 second) {
+            return (first - second).magnitude < MINIMAL_DIFFERENCE_MAGNITUDE;
         }
 
         public void SetDirection(Vector3 dirVector) {
@@ -59,5 +69,6 @@ namespace Data {
                     return 0;
             }
         }
+
     }
 }

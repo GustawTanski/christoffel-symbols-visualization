@@ -4,8 +4,9 @@ using UnityEngine.UI;
 public class UIView : ChristofellElement {
     public Dropdown dropdown;
     public Toggle zerosToggle;
+    public Button resetButton;
     public LineRenderer line;
-    
+
     public void HideLine() {
         line.startWidth = line.endWidth = 0;
     }
