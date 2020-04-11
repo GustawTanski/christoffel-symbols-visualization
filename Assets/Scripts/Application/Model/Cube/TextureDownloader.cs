@@ -49,15 +49,13 @@ public class LaTeXTextureDownloader {
     }
 
     private async Task<Texture2D> FetchTexture(string laTeX) {
-        try
-        {
+        try {
             UnityWebRequest www = GeneratePutRequest(laTeX);
             await www.SendWebRequest();
-            // Debug.Log(GetUrlFromResponse(www));
             www = UnityWebRequestTexture.GetTexture(GetUrlFromResponse(www));
             await www.SendWebRequest();
             return DownloadHandlerTexture.GetContent(www);
-        }catch(InvalidOperationException e) {
+        } catch (InvalidOperationException e) {
             // Debug.LogError(e);
             // Debug.Log(e.Message);
             throw;
@@ -71,6 +69,7 @@ public class LaTeXTextureDownloader {
     }
 
     private byte[] GenerateLaTeXRequestBody(string laTeX) {
+        Debug.Log(GenerateXmlString(laTeX));
         return Encoding.Default.GetBytes(GenerateXmlString(laTeX));
     }
 

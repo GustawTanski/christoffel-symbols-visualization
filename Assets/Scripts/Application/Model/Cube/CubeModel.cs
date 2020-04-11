@@ -7,6 +7,8 @@ public class CubeModel : ChristofellElement {
     public float elementSize = 12;
     public bool areZerosVisible;
 
+    public TextAsset upgradedTensor;
+
     public string[, , ] IndexTensor {
         get;
         private set;
@@ -33,16 +35,23 @@ public class CubeModel : ChristofellElement {
     } = Vector3Int.one * -1;
 
     private void Awake() {
+        TensorProviderNew.JsonFile = upgradedTensor.text;
         UpdateIndexTensor();
         UpdateFormulas();
     }
 
     public void UpdateIndexTensor() {
-        IndexTensor = TensorProvider.GetIndexTensor();
+        IndexTensor = TensorProviderNew.GetIndexTensor();
+        // foreach (var item in IndexTensor) {
+        //     Debug.Log(item);
+        // }
     }
 
     public void UpdateFormulas() {
-        FormulaTensor = TensorProvider.GetFormulaTensor(GetJsonFile());
+        FormulaTensor = TensorProviderNew.GetFormulaTensor( /*GetJsonFile()*/ );
+        // foreach (var item in FormulaTensor) {
+        //     Debug.Log(item);
+        // }
     }
 
     private TextAsset GetJsonFile() {
