@@ -56453,6 +56453,7 @@ MonoBehaviour:
     - {fileID: 4900000, guid: e0df1b0c1690420468ebea09fa102b9d, type: 3}
   elementSize: 12
   areZerosVisible: 1
+  upgradedTensor: {fileID: 4900000, guid: da632fcb365516345a2fb0b0658bddbe, type: 3}
 --- !u!4 &1256681821
 Transform:
   m_ObjectHideFlags: 0
