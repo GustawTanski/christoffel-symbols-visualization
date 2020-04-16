@@ -106,9 +106,9 @@
         ]
     ],
     "indexes": [
-        {"char": "\\alpha", "position": "up"},
-        {"char": "\\beta", "position": "down"},
-        {"char": "\\gamma", "position":"up"}
+        {"char": "\\upsilon", "position": "up"},
+        {"char": "\\int_{-\\infty}^{\\infty}", "position": "down"},
+        {"char": "\\tau", "position":"up"}
     ],
     "symbol": "\\Psi",
     "coordinates": [

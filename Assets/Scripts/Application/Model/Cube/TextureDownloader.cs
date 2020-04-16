@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using BetterMultidimensionalArray;
-using Data;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -94,5 +92,11 @@ public class LaTeXTextureDownloader {
         XElement urlElement = doc.Descendants("url").First();
         return urlElement.Value;
     }
+
+    static public Task<Texture2D> FetchOneTexture(string laTeX) {
+        return new LaTeXTextureDownloader().GetTexture(laTeX);
+    }
+
+    private LaTeXTextureDownloader() {}
 
 }

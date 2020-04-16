@@ -42,16 +42,10 @@ public class CubeModel : ChristofellElement {
 
     public void UpdateIndexTensor() {
         IndexTensor = TensorProviderNew.GetIndexTensor();
-        // foreach (var item in IndexTensor) {
-        //     Debug.Log(item);
-        // }
     }
 
     public void UpdateFormulas() {
         FormulaTensor = TensorProviderNew.GetFormulaTensor( /*GetJsonFile()*/ );
-        // foreach (var item in FormulaTensor) {
-        //     Debug.Log(item);
-        // }
     }
 
     private TextAsset GetJsonFile() {

@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using BetterMultidimensionalArray;
 using Data;
 using Newtonsoft.Json;
@@ -32,7 +31,7 @@ public static class TensorProviderNew {
             Properties = JsonConvert.DeserializeObject<TensorProperties>(value);
         }
     }
-    static private TensorProperties Properties { get; set; }
+    static public TensorProperties Properties { get; private set; }
 
     public static string[, , ] GetIndexTensor() {
         return new string[4, 4, 4].Select(IndexesToLatex);
@@ -59,5 +58,6 @@ public static class TensorProviderNew {
 
     public static string[, , ] GetFormulaTensor() {
         return Properties.Data;
+
     }
 }
