@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using BetterMultidimensionalArray;
 using Data;
 using Newtonsoft.Json;
@@ -28,8 +29,24 @@ public static class TensorProvider {
 public static class TensorProviderNew {
     static public string JsonFile {
         set {
-            Properties = JsonConvert.DeserializeObject<TensorProperties>(value);
+            Dog(value);
         }
+    }
+    private static void Dog(string value) {
+        var tempProperties = JsonConvert.DeserializeObject<TensorProperties>(value);
+        foreach (var item in tempProperties.Coordinates) {
+            Regex rx = new Regex(@"(?<![\\][a-zA-Z]*(?!\\))" + Regex.Replace(item.LaTeX, @"\\", @"\\"));
+            tempProperties.Data = tempProperties.Data.Select((laTeX) =>
+                rx.Replace(laTeX, (match) => $"{{\\color[HTML]{{{item.Color.Substring(1).ToUpper()}}} {match.Value} }}")
+            );
+        }
+        foreach (var item in tempProperties.Parameters) {
+            Regex rx = new Regex(@"(?<![\\][a-zA-Z]*(?!\\))" + Regex.Replace(item.LaTeX, @"\\", @"\\"));
+            tempProperties.Data = tempProperties.Data.Select((laTeX) =>
+                rx.Replace(laTeX, (match) => $"{{\\color[HTML]{{{item.Color.Substring(1).ToUpper()}}} {match.Value} }}")
+            );
+        }
+        Properties = tempProperties;
     }
     static public TensorProperties Properties { get; private set; }
 

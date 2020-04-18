@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace Data {
     public class TensorProperties {
         [JsonIgnore]
-        static public Dictionary<TensorProperties.Index.IndexPosition, string> positionToLaTeX  = new Dictionary<TensorProperties.Index.IndexPosition, string> {
+        static public Dictionary<TensorProperties.Index.IndexPosition, string> positionToLaTeX = new Dictionary<TensorProperties.Index.IndexPosition, string> {
             [TensorProperties.Index.IndexPosition.up] = "^",
             [TensorProperties.Index.IndexPosition.down] = "_"
         };
@@ -19,7 +19,7 @@ namespace Data {
         public string Symbol { get; set; }
 
         [JsonProperty("parameters")]
-        public LaTeXCharacter[] Parameters { get; set; }
+        public LaTeXCharacter[] Parameters { get; set; } = new LaTeXCharacter[0];
 
         [JsonProperty("coordinates", Required = Required.Always)]
         public LaTeXCharacter[] Coordinates { get; set; }
@@ -31,7 +31,7 @@ namespace Data {
             [JsonProperty("description")]
             public string Description { get; set; } = "";
             [JsonProperty("color")]
-            public string Color { get; set; } = "#fff";
+            public string Color { get; set; } = "#ffffff";
         }
 
         public class Index : LaTeXCharacter {
