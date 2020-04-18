@@ -21,7 +21,7 @@ public class ArrowView : ChristofellElement {
     }
 
     private string GetLaTeXFromTensorProperties() {
-        return TensorProviderNew.Properties.Indexes[index].LaTeX;
+        return TensorProvider.Properties.Indexes[index].LaTeX;
     }
 
     private async Task FetchTexture() {

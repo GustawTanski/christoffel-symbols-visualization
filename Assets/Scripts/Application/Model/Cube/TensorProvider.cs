@@ -1,54 +1,65 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using BetterMultidimensionalArray;
 using Data;
 using Newtonsoft.Json;
-using UnityEngine;
 
 public static class TensorProvider {
 
-    public static string[, , ] GetIndexTensor() {
-        return new string[4, 4, 4].Select(IndexesToLatex);
-    }
+    private const string REGEX_BASE = @"(?<![\\][a-zA-Z]*(?!\\))";
+    private static readonly Regex BACKSLASH_REGEX = new Regex(@"\\", RegexOptions.Compiled);
+    private static Regex laTeXCharacterRegex;
 
-    private static string IndexesToLatex(string el, int i, int j, int k) {
-        string[] indexes = new int[] { i, j, k }.Select(GetIndexLatex).ToArray();
-        return $"\\Gamma^{indexes[0]}_{{{indexes[1]} {indexes[2]}}}";
-    }
+    private static TensorProperties.LaTeXCharacter currentLaTeXCharacter;
 
-    private static string GetIndexLatex(int number) {
-        return LatexDictionaries.index[number];
-    }
-
-    public static string[, , ] GetFormulaTensor(TextAsset jsonFile) {
-        return JsonConvert.DeserializeObject<string[, , ]>(jsonFile.text);
-    }
-}
-
-public static class TensorProviderNew {
-    static public string JsonFile {
-        set {
-            Dog(value);
-        }
-    }
-    private static void Dog(string value) {
-        var tempProperties = JsonConvert.DeserializeObject<TensorProperties>(value);
-        foreach (var item in tempProperties.Coordinates) {
-            Regex rx = new Regex(@"(?<![\\][a-zA-Z]*(?!\\))" + Regex.Replace(item.LaTeX, @"\\", @"\\"));
-            tempProperties.Data = tempProperties.Data.Select((laTeX) =>
-                rx.Replace(laTeX, (match) => $"{{\\color[HTML]{{{item.Color.Substring(1).ToUpper()}}} {match.Value} }}")
-            );
-        }
-        foreach (var item in tempProperties.Parameters) {
-            Regex rx = new Regex(@"(?<![\\][a-zA-Z]*(?!\\))" + Regex.Replace(item.LaTeX, @"\\", @"\\"));
-            tempProperties.Data = tempProperties.Data.Select((laTeX) =>
-                rx.Replace(laTeX, (match) => $"{{\\color[HTML]{{{item.Color.Substring(1).ToUpper()}}} {match.Value} }}")
-            );
-        }
-        Properties = tempProperties;
-    }
     static public TensorProperties Properties { get; private set; }
+    static public string JsonFile {
+        set => SetProperties(value);
+    }
+    private static void SetProperties(string value) {
+        Properties = JsonConvert.DeserializeObject<TensorProperties>(value);
+        DecorateData();
+    }
+
+    private static void DecorateData() {
+        GetAllLaTeXCharactersToDecorate().ForEach(DecorateLaTeXCharacter);
+    }
+
+    private static List<TensorProperties.LaTeXCharacter> GetAllLaTeXCharactersToDecorate() {
+        return Properties.Coordinates.Concat(Properties.Parameters).ToList();
+    }
+
+    private static void DecorateLaTeXCharacter(TensorProperties.LaTeXCharacter character) {
+        currentLaTeXCharacter = character;
+        SetLaTeXCharacterRegex();
+        Properties.Data = Properties.Data.Select(DecorateLaTeXCharacterRegexMatches);
+    }
+
+    private static void SetLaTeXCharacterRegex() {
+        laTeXCharacterRegex = CreateLaTeXCharacterRegex();
+    }
+
+    private static Regex CreateLaTeXCharacterRegex() {
+        return new Regex(REGEX_BASE + DoubleBackslashes(currentLaTeXCharacter.LaTeX));
+    }
+
+    private static string DoubleBackslashes(string word) {
+        return BACKSLASH_REGEX.Replace(word, @"\\");
+    }
+
+    private static string DecorateLaTeXCharacterRegexMatches(string laTeX) {
+        return laTeXCharacterRegex.Replace(laTeX, DecorateLaTeXCharacterRegexMatch);
+    }
+
+    private static string DecorateLaTeXCharacterRegexMatch(Match match) {
+        return $"{{\\color[HTML]{{{GetLaTeXCharacterColor()}}} {match.Value} }}";
+    }
+
+    private static string GetLaTeXCharacterColor() {
+        return currentLaTeXCharacter.Color.Substring(1).ToUpper();
+    }
 
     public static string[, , ] GetIndexTensor() {
         return new string[4, 4, 4].Select(IndexesToLatex);
