@@ -9,6 +9,8 @@ namespace Data {
             [TensorProperties.Index.IndexPosition.up] = "^",
             [TensorProperties.Index.IndexPosition.down] = "_"
         };
+        [JsonProperty("name", Required = Required.Always)]
+        public string Name { get; set; } 
         [JsonProperty("data", Required = Required.Always)]
         public string[, , ] Data { get; set; }
 

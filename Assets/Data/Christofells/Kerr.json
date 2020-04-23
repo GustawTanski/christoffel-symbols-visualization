@@ -1,106 +1,113 @@
-[
-	[
+{
+	"name": "Kerr",
+	"data": [
 		[
-			"0",
-			"\\frac{1}{-\\frac{2 a^2 r \\sin ^2(\\theta )}{a^2+r^2}-\\frac{2 \\Sigma }{r_s}+2 r}",
-			"\\frac{a^2 r_s^2 r^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma  \\left(a^2+r^2\\right) (\\Sigma -r_s r)+a^2 r_s r \\Sigma  \\sin ^2(\\theta )}",
-			"0"
+			[
+				"0",
+				"\\frac{1}{-\\frac{2 a^2 r \\sin ^2(\\theta )}{a^2+r^2}-\\frac{2 \\Sigma }{r_s}+2 r}",
+				"\\frac{a^2 r_s^2 r^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma  \\left(a^2+r^2\\right) (\\Sigma -r_s r)+a^2 r_s r \\Sigma  \\sin ^2(\\theta )}",
+				"0"
+			],
+			[
+				"\\frac{1}{-\\frac{2 a^2 r \\sin ^2(\\theta )}{a^2+r^2}-\\frac{2 \\Sigma }{r_s}+2 r}",
+				"0",
+				"0",
+				"\\frac{a r_s (a-r) (a+r) \\sin ^2(\\theta )}{2 a^2 c r_s r \\sin ^2(\\theta )-2 c \\left(a^2+r^2\\right) (r_s r-\\Sigma )}"
+			],
+			[
+				"\\frac{a^2 r_s^2 r^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma  \\left(a^2+r^2\\right) (\\Sigma -r_s r)+a^2 r_s r \\Sigma  \\sin ^2(\\theta )}",
+				"0",
+				"0",
+				"-\\frac{a^3 r_s^2 r^2 \\sin ^3(\\theta ) \\cos (\\theta )}{c \\Sigma  \\left(\\left(a^2+r^2\\right) (\\Sigma -r_s r)+a^2 r_s r \\sin ^2(\\theta )\\right)}"
+			],
+			[
+				"0",
+				"\\frac{a r_s (a-r) (a+r) \\sin ^2(\\theta )}{2 a^2 c r_s r \\sin ^2(\\theta )-2 c \\left(a^2+r^2\\right) (r_s r-\\Sigma )}",
+				"-\\frac{a^3 r_s^2 r^2 \\sin ^3(\\theta ) \\cos (\\theta )}{c \\Sigma  \\left(\\left(a^2+r^2\\right) (\\Sigma -r_s r)+a^2 r_s r \\sin ^2(\\theta )\\right)}",
+				"0"
+			]
 		],
 		[
-			"\\frac{1}{-\\frac{2 a^2 r \\sin ^2(\\theta )}{a^2+r^2}-\\frac{2 \\Sigma }{r_s}+2 r}",
-			"0",
-			"0",
-			"\\frac{a r_s (a-r) (a+r) \\sin ^2(\\theta )}{2 a^2 c r_s r \\sin ^2(\\theta )-2 c \\left(a^2+r^2\\right) (r_s r-\\Sigma )}"
+			[
+				"-\\frac{c^2 \\Delta  r_s}{2 \\Sigma ^2}",
+				"0",
+				"0",
+				"\\frac{a c \\Delta  r_s \\sin ^2(\\theta )}{2 \\Sigma ^2}"
+			],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			[
+				"\\frac{a c \\Delta  r_s \\sin ^2(\\theta )}{2 \\Sigma ^2}",
+				"0",
+				"0",
+				"-\\frac{\\Delta  \\left(a^2 r_s \\sin ^4(\\theta )+2 r \\Sigma  \\sin ^2(\\theta )\\right)}{2 \\Sigma ^2}"
+			]
 		],
 		[
-			"\\frac{a^2 r_s^2 r^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma  \\left(a^2+r^2\\right) (\\Sigma -r_s r)+a^2 r_s r \\Sigma  \\sin ^2(\\theta )}",
-			"0",
-			"0",
-			"-\\frac{a^3 r_s^2 r^2 \\sin ^3(\\theta ) \\cos (\\theta )}{c \\Sigma  \\left(\\left(a^2+r^2\\right) (\\Sigma -r_s r)+a^2 r_s r \\sin ^2(\\theta )\\right)}"
+			["0", "0", "0", "\\frac{a c r_s r \\sin (\\theta ) \\cos (\\theta )}{\\Sigma ^2}"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			[
+				"\\frac{a c r_s r \\sin (\\theta ) \\cos (\\theta )}{\\Sigma ^2}",
+				"0",
+				"0",
+				"-\\frac{\\cos (\\theta ) \\left(2 a^2 r_s r \\sin ^3(\\theta )+\\Sigma  \\left(a^2+r^2\\right) \\sin (\\theta )\\right)}{\\Sigma ^2}"
+			]
 		],
 		[
-			"0",
-			"\\frac{a r_s (a-r) (a+r) \\sin ^2(\\theta )}{2 a^2 c r_s r \\sin ^2(\\theta )-2 c \\left(a^2+r^2\\right) (r_s r-\\Sigma )}",
-			"-\\frac{a^3 r_s^2 r^2 \\sin ^3(\\theta ) \\cos (\\theta )}{c \\Sigma  \\left(\\left(a^2+r^2\\right) (\\Sigma -r_s r)+a^2 r_s r \\sin ^2(\\theta )\\right)}",
-			"0"
+			[
+				"0",
+				"\\frac{a c r_s}{r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)}",
+				"-\\frac{2 a c r_s r \\cot (\\theta ) (r_s r-\\Sigma )}{\\Sigma  \\left(r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)\\right)}",
+				"0"
+			],
+			[
+				"\\frac{a c r_s}{r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)}",
+				"0",
+				"0",
+				"\\frac{1}{\\frac{4 (a-r) (a+r) (r_s r-\\Sigma )}{a^2 r_s \\cos (2 \\theta )+a^2 (-r_s)+4 r (r_s r-\\Sigma )}+2 r}"
+			],
+			[
+				"-\\frac{2 a c r_s r \\cot (\\theta ) (r_s r-\\Sigma )}{\\Sigma  \\left(r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)\\right)}",
+				"0",
+				"0",
+				"\\cot (\\theta )-\\frac{a^2 r_s r \\sin (2 \\theta ) (\\Sigma -r_s r)}{\\Sigma  \\left(r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)\\right)}"
+			],
+			[
+				"0",
+				"\\frac{1}{\\frac{4 (a-r) (a+r) (r_s r-\\Sigma )}{a^2 r_s \\cos (2 \\theta )+a^2 (-r_s)+4 r (r_s r-\\Sigma )}+2 r}",
+				"\\cot (\\theta )-\\frac{a^2 r_s r \\sin (2 \\theta ) (\\Sigma -r_s r)}{\\Sigma  \\left(r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)\\right)}",
+				"0"
+			]
 		]
 	],
-	[
-		[
-			"-\\frac{c^2 \\Delta  r_s}{2 \\Sigma ^2}",
-			"0",
-			"0",
-			"\\frac{a c \\Delta  r_s \\sin ^2(\\theta )}{2 \\Sigma ^2}"
-		],
-		[
-			"0",
-			"0",
-			"0",
-			"0"
-		],
-		[
-			"0",
-			"0",
-			"0",
-			"0"
-		],
-		[
-			"\\frac{a c \\Delta  r_s \\sin ^2(\\theta )}{2 \\Sigma ^2}",
-			"0",
-			"0",
-			"-\\frac{\\Delta  \\left(a^2 r_s \\sin ^4(\\theta )+2 r \\Sigma  \\sin ^2(\\theta )\\right)}{2 \\Sigma ^2}"
-		]
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\beta",
+			"position": "down"
+		},
+		{
+			"char": "\\gamma",
+			"position": "down"
+		}
 	],
-	[
-		[
-			"0",
-			"0",
-			"0",
-			"\\frac{a c r_s r \\sin (\\theta ) \\cos (\\theta )}{\\Sigma ^2}"
-		],
-		[
-			"0",
-			"0",
-			"0",
-			"0"
-		],
-		[
-			"0",
-			"0",
-			"0",
-			"0"
-		],
-		[
-			"\\frac{a c r_s r \\sin (\\theta ) \\cos (\\theta )}{\\Sigma ^2}",
-			"0",
-			"0",
-			"-\\frac{\\cos (\\theta ) \\left(2 a^2 r_s r \\sin ^3(\\theta )+\\Sigma  \\left(a^2+r^2\\right) \\sin (\\theta )\\right)}{\\Sigma ^2}"
-		]
-	],
-	[
-		[
-			"0",
-			"\\frac{a c r_s}{r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)}",
-			"-\\frac{2 a c r_s r \\cot (\\theta ) (r_s r-\\Sigma )}{\\Sigma  \\left(r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)\\right)}",
-			"0"
-		],
-		[
-			"\\frac{a c r_s}{r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)}",
-			"0",
-			"0",
-			"\\frac{1}{\\frac{4 (a-r) (a+r) (r_s r-\\Sigma )}{a^2 r_s \\cos (2 \\theta )+a^2 (-r_s)+4 r (r_s r-\\Sigma )}+2 r}"
-		],
-		[
-			"-\\frac{2 a c r_s r \\cot (\\theta ) (r_s r-\\Sigma )}{\\Sigma  \\left(r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)\\right)}",
-			"0",
-			"0",
-			"\\cot (\\theta )-\\frac{a^2 r_s r \\sin (2 \\theta ) (\\Sigma -r_s r)}{\\Sigma  \\left(r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)\\right)}"
-		],
-		[
-			"0",
-			"\\frac{1}{\\frac{4 (a-r) (a+r) (r_s r-\\Sigma )}{a^2 r_s \\cos (2 \\theta )+a^2 (-r_s)+4 r (r_s r-\\Sigma )}+2 r}",
-			"\\cot (\\theta )-\\frac{a^2 r_s r \\sin (2 \\theta ) (\\Sigma -r_s r)}{\\Sigma  \\left(r_s r \\left(a^2+2 r^2\\right)+a^2 r_s r \\cos (2 \\theta )-2 \\Sigma  \\left(a^2+r^2\\right)\\right)}",
-			"0"
-		]
+	"symbol": "\\Gamma",
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\theta"
+		},
+		{
+			"char": "\\varphi"
+		}
 	]
-]
+}

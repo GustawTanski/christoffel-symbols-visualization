@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using BetterMultidimensionalArray;
 using Data;
 public static class TensorPropertiesDecorator {
-    private const string REGEX_BASE = @"(?<![\\][a-zA-Z]*(?!\\))";
+    private const string REGEX_BASE = @"(?<!([\\][a-zA-Z]*(?!\\))|(\\color\[[a-zA-z]*))";
     private static readonly Regex BACKSLASH_REGEX = new Regex(@"\\", RegexOptions.Compiled);
     private static TensorProperties properties;
     private static Regex laTeXCharacterRegex;
