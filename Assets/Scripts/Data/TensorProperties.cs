@@ -38,7 +38,6 @@ namespace Data {
             [JsonProperty("position", Required = Required.Always)]
             [JsonConverter(typeof(StringEnumConverter))]
             public IndexPosition Position { get; set; }
-
             public enum IndexPosition {
                 up = 1,
                 down = -1

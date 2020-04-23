@@ -1,40 +1,28 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using BetterMultidimensionalArray;
 using Data;
-using Newtonsoft.Json;
-
-public static class TensorProvider {
-
+public static class TensorPropertiesDecorator {
     private const string REGEX_BASE = @"(?<![\\][a-zA-Z]*(?!\\))";
     private static readonly Regex BACKSLASH_REGEX = new Regex(@"\\", RegexOptions.Compiled);
+    private static TensorProperties properties;
     private static Regex laTeXCharacterRegex;
-
     private static TensorProperties.LaTeXCharacter currentLaTeXCharacter;
 
-    static public TensorProperties Properties { get; private set; }
-    static public string JsonFile {
-        set => SetProperties(value);
-    }
-    private static void SetProperties(string value) {
-        Properties = JsonConvert.DeserializeObject<TensorProperties>(value);
-        DecorateData();
-    }
-
-    private static void DecorateData() {
+    public static void DecorateData(TensorProperties props) {
+        properties = props;
         GetAllLaTeXCharactersToDecorate().ForEach(DecorateLaTeXCharacter);
     }
 
     private static List<TensorProperties.LaTeXCharacter> GetAllLaTeXCharactersToDecorate() {
-        return Properties.Coordinates.Concat(Properties.Parameters).ToList();
+        return properties.Coordinates.Concat(properties.Parameters).ToList();
     }
 
     private static void DecorateLaTeXCharacter(TensorProperties.LaTeXCharacter character) {
         currentLaTeXCharacter = character;
         SetLaTeXCharacterRegex();
-        Properties.Data = Properties.Data.Select(DecorateLaTeXCharacterRegexMatches);
+        properties.Data = properties.Data.Select(DecorateLaTeXCharacterRegexMatches);
     }
 
     private static void SetLaTeXCharacterRegex() {
@@ -59,33 +47,5 @@ public static class TensorProvider {
 
     private static string GetLaTeXCharacterColor() {
         return currentLaTeXCharacter.Color.Substring(1).ToUpper();
-    }
-
-    public static string[, , ] GetIndexTensor() {
-        return new string[4, 4, 4].Select(IndexesToLatex);
-    }
-
-    private static string IndexesToLatex(string el, int i, int j, int k) {
-        var indexes = Properties
-            .Indexes
-            .Select((index, l) => (index, l))
-            .Zip(
-                new [] { i, j, k },
-                (indexr, number) => (index: indexr.index, l: indexr.l, number)
-            )
-            .GroupBy(dog => dog.index.Position)
-            .Select(group => {
-                string[] dog = new string[3].Select(_ => @"\cdot").ToArray();
-                foreach (var item in group) {
-                    dog[item.l] = Properties.Coordinates[item.number].LaTeX;
-                }
-                return TensorProperties.positionToLaTeX[group.Key] + "{" + String.Join(" ", dog) + "}";
-            });
-        return Properties.Symbol + String.Join("", indexes);
-    }
-
-    public static string[, , ] GetFormulaTensor() {
-        return Properties.Data;
-
     }
 }
