@@ -35,7 +35,6 @@ public class CubeView : ChristofellElement {
 
     private void Start() {
         transform.localRotation = zeroRotation;
-        Debug.Log(LocalRotation.eulerAngles);
     }
 
     private void Update() {

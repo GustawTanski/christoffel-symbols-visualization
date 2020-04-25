@@ -6,27 +6,17 @@ using UnityEngine;
 public class CubeController : ChristofellElement {
     public CubePlaneSlicer cubePlaneSlicer;
 
-    private CubeModel cubeModel;
-    private CubeView cubeView;
+    private CubeModel Model => App.model.cube;
+    private CubeView View => App.view.cube;
 
     private void Awake() {
-        SetReferences();
-    }
-    private void SetReferences() {
-        cubeModel = App.model.cube;
-        cubeView = App.view.cube;
-    }
-
-    private async void Start() {
         SetEventListeners();
-        await FetchAllTextures();
-        SetTextures();
         SetZerosVisibility();
     }
 
     private void SetEventListeners() {
-        App.zerosHidedEvent.listOfHandlers += OnZerosHided;
-        App.spaceChangedEvent.listOfHandlers += OnSpaceChanged;
+        App.zerosHided.listOfHandlers += OnZerosHided;
+        App.spaceDropdownChanged.listOfHandlers += OnSpaceDropdownChanged;
     }
 
     private void OnZerosHided(object sender, EventArgs e) {
@@ -35,52 +25,57 @@ public class CubeController : ChristofellElement {
     }
 
     private void ToggleZerosVisibilityState() {
-        cubeModel.areZerosVisible = !cubeModel.areZerosVisible;
+        Model.areZerosVisible = !Model.areZerosVisible;
     }
 
     private void ToggleZerosVisibility() {
-        cubeView.ToggleZeros();
+        View.ToggleZeros();
     }
 
-    private async void OnSpaceChanged(object sender, SpaceChangedArgs e) {
-        SetSpaceState(e.space);
-        UpdateFormulasState();
-        await FetchFormulaTextures();
-        SetFormulaTextures();
+    private async void OnSpaceDropdownChanged(object sender, SpaceDropdownChangedArgs e) {
+        ChangeSpace(e.space);
+        await UpdateTextures();
+    }
+
+    private void ChangeSpace(SpaceType space) {
+        SetSpaceState(space);
+        Model.Update();
+        DispatchSpaceChangedEvent();
     }
 
     private void SetSpaceState(SpaceType space) {
-        cubeModel.space = space;
+        Model.space = space;
     }
 
-    private void UpdateFormulasState() {
-        cubeModel.UpdateFormulas();
-        if (!cubeModel.areZerosVisible) cubeView.UpdateZeros();
+    private void DispatchSpaceChangedEvent() {
+        App.spaceChanged.DispatchEvent(this, new SpaceChangedArgs(Model.Properties));
     }
 
-    private async Task FetchFormulaTextures() {
-        await cubeModel.FetchFormulaTextures();
+    private async Task UpdateTextures() {
+        await FetchTextures();
+        SetTextures();
+        IfInvisibleUpdateZeros();
     }
 
-    private void SetFormulaTextures() {
-        cubeView.SetFormulaTextures();
+    private async Task FetchTextures() {
+        await Model.FetchAllTextures();
     }
 
-    private async Task FetchAllTextures() {
-        await cubeModel.FetchAllTextures();
+    private void IfInvisibleUpdateZeros() {
+        if (!Model.areZerosVisible) View.UpdateZeros();
     }
 
     private void SetTextures() {
-        cubeView.SetAllTextures();
+        View.SetAllTextures();
     }
 
     private void SetZerosVisibility() {
-        if (!cubeModel.areZerosVisible) cubeView.ToggleZeros();
+        if (!Model.areZerosVisible) View.ToggleZeros();
     }
 
     private void Update() {
         if (IsTabKeyUp()) ToggleIndexes();
-        cubeView.DeselectAllElements();
+        View.DeselectAllElements();
         foreach (var plane in cubePlaneSlicer.SelectedPlanes) {
             foreach (var element in plane) {
                 element.Select();

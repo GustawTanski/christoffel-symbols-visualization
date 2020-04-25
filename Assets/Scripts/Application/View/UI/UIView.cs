@@ -7,6 +7,8 @@ public class UIView : ChristofellElement {
     public Button resetButton;
     public LineRenderer line;
 
+    public CubeDescriptionView cubeDescription;
+
     public void HideLine() {
         line.startWidth = line.endWidth = 0;
     }
