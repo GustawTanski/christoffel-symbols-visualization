@@ -32,5 +32,16 @@
 		{ "char": "\\gamma", "position": "down" }
 	],
 	"symbol": "\\Gamma",
-	"coordinates": [{ "char": "t" }, { "char": "r" }, { "char": "\\theta" }, { "char": "\\varphi" }]
+	"coordinates": [
+		{ "char": "t", "description": "time" },
+		{ "char": "r", "description": "radius" },
+		{ "char": "\\theta", "description": "transversal angle" },
+		{ "char": "\\varphi", "description": "asimuthal angle" }
+	],
+	"parameters": [
+		{ "char": "a\\tau^2", "description": "dupa"},
+		{ "char": "\\cos \\varphi", "description": "dupa"},
+		{ "char": "_e", "description": "dupa"},
+		{ "char": "p", "description": "dupa"}
+	]
 }
