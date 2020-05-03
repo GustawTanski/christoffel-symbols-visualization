@@ -6,6 +6,16 @@ using Data;
 public class UIController : ChristofellElement {
     public LineController line;
 
+    public UIView View => App.view.uI;
+
+    private void Awake() {
+        App.cursorStateChanged.listOfHandlers += OnCursorStateChanged;
+    }
+
+    private void OnCursorStateChanged(object caller, CursorStateChangedEventArgs e) {
+        View.SetCanvasActivity(e.isCursorActive);
+    }
+
     private void Start() {
         InitializeToggle();
         InitializeDropdown();
@@ -26,7 +36,7 @@ public class UIController : ChristofellElement {
     }
 
     private void OnZerosToggleChange(bool _) {
-        App.zerosHidedEvent.DispatchEvent(this, new ZerosHidedArgs());
+        App.zerosHided.DispatchEvent(this, new ZerosHidedArgs());
     }
 
     private void InitializeDropdown() {
@@ -37,6 +47,7 @@ public class UIController : ChristofellElement {
 
     private void SetDropdownState() {
         App.view.uI.dropdown.value = (int) App.model.cube.space;
+        OnSpaceDropdownChanged(App.view.uI.dropdown.value);
     }
 
     private void PopulateDropdown() {
@@ -45,12 +56,12 @@ public class UIController : ChristofellElement {
     }
 
     private void SetDropdownListener() {
-        App.view.uI.dropdown.onValueChanged.AddListener(OnDropdownChanged);
+        App.view.uI.dropdown.onValueChanged.AddListener(OnSpaceDropdownChanged);
     }
 
-    private void OnDropdownChanged(int value) {
-        SpaceChangedArgs e = new SpaceChangedArgs((SpaceType) value);
-        App.spaceChangedEvent.DispatchEvent(App.view.uI.dropdown, e);
+    private void OnSpaceDropdownChanged(int value) {
+        SpaceDropdownChangedArgs e = new SpaceDropdownChangedArgs((SpaceType) value);
+        App.spaceDropdownChanged.DispatchEvent(App.view.uI.dropdown, e);
     }
 
     private void InitializeResetButton() {

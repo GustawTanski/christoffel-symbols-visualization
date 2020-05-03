@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using BetterMultidimensionalArray;
-using Data;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -49,19 +47,16 @@ public class LaTeXTextureDownloader {
     }
 
     private async Task<Texture2D> FetchTexture(string laTeX) {
-        try
-        {
+        try {
             UnityWebRequest www = GeneratePutRequest(laTeX);
             await www.SendWebRequest();
-            // Debug.Log(GetUrlFromResponse(www));
             www = UnityWebRequestTexture.GetTexture(GetUrlFromResponse(www));
             await www.SendWebRequest();
             return DownloadHandlerTexture.GetContent(www);
-        }catch(InvalidOperationException e) {
-            // Debug.LogError(e);
-            // Debug.Log(e.Message);
-            throw;
-        }
+        } catch (InvalidOperationException e) {
+            Debug.LogError(e);
+            return await FetchTexture(laTeX);
+        } 
     }
 
     private UnityWebRequest GeneratePutRequest(string laTeX) {
@@ -95,5 +90,11 @@ public class LaTeXTextureDownloader {
         XElement urlElement = doc.Descendants("url").First();
         return urlElement.Value;
     }
+
+    static public Task<Texture2D> FetchOneTexture(string laTeX) {
+        return new LaTeXTextureDownloader().GetTexture(laTeX);
+    }
+
+    private LaTeXTextureDownloader() {}
 
 }

@@ -32,17 +32,25 @@ public class CubeModel : ChristofellElement {
         set;
     } = Vector3Int.one * -1;
 
-    private void Awake() {
-        UpdateIndexTensor();
+    public TensorProperties Properties => TensorProvider.Properties;
+
+    public void Update() {
+        UpdateJsonFileOfTensorProvider();
         UpdateFormulas();
+        UpdateIndexTensor();
     }
 
-    public void UpdateIndexTensor() {
+    private void UpdateJsonFileOfTensorProvider() {
+        TensorProvider.JsonFile = GetJsonFile().text;
+    }
+
+    private void UpdateIndexTensor() {
         IndexTensor = TensorProvider.GetIndexTensor();
     }
 
-    public void UpdateFormulas() {
-        FormulaTensor = TensorProvider.GetFormulaTensor(GetJsonFile());
+    private void UpdateFormulas() {
+
+        FormulaTensor = TensorProvider.GetFormulaTensor();
     }
 
     private TextAsset GetJsonFile() {

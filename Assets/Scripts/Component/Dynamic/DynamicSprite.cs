@@ -16,22 +16,7 @@ public class DynamicSprite : MonoBehaviour {
     }
 
     public void SetTexture(Texture2D texture) {
-        this.texture = texture;
-        SetSprite();
-    }
-
-    private void SetSprite() {
-        GetComponent<SpriteRenderer>().sprite = CreateSprite();
-    }
-
-    private Sprite CreateSprite() {
-        const int PIXELS_PER_UNIT = 100;
-        return Sprite.Create(
-            texture,
-            new Rect(0, 0, texture.width, texture.height),
-            new Vector2(0.5f, 0.5f),
-            PIXELS_PER_UNIT
-        );
+        GetComponent<SpriteRenderer>().sprite = SpriteCreator.Create(texture);
     }
 
     public void ToggleAppear() {
