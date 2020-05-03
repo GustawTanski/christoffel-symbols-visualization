@@ -39,9 +39,9 @@
 		{ "char": "\\varphi", "description": "asimuthal angle" }
 	],
 	"parameters": [
-		{ "char": "a\\tau^2", "description": "dupa"},
-		{ "char": "\\cos \\varphi", "description": "dupa"},
-		{ "char": "_e", "description": "dupa"},
-		{ "char": "p", "description": "dupa"}
+		{ "char": "\\tau", "description": "dupa" },
+		{ "char": "\\alpha", "description": "dupa v dupadupadupadupa dupadupa  dupa dupa dupadupa" },
+		{ "char": "e", "description": "dupa" },
+		{ "char": "p", "description": "dupa" }
 	]
 }

@@ -20,13 +20,16 @@ public class LaTeXDescription : MonoBehaviour, IParameterDescription {
 
     public string Description {
         get => description.text;
-        set => description.text = value;
+        set => description.text = "- "+value;
     }
 
     public async void UpdateImage() {
-        Debug.Log("woof1");
         var texture = await LaTeXTextureDownloader.FetchOneTexture(parameter);
         parameterImage.Texture = texture;
+        Vector3 pos = description.rectTransform.localPosition;
+        pos = pos - Vector3.right * pos.x;
+        pos.x = parameterImage.RectTransform.rect.width * parameterImage.RectTransform.localScale.x + parameterImage.RectTransform.rect.x + 5;
+        description.rectTransform.localPosition = pos;
     }
 
     public void Destroy() {

@@ -30,6 +30,7 @@ public class TextDescription : MonoBehaviour, IParameterDescription {
         GetComponent<TextMeshProUGUI>().text = $"{parameter} - {description}";
     }
 
+
     public void Destroy() {
         Destroy(gameObject);
     }
