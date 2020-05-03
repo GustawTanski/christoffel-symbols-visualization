@@ -6,6 +6,16 @@ using Data;
 public class UIController : ChristofellElement {
     public LineController line;
 
+    public UIView View => App.view.uI;
+
+    private void Awake() {
+        App.cursorStateChanged.listOfHandlers += OnCursorStateChanged;
+    }
+
+    private void OnCursorStateChanged(object caller, CursorStateChangedEventArgs e) {
+        View.SetCanvasActivity(e.isCursorActive);
+    }
+
     private void Start() {
         InitializeToggle();
         InitializeDropdown();

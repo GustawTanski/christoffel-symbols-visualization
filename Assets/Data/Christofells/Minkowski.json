@@ -32,16 +32,5 @@
 		{ "char": "\\gamma", "position": "down" }
 	],
 	"symbol": "\\Gamma",
-	"coordinates": [
-		{ "char": "t", "description": "time" },
-		{ "char": "r", "description": "radius" },
-		{ "char": "\\theta", "description": "transversal angle" },
-		{ "char": "\\varphi", "description": "asimuthal angle" }
-	],
-	"parameters": [
-		{ "char": "\\tau", "description": "dupa" },
-		{ "char": "\\alpha", "description": "dupa v dupadupadupadupa dupadupa  dupa dupa dupadupa" },
-		{ "char": "e", "description": "dupa" },
-		{ "char": "p", "description": "dupa" }
-	]
+	"coordinates": [{ "char": "t" }, { "char": "r" }, { "char": "\\theta" }, { "char": "\\varphi" }]
 }

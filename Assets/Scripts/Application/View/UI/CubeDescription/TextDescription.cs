@@ -8,8 +8,6 @@ public class TextDescription : MonoBehaviour, IParameterDescription {
 
     private string parameter;
     private string description;
-
-    public RectTransform RectTransform => GetComponent<RectTransform>();
     public string Parameter {
         get => parameter;
         set {

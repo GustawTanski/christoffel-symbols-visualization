@@ -11,6 +11,15 @@ public partial class FlyingCameraController : ChristofellElement {
         InitializeTranslationCalculator();
         InitializeRotationCalculator();
         HideAndLockCursor();
+        DispatchCursorStateChangedEvent();
+    }
+
+    private void DispatchCursorStateChangedEvent() {
+        App.cursorStateChanged.DispatchEvent(this, new CursorStateChangedEventArgs(IsCursorActive()));
+    }
+
+    private bool IsCursorActive() {
+        return !Model.IsActive;
     }
 
     private void InitializeTranslationCalculator() {
@@ -57,6 +66,7 @@ public partial class FlyingCameraController : ChristofellElement {
     private void ToggleCursorAndActivityState() {
         ToggleCursor();
         ToggleActivityState();
+        DispatchCursorStateChangedEvent();
     }
 
     private void ToggleCursor() {

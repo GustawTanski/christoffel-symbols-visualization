@@ -7,7 +7,13 @@ public class UIView : ChristofellElement {
     public Button resetButton;
     public LineRenderer line;
 
+    public Canvas canvas;
+
     public CubeDescriptionView cubeDescription;
+
+    public void SetCanvasActivity(bool isActive) {
+        canvas.gameObject.SetActive(isActive);
+    }
 
     public void HideLine() {
         line.startWidth = line.endWidth = 0;
