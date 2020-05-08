@@ -39,7 +39,7 @@ public class CubeController : ChristofellElement {
 
     private void ChangeSpace(SpaceType space) {
         SetSpaceState(space);
-        Model.Update();
+        Model.UpdateModel();
         DispatchSpaceChangedEvent();
     }
 

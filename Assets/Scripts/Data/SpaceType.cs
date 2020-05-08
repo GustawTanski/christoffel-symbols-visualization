@@ -7,7 +7,8 @@ namespace Data {
         Minkowski,
         Schwarzschild,
         AdsSchwarzschild,
-        Kerr
+        Kerr,
+        Friedman_Robertson_Walker,
     }
 
     [Serializable]

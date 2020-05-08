@@ -3,9 +3,10 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using BetterMultidimensionalArray;
 using Data;
+using UnityEngine;
 public static class TensorPropertiesDecorator {
     private const string REGEX_BASE = @"(?<!([\\][a-zA-Z]*(?!\\))|(\\color\[[a-zA-z]*))";
-    private static readonly Regex BACKSLASH_REGEX = new Regex(@"\\", RegexOptions.Compiled);
+    private static readonly Regex ESCAPED_REGEX = new Regex(@"([\\\(\)\[\]\{\}\.\+\?\*\|])", RegexOptions.Compiled);
     private static TensorProperties properties;
     private static Regex laTeXCharacterRegex;
     private static TensorProperties.LaTeXCharacter currentLaTeXCharacter;
@@ -16,7 +17,7 @@ public static class TensorPropertiesDecorator {
     }
 
     private static List<TensorProperties.LaTeXCharacter> GetAllLaTeXCharactersToDecorate() {
-        return properties.Coordinates.Concat(properties.Parameters).ToList();
+        return properties.Parameters.Concat(properties.Coordinates).ToList();
     }
 
     private static void DecorateLaTeXCharacter(TensorProperties.LaTeXCharacter character) {
@@ -30,11 +31,11 @@ public static class TensorPropertiesDecorator {
     }
 
     private static Regex CreateLaTeXCharacterRegex() {
-        return new Regex(REGEX_BASE + DoubleBackslashes(currentLaTeXCharacter.LaTeX));
+        return new Regex(REGEX_BASE + BackslashEscapedChars(currentLaTeXCharacter.LaTeX));
     }
 
-    private static string DoubleBackslashes(string word) {
-        return BACKSLASH_REGEX.Replace(word, @"\\");
+    private static string BackslashEscapedChars(string word) {
+        return ESCAPED_REGEX.Replace(word, (match) => @"\" + match.Captures[0].Value);
     }
 
     private static string DecorateLaTeXCharacterRegexMatches(string laTeX) {
@@ -42,6 +43,7 @@ public static class TensorPropertiesDecorator {
     }
 
     private static string DecorateLaTeXCharacterRegexMatch(Match match) {
+        Debug.Log(match.Value);
         return $"{{\\color[HTML]{{{GetLaTeXCharacterColor()}}} {match.Value} }}";
     }
 

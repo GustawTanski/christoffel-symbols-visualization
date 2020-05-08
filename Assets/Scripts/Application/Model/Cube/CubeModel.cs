@@ -34,7 +34,7 @@ public class CubeModel : ChristofellElement {
 
     public TensorProperties Properties => TensorProvider.Properties;
 
-    public void Update() {
+    public void UpdateModel() {
         UpdateJsonFileOfTensorProvider();
         UpdateFormulas();
         UpdateIndexTensor();
