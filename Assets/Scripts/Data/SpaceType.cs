@@ -9,6 +9,7 @@ namespace Data {
         AdsSchwarzschild,
         Kerr,
         Friedman_Robertson_Walker,
+        Morris_Thorne
     }
 
     [Serializable]
