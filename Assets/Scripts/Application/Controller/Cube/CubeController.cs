@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class CubeController : ChristofellElement {
     public CubePlaneSlicer cubePlaneSlicer;
-
     private CubeModel Model => App.model.cube;
     private CubeView View => App.view.cube;
+
+    private IDataLoadAndSaveSystem dataSystem = new ResourceDataSystem();
 
     private void Awake() {
         SetEventListeners();
         SetZerosVisibility();
+        var resources = dataSystem.LoadAll();
+        foreach (var resource in resources) {
+            Debug.Log(resource);
+        }
+        Debug.Log(resources.Length);
     }
 
     private void SetEventListeners() {

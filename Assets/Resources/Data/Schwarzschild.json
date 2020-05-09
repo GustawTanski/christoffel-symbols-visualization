@@ -1,0 +1,75 @@
+{
+	"name": "Schwarzschild",
+	"data": [
+		[
+			["0", "-\\frac{M}{2 M r-r^2}", "0", "0"],
+			["-\\frac{M}{2 M r-r^2}", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"]
+		],
+		[
+			["-\\frac{c^2 M (2 M-r)}{r^3}", "0", "0", "0"],
+			["0", "\\frac{M}{2 M r-r^2}", "0", "0"],
+			["0", "0", "2 M-r", "0"],
+			["0", "0", "0", "\\sin ^2(\\theta ) (2 M-r)"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "\\frac{1}{r}", "0"],
+			["0", "\\frac{1}{r}", "0", "0"],
+			["0", "0", "0", "\\sin (\\theta ) (-\\cos (\\theta ))"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "\\frac{1}{r}"],
+			["0", "0", "0", "\\cot (\\theta )"],
+			["0", "\\frac{1}{r}", "\\cot (\\theta )", "0"]
+		]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\beta",
+			"position": "down"
+		},
+		{
+			"char": "\\gamma",
+			"position": "down"
+		}
+	],
+	"symbol": "\\Gamma",
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\theta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
+	"parameters": [
+		{
+			"char": "M",
+			"description": "mass",
+			"color": "#9B59B6"
+		},
+		{
+			"char": "G",
+			"description": "gravitation constant",
+			"color": "#ffff00"
+		},
+		{
+			"char": "l",
+			"description": "Schwarzschild radius",
+			"color": "#BADA55"
+		}
+	]
+}

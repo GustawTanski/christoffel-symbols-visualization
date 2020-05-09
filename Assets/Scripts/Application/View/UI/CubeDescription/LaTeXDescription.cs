@@ -21,7 +21,7 @@ public class LaTeXDescription : MonoBehaviour, IParameterDescription {
 
     public string Description {
         get => description.text;
-        set => description.text = "- " + value;
+        set => description.text = "— " + value;
     }
 
     public async void UpdateImage() {

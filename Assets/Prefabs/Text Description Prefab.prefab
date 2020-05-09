@@ -65,10 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- mass'
+  m_text: "\u2014 mass"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 388ba62e043aa5541858866bd3e150a4, type: 2}
-  m_sharedMaterial: {fileID: 21625195987193124, guid: 388ba62e043aa5541858866bd3e150a4,
+  m_fontAsset: {fileID: 11400000, guid: 02e2b852e0649184f93d34d97e1a1367, type: 2}
+  m_sharedMaterial: {fileID: 21978865902864802, guid: 02e2b852e0649184f93d34d97e1a1367,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
     characterCount: 6
     spriteCount: 0
     spaceCount: 1
-    wordCount: 2
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1

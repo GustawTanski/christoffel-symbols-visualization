@@ -25,7 +25,7 @@ public class TextDescription : MonoBehaviour, IParameterDescription {
     }
 
     private void UpdateText() {
-        GetComponent<TextMeshProUGUI>().text = $"{parameter} - {description}";
+        GetComponent<TextMeshProUGUI>().text = $"{parameter} — {description}";
     }
 
 
