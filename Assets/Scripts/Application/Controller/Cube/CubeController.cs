@@ -8,16 +8,9 @@ public class CubeController : ChristofellElement {
     private CubeModel Model => App.model.cube;
     private CubeView View => App.view.cube;
 
-    private IDataLoadAndSaveSystem dataSystem = new ResourceDataSystem();
-
     private void Awake() {
         SetEventListeners();
         SetZerosVisibility();
-        var resources = dataSystem.LoadAll();
-        foreach (var resource in resources) {
-            Debug.Log(resource);
-        }
-        Debug.Log(resources.Length);
     }
 
     private void SetEventListeners() {
@@ -39,18 +32,18 @@ public class CubeController : ChristofellElement {
     }
 
     private async void OnSpaceDropdownChanged(object sender, SpaceDropdownChangedArgs e) {
-        ChangeSpace(e.space);
+        ChangeSpace(e.spaceType);
         await UpdateTextures();
     }
 
-    private void ChangeSpace(SpaceType space) {
-        SetSpaceState(space);
+    private void ChangeSpace(string spaceType) {
+        SetSpaceState(spaceType);
         Model.UpdateModel();
         DispatchSpaceChangedEvent();
     }
 
-    private void SetSpaceState(SpaceType space) {
-        Model.space = space;
+    private void SetSpaceState(string spaceType) {
+        Model.spaceType = spaceType;
     }
 
     private void DispatchSpaceChangedEvent() {
