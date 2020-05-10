@@ -1,0 +1,61 @@
+{
+	"name": "de Sitter \n(Lemaître-Robertson form)",
+	"data": [
+		[
+			["0", "0", "0", "0"],
+			["0", "\\frac{H e^{2 H t}}{c^2}", "0", "0"],
+			["0", "0", "\\frac{H r^2 e^{2 H t}}{c^2}", "0"],
+			["0", "0", "0", "\\frac{H r^2 \\sin ^2(\\theta ) e^{2 H t}}{c^2}"]
+		],
+		[
+			["0", "H", "0", "0"],
+			["H", "0", "0", "0"],
+			["0", "0", "-r", "0"],
+			["0", "0", "0", "-r \\sin ^2(\\theta )"]
+		],
+		[
+			["0", "0", "H", "0"],
+			["0", "0", "\\frac{1}{r}", "0"],
+			["H", "\\frac{1}{r}", "0", "0"],
+			["0", "0", "0", "\\sin (\\theta ) (-\\cos (\\theta ))"]
+		],
+		[
+			["0", "0", "0", "H"],
+			["0", "0", "0", "\\frac{1}{r}"],
+			["0", "0", "0", "\\cot (\\theta )"],
+			["H", "\\frac{1}{r}", "\\cot (\\theta )", "0"]
+		]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\beta",
+			"position": "down"
+		},
+		{
+			"char": "\\gamma",
+			"position": "down"
+		}
+	],
+	"symbol": "\\Gamma",
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\theta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
+	"parameters": [
+		{ "char": "H", "description": "Hubble Parameter (time-independent)", "color": "#ddaa00" }
+	]
+}
