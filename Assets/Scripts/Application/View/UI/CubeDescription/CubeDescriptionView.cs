@@ -62,7 +62,7 @@ public partial class CubeDescriptionView : ChristofellElement {
         currentParameter = parameter;
         try {
             TryCreatingTextDescription();
-        } catch (KeyNotFoundException _) {
+        } catch (KeyNotFoundException) {
             CreateLaTeXDescription();
         }
         return currentDescAsset;

@@ -8,7 +8,7 @@ public class ArrowView : ChristofellElement {
     private Texture2D texture;
     private TensorProperties properties;
 
-    private async void Start() {
+    private void Start() {
         SetListeners();
     }
 

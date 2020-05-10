@@ -43,7 +43,6 @@ public static class TensorPropertiesDecorator {
     }
 
     private static string DecorateLaTeXCharacterRegexMatch(Match match) {
-        Debug.Log(match.Value);
         return $"{{\\color[HTML]{{{GetLaTeXCharacterColor()}}} {match.Value} }}";
     }
 

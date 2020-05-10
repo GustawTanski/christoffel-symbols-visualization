@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
@@ -13,6 +14,12 @@ public class CubeController : ChristofellElement {
         SetZerosVisibility();
     }
 
+    // private void Start() {
+    //     var system = new EasySaveDataSystem();
+    //     foreach(var asset in Model.SpaceDictionaryNew.Values) {
+    //         system.Save(asset);
+    //     }
+    // }
     private void SetEventListeners() {
         App.zerosHided.listOfHandlers += OnZerosHided;
         App.spaceDropdownChanged.listOfHandlers += OnSpaceDropdownChanged;
