@@ -5,7 +5,8 @@ using BetterMultidimensionalArray;
 using Data;
 using UnityEngine;
 public static class TensorPropertiesDecorator {
-    private const string REGEX_BASE = @"(?<!([\\][a-zA-Z]*(?!\\))|(\\color\[[a-zA-z]*))";
+    private const string REGEX_PREFIX = @"(?<!([\\][a-zA-Z]*(?!\\))|(\\color\[[a-zA-z]*))";
+    private const string REGEX_SUFFIX = @"(?!_)";
     private static readonly Regex ESCAPED_REGEX = new Regex(@"([\\\(\)\[\]\{\}\.\+\?\*\|])", RegexOptions.Compiled);
     private static TensorProperties properties;
     private static Regex laTeXCharacterRegex;
@@ -31,7 +32,7 @@ public static class TensorPropertiesDecorator {
     }
 
     private static Regex CreateLaTeXCharacterRegex() {
-        return new Regex(REGEX_BASE + BackslashEscapedChars(currentLaTeXCharacter.LaTeX));
+        return new Regex(REGEX_PREFIX + BackslashEscapedChars(currentLaTeXCharacter.LaTeX) + REGEX_SUFFIX);
     }
 
     private static string BackslashEscapedChars(string word) {
