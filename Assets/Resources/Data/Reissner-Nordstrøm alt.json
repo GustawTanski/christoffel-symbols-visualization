@@ -1,0 +1,68 @@
+{
+	"name": "Reissner-Nordstrøm alt",
+	"data": [
+		[
+			["0", "\\frac{r r_s-2 \\rho  Q^2}{2 \\rho  Q^2 r+2 r^3-2 r^2 r_s}", "0", "0"],
+			["\\frac{r r_s-2 \\rho  Q^2}{2 \\rho  Q^2 r+2 r^3-2 r^2 r_s}", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"]
+		],
+		[
+			[
+				"\\frac{c^2 \\left(\\rho  Q^2+r^2-r r_s\\right) \\left(r r_s-2 \\rho  Q^2\\right)}{2 r^5}",
+				"0",
+				"0",
+				"0"
+			],
+			["0", "-\\frac{r r_s-2 \\rho  Q^2}{2 \\rho  Q^2 r+2 r^3-2 r^2 r_s}", "0", "0"],
+			["0", "0", "-\\frac{\\rho  Q^2}{r}+r_s-r", "0"],
+			["0", "0", "0", "-\\frac{\\sin ^2(\\theta ) \\left(\\rho  Q^2+r^2-r r_s\\right)}{r}"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "\\frac{1}{r}", "0"],
+			["0", "\\frac{1}{r}", "0", "0"],
+			["0", "0", "0", "\\sin (\\theta ) (-\\cos (\\theta ))"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "\\frac{1}{r}"],
+			["0", "0", "0", "\\cot (\\theta )"],
+			["0", "\\frac{1}{r}", "\\cot (\\theta )", "0"]
+		]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\beta",
+			"position": "down"
+		},
+		{
+			"char": "\\gamma",
+			"position": "down"
+		}
+	],
+	"symbol": "\\Gamma",
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\theta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
+	"parameters": [
+		{ "char": "r_s", "description": "Schwarzschild radius", "color": "#aa0000" },
+		{ "char": "Q", "description": "black hole's charge", "color": "#ddaa00" },
+		{ "char": "\\rho", "description": "constant" }
+	]
+}

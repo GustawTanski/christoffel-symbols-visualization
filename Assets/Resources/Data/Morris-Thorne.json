@@ -1,0 +1,60 @@
+{
+	"name": "Morris-Thorne",
+	"data": [
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "-l", "0"],
+			["0", "0", "0", "-l \\sin ^2(\\theta )"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "\\frac{l}{b_0^2+l^2}", "0"],
+			["0", "\\frac{l}{b_0^2+l^2}", "0", "0"],
+			["0", "0", "0", "\\sin (\\theta ) (-\\cos (\\theta ))"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "\\frac{l}{b_0^2+l^2}"],
+			["0", "0", "0", "\\cot (\\theta )"],
+			["0", "\\frac{l}{b_0^2+l^2}", "\\cot (\\theta )", "0"]
+		]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\beta",
+			"position": "down"
+		},
+		{
+			"char": "\\gamma",
+			"position": "down"
+		}
+	],
+	"symbol": "\\Gamma",
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "l",
+			"description": "radial coordinate"
+		},
+		{
+			"char": "\\theta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
+	"parameters": [{ "char": "b_0", "description": "throat radius of wormhole", "color": "#5577ff" }]
+}

@@ -46,12 +46,12 @@ public class UIController : ChristofellElement {
     }
 
     private void SetDropdownState() {
-        App.view.uI.dropdown.value = (int) App.model.cube.space;
+        App.view.uI.dropdown.value = 0;
         OnSpaceDropdownChanged(App.view.uI.dropdown.value);
     }
 
     private void PopulateDropdown() {
-        List<string> names = Enum.GetNames(typeof(SpaceType)).ToList();
+        List<string> names = App.model.cube.SpaceDictionaryNew.Keys.ToList();
         App.view.uI.dropdown.AddOptions(names);
     }
 
@@ -60,7 +60,7 @@ public class UIController : ChristofellElement {
     }
 
     private void OnSpaceDropdownChanged(int value) {
-        SpaceDropdownChangedArgs e = new SpaceDropdownChangedArgs((SpaceType) value);
+        SpaceDropdownChangedArgs e = new SpaceDropdownChangedArgs(View.dropdown.options[value].text);
         App.spaceDropdownChanged.DispatchEvent(App.view.uI.dropdown, e);
     }
 

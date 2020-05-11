@@ -1,11 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
 
 public class CubeController : ChristofellElement {
     public CubePlaneSlicer cubePlaneSlicer;
-
     private CubeModel Model => App.model.cube;
     private CubeView View => App.view.cube;
 
@@ -14,6 +14,12 @@ public class CubeController : ChristofellElement {
         SetZerosVisibility();
     }
 
+    // private void Start() {
+    //     var system = new EasySaveDataSystem();
+    //     foreach(var asset in Model.SpaceDictionaryNew.Values) {
+    //         system.Save(asset);
+    //     }
+    // }
     private void SetEventListeners() {
         App.zerosHided.listOfHandlers += OnZerosHided;
         App.spaceDropdownChanged.listOfHandlers += OnSpaceDropdownChanged;
@@ -33,18 +39,18 @@ public class CubeController : ChristofellElement {
     }
 
     private async void OnSpaceDropdownChanged(object sender, SpaceDropdownChangedArgs e) {
-        ChangeSpace(e.space);
+        ChangeSpace(e.spaceType);
         await UpdateTextures();
     }
 
-    private void ChangeSpace(SpaceType space) {
-        SetSpaceState(space);
-        Model.Update();
+    private void ChangeSpace(string spaceType) {
+        SetSpaceState(spaceType);
+        Model.UpdateModel();
         DispatchSpaceChangedEvent();
     }
 
-    private void SetSpaceState(SpaceType space) {
-        Model.space = space;
+    private void SetSpaceState(string spaceType) {
+        Model.spaceType = spaceType;
     }
 
     private void DispatchSpaceChangedEvent() {

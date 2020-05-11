@@ -1,0 +1,84 @@
+{
+	"name": "TaubNUT",
+	"data": [
+		[
+			["0", "0", "-\\frac{2 \\Delta  l^2 \\cot (\\theta )}{\\Sigma ^2}", "0"],
+			["0", "0", "0", "0"],
+			[
+				"-\\frac{2 \\Delta  l^2 \\cot (\\theta )}{\\Sigma ^2}",
+				"0",
+				"0",
+				"-\\frac{l \\csc (\\theta ) \\left(\\cos (2 \\theta ) \\left(4 \\Delta  l^2+\\Sigma ^2\\right)+4 \\Delta  l^2+3 \\Sigma ^2\\right)}{2 \\Sigma ^2}"
+			],
+			[
+				"0",
+				"0",
+				"-\\frac{l \\csc (\\theta ) \\left(\\cos (2 \\theta ) \\left(4 \\Delta  l^2+\\Sigma ^2\\right)+4 \\Delta  l^2+3 \\Sigma ^2\\right)}{2 \\Sigma ^2}",
+				"0"
+			]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"]
+		],
+		[
+			["0", "0", "0", "-\\frac{\\Delta  l \\sin (\\theta )}{\\Sigma ^2}"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			[
+				"-\\frac{\\Delta  l \\sin (\\theta )}{\\Sigma ^2}",
+				"0",
+				"0",
+				"-\\frac{\\sin (\\theta ) \\cos (\\theta ) \\left(4 \\Delta  l^2+\\Sigma ^2\\right)}{\\Sigma ^2}"
+			]
+		],
+		[
+			["0", "0", "\\frac{\\Delta  l \\csc (\\theta )}{\\Sigma ^2}", "0"],
+			["0", "0", "0", "0"],
+			[
+				"\\frac{\\Delta  l \\csc (\\theta )}{\\Sigma ^2}",
+				"0",
+				"0",
+				"\\cot (\\theta ) \\left(\\frac{2 \\Delta  l^2}{\\Sigma ^2}+1\\right)"
+			],
+			["0", "0", "\\cot (\\theta ) \\left(\\frac{2 \\Delta  l^2}{\\Sigma ^2}+1\\right)", "0"]
+		]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\beta",
+			"position": "down"
+		},
+		{
+			"char": "\\gamma",
+			"position": "down"
+		}
+	],
+	"symbol": "\\Gamma",
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\theta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
+	"parameters": [
+		{ "char": "M", "description": "mass of the black hole", "color": "#aa0000" },
+		{ "char": "l", "description": "magnetic monopol strength", "color": "#ad9aaa" },
+		{"char": "\\Sigma", "color": "#aaaa00"},
+		{"char": "\\Delta", "color": "#aa00aa"}
+	]
+}

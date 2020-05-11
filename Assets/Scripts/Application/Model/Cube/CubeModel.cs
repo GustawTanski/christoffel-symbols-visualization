@@ -1,9 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
 public class CubeModel : ChristofellElement {
-    public SpaceType space = SpaceType.Minkowski;
-    public SpaceTypeDictionary spaceDictionary;
     public float elementSize = 12;
     public bool areZerosVisible;
 
@@ -32,9 +32,17 @@ public class CubeModel : ChristofellElement {
         set;
     } = Vector3Int.one * -1;
 
+    public Dictionary<string, TextAsset> SpaceDictionaryNew => SpaceDataProvider.spacesData;
+    public string spaceType;
+
     public TensorProperties Properties => TensorProvider.Properties;
 
-    public void Update() {
+    private void Awake() {
+        SpaceDataProvider.LoadResources();
+        spaceType = SpaceDictionaryNew.Keys.First();
+    }
+
+    public void UpdateModel() {
         UpdateJsonFileOfTensorProvider();
         UpdateFormulas();
         UpdateIndexTensor();
@@ -54,9 +62,8 @@ public class CubeModel : ChristofellElement {
     }
 
     private TextAsset GetJsonFile() {
-        return spaceDictionary[space];
+        return SpaceDictionaryNew[spaceType];
     }
-
     public async Task FetchAllTextures() {
         await Task.WhenAll(FetchIndexTextures(), FetchFormulaTextures());
     }
