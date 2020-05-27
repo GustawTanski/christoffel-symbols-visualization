@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Data;
-using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CubeController : ChristofellElement {
     public CubePlaneSlicer cubePlaneSlicer;
@@ -90,7 +88,7 @@ public class CubeController : ChristofellElement {
     }
 
     private bool IsTabKeyUp() {
-        return Input.GetKeyUp(KeyCode.Tab);
+        return Keyboard.current.tabKey.wasReleasedThisFrame;
     }
 
     private void ToggleIndexes() {
