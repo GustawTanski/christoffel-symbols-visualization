@@ -64,10 +64,14 @@ public class TranslationCalculator {
     }
 
     private Vector3 GetVerticalTranslation() {
-        if (Keyboard.current.qKey.isPressed && Keyboard.current.eKey.isPressed) return Vector3.zero;
-        if (Keyboard.current.qKey.isPressed) return GetVerticalTranslationVector() * GetScaledTranslationBase();
-        if (Keyboard.current.eKey.isPressed) return -GetVerticalTranslationVector() * GetScaledTranslationBase();
+        if (IsKeyPressed("Q") && IsKeyPressed("E")) return Vector3.zero;
+        if (IsKeyPressed("Q")) return GetVerticalTranslationVector() * GetScaledTranslationBase();
+        if (IsKeyPressed("E")) return -GetVerticalTranslationVector() * GetScaledTranslationBase();
         return Vector3.zero;
+    }
+
+    private bool IsKeyPressed(string key) {
+        return Keyboard.current[key].IsPressed();
     }
 
     private Vector3 GetVerticalTranslationVector() {
