@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 public class RotationCalculator {
+
+    private InputAction mouseDeltaAction;
     private FlyingCameraModel model;
     public Quaternion Rotation {
         get;
         private set;
     }
 
-    public RotationCalculator(FlyingCameraModel model) {
+    public RotationCalculator(FlyingCameraModel model, InputAction mouseDeltaAction) {
         this.model = model;
+        this.mouseDeltaAction = mouseDeltaAction;
     }
 
     public void Calculate() {
@@ -17,8 +21,9 @@ public class RotationCalculator {
     }
 
     private void ComputeAxisAngles() {
-        model.FromXAxisAngle += Input.GetAxis("Mouse X") * GetRotationBase();
-        model.FromYAxisAngle += Input.GetAxis("Mouse Y") * GetRotationBase();
+        Vector2 mouseDelta = mouseDeltaAction.ReadValue<Vector2>();
+        model.FromXAxisAngle += mouseDelta.x * GetRotationBase();
+        model.FromYAxisAngle += mouseDelta.y * GetRotationBase();
         model.FromYAxisAngle = Mathf.Clamp(model.FromYAxisAngle, -90, 90);
     }
 

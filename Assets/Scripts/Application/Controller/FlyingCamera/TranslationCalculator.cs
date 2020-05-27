@@ -1,15 +1,21 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 public class TranslationCalculator {
-    public Vector3 Translation{
+    public Vector3 Translation {
         get;
         private set;
     }
+
+    private InputAction verticalAction;
+    private InputAction horizontalAction;
     private FlyingCameraView view;
     private FlyingCameraModel model;
 
-    public TranslationCalculator( FlyingCameraView view, FlyingCameraModel model) {
+    public TranslationCalculator(FlyingCameraView view, FlyingCameraModel model, InputAction verticalAction, InputAction horizontalAction) {
         this.view = view;
         this.model = model;
+        this.verticalAction = verticalAction;
+        this.horizontalAction = horizontalAction;
     }
 
     public void Calculate() {
@@ -24,7 +30,7 @@ public class TranslationCalculator {
     }
 
     private Vector3 GetForwardTranslationVector() {
-        return view.transform.forward * Input.GetAxis("Vertical");
+        return view.transform.forward * verticalAction.ReadValue<float>();
     }
 
     private float GetScaledTranslationBase() {
@@ -46,21 +52,21 @@ public class TranslationCalculator {
     }
 
     private Vector3 GetHorizontalTranslationVector() {
-        return view.transform.right * Input.GetAxis("Horizontal");
+        return view.transform.right * horizontalAction.ReadValue<float>();
     }
 
     private bool IsShiftPressed() {
-        return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        return Keyboard.current.shiftKey.isPressed;
     }
 
     private bool IsControlPressed() {
-        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+        return Keyboard.current.ctrlKey.isPressed;
     }
 
     private Vector3 GetVerticalTranslation() {
-        if (Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.E)) return Vector3.zero;
-        if (Input.GetKey(KeyCode.Q)) return GetVerticalTranslationVector() * GetScaledTranslationBase();
-        if (Input.GetKey(KeyCode.E)) return -GetVerticalTranslationVector() * GetScaledTranslationBase();
+        if (Keyboard.current.qKey.isPressed && Keyboard.current.eKey.isPressed) return Vector3.zero;
+        if (Keyboard.current.qKey.isPressed) return GetVerticalTranslationVector() * GetScaledTranslationBase();
+        if (Keyboard.current.eKey.isPressed) return -GetVerticalTranslationVector() * GetScaledTranslationBase();
         return Vector3.zero;
     }
 

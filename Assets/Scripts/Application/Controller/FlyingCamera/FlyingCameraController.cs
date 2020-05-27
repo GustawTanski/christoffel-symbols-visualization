@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 public partial class FlyingCameraController : ChristofellElement {
 
     public MiniCubeController miniCube;
+    public InputAction mouseDeltaAction;
+    public InputAction verticalAction;
+    public InputAction horizontalAction;
     private TranslationCalculator translationCalculator;
     private RotationCalculator rotationCalculator;
     private FlyingCameraModel Model => App.model.flyingCamera;
@@ -23,11 +27,11 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void InitializeTranslationCalculator() {
-        translationCalculator = new TranslationCalculator(View, Model);
+        translationCalculator = new TranslationCalculator(View, Model, verticalAction, horizontalAction);
     }
 
     private void InitializeRotationCalculator() {
-        rotationCalculator = new RotationCalculator(Model);
+        rotationCalculator = new RotationCalculator(Model, mouseDeltaAction);
     }
 
     private void HideAndLockCursor() {
@@ -45,7 +49,7 @@ public partial class FlyingCameraController : ChristofellElement {
 
     private void Update() {
         if (Model.IsActive) RotateAndMove();
-        if (Input.GetKeyDown(KeyCode.Escape)) ToggleCursorAndActivityState();
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) ToggleCursorAndActivityState();
     }
 
     private void RotateAndMove() {
@@ -93,5 +97,16 @@ public partial class FlyingCameraController : ChristofellElement {
 
     private void ToggleActivityState() {
         Model.IsActive = !Model.IsActive;
+    }
+
+    private void OnEnable() {
+        mouseDeltaAction.Enable();
+        verticalAction.Enable();
+        horizontalAction.Enable();
+    }
+
+    private void OnDisable() {
+        mouseDeltaAction.Disable();
+        horizontalAction.Enable();
     }
 }
