@@ -14,7 +14,7 @@ public partial class FlyingCameraController : ChristofellElement {
     private void Start() {
         InitializeTranslationCalculator();
         InitializeRotationCalculator();
-        HideAndLockCursor();
+        // HideAndLockCursor();
         DispatchCursorStateChangedEvent();
     }
 
@@ -23,7 +23,7 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private bool IsCursorActive() {
-        return !Model.IsActive;
+        return !Model.isActive;
     }
 
     private void InitializeTranslationCalculator() {
@@ -48,7 +48,7 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void Update() {
-        if (Model.IsActive) RotateAndMove();
+        if (Model.isActive) RotateAndMove();
         if (Keyboard.current.escapeKey.wasPressedThisFrame) ToggleCursorAndActivityState();
     }
 
@@ -96,7 +96,7 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void ToggleActivityState() {
-        Model.IsActive = !Model.IsActive;
+        Model.isActive = !Model.isActive;
     }
 
     private void OnEnable() {
