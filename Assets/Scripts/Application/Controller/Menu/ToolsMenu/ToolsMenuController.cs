@@ -6,14 +6,6 @@ public class ToolsMenuController : ChristofellElement {
 
     public ToolsMenuView View => App.view.menu.toolsMenu;
 
-    private void Awake() {
-        App.cursorStateChanged.listOfHandlers += OnCursorStateChanged;
-    }
-
-    private void OnCursorStateChanged(object caller, CursorStateChangedEventArgs e) {
-        View.SetCanvasActivity(e.isCursorActive);
-    }
-
     private void Start() {
         InitializeToggle();
         InitializeDropdown();

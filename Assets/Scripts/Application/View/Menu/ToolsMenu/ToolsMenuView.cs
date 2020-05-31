@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToolsMenuView : ChristofellElement {
+public class ToolsMenuView : MenuElement {
     public Dropdown dropdown;
     public Toggle zerosToggle;
     public Button resetButton;
@@ -10,10 +10,6 @@ public class ToolsMenuView : ChristofellElement {
     public Canvas canvas;
 
     public CubeDescriptionView cubeDescription;
-
-    public void SetCanvasActivity(bool isActive) {
-        canvas.gameObject.SetActive(isActive);
-    }
 
     public void HideLine() {
         line.startWidth = line.endWidth = 0;

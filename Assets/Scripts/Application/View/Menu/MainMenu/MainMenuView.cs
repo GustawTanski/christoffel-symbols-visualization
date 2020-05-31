@@ -1,3 +1,3 @@
-public class MainMenuView : ChristofellElement {
+public class MainMenuView : MenuElement {
 
 }

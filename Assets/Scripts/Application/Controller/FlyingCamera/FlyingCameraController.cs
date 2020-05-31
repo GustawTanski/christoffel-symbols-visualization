@@ -14,16 +14,8 @@ public partial class FlyingCameraController : ChristofellElement {
     private void Start() {
         InitializeTranslationCalculator();
         InitializeRotationCalculator();
-        // HideAndLockCursor();
-        DispatchCursorStateChangedEvent();
-    }
-
-    private void DispatchCursorStateChangedEvent() {
-        App.cursorStateChanged.DispatchEvent(this, new CursorStateChangedEventArgs(IsCursorActive()));
-    }
-
-    private bool IsCursorActive() {
-        return !Model.isActive;
+        Model.isActive = App.model.menu.isMenuOn;
+        if (!Model.isActive) HideAndLockCursor();
     }
 
     private void InitializeTranslationCalculator() {
@@ -49,7 +41,6 @@ public partial class FlyingCameraController : ChristofellElement {
 
     private void Update() {
         if (Model.isActive) RotateAndMove();
-        if (Keyboard.current.escapeKey.wasPressedThisFrame) ToggleCursorAndActivityState();
     }
 
     private void RotateAndMove() {
@@ -67,19 +58,9 @@ public partial class FlyingCameraController : ChristofellElement {
         View.Translate(translationCalculator.Translation);
     }
 
-    private void ToggleCursorAndActivityState() {
-        ToggleCursor();
-        ToggleActivityState();
-        DispatchCursorStateChangedEvent();
-    }
-
-    private void ToggleCursor() {
-        if (IsCursorLocked()) FreeAndShowCursor();
+    private void OnMenuChanged(object caller, MenuChangedArgs e) {
+        if (e.isOn) FreeAndShowCursor();
         else HideAndLockCursor();
-    }
-
-    private bool IsCursorLocked() {
-        return Cursor.lockState == CursorLockMode.Locked;
     }
 
     private void FreeAndShowCursor() {
@@ -95,10 +76,6 @@ public partial class FlyingCameraController : ChristofellElement {
         Cursor.visible = true;
     }
 
-    private void ToggleActivityState() {
-        Model.isActive = !Model.isActive;
-    }
-
     private void OnEnable() {
         mouseDeltaAction.Enable();
         verticalAction.Enable();
@@ -107,6 +84,7 @@ public partial class FlyingCameraController : ChristofellElement {
 
     private void OnDisable() {
         mouseDeltaAction.Disable();
-        horizontalAction.Enable();
+        verticalAction.Disable();
+        horizontalAction.Disable();
     }
 }
