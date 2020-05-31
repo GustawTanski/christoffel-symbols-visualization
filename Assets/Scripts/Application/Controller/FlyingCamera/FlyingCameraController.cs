@@ -11,22 +11,31 @@ public partial class FlyingCameraController : ChristofellElement {
     private FlyingCameraModel Model => App.model.flyingCamera;
     private FlyingCameraView View => App.view.flyingCamera;
 
-    private void Start() {
-        InitializeTranslationCalculator();
-        InitializeRotationCalculator();
-        Model.isActive = App.model.menu.isMenuOn;
-        if (!Model.isActive) HideAndLockCursor();
+    private void Awake() {
+        App.menuChanged.listOfHandlers += OnMenuChanged;
     }
 
-    private void InitializeTranslationCalculator() {
-        translationCalculator = new TranslationCalculator(View, Model, verticalAction, horizontalAction);
+    private void OnMenuChanged(object caller, MenuChangedArgs e) {
+        if (e.isOn) FreeAndShowCursor();
+        else HideAndLockCursor();
     }
 
-    private void InitializeRotationCalculator() {
-        rotationCalculator = new RotationCalculator(Model, mouseDeltaAction);
+    private void FreeAndShowCursor() {
+        Model.isActive = false;
+        FreeCursor();
+        ShowCursor();
+    }
+
+    private void FreeCursor() {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void ShowCursor() {
+        Cursor.visible = true;
     }
 
     private void HideAndLockCursor() {
+        Model.isActive = true;
         HideCursor();
         LockCursor();
     }
@@ -37,6 +46,21 @@ public partial class FlyingCameraController : ChristofellElement {
 
     private void LockCursor() {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Start() {
+        InitializeTranslationCalculator();
+        InitializeRotationCalculator();
+        Model.isActive = !App.model.menu.isMenuOn;
+        if (Model.isActive) HideAndLockCursor();
+    }
+
+    private void InitializeTranslationCalculator() {
+        translationCalculator = new TranslationCalculator(View, Model, verticalAction, horizontalAction);
+    }
+
+    private void InitializeRotationCalculator() {
+        rotationCalculator = new RotationCalculator(Model, mouseDeltaAction);
     }
 
     private void Update() {
@@ -56,24 +80,6 @@ public partial class FlyingCameraController : ChristofellElement {
     private void Move() {
         translationCalculator.Calculate();
         View.Translate(translationCalculator.Translation);
-    }
-
-    private void OnMenuChanged(object caller, MenuChangedArgs e) {
-        if (e.isOn) FreeAndShowCursor();
-        else HideAndLockCursor();
-    }
-
-    private void FreeAndShowCursor() {
-        FreeCursor();
-        ShowCursor();
-    }
-
-    private void FreeCursor() {
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    private void ShowCursor() {
-        Cursor.visible = true;
     }
 
     private void OnEnable() {

@@ -25,16 +25,9 @@ public class MenuController : ChristofellElement {
         Model.currentMenu.gameObject.SetActive(e.isOn);
     }
 
-
     private void Start() {
-        foreach (var menu in menus) {
-            menu.gameObject.SetActive(false);
-        }
-
-        if (Model.isMenuOn) {
-            Debug.Log("Pieski");
-            Model.currentMenu.gameObject.SetActive(true);
-        }
+        foreach (var menu in menus) menu.gameObject.SetActive(false);
+        if (Model.isMenuOn) Model.currentMenu.gameObject.SetActive(true);
     }
 
     private void Update() {
