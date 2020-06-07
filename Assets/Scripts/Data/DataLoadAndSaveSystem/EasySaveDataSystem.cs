@@ -1,6 +1,6 @@
-using System.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TigerForge;
 using UnityEngine;
 
@@ -36,7 +36,7 @@ namespace Data {
             EasyFileSave file = new EasyFileSave(asset.name);
             file.Add("text", asset.text);
             file.Save();
-            AddToFileNames(asset.name);
+            if (!allFileNames.Contains(asset.name)) AddToFileNames(asset.name);
         }
 
         private void AddToFileNames(string name) {

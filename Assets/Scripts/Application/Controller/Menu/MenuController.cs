@@ -3,6 +3,8 @@ public class MenuController : ChristofellElement {
     public MainMenuController mainMenu;
     public ToolsMenuController toolsMenu;
 
+    public GraphicsController graphics;
+
     public MenuElement[] menus;
 
     private MenuModel Model => App.model.menu;
