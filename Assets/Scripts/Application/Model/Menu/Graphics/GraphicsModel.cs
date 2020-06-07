@@ -29,24 +29,68 @@ public class GraphicsModel : ChristofellElement {
     private bool isFullScreen;
 
     private void Awake() {
-        Resolutions = Screen.resolutions
+        InitializeResolutions();
+        InitializeFullScreenData();
+        InitializeResolutionData();
+    }
+
+    private void InitializeResolutions() {
+        Resolutions = GetSortedResolutions();
+    }
+
+    private List<Resolution> GetSortedResolutions() {
+        return Screen.resolutions
             .Where(res => res.refreshRate == 60)
             .OrderByDescending(res => res.height)
             .OrderByDescending(res => res.width)
             .ToList();
-        if (PlayerPrefs.HasKey("Full Screen"))
-            isFullScreen = bool.Parse(PlayerPrefs.GetString("Full Screen"));
-        else IsFullScreen = Screen.fullScreen;
+    }
 
-        if (PlayerPrefs.HasKey("Resolution.width") &&
+    private void InitializeFullScreenData() {
+        if (IsFullScreenDataSaved()) SetFullScreenDataFromMemory();
+        else SetFullScreenInfoFromScreen();
+    }
+
+    private bool IsFullScreenDataSaved() {
+        return PlayerPrefs.HasKey("Full Screen");
+    }
+
+    private void SetFullScreenDataFromMemory() {
+        isFullScreen = ReadFullScreenInfo();
+    }
+
+    private bool ReadFullScreenInfo() {
+        return bool.Parse(PlayerPrefs.GetString("Full Screen"));
+    }
+
+    private void SetFullScreenInfoFromScreen() {
+        IsFullScreen = Screen.fullScreen;
+    }
+
+    private void InitializeResolutionData() {
+        if (IsWholeResolutionDataSaved()) SetResolutionDataFromMemory();
+        else SetResolutionDataFromScreen();
+    }
+
+    private bool IsWholeResolutionDataSaved() {
+        return PlayerPrefs.HasKey("Resolution.width") &&
             PlayerPrefs.HasKey("Resolution.height") &&
-            PlayerPrefs.HasKey("Resolution.refreshRate")) {
-            resolution = new Resolution() {
-                width = PlayerPrefs.GetInt("Resolution.width"),
+            PlayerPrefs.HasKey("Resolution.refreshRate");
+    }
+
+    private void SetResolutionDataFromMemory() {
+        resolution = ReadResolutionData();
+    }
+
+    private Resolution ReadResolutionData() {
+        return new Resolution() {
+            width = PlayerPrefs.GetInt("Resolution.width"),
                 height = PlayerPrefs.GetInt("Resolution.height"),
                 refreshRate = PlayerPrefs.GetInt("Resolution.refreshRate")
-            };
-        } else Resolution = Screen.currentResolution;
+        };
+    }
 
+    private void SetResolutionDataFromScreen() {
+        Resolution = Screen.currentResolution;
     }
 }
