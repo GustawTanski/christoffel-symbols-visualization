@@ -16,43 +16,38 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void OnMenuChanged(object caller, MenuChangedArgs e) {
-        if (e.isOn) FreeAndShowCursor();
-        else HideAndLockCursor();
+        SetCameraActive(!e.isOn);
     }
 
-    private void FreeAndShowCursor() {
-        Model.isActive = false;
-        FreeCursor();
-        ShowCursor();
+    private void SetCameraActive(bool isCameraActive) {
+        if (isCameraActive) ActivateCamera();
+        else DisactivateCamera();
     }
 
-    private void FreeCursor() {
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    private void ShowCursor() {
-        Cursor.visible = true;
-    }
-
-    private void HideAndLockCursor() {
+    private void ActivateCamera() {
         Model.isActive = true;
-        HideCursor();
-        LockCursor();
+        DisactivateCursor();
     }
 
-    private void HideCursor() {
+    private void DisactivateCursor() {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void LockCursor() {
-        Cursor.lockState = CursorLockMode.Locked;
+    private void DisactivateCamera() {
+        Model.isActive = false;
+        ActivateCursor();
+    }
+
+    private void ActivateCursor() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Start() {
         InitializeTranslationCalculator();
         InitializeRotationCalculator();
-        Model.isActive = !App.model.menu.isMenuOn;
-        if (Model.isActive) HideAndLockCursor();
+        InitializeCamera();
     }
 
     private void InitializeTranslationCalculator() {
@@ -61,6 +56,10 @@ public partial class FlyingCameraController : ChristofellElement {
 
     private void InitializeRotationCalculator() {
         rotationCalculator = new RotationCalculator(Model, mouseDeltaAction);
+    }
+
+    private void InitializeCamera() {
+        SetCameraActive(!App.model.menu.isMenuOn);
     }
 
     private void Update() {
