@@ -6,16 +6,14 @@ public class TranslationCalculator {
         private set;
     }
 
-    private InputAction verticalAction;
-    private InputAction horizontalAction;
+    private InputAction moveAction;
     private FlyingCameraView view;
     private FlyingCameraModel model;
 
-    public TranslationCalculator(FlyingCameraView view, FlyingCameraModel model, InputAction verticalAction, InputAction horizontalAction) {
+    public TranslationCalculator(FlyingCameraView view, FlyingCameraModel model, InputAction moveAction) {
         this.view = view;
         this.model = model;
-        this.verticalAction = verticalAction;
-        this.horizontalAction = horizontalAction;
+        this.moveAction = moveAction;
     }
 
     public void Calculate() {
@@ -30,7 +28,7 @@ public class TranslationCalculator {
     }
 
     private Vector3 GetForwardTranslationVector() {
-        return view.transform.forward * verticalAction.ReadValue<float>();
+        return view.transform.forward * moveAction.ReadValue<Vector2>().y;
     }
 
     private float GetScaledTranslationBase() {
@@ -52,7 +50,7 @@ public class TranslationCalculator {
     }
 
     private Vector3 GetHorizontalTranslationVector() {
-        return view.transform.right * horizontalAction.ReadValue<float>();
+        return view.transform.right * moveAction.ReadValue<Vector2>().x;
     }
 
     private bool IsShiftPressed() {

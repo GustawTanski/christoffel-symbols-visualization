@@ -4,8 +4,7 @@ public partial class FlyingCameraController : ChristofellElement {
 
     public MiniCubeController miniCube;
     public InputAction mouseDeltaAction;
-    public InputAction verticalAction;
-    public InputAction horizontalAction;
+    public InputAction moveAction;
     private TranslationCalculator translationCalculator;
     private RotationCalculator rotationCalculator;
     private FlyingCameraModel Model => App.model.flyingCamera;
@@ -51,7 +50,7 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void InitializeTranslationCalculator() {
-        translationCalculator = new TranslationCalculator(View, Model, verticalAction, horizontalAction);
+        translationCalculator = new TranslationCalculator(View, Model, moveAction);
     }
 
     private void InitializeRotationCalculator() {
@@ -83,13 +82,11 @@ public partial class FlyingCameraController : ChristofellElement {
 
     private void OnEnable() {
         mouseDeltaAction.Enable();
-        verticalAction.Enable();
-        horizontalAction.Enable();
+        moveAction.Enable();
     }
 
     private void OnDisable() {
         mouseDeltaAction.Disable();
-        verticalAction.Disable();
-        horizontalAction.Disable();
+        moveAction.Disable();
     }
 }
