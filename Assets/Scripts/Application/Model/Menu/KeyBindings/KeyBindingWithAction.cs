@@ -14,6 +14,15 @@ public class KeyBindingWithAction : KeyBinding {
         this.index = index;
     }
 
+    public KeyBindingWithAction(string key, string commandName, InputAction action, int index) : base(key, commandName) {
+        this.action = action;
+        this.index = index;
+    }
+    public KeyBindingWithAction(char key, string commandName, InputAction action, int index) : base(key, commandName) {
+        this.action = action;
+        this.index = index;
+    }
+
     public override void SetKey(string key) {
         ChangeActionBinding(key);
         base.SetKey(key);
@@ -27,3 +36,4 @@ public class KeyBindingWithAction : KeyBinding {
         ChangeActionBinding(key.ToString());
         base.SetKey(key);
     }
+}
