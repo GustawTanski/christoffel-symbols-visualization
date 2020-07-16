@@ -50,7 +50,7 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void InitializeTranslationCalculator() {
-        translationCalculator = new TranslationCalculator(View, Model, moveAction);
+        translationCalculator = new TranslationCalculator(View, Model, App.model.menu.keyBindings, moveAction);
     }
 
     private void InitializeRotationCalculator() {

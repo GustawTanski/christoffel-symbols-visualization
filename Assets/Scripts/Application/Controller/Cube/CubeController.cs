@@ -78,7 +78,7 @@ public class CubeController : ChristofellElement {
     }
 
     private void Update() {
-        if (IsTabKeyUp()) ToggleIndexes();
+        if (IsIndexToggleKeyUp()) ToggleIndexes();
         View.DeselectAllElements();
         foreach (var plane in cubePlaneSlicer.SelectedPlanes) {
             foreach (var element in plane) {
@@ -87,8 +87,8 @@ public class CubeController : ChristofellElement {
         }
     }
 
-    private bool IsTabKeyUp() {
-        return Keyboard.current.tabKey.wasReleasedThisFrame;
+    private bool IsIndexToggleKeyUp() {
+        return App.model.menu.keyBindings.IndexToggle.KeyControl.wasReleasedThisFrame;
     }
 
     private void ToggleIndexes() {

@@ -9,10 +9,12 @@ public class TranslationCalculator {
     private InputAction moveAction;
     private FlyingCameraView view;
     private FlyingCameraModel model;
+    private KeyBindingsModel keyBindings;
 
-    public TranslationCalculator(FlyingCameraView view, FlyingCameraModel model, InputAction moveAction) {
+    public TranslationCalculator(FlyingCameraView view, FlyingCameraModel model, KeyBindingsModel keyBindings, InputAction moveAction) {
         this.view = view;
         this.model = model;
+        this.keyBindings = keyBindings;
         this.moveAction = moveAction;
     }
 
@@ -40,8 +42,8 @@ public class TranslationCalculator {
     }
 
     private float GetScalingFactor() {
-        if (IsShiftPressed()) return model.fastMoveFactor;
-        if (IsControlPressed()) return model.slowMoveFactor;
+        if (IsAccelerationKeyPressed()) return model.fastMoveFactor;
+        if (IsDecelerationKeyPressed()) return model.slowMoveFactor;
         return 1f;
     }
 
@@ -53,23 +55,31 @@ public class TranslationCalculator {
         return view.transform.right * moveAction.ReadValue<Vector2>().x;
     }
 
-    private bool IsShiftPressed() {
-        return Keyboard.current.shiftKey.isPressed;
+    private bool IsAccelerationKeyPressed() {
+        return keyBindings.Accelerate.KeyControl.isPressed;
     }
 
-    private bool IsControlPressed() {
-        return Keyboard.current.ctrlKey.isPressed;
+    private bool IsDecelerationKeyPressed() {
+        return keyBindings.Decelerate.KeyControl.isPressed;
     }
 
     private Vector3 GetVerticalTranslation() {
-        if (IsKeyPressed("Q") && IsKeyPressed("E")) return Vector3.zero;
-        if (IsKeyPressed("Q")) return GetVerticalTranslationVector() * GetScaledTranslationBase();
-        if (IsKeyPressed("E")) return -GetVerticalTranslationVector() * GetScaledTranslationBase();
+        if (AreBothUpAndDownKeysPressed()) return Vector3.zero;
+        if (IsUpKeyPressed()) return GetVerticalTranslationVector() * GetScaledTranslationBase();
+        if (IsDownKeyPressed()) return -GetVerticalTranslationVector() * GetScaledTranslationBase();
         return Vector3.zero;
     }
 
-    private bool IsKeyPressed(string key) {
-        return Keyboard.current[key].IsPressed();
+    private bool AreBothUpAndDownKeysPressed() {
+        return IsUpKeyPressed() && IsDownKeyPressed();
+    }
+
+    private bool IsUpKeyPressed() {
+        return keyBindings.Up.KeyControl.isPressed;
+    }
+
+    private bool IsDownKeyPressed() {
+        return keyBindings.Down.KeyControl.isPressed;
     }
 
     private Vector3 GetVerticalTranslationVector() {

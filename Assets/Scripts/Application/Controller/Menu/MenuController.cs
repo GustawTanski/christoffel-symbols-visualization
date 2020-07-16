@@ -54,11 +54,11 @@ public class MenuController : ChristofellElement {
     }
 
     private void Update() {
-        if (WasEscapePressed()) ToggleMenu();
+        if (WasMenuTogglePressed()) ToggleMenu();
     }
 
-    private bool WasEscapePressed() {
-        return Keyboard.current.escapeKey.wasPressedThisFrame;
+    private bool WasMenuTogglePressed() {
+        return App.model.menu.keyBindings.MenuToggle.KeyControl.wasPressedThisFrame;
     }
 
     private void ToggleMenu() {
