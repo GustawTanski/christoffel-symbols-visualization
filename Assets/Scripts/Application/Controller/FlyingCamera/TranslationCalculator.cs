@@ -11,11 +11,11 @@ public class TranslationCalculator {
     private FlyingCameraModel model;
     private KeyBindingsModel keyBindings;
 
-    public TranslationCalculator(FlyingCameraView view, FlyingCameraModel model, KeyBindingsModel keyBindings, InputAction moveAction) {
+    public TranslationCalculator(FlyingCameraView view, FlyingCameraModel model, KeyBindingsModel keyBindings) {
         this.view = view;
         this.model = model;
         this.keyBindings = keyBindings;
-        this.moveAction = moveAction;
+        this.moveAction = keyBindings.moveAction;
     }
 
     public void Calculate() {

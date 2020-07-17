@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 public class KeyBindingsModel : ChristofellElement {
 
+    public InputAction moveAction;
+
     public KeyBinding MenuToggle { get; } = new KeyBinding("escape", "Menu Toggle");
     public KeyBinding Accelerate { get; } = new KeyBinding("leftShift", "Accelerate");
     public KeyBinding Decelerate { get; } = new KeyBinding("leftCtrl", "Decelerate");
@@ -20,7 +22,6 @@ public class KeyBindingsModel : ChristofellElement {
     }
 
     private void InitializeMoveAction() {
-        InputAction moveAction = App.controller.flyingCamera.moveAction;
         Forward = new KeyBindingWithAction("w", "Forward", moveAction, 1);
         Backward = new KeyBindingWithAction("s", "Backward", moveAction, 2);
         Left = new KeyBindingWithAction("a", "Left", moveAction, 3);
@@ -40,5 +41,13 @@ public class KeyBindingsModel : ChristofellElement {
             Left,
             Right
         };
+    }
+
+    private void OnEnable() {
+        moveAction.Enable();
+    }
+
+    private void OnDisable() {
+        moveAction.Disable();
     }
 };
