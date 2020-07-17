@@ -27058,54 +27058,6 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Mouse Delta
       m_Flags: 0
-  moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 4f1c9e73-c9e4-41b9-bbb1-5a2b2ac37a68
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: 087dcdd8-f8c6-490e-a9ff-c7460c29a7a0
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 4
-    - m_Name: up
-      m_Id: cbf16a89-c844-47c3-bbb2-0b3ae0742a72
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 6f340eab-36f9-4801-bb25-375c20bfc49c
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: left
-      m_Id: a42c48c8-ef56-407e-aaa4-af4dbc671079
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: right
-      m_Id: b89edff8-608b-4db9-873d-e670b5d4e562
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
 --- !u!4 &225690787
 Transform:
   m_ObjectHideFlags: 0
@@ -63101,6 +63053,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc142d8940440f4e8b58934af157e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e7b3af3e-c527-4a14-a76f-c118f1e9bca0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 32f07547-60e7-4fe8-9aa5-0f946cbafe77
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 44ea6fb1-d307-479f-9888-1a6002c5942e
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 8fe3f7f6-2fde-4b3f-ba81-85241578a6db
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 9b3e8016-f1a8-4baa-a35e-b131c7b66aa5
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 206eab99-5376-4ea8-8d3b-db9e5e003c73
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
 --- !u!1 &1660875717
 GameObject:
   m_ObjectHideFlags: 0
