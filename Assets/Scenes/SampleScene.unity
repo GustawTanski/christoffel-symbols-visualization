@@ -59202,6 +59202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 1328064707}
   menu: {fileID: 2054304744}
+  flyingCamera: {fileID: 225690786}
 --- !u!4 &1253399014
 Transform:
   m_ObjectHideFlags: 0
