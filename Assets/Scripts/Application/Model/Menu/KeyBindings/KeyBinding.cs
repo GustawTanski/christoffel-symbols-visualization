@@ -3,7 +3,9 @@ using UnityEngine.InputSystem.Controls;
 public class KeyBinding {
     public string Key { get; protected set; }
     public string CommandName { get; set; }
+    public string DisplayKey => KeyControl.displayName;
     private KeyControl KeyControl => Keyboard.current[Key] as KeyControl;
+
 
     public KeyBinding(string key, string commandName = "") {
         Key = key;

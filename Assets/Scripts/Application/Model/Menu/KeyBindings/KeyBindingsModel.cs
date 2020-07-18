@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class KeyBindingsModel : ChristofellElement {
 
     public InputAction moveAction;
+    public readonly string MEMORY_PREFIX = "keyBinding";
     public KeyBinding MenuToggle { get; private set; }
     public KeyBinding Accelerate { get; private set; }
     public KeyBinding Decelerate { get; private set; }
@@ -60,7 +60,7 @@ public class KeyBindingsModel : ChristofellElement {
     }
 
     private string Decorate(string commandName) {
-        return $"keyBinding/{commandName}";
+        return $"{MEMORY_PREFIX}/{commandName}";
     }
 
     private string GetKeyFromMemory(string commandName) {
@@ -89,12 +89,12 @@ public class KeyBindingsModel : ChristofellElement {
             Backward,
             Left,
             Right,
+            Up,
+            Down,
             MenuToggle,
             Accelerate,
             Decelerate,
-            IndexToggle,
-            Up,
-            Down
+            IndexToggle
         };
     }
 
