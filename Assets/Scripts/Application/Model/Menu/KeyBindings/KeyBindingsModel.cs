@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 public class KeyBindingsModel : ChristofellElement {
 
     public InputAction moveAction;
-    public KeyBinding MenuToggle { get; private set; } 
-    public KeyBinding Accelerate { get; private set; } 
-    public KeyBinding Decelerate { get; private set; } 
-    public KeyBinding IndexToggle { get; private set; } 
-    public KeyBinding Up { get; private set; } 
-    public KeyBinding Down { get; private set; } 
+    public KeyBinding MenuToggle { get; private set; }
+    public KeyBinding Accelerate { get; private set; }
+    public KeyBinding Decelerate { get; private set; }
+    public KeyBinding IndexToggle { get; private set; }
+    public KeyBinding Up { get; private set; }
+    public KeyBinding Down { get; private set; }
     public KeyBindingWithAction Forward { get; private set; }
     public KeyBindingWithAction Backward { get; private set; }
     public KeyBindingWithAction Left { get; private set; }
@@ -51,15 +51,36 @@ public class KeyBindingsModel : ChristofellElement {
     }
 
     private string GetKeyFromMemoryOrDefault(string commandName) {
-        if (PlayerPrefs.HasKey(commandName)) return PlayerPrefs.GetString(commandName);
-        else return defaultKeyBindings[commandName];
+        if (IsCommandInMemory(commandName)) return GetKeyFromMemory(commandName);
+        else return GetDefaultKey(commandName);
+    }
+
+    private bool IsCommandInMemory(string commandName) {
+        return PlayerPrefs.HasKey(Decorate(commandName));
+    }
+
+    private string Decorate(string commandName) {
+        return $"keyBinding/{commandName}";
+    }
+
+    private string GetKeyFromMemory(string commandName) {
+        return PlayerPrefs.GetString(Decorate(commandName));
+    }
+
+    private string GetDefaultKey(string commandName) {
+        return defaultKeyBindings[commandName];
     }
 
     private void InitializeMoveAction() {
-        Forward = new KeyBindingWithAction("w", "Forward", moveAction, 1);
-        Backward = new KeyBindingWithAction("s", "Backward", moveAction, 2);
-        Left = new KeyBindingWithAction("a", "Left", moveAction, 3);
-        Right = new KeyBindingWithAction("d", "Right", moveAction, 4);
+        Forward = GetInitialMoveActionKeyBinding("Forward", 1);
+        Backward = GetInitialMoveActionKeyBinding("Backward", 2);
+        Left = GetInitialMoveActionKeyBinding("Left", 3);
+        Right = GetInitialMoveActionKeyBinding("Right", 4);
+    }
+
+    private KeyBindingWithAction GetInitialMoveActionKeyBinding(string commandName, int index) {
+        string key = GetKeyFromMemoryOrDefault(commandName);
+        return new KeyBindingWithAction(key, commandName, moveAction, index);
     }
 
     private void InitializeKeyBindingsList() {
