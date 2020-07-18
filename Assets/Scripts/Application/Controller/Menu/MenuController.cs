@@ -1,4 +1,3 @@
-using UnityEngine.InputSystem;
 public class MenuController : ChristofellElement {
     public MainMenuController mainMenu;
     public ToolsMenuController toolsMenu;
@@ -58,7 +57,7 @@ public class MenuController : ChristofellElement {
     }
 
     private bool WasMenuTogglePressed() {
-        return App.model.menu.keyBindings.MenuToggle.KeyControl.wasPressedThisFrame;
+        return App.model.menu.keyBindings.MenuToggle.WasPressedThisFrame();
     }
 
     private void ToggleMenu() {

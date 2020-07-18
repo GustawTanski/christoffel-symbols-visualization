@@ -56,11 +56,11 @@ public class TranslationCalculator {
     }
 
     private bool IsAccelerationKeyPressed() {
-        return keyBindings.Accelerate.KeyControl.isPressed;
+        return keyBindings.Accelerate.IsPressed();
     }
 
     private bool IsDecelerationKeyPressed() {
-        return keyBindings.Decelerate.KeyControl.isPressed;
+        return keyBindings.Decelerate.IsPressed();
     }
 
     private Vector3 GetVerticalTranslation() {
@@ -75,11 +75,11 @@ public class TranslationCalculator {
     }
 
     private bool IsUpKeyPressed() {
-        return keyBindings.Up.KeyControl.isPressed;
+        return keyBindings.Up.IsPressed();
     }
 
     private bool IsDownKeyPressed() {
-        return keyBindings.Down.KeyControl.isPressed;
+        return keyBindings.Down.IsPressed();
     }
 
     private Vector3 GetVerticalTranslationVector() {

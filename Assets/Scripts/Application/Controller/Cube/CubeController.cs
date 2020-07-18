@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using UnityEngine.InputSystem;
 
 public class CubeController : ChristofellElement {
     public CubePlaneSlicer cubePlaneSlicer;
@@ -88,7 +87,7 @@ public class CubeController : ChristofellElement {
     }
 
     private bool IsIndexToggleKeyUp() {
-        return App.model.menu.keyBindings.IndexToggle.KeyControl.wasReleasedThisFrame;
+        return App.model.menu.keyBindings.IndexToggle.WasReleasedThisFrame();
     }
 
     private void ToggleIndexes() {
