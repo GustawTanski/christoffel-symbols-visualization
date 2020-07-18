@@ -1,24 +1,58 @@
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.InputSystem;
 public class KeyBindingsModel : ChristofellElement {
 
     public InputAction moveAction;
-
-    public KeyBinding MenuToggle { get; } = new KeyBinding("escape", "Menu Toggle");
-    public KeyBinding Accelerate { get; } = new KeyBinding("leftShift", "Accelerate");
-    public KeyBinding Decelerate { get; } = new KeyBinding("leftCtrl", "Decelerate");
-    public KeyBinding IndexToggle { get; } = new KeyBinding("tab", "Index Toggle");
-    public KeyBinding Up { get; } = new KeyBinding("q", "Up");
-    public KeyBinding Down { get; } = new KeyBinding("e", "Down");
+    public KeyBinding MenuToggle { get; private set; } 
+    public KeyBinding Accelerate { get; private set; } 
+    public KeyBinding Decelerate { get; private set; } 
+    public KeyBinding IndexToggle { get; private set; } 
+    public KeyBinding Up { get; private set; } 
+    public KeyBinding Down { get; private set; } 
     public KeyBindingWithAction Forward { get; private set; }
     public KeyBindingWithAction Backward { get; private set; }
     public KeyBindingWithAction Left { get; private set; }
     public KeyBindingWithAction Right { get; private set; }
     public List<KeyBinding> KeyBindings { get; private set; }
 
+    private Dictionary<string, string> defaultKeyBindings = new Dictionary<string, string> {
+        ["Menu Toggle"] = "escape",
+        ["Accelerate"] = "leftShift",
+        ["Decelerate"] = "leftCtrl",
+        ["Index Toggle"] = "tab",
+        ["Up"] = "q",
+        ["Down"] = "e",
+        ["Forward"] = "w",
+        ["Backward"] = "s",
+        ["Left"] = "a",
+        ["Right"] = "d"
+    };
+
     private void Awake() {
+        InitializeKeyBindings();
         InitializeMoveAction();
         InitializeKeyBindingsList();
+    }
+
+    private void InitializeKeyBindings() {
+        MenuToggle = GetInitialKeyBinding("Menu Toggle");
+        Accelerate = GetInitialKeyBinding("Accelerate");
+        Decelerate = GetInitialKeyBinding("Decelerate");
+        IndexToggle = GetInitialKeyBinding("Index Toggle");
+        Up = GetInitialKeyBinding("Up");
+        Down = GetInitialKeyBinding("Down");
+    }
+
+    private KeyBinding GetInitialKeyBinding(string commandName) {
+        string key = GetKeyFromMemoryOrDefault(commandName);
+        return new KeyBinding(key, commandName);
+    }
+
+    private string GetKeyFromMemoryOrDefault(string commandName) {
+        if (PlayerPrefs.HasKey(commandName)) return PlayerPrefs.GetString(commandName);
+        else return defaultKeyBindings[commandName];
     }
 
     private void InitializeMoveAction() {
