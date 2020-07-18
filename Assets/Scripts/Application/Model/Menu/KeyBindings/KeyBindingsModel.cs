@@ -85,16 +85,16 @@ public class KeyBindingsModel : ChristofellElement {
 
     private void InitializeKeyBindingsList() {
         KeyBindings = new List<KeyBinding> {
+            Forward,
+            Backward,
+            Left,
+            Right,
             MenuToggle,
             Accelerate,
             Decelerate,
             IndexToggle,
             Up,
-            Down,
-            Forward,
-            Backward,
-            Left,
-            Right
+            Down
         };
     }
 
