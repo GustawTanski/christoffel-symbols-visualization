@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 public class KeyBindingsView : MenuElement {
     public GameObject content;
     public RowView rowPrefab;
+    public GameObject popUp;
+
     private KeyBindingsModel Model => App.model.menu.keyBindings;
 
     private List<RowView> rows = new List<RowView>();

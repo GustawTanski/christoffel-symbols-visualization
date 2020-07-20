@@ -58,7 +58,7 @@ public class KeyBindingsController : ChristofellElement {
     }
     private void RebindAndStopListening() {
         Rebind();
-        StopListening();
+        StopListeningAndHidePopUp();
     }
 
     private void Rebind() {
@@ -78,19 +78,37 @@ public class KeyBindingsController : ChristofellElement {
         View.UpdateBinding(currentlyChangedBinding);
     }
 
+    private void StopListeningAndHidePopUp() {
+        StopListening();
+        HidePopUp();
+    }
+
     private void StopListening() {
         Keyboard.current.onTextInput -= OnTextInput;
         isListening = false;
     }
 
+    private void HidePopUp() {
+        View.popUp.SetActive(false);
+    }
+
     public void StartListeningForKeyAndRebind(KeyBinding binding) {
         currentlyChangedBinding = binding;
+        StartListeningAndShowPopUp();
+    }
+
+    private void StartListeningAndShowPopUp() {
         StartListening();
+        ShowPopUp();
     }
 
     private void StartListening() {
         Keyboard.current.onTextInput += OnTextInput;
         isListening = true;
+    }
+
+    private void ShowPopUp() {
+        View.popUp.SetActive(true);
     }
 
     private void OnTextInput(char c) {
