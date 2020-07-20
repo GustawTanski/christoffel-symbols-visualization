@@ -20,6 +20,10 @@ public class CubeController : ChristofellElement {
     private void SetEventListeners() {
         App.zerosHided.listOfHandlers += OnZerosHided;
         App.spaceDropdownChanged.listOfHandlers += OnSpaceDropdownChanged;
+        App.labelSliderValueChanged.listOfHandlers += (caller, e) => {
+            Model.scaleFactor = e.value;
+            View.ScaleLabelsTo(e.value);
+        };
     }
 
     private void OnZerosHided(object sender, EventArgs e) {

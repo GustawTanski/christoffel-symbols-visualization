@@ -10,6 +10,11 @@ public class ToolsMenuController : ChristofellElement {
         InitializeToggle();
         InitializeDropdown();
         InitializeResetButton();
+        View.labelSlider.onValueChanged.AddListener((value) => {
+            App.labelSliderValueChanged.DispatchEvent(View.labelSlider, new LabelSliderValueChangedArgs(value));
+            View.labelSliderCaption.text = $"Labels × {value:G2}";
+        });
+        View.labelSlider.value = App.model.cube.scaleFactor;
     }
 
     private void InitializeToggle() {
