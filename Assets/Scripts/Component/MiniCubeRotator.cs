@@ -7,7 +7,7 @@ public class MiniCubeRotator : ChristofellElement {
     public float rotationAngle;
     public float growFactor;
     private void OnMouseUp() {
-        MiniCubeRotatorClickedEventArgs e = new MiniCubeRotatorClickedEventArgs(new Dimension(axis), rotationAngle);
+        MiniCubeRotatorClickedArgs e = new MiniCubeRotatorClickedArgs(new Dimension(axis), rotationAngle);
         App.miniCubeRotatorClicked.DispatchEvent(this, e);
     }
 

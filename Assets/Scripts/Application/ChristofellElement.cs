@@ -7,3 +7,5 @@ public class ChristofellElement : MonoBehaviour {
         }
     }
 }
+
+public class MenuElement : ChristofellElement {}

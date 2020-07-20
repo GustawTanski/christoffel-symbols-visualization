@@ -21,7 +21,7 @@ public class MiniCubeController : ChristofellElement {
         App.resetButtonClicked.listOfHandlers += OnResetButtonClicked;
     }
 
-    private void OnCubeRotationStarted(object sender, MiniCubeRotatorClickedEventArgs e) {
+    private void OnCubeRotationStarted(object sender, MiniCubeRotatorClickedArgs e) {
         RotateAroundAxis(e.axis, e.angle);
     }
 

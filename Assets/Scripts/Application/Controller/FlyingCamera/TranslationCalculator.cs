@@ -1,15 +1,21 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 public class TranslationCalculator {
-    public Vector3 Translation{
+    public Vector3 Translation {
         get;
         private set;
     }
+
+    private InputAction moveAction;
     private FlyingCameraView view;
     private FlyingCameraModel model;
+    private KeyBindingsModel keyBindings;
 
-    public TranslationCalculator( FlyingCameraView view, FlyingCameraModel model) {
+    public TranslationCalculator(FlyingCameraView view, FlyingCameraModel model, KeyBindingsModel keyBindings) {
         this.view = view;
         this.model = model;
+        this.keyBindings = keyBindings;
+        this.moveAction = keyBindings.moveAction;
     }
 
     public void Calculate() {
@@ -24,7 +30,7 @@ public class TranslationCalculator {
     }
 
     private Vector3 GetForwardTranslationVector() {
-        return view.transform.forward * Input.GetAxis("Vertical");
+        return view.transform.forward * moveAction.ReadValue<Vector2>().y;
     }
 
     private float GetScaledTranslationBase() {
@@ -36,8 +42,8 @@ public class TranslationCalculator {
     }
 
     private float GetScalingFactor() {
-        if (IsShiftPressed()) return model.fastMoveFactor;
-        if (IsControlPressed()) return model.slowMoveFactor;
+        if (IsAccelerationKeyPressed()) return model.fastMoveFactor;
+        if (IsDecelerationKeyPressed()) return model.slowMoveFactor;
         return 1f;
     }
 
@@ -46,22 +52,34 @@ public class TranslationCalculator {
     }
 
     private Vector3 GetHorizontalTranslationVector() {
-        return view.transform.right * Input.GetAxis("Horizontal");
+        return view.transform.right * moveAction.ReadValue<Vector2>().x;
     }
 
-    private bool IsShiftPressed() {
-        return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+    private bool IsAccelerationKeyPressed() {
+        return keyBindings.Accelerate.IsPressed();
     }
 
-    private bool IsControlPressed() {
-        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+    private bool IsDecelerationKeyPressed() {
+        return keyBindings.Decelerate.IsPressed();
     }
 
     private Vector3 GetVerticalTranslation() {
-        if (Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.E)) return Vector3.zero;
-        if (Input.GetKey(KeyCode.Q)) return GetVerticalTranslationVector() * GetScaledTranslationBase();
-        if (Input.GetKey(KeyCode.E)) return -GetVerticalTranslationVector() * GetScaledTranslationBase();
+        if (AreBothUpAndDownKeysPressed()) return Vector3.zero;
+        if (IsUpKeyPressed()) return GetVerticalTranslationVector() * GetScaledTranslationBase();
+        if (IsDownKeyPressed()) return -GetVerticalTranslationVector() * GetScaledTranslationBase();
         return Vector3.zero;
+    }
+
+    private bool AreBothUpAndDownKeysPressed() {
+        return IsUpKeyPressed() && IsDownKeyPressed();
+    }
+
+    private bool IsUpKeyPressed() {
+        return keyBindings.Up.IsPressed();
+    }
+
+    private bool IsDownKeyPressed() {
+        return keyBindings.Down.IsPressed();
     }
 
     private Vector3 GetVerticalTranslationVector() {

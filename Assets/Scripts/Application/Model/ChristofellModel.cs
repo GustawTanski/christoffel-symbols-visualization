@@ -1,5 +1,5 @@
 public class ChristofellModel : ChristofellElement {
     public CubeModel cube;
-    public UIModel uI;
+    public MenuModel menu;
     public FlyingCameraModel flyingCamera;
 }

@@ -1,6 +1,6 @@
 public class ChristofellController : ChristofellElement {
     public CubeController cube;
-    public UIController UI;
+    public MenuController menu;
     public FlyingCameraController flyingCamera;
 
 }

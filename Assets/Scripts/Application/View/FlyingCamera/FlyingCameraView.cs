@@ -9,4 +9,8 @@ public class FlyingCameraView : ChristofellElement {
     public void Translate(Vector3 translation) {
         transform.position += translation;
     }
+
+    public void TranslateTo(Vector3 destination) {
+        transform.localPosition = destination;
+    }
 }

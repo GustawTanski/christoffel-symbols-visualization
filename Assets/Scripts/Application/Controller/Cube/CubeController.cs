@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Data;
-using UnityEngine;
 
 public class CubeController : ChristofellElement {
     public CubePlaneSlicer cubePlaneSlicer;
@@ -80,7 +77,7 @@ public class CubeController : ChristofellElement {
     }
 
     private void Update() {
-        if (IsTabKeyUp()) ToggleIndexes();
+        if (IsIndexToggleKeyUp()) ToggleIndexes();
         View.DeselectAllElements();
         foreach (var plane in cubePlaneSlicer.SelectedPlanes) {
             foreach (var element in plane) {
@@ -89,8 +86,8 @@ public class CubeController : ChristofellElement {
         }
     }
 
-    private bool IsTabKeyUp() {
-        return Input.GetKeyUp(KeyCode.Tab);
+    private bool IsIndexToggleKeyUp() {
+        return App.model.menu.keyBindings.IndexToggle.WasReleasedThisFrame();
     }
 
     private void ToggleIndexes() {
