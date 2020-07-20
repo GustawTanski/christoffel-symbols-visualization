@@ -1,6 +1,4 @@
 using UnityEngine.InputSystem;
-using UnityEngine;
-
 public class KeyBindingWithAction : KeyBinding {
 
     private InputAction action;
