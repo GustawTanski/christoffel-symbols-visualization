@@ -1,16 +1,22 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public partial class FlyingCameraController : ChristofellElement {
 
     public MiniCubeController miniCube;
-    public InputAction mouseDeltaAction;
     private TranslationCalculator translationCalculator;
     private RotationCalculator rotationCalculator;
     private FlyingCameraModel Model => App.model.flyingCamera;
     private FlyingCameraView View => App.view.flyingCamera;
 
     private void Awake() {
+        Model.InitialPosition = View.transform.localPosition;
+        SetListeners();
+    }
+
+    private void SetListeners() {
         App.menuChanged.listOfHandlers += OnMenuChanged;
+        App.resetButtonClicked.listOfHandlers += OnResetButtonClicked;
     }
 
     private void OnMenuChanged(object caller, MenuChangedArgs e) {
@@ -23,8 +29,8 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void ActivateCamera() {
-        Model.isActive = true;
         DisactivateCursor();
+        Model.isActive = true;
     }
 
     private void DisactivateCursor() {
@@ -33,13 +39,36 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void DisactivateCamera() {
-        Model.isActive = false;
         ActivateCursor();
+        Model.isActive = false;
     }
 
     private void ActivateCursor() {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void OnResetButtonClicked(object caller, ResetButtonClickedArgs e) {
+        ResetRotation();
+        ResetViewPosition();
+    }
+
+    private void ResetRotation() {
+        ResetRotationData();
+        ResetViewRotation();
+    }
+
+    private void ResetRotationData() {
+        Model.FromXAxisAngle = 0;
+        Model.FromYAxisAngle = 0;
+    }
+
+    private void ResetViewRotation() {
+        View.RotateTo(Quaternion.identity);
+    }
+
+    private void ResetViewPosition() {
+        View.TranslateTo(Model.InitialPosition);
     }
 
     private void Start() {
@@ -53,7 +82,7 @@ public partial class FlyingCameraController : ChristofellElement {
     }
 
     private void InitializeRotationCalculator() {
-        rotationCalculator = new RotationCalculator(Model, mouseDeltaAction);
+        rotationCalculator = new RotationCalculator(Model);
     }
 
     private void InitializeCamera() {
@@ -79,11 +108,4 @@ public partial class FlyingCameraController : ChristofellElement {
         View.Translate(translationCalculator.Translation);
     }
 
-    private void OnEnable() {
-        mouseDeltaAction.Enable();
-    }
-
-    private void OnDisable() {
-        mouseDeltaAction.Disable();
-    }
 }
