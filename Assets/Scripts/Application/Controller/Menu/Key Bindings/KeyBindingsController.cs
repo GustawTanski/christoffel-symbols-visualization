@@ -113,9 +113,13 @@ public class KeyBindingsController : ChristofellElement {
 
     private void OnTextInput(char c) {
         try {
-            keyToRebind = (Keyboard.current[c.ToString()] as KeyControl);
+            keyToRebind = GetKeyControlFromCharacter(c);
             RebindAndStopListening();
         } catch {}
+    }
+
+    private KeyControl GetKeyControlFromCharacter(char c) {
+        return Keyboard.current[c.ToString()] as KeyControl;
     }
 
 }
