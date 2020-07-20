@@ -8,6 +8,7 @@ public class KeyBindingsController : ChristofellElement {
 
     private bool isListening = false;
     private KeyBinding currentlyChangedBinding;
+    private KeyControl keyToRebind;
     private List<KeyControl> specialKeys;
 
     private void Awake() {
@@ -43,32 +44,60 @@ public class KeyBindingsController : ChristofellElement {
     }
 
     private void Update() {
-        if (isListening)
-            foreach (var item in specialKeys) {
-                if (item.wasPressedThisFrame) {
-                    SetNewBinding(item);
-                    break;
-                }
-            }
+        if (isListening) IfAnySpecialKeyWasPressedRebind();
     }
 
-    private void SetNewBinding(KeyControl key) {
-        currentlyChangedBinding.SetKey(key.name);
+    private void IfAnySpecialKeyWasPressedRebind() {
+        foreach (KeyControl key in specialKeys) {
+            if (key.wasPressedThisFrame) {
+                keyToRebind = key;
+                RebindAndStopListening();
+                break;
+            }
+        }
+    }
+    private void RebindAndStopListening() {
+        Rebind();
+        StopListening();
+    }
+
+    private void Rebind() {
+        ChangeBindingsKey();
+        SaveNewBindingInMemory();
+        UpdateRowOfCurrentBinding();
+    }
+
+    private void ChangeBindingsKey() {
+        currentlyChangedBinding.SetKey(keyToRebind.name);
+    }
+
+    private void SaveNewBindingInMemory() {
+        PlayerPrefs.SetString($"{Model.MEMORY_PREFIX}/{currentlyChangedBinding.CommandName}", keyToRebind.name);
+    }
+    private void UpdateRowOfCurrentBinding() {
         View.UpdateBinding(currentlyChangedBinding);
-        PlayerPrefs.SetString($"{Model.MEMORY_PREFIX}/{currentlyChangedBinding.CommandName}", key.name);
+    }
+
+    private void StopListening() {
         Keyboard.current.onTextInput -= OnTextInput;
         isListening = false;
     }
 
-    public void Pies(KeyBinding binding) {
+    public void StartListeningForKeyAndRebind(KeyBinding binding) {
         currentlyChangedBinding = binding;
+        StartListening();
+    }
+
+    private void StartListening() {
         Keyboard.current.onTextInput += OnTextInput;
         isListening = true;
     }
 
     private void OnTextInput(char c) {
         try {
-            SetNewBinding((Keyboard.current[c.ToString()] as KeyControl));
+            keyToRebind = (Keyboard.current[c.ToString()] as KeyControl);
+            RebindAndStopListening();
         } catch {}
     }
+
 }

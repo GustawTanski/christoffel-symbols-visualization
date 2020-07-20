@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class KeyBindingsView : MenuElement {
     public GameObject content;
@@ -8,16 +9,30 @@ public class KeyBindingsView : MenuElement {
     private List<RowView> rows = new List<RowView>();
 
     private void Start() {
-        Model.KeyBindings.ForEach(binding => {
-            RowView row = Instantiate(rowPrefab, content.transform);
-            rows.Add(row);
-            row.Command = binding.CommandName;
-            row.Key = binding.DisplayKey;
-            row.keyButton.onClick.AddListener(() => App.controller.menu.keyBindings.Pies(binding));
-        });
+        CreateRows();
+    }
+
+    private void CreateRows() {
+        rows = Model.KeyBindings.Select(CreateRow).ToList();
+    }
+
+    private RowView CreateRow(KeyBinding binding) {
+        RowView row = CreateEmptyRow();
+        row.Command = binding.CommandName;
+        row.Key = binding.DisplayKey;
+        row.keyButton.onClick.AddListener(() => App.controller.menu.keyBindings.StartListeningForKeyAndRebind(binding));
+        return row;
+    }
+
+    private RowView CreateEmptyRow() {
+        return Instantiate(rowPrefab, content.transform);
     }
 
     public void UpdateBinding(KeyBinding binding) {
-        rows[Model.KeyBindings.IndexOf(binding)].Key = binding.DisplayKey;
+        rows[GetIndexOfRowByBinding(binding)].Key = binding.DisplayKey;
+    }
+
+    public int GetIndexOfRowByBinding(KeyBinding binding) {
+        return Model.KeyBindings.IndexOf(binding);
     }
 }
