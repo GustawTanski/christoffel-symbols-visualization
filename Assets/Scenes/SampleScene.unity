@@ -41715,6 +41715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590806cdf6848d54eb898752ef4ee22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dimensionLimit: 2147483647
 --- !u!212 &462456152
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56370,6 +56371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590806cdf6848d54eb898752ef4ee22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dimensionLimit: 2147483647
 --- !u!212 &836056228
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -65994,6 +65996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590806cdf6848d54eb898752ef4ee22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dimensionLimit: 2147483647
 --- !u!212 &1711353472
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -91962,6 +91965,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DynamicSpritePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 725662589440023011, guid: b94b6a4ad44940842b05c0eaf612b14b,
+        type: 3}
+      propertyPath: dimensionLimit
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 725662589440023021, guid: b94b6a4ad44940842b05c0eaf612b14b,
         type: 3}
