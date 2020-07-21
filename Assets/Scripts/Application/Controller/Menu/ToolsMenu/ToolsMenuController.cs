@@ -10,11 +10,7 @@ public class ToolsMenuController : ChristofellElement {
         InitializeToggle();
         InitializeDropdown();
         InitializeResetButton();
-        View.labelSlider.onValueChanged.AddListener((value) => {
-            App.labelSliderValueChanged.DispatchEvent(View.labelSlider, new LabelSliderValueChangedArgs(value));
-            View.labelSliderCaption.text = $"Labels × {value:G2}";
-        });
-        View.labelSlider.value = App.model.cube.scaleFactor;
+        InitializeLabelSlider();
     }
 
     private void InitializeToggle() {
@@ -63,9 +59,34 @@ public class ToolsMenuController : ChristofellElement {
         View.resetButton.onClick.AddListener(OnResetButtonPressed);
     }
 
-    public void OnResetButtonPressed() {
+    private void OnResetButtonPressed() {
         ResetButtonClickedArgs e = new ResetButtonClickedArgs();
         App.resetButtonClicked.DispatchEvent(View.resetButton, e);
+    }
+
+    private void InitializeLabelSlider() {
+        AddLabelSliderListener();
+        SetInitialValueToLabelSlider();
+    }
+    private void AddLabelSliderListener() {
+        View.labelSlider.onValueChanged.AddListener(OnLabelSliderValueChanged);
+    }
+
+    private void OnLabelSliderValueChanged(float value) {
+        DispatchLabelSliderValueChangedEvent(value);
+        UpdateLabelSliderCaption(value);
+    }
+
+    private void DispatchLabelSliderValueChangedEvent(float value) {
+        App.labelSliderValueChanged.DispatchEvent(View.labelSlider, new LabelSliderValueChangedArgs(value));
+    }
+
+    private void UpdateLabelSliderCaption(float value) {
+        View.labelSliderCaption.text = $"Labels × {value:G2}";
+    }
+
+    private void SetInitialValueToLabelSlider() {
+        View.labelSlider.value = App.model.cube.scaleFactor;
     }
 
 }
