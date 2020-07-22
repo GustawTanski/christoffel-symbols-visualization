@@ -19,7 +19,7 @@ public class SelectionCrossController : ChristofellElement {
 
     private UnityAction<bool> OnButtonChangeCreator(SpaceParameter parameter) {
         return (bool isOn) => {
-            SpaceSelectionButtonPressedArgs e = new SpaceSelectionButtonPressedArgs(isOn, parameter);
+            ParameterSelectionButtonPressedArgs e = new ParameterSelectionButtonPressedArgs(isOn, parameter);
             SetParameterFlag(parameter, isOn);
             App.spaceSelectionButtonPressed.DispatchEvent(View, e);
         };

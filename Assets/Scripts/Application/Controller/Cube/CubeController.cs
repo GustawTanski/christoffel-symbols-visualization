@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 public class CubeController : ChristofellElement {
     public CubePlaneSlicer cubePlaneSlicer;
+    public SpaceSelector spaceSelector;
     private CubeModel Model => App.model.cube;
     private CubeView View => App.view.cube;
 
@@ -19,7 +20,6 @@ public class CubeController : ChristofellElement {
     // }
     private void SetEventListeners() {
         App.zerosHided.listOfHandlers += OnZerosHided;
-        App.spaceDropdownChanged.listOfHandlers += OnSpaceDropdownChanged;
         App.labelSliderValueChanged.listOfHandlers += OnLabelSliderValueChanged;
     }
 
@@ -34,47 +34,6 @@ public class CubeController : ChristofellElement {
 
     private void ToggleZerosVisibility() {
         View.ToggleZeros();
-    }
-
-    private async void OnSpaceDropdownChanged(object sender, SpaceDropdownChangedArgs e) {
-        ChangeSpace(e.spaceType);
-        await UpdateTextures();
-    }
-
-    private void ChangeSpace(string spaceType) {
-        SetSpaceState(spaceType);
-        Model.UpdateModel();
-        DispatchSpaceChangedEvent();
-    }
-
-    private void SetSpaceState(string spaceType) {
-        Model.spaceType = spaceType;
-    }
-
-    private void DispatchSpaceChangedEvent() {
-        App.spaceChanged.DispatchEvent(this, new SpaceChangedArgs(Model.Properties));
-    }
-
-    private async Task UpdateTextures() {
-        await FetchTextures();
-        SetTextures();
-        IfInvisibleUpdateZeros();
-    }
-
-    private async Task FetchTextures() {
-        await Model.FetchAllTextures();
-    }
-
-    private void IfInvisibleUpdateZeros() {
-        if (!Model.areZerosVisible) View.UpdateZeros();
-    }
-
-    private void SetTextures() {
-        View.SetAllTextures();
-    }
-
-    private void SetZerosVisibility() {
-        if (!Model.areZerosVisible) View.ToggleZeros();
     }
 
     private void OnLabelSliderValueChanged(object caller, LabelSliderValueChangedArgs e) {
@@ -115,4 +74,43 @@ public class CubeController : ChristofellElement {
         foreach (CubeElement element in plane) element.Select();
     }
 
+    public async void SetSpaceType(string spaceType) {
+        ChangeSpace(spaceType);
+        await UpdateTextures();
+    }
+
+    private void ChangeSpace(string spaceType) {
+        SetSpaceState(spaceType);
+        Model.UpdateModel();
+        DispatchSpaceChangedEvent();
+    }
+
+    private void SetSpaceState(string spaceType) {
+        Model.spaceType = spaceType;
+    }
+
+    private void DispatchSpaceChangedEvent() {
+        App.spaceChanged.DispatchEvent(this, new SpaceChangedArgs(Model.Properties));
+    }
+
+    private async Task UpdateTextures() {
+        await FetchTextures();
+        SetTextures();
+        IfInvisibleUpdateZeros();
+    }
+
+    private async Task FetchTextures() {
+        await Model.FetchAllTextures();
+    }
+    private void SetTextures() {
+        View.SetAllTextures();
+    }
+
+    private void SetZerosVisibility() {
+        if (!Model.areZerosVisible) View.ToggleZeros();
+    }
+
+    private void IfInvisibleUpdateZeros() {
+        if (!Model.areZerosVisible) View.UpdateZeros();
+    }
 }

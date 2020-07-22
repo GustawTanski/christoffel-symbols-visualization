@@ -52,8 +52,8 @@ public class ToolsMenuController : ChristofellElement {
     }
 
     private void OnSpaceDropdownChanged(int value) {
-        SpaceDropdownChangedArgs e = new SpaceDropdownChangedArgs(View.dropdown.options[value].text);
-        App.spaceDropdownChanged.DispatchEvent(View.dropdown, e);
+        string spaceType = View.dropdown.options[value].text;
+        App.controller.cube.SetSpaceType(spaceType);
     }
 
     private void InitializeResetButton() {

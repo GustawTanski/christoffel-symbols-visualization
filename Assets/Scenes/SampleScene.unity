@@ -14978,11 +14978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6977aab8a558a4ab892c956e67abdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lambda: 0
-  M: 0
-  n: 0
-  a: 0
-  Q: 0
 --- !u!1 &222587570
 GameObject:
   m_ObjectHideFlags: 0
@@ -43035,6 +43030,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed4ff243ec976243a03f6367c4fa122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &598063659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598063660}
+  - component: {fileID: 598063661}
+  m_Layer: 0
+  m_Name: Space Selector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &598063660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598063659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1328064708}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &598063661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598063659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718d5cf82166a4445855c05ee739e355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &603554603
 GameObject:
   m_ObjectHideFlags: 0
@@ -43152,7 +43190,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1301415434}
   m_HandleRect: {fileID: 1301415433}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -62772,6 +62810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePlaneSlicer: {fileID: 200848128}
+  spaceSelector: {fileID: 598063661}
 --- !u!4 &1328064708
 Transform:
   m_ObjectHideFlags: 0
@@ -62784,6 +62823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 200848127}
+  - {fileID: 598063660}
   m_Father: {fileID: 1253399014}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -66188,7 +66228,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!43 &1621648489
 Mesh:
   m_ObjectHideFlags: 0
@@ -79968,7 +80008,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 684493169}
   m_HandleRect: {fileID: 684493168}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
