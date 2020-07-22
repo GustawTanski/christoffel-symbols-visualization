@@ -3,6 +3,7 @@ using System.Linq;
 
 public class ToolsMenuController : ChristofellElement {
     public LineController line;
+    public SelectionCrossController selectionCross;
 
     public ToolsMenuView View => App.view.menu.toolsMenu;
 

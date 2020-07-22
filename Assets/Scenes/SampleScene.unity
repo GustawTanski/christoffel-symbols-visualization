@@ -14935,6 +14935,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212320570}
   m_Mesh: {fileID: 119997822}
+--- !u!1 &222012994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 222012995}
+  - component: {fileID: 222012996}
+  m_Layer: 0
+  m_Name: Selection Cross
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &222012995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222012994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1240500697}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &222012996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222012994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6977aab8a558a4ab892c956e67abdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lambda: 0
+  M: 0
+  n: 0
+  a: 0
+  Q: 0
 --- !u!1 &222587570
 GameObject:
   m_ObjectHideFlags: 0
@@ -58188,6 +58236,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 240695730}
+  - {fileID: 1873494944}
   m_Father: {fileID: 2054304745}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58204,6 +58253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 240695729}
+  selectionCross: {fileID: 1873494945}
 --- !u!1 &953538631
 GameObject:
   m_ObjectHideFlags: 0
@@ -61446,8 +61496,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1229933984}
+  - component: {fileID: 1229933985}
   m_Layer: 5
-  m_Name: Select Cross
+  m_Name: Selection Cross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61477,6 +61528,23 @@ RectTransform:
   m_AnchoredPosition: {x: -645.44, y: -96.764}
   m_SizeDelta: {x: 193.52759, y: 193.52759}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1229933985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229933983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08c97a7772faf94ab77d522afdfb5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lambda: {fileID: 1302240134}
+  M: {fileID: 1613907993}
+  Q: {fileID: 1222642894}
+  n: {fileID: 1701123907}
+  a: {fileID: 1814459513}
 --- !u!1 &1235618693
 GameObject:
   m_ObjectHideFlags: 0
@@ -61632,6 +61700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff73ed7c8115270478bac686535dc5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectionCross: {fileID: 222012996}
 --- !u!4 &1240500697
 Transform:
   m_ObjectHideFlags: 0
@@ -61642,7 +61711,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.0463115, y: 4.243262, z: -0.23271468}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 222012995}
   m_Father: {fileID: 403646323}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62671,6 +62741,7 @@ MonoBehaviour:
   labelSlider: {fileID: 1170785787}
   labelSliderCaption: {fileID: 309597921}
   cubeDescription: {fileID: 1348509796}
+  selectionCross: {fileID: 1229933985}
 --- !u!1 &1328064706
 GameObject:
   m_ObjectHideFlags: 0
@@ -80231,6 +80302,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860526867}
   m_CullTransparentMesh: 0
+--- !u!1 &1873494943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1873494944}
+  - component: {fileID: 1873494945}
+  m_Layer: 0
+  m_Name: Selection Cross
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1873494944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873494943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 952104623}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1873494945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873494943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036127e60dbfe034ea13ecedb4fd05ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1902694293
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class ToolsMenuView : MenuElement {
     public TMP_Text labelSliderCaption;
 
     public CubeDescriptionView cubeDescription;
+    public SelectionCrossView selectionCross;
 
     public void HideLine() {
         line.startWidth = line.endWidth = 0;
