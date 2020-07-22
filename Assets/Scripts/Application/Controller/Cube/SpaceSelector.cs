@@ -13,6 +13,14 @@ public class SpaceSelector : ChristofellElement {
 
     private ParameterFlag state = nullFlag;
 
+    public readonly string[] handledSpaces = new [] {
+        "Minkowski",
+        "Schwarzschild",
+        "de Sitter Static",
+        "Kerr",
+        "Reissner-Nordstrøm"
+    };
+
     private void Awake() {
         App.spaceSelectionButtonPressed.listOfHandlers += (caller, e) => {
             if (e.isOn) state |= ConvertParameterToFlag(e.parameter);

@@ -43,7 +43,9 @@ public class ToolsMenuController : ChristofellElement {
     }
 
     private void PopulateDropdown() {
-        List<string> names = App.model.cube.SpaceDictionaryNew.Keys.ToList();
+        List<string> names = App.model.cube.SpaceDictionaryNew.Keys
+            .Where(name => !App.controller.cube.spaceSelector.handledSpaces.Contains(name))
+            .ToList();
         View.dropdown.AddOptions(names);
     }
 

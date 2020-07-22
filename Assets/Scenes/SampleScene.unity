@@ -66228,7 +66228,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!43 &1621648489
 Mesh:
   m_ObjectHideFlags: 0
