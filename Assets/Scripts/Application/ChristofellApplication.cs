@@ -11,6 +11,6 @@ public class ChristofellApplication : MonoBehaviour {
     public ChristofellEvent<MenuChangedArgs> menuChanged = new ChristofellEvent<MenuChangedArgs>();
     public ChristofellEvent<LabelSliderValueChangedArgs> labelSliderValueChanged =
         new ChristofellEvent<LabelSliderValueChangedArgs>();
-    public ChristofellEvent<ParameterSelectionButtonPressedArgs> spaceSelectionButtonPressed =
+    public ChristofellEvent<ParameterSelectionButtonPressedArgs> parameterSelectionButtonPressed =
         new ChristofellEvent<ParameterSelectionButtonPressedArgs>();
 }

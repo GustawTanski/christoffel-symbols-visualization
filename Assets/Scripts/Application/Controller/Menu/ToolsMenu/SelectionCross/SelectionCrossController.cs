@@ -5,11 +5,23 @@ public class SelectionCrossController : ChristofellElement {
     private SelectionCrossModel Model => App.model.menu.toolsMenu.selectionCross;
 
     private void Awake() {
+        InitializeButtons();
+    }
+
+    private void InitializeButtons() {
+        InitializeButtonsStates();
+        SetButtonsListeners();
+    }
+
+    private void InitializeButtonsStates() {
         View.a.isOn = Model.a;
         View.Lambda.isOn = Model.Lambda;
         View.Q.isOn = Model.Q;
         View.n.isOn = Model.n;
         View.M.isOn = Model.M;
+    }
+
+    private void SetButtonsListeners() {
         View.a.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.a));
         View.Lambda.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.Lambda));
         View.Q.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.Q));
@@ -19,9 +31,8 @@ public class SelectionCrossController : ChristofellElement {
 
     private UnityAction<bool> OnButtonChangeCreator(SpaceParameter parameter) {
         return (bool isOn) => {
-            ParameterSelectionButtonPressedArgs e = new ParameterSelectionButtonPressedArgs(isOn, parameter);
             SetParameterFlag(parameter, isOn);
-            App.spaceSelectionButtonPressed.DispatchEvent(View, e);
+            DispatchParameterSelectionButtonPressedEvent(parameter, isOn);
         };
     }
 
@@ -43,5 +54,10 @@ public class SelectionCrossController : ChristofellElement {
                 Model.Lambda = isOn;
                 break;
         };
+    }
+
+    private void DispatchParameterSelectionButtonPressedEvent(SpaceParameter parameter, bool isOn) {
+        ParameterSelectionButtonPressedArgs e = new ParameterSelectionButtonPressedArgs(isOn, parameter);
+        App.parameterSelectionButtonPressed.DispatchEvent(View, e);
     }
 }
