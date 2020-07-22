@@ -33,8 +33,12 @@ public class SpaceSelector : ChristofellElement {
                 return "Minkowski";
             case M:
                 return "Schwarzschild";
+            case Lambda:
+                return "de Sitter Static";
             case M | a:
                 return "Kerr";
+            case M | Q:
+                return "Reissner-Nordstrøm";
             default:
                 return "Nothing";
         };
