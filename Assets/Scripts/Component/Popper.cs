@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class Popper : MonoBehaviour {
     public TMP_Text caption;
-    
+
     public void SetText(string text) {
         caption.text = text;
     }
 
-    public void Show(Vector3 localPosition) {
+    public void MoveAndShow(Vector3 localPosition) {
+        Move(localPosition);
+        Show();
+    }
+
+    public void Move(Vector3 localPosition) {
         transform.localPosition = localPosition;
+    }
+
+    public void Show() {
         gameObject.SetActive(true);
     }
 

@@ -5,14 +5,32 @@ public class PopperShower : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public Popper popper;
     public string message;
 
+    private RectTransform rectTransform;
+
+    private void Awake() {
+        rectTransform = GetComponent<RectTransform>();
+    }
+
     public void OnPointerEnter(PointerEventData eventData) {
-        RectTransform rect = GetComponent<RectTransform>();
-        Vector3 popperPosition = transform.localPosition - new Vector3(
-            rect.pivot.x * rect.rect.width,
-            -rect.pivot.y * rect.rect.height,
-            0);
+        SetMessageAsPopperText();
+        MoveAndShowPopper();
+    }
+
+    private void SetMessageAsPopperText() {
         popper.SetText(message);
-        popper.Show(popperPosition);
+    }
+
+    private void MoveAndShowPopper() {
+        popper.MoveAndShow(CalculatePopperPosition());
+    }
+
+    private Vector3 CalculatePopperPosition() {
+        Vector2 dist = GetPivotToLeftTopCornerTranslation();
+        return transform.localPosition - new Vector3(dist.x, dist.y, 0);
+    }
+
+    private Vector2 GetPivotToLeftTopCornerTranslation() {
+        return new Vector2(rectTransform.pivot.x * rectTransform.rect.width, -rectTransform.pivot.y * rectTransform.rect.height);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
