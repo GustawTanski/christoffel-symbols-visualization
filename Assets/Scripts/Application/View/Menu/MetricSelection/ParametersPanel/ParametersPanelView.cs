@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-public class SelectionCrossView : ChristofellElement {
+public class ParametersPanelView : ChristofellElement {
     public Toggle Lambda;
     public Toggle M;
     public Toggle Q;

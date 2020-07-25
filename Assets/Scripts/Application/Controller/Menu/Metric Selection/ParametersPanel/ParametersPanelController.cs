@@ -1,8 +1,8 @@
 using System;
 using UnityEngine.Events;
-public class SelectionCrossController : ChristofellElement {
-    private SelectionCrossView View => App.view.menu.toolsMenu.selectionCross;
-    private SelectionCrossModel Model => App.model.menu.toolsMenu.selectionCross;
+public class ParametersPanelController : ChristofellElement {
+    private ParametersPanelView View => App.view.menu.metricSelection.parametersPanel;
+    private ParametersPanelModel Model => App.model.menu.metricSelection.parametersPanel;
 
     private void Awake() {
         InitializeButtons();

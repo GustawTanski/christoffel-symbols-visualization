@@ -3,6 +3,7 @@ public class MenuController : ChristofellElement {
     public ToolsMenuController toolsMenu;
     public GraphicsController graphics;
     public KeyBindingsController keyBindings;
+    public MetricSelectionController metricSelection;
 
     public MenuElement[] menus;
 

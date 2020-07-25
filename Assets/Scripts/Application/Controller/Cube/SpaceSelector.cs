@@ -115,11 +115,11 @@ public class SpaceSelector : ChristofellElement {
     }
 
     private void HideNotHandledCombinationWarning() {
-        App.view.menu.toolsMenu.warning.SetActive(false);
+        App.view.menu.metricSelection.warning.SetActive(false);
     }
 
     private void ShowNotHandledCombinationWarning() {
-        App.view.menu.toolsMenu.warning.SetActive(true);
+        App.view.menu.metricSelection.warning.SetActive(true);
     }
 
     private void Start() {
@@ -127,11 +127,11 @@ public class SpaceSelector : ChristofellElement {
     }
 
     private void InitializeState() {
-        SelectionCrossModel crossModel = App.model.menu.toolsMenu.selectionCross;
-        if (crossModel.M) state |= M;
-        if (crossModel.Q) state |= Q;
-        if (crossModel.a) state |= a;
-        if (crossModel.Lambda) state |= Lambda;
-        if (crossModel.n) state |= n;
+        ParametersPanelModel panelModel = App.model.menu.metricSelection.parametersPanel;
+        if (panelModel.M) state |= M;
+        if (panelModel.Q) state |= Q;
+        if (panelModel.a) state |= a;
+        if (panelModel.Lambda) state |= Lambda;
+        if (panelModel.n) state |= n;
     }
 }
