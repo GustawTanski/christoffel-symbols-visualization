@@ -4,4 +4,5 @@ public class SelectionCrossModel : ChristofellElement {
     public bool n { get; set; }
     public bool a { get; set; }
     public bool Q { get; set; }
+    public bool alpha { get; set; }
 }

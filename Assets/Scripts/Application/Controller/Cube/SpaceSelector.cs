@@ -11,6 +11,7 @@ public class SpaceSelector : ChristofellElement {
     private const ParameterFlag a = 0b100;
     private const ParameterFlag Lambda = 0b1000;
     private const ParameterFlag n = 0b1_0000;
+    private const ParameterFlag alpha = 0b10_0000;
 
     private const string NOT_HANDLED = "Nothing";
 
@@ -29,7 +30,9 @@ public class SpaceSelector : ChristofellElement {
         "Reissner-Nordstrøm-de Sitter",
         "Kerr-de Sitter",
         "Taub-NUT-de Sitter",
-        "Kerr-Newman-de Sitter"
+        "Kerr-Newman-de Sitter",
+        "Plebański-Demiański",
+        "C-metric"
     };
 
     private void Awake() {
@@ -75,14 +78,16 @@ public class SpaceSelector : ChristofellElement {
                 return "Schwarzschild";
             case Lambda:
                 return "de Sitter";
-            case M | Lambda:
-                return "Kottler";
-            case M | n:
-                return "Taub-NUT";
             case M | Q:
                 return "Reissner-Nordstrøm";
             case M | a:
                 return "Kerr";
+            case M | Lambda:
+                return "Kottler";
+            case M | n:
+                return "Taub-NUT";
+            case M | alpha:
+                return "C-metric";
             case M | Q | a:
                 return "Kerr-Newman";
             case M | Q | Lambda:
@@ -93,6 +98,8 @@ public class SpaceSelector : ChristofellElement {
                 return "Taub-NUT-de Sitter";
             case M | Q | a | Lambda:
                 return "Kerr-Newman-de Sitter";
+            case M | Q | a | Lambda | n | alpha:
+                return "Plebański-Demiański";
             default:
                 return NOT_HANDLED;
         };

@@ -19,6 +19,7 @@ public class SelectionCrossController : ChristofellElement {
         View.Q.isOn = Model.Q;
         View.n.isOn = Model.n;
         View.M.isOn = Model.M;
+        View.alpha.isOn = Model.alpha;
     }
 
     private void SetButtonsListeners() {
@@ -27,6 +28,7 @@ public class SelectionCrossController : ChristofellElement {
         View.Q.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.Q));
         View.n.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.n));
         View.M.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.M));
+        View.alpha.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.alpha));
     }
 
     private UnityAction<bool> OnButtonChangeCreator(SpaceParameter parameter) {
