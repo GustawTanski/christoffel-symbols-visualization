@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using ParameterFlag = System.UInt32;
 using System.Linq;
 
@@ -18,29 +19,36 @@ public class SpaceSelector : ChristofellElement {
     private ParameterFlag state = nullFlag;
     private string spaceType;
 
-    public readonly string[] handledSpaces = new [] {
-        "Minkowski",
-        "Schwarzschild",
-        "de Sitter",
-        "Kerr",
-        "Reissner-Nordstrøm",
-        "Taub-NUT",
-        "Kerr-Newman",
-        "Kottler",
-        "Reissner-Nordstrøm-de Sitter",
-        "Kerr-de Sitter",
-        "Taub-NUT-de Sitter",
-        "Kerr-Newman-de Sitter",
-        "Plebański-Demiański",
-        "C-metric"
+    public ReadOnlyCollection<string> handledSpaces;
+
+    private readonly Dictionary<ParameterFlag, string> stateToSpaceType = new Dictionary<ParameterFlag, string> {
+        [nullFlag] = "Minkowski",
+        [M] = "Schwarzschild",
+        [Lambda] = "de Sitter",
+        [M | Q] = "Reissner-Nordstrøm",
+        [M | a] = "Kerr",
+        [M | Lambda] = "Kottler",
+        [M | n] = "Taub-NUT",
+        [M | alpha] = "C-metric",
+        [M | Q | a] = "Kerr-Newman",
+        [M | Q | Lambda] = "Reissner-Nordstrøm-de Sitter",
+        [M | a | Lambda] = "Kerr-de Sitter",
+        [M | n | Lambda] = "Taub-NUT-de Sitter",
+        [M | Q | a | Lambda] = "Kerr-Newman-de Sitter",
+        [M | Q | a | Lambda | n | alpha] = "Plebański-Demiański"
     };
 
     private void Awake() {
         SetListeners();
+        InitializeHandledSpacesArray();
     }
 
     private void SetListeners() {
         App.parameterSelectionButtonPressed.listOfHandlers += OnSpaceSelectionButtonPressed;
+    }
+
+    private void InitializeHandledSpacesArray() {
+        handledSpaces = Array.AsReadOnly(stateToSpaceType.Values.ToArray());
     }
 
     private void OnSpaceSelectionButtonPressed(object caller, ParameterSelectionButtonPressedArgs e) {
@@ -71,38 +79,16 @@ public class SpaceSelector : ChristofellElement {
     }
 
     private string GetSpaceTypeFromState() {
-        switch (state) {
-            case nullFlag:
-                return "Minkowski";
-            case M:
-                return "Schwarzschild";
-            case Lambda:
-                return "de Sitter";
-            case M | Q:
-                return "Reissner-Nordstrøm";
-            case M | a:
-                return "Kerr";
-            case M | Lambda:
-                return "Kottler";
-            case M | n:
-                return "Taub-NUT";
-            case M | alpha:
-                return "C-metric";
-            case M | Q | a:
-                return "Kerr-Newman";
-            case M | Q | Lambda:
-                return "Reissner-Nordstrøm-de Sitter";
-            case M | a | Lambda:
-                return "Kerr-de Sitter";
-            case M | n | Lambda:
-                return "Taub-NUT-de Sitter";
-            case M | Q | a | Lambda:
-                return "Kerr-Newman-de Sitter";
-            case M | Q | a | Lambda | n | alpha:
-                return "Plebański-Demiański";
-            default:
-                return NOT_HANDLED;
-        };
+        if (IsStateHandled()) return GetSpaceTypeCorrespondingWithState();
+        else return NOT_HANDLED;
+    }
+
+    private bool IsStateHandled() {
+        return stateToSpaceType.ContainsKey(state);
+    }
+
+    private string GetSpaceTypeCorrespondingWithState() {
+        return stateToSpaceType[state];
     }
 
     private void IfStateChangedAndHandledChangeSpaceTypeOfCube() {
@@ -114,13 +100,13 @@ public class SpaceSelector : ChristofellElement {
     }
 
     private void ChangeSpaceTypeOfCubeOrShowWarning() {
-        if (IsStateHandled()) {
+        if (IsCombinationHandled()) {
             HideNotHandledCombinationWarning();
             ChangeSpaceTypeOfCube();
         } else ShowNotHandledCombinationWarning();
     }
 
-    private bool IsStateHandled() {
+    private bool IsCombinationHandled() {
         return spaceType != NOT_HANDLED;
     }
 
