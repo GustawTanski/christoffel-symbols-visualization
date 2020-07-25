@@ -5,7 +5,9 @@ using Data;
 using UnityEngine;
 public class CubeModel : ChristofellElement {
     public float elementSize = 12;
+    public string spaceType;
     public bool areZerosVisible;
+    public float scaleFactor = 1;
 
     public string[, , ] IndexTensor {
         get;
@@ -33,8 +35,6 @@ public class CubeModel : ChristofellElement {
     } = Vector3Int.one * -1;
 
     public Dictionary<string, TextAsset> SpaceDictionaryNew => SpaceDataProvider.spacesData;
-    public string spaceType;
-
     public TensorProperties Properties => TensorProvider.Properties;
 
     private void Awake() {

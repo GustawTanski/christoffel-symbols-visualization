@@ -112,4 +112,8 @@ public class CubeView : ChristofellElement {
     public void DeselectAllElements() {
         elements.ForEach(element => element.Deselect());
     }
+
+    public void ScaleLabelsTo(float scale) {
+        elements.ForEach(element => element.ScaleTo(scale));
+    }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 public class ToolsMenuModel : ChristofellElement {
+    public SelectionCrossModel selectionCross;
     public Pivot LineStartPivot {
         get;
         set;

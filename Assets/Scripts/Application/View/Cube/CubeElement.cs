@@ -127,4 +127,8 @@ public class CubeElement : ChristofellElement {
         GetComponent<MeshRenderer>().material = invisibleMaterial;
     }
 
+    public void ScaleTo(float scale) {
+        spriteContainer.transform.localScale = Vector3.one * scale;
+    }
+
 }
