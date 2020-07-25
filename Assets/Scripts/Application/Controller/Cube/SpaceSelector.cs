@@ -86,8 +86,10 @@ public class SpaceSelector : ChristofellElement {
     }
 
     private void ChangeSpaceTypeOfCubeOrShowWarning() {
-        if (spaceType != NOT_HANDLED) ChangeSpaceTypeOfCube();
-        else ShowNotHandledCombinationWarning();
+        if (IsStateHandled()) {
+            HideNotHandledCombinationWarning();
+            ChangeSpaceTypeOfCube();
+        } else ShowNotHandledCombinationWarning();
     }
 
     private bool IsStateHandled() {
@@ -98,9 +100,12 @@ public class SpaceSelector : ChristofellElement {
         App.controller.cube.SetSpaceType(spaceType);
     }
 
+    private void HideNotHandledCombinationWarning() {
+        App.view.menu.toolsMenu.warning.SetActive(false);
+    }
+
     private void ShowNotHandledCombinationWarning() {
-        //TODO
-        throw new NotImplementedException();
+        App.view.menu.toolsMenu.warning.SetActive(true);
     }
 
     private void Start() {

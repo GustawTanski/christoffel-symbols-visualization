@@ -10,6 +10,8 @@ public class ToolsMenuView : MenuElement {
     public Slider labelSlider;
     public TMP_Text labelSliderCaption;
 
+    public GameObject warning;
+
     public CubeDescriptionView cubeDescription;
     public SelectionCrossView selectionCross;
 
