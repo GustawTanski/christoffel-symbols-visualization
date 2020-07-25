@@ -20,9 +20,16 @@ public class SpaceSelector : ChristofellElement {
     public readonly string[] handledSpaces = new [] {
         "Minkowski",
         "Schwarzschild",
-        "de Sitter Static",
+        "de Sitter",
         "Kerr",
-        "Reissner-Nordstrøm"
+        "Reissner-Nordstrøm",
+        "Taub-NUT",
+        "Kerr-Newman",
+        "Kottler",
+        "Reissner-Nordstrøm-de Sitter",
+        "Kerr-de Sitter",
+        "Taub-NUT-de Sitter",
+        "Kerr-Newman-de Sitter"
     };
 
     private void Awake() {
@@ -67,11 +74,25 @@ public class SpaceSelector : ChristofellElement {
             case M:
                 return "Schwarzschild";
             case Lambda:
-                return "de Sitter Static";
-            case M | a:
-                return "Kerr";
+                return "de Sitter";
+            case M | Lambda:
+                return "Kottler";
+            case M | n:
+                return "Taub-NUT";
             case M | Q:
                 return "Reissner-Nordstrøm";
+            case M | a:
+                return "Kerr";
+            case M | Q | a:
+                return "Kerr-Newman";
+            case M | Q | Lambda:
+                return "Reissner-Nordstrøm-de Sitter";
+            case M | a | Lambda:
+                return "Kerr-de Sitter";
+            case M | n | Lambda:
+                return "Taub-NUT-de Sitter";
+            case M | Q | a | Lambda:
+                return "Kerr-Newman-de Sitter";
             default:
                 return NOT_HANDLED;
         };
