@@ -12,6 +12,11 @@ public class CubeController : ChristofellElement {
         SetZerosVisibility();
     }
 
+    private void Start() {
+        SetSpaceType("Minkowski");
+        UpdateCube();
+    }
+
     // private void Start() {
     //     var system = new EasySaveDataSystem();
     //     foreach(var asset in Model.SpaceDictionaryNew.Values) {
@@ -74,12 +79,7 @@ public class CubeController : ChristofellElement {
         foreach (CubeElement element in plane) element.Select();
     }
 
-    public async void SetSpaceType(string spaceType) {
-        ChangeSpace(spaceType);
-
-    }
-
-    private void ChangeSpace(string spaceType) {
+    public void SetSpaceType(string spaceType) {
         SetSpaceState(spaceType);
         Model.UpdateModel();
         DispatchSpaceDataChangedEvent();

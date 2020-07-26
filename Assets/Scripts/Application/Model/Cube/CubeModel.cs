@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
 public class CubeModel : ChristofellElement {
     public float elementSize = 12;
-    public string spaceType = "Minkowski";
+    public string spaceType;
     public bool areZerosVisible;
     public float scaleFactor = 1;
 
