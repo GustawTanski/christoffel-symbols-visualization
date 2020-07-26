@@ -4,6 +4,18 @@ public class MetricSelectionController : ChristofellElement {
     public ParametersPanelController parametersPanel;
     private MetricSelectionView View => App.view.menu.metricSelection;
 
+    private void Awake() {
+        SetListeners();
+    }
+
+    private void SetListeners() {
+        App.spaceChanged.listOfHandlers += OnSpaceChanged;
+    }
+
+    private void OnSpaceChanged(object caller, SpaceChangedArgs e) {
+        View.spacetimeName.text = e.tensorProperties.Name;
+    }
+
     private void Start() {
         InitializeDropdown();
     }
