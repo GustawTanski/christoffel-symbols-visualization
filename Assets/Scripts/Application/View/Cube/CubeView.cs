@@ -53,10 +53,10 @@ public class CubeView : ChristofellElement {
     }
 
     public void SetFormulaTextures() {
-        elements.ForEach(SetFormalaTexture);
+        elements.ForEach(SetFormulaTexture);
     }
 
-    private void SetFormalaTexture(CubeElement element, int i, int j, int k) {
+    private void SetFormulaTexture(CubeElement element, int i, int j, int k) {
         element.FormulaTexture = App.model.cube.FormulaTextures[i, j, k];
     }
 

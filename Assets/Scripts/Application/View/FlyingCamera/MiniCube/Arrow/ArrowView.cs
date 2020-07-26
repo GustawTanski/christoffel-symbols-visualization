@@ -13,10 +13,10 @@ public class ArrowView : ChristofellElement {
     }
 
     private void SetListeners() {
-        App.spaceChanged.listOfHandlers += OnSpaceDropdownChanged;
+        App.spaceVisualizedByCubeChanged.listOfHandlers += OnSpaceVisualizedByCubeChanged;
     }
 
-    private async void OnSpaceDropdownChanged(object caller, SpaceChangedArgs e) {
+    private async void OnSpaceVisualizedByCubeChanged(object caller, SpaceChangedArgs e) {
         properties = e.tensorProperties;
         await SetIndexTexture();
     }

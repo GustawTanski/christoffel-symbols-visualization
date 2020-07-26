@@ -9,10 +9,10 @@ public class MetricSelectionController : ChristofellElement {
     }
 
     private void SetListeners() {
-        App.spaceChanged.listOfHandlers += OnSpaceChanged;
+        App.spaceDataChanged.listOfHandlers += OnSpaceDataChanged;
     }
 
-    private void OnSpaceChanged(object caller, SpaceChangedArgs e) {
+    private void OnSpaceDataChanged(object caller, SpaceChangedArgs e) {
         View.spacetimeName.text = e.tensorProperties.Name;
     }
 
@@ -22,7 +22,7 @@ public class MetricSelectionController : ChristofellElement {
 
     private void InitializeDropdown() {
         PopulateDropdown();
-        SetDropdownState();
+        InitializeDropdownState();
         SetDropdownListener();
     }
     private void PopulateDropdown() {
@@ -32,21 +32,19 @@ public class MetricSelectionController : ChristofellElement {
         View.dropdown.AddOptions(names);
     }
 
-    private void SetDropdownState() {
-        View.dropdown.value = 0;
-        OnSpaceDropdownChanged(View.dropdown.value);
-    }
-
-    private void OnSpaceDropdownChanged(int value) {
-        string spaceType = View.dropdown.options[value].text;
-        App.controller.cube.SetSpaceType(spaceType);
-    }
-
     private bool IsNotHandledBySpaceSelector(string spaceType) {
         return !App.controller.cube.spaceSelector.handledSpaces.Contains(spaceType);
     }
 
+    private void InitializeDropdownState() {
+        View.dropdown.SetValueWithoutNotify(0);
+    }
+
     private void SetDropdownListener() {
         View.dropdown.onValueChanged.AddListener(OnSpaceDropdownChanged);
+    }
+    private void OnSpaceDropdownChanged(int value) {
+        string spaceType = View.dropdown.options[value].text;
+        App.controller.cube.SetSpaceType(spaceType);
     }
 }

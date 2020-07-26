@@ -30,7 +30,7 @@ public partial class CubeDescriptionView : ChristofellElement {
     }
 
     private void SetListeners() {
-        App.spaceChanged.listOfHandlers += OnSpaceChanged;
+        App.spaceDataChanged.listOfHandlers += OnSpaceChanged;
     }
 
     private void OnSpaceChanged(object caller, SpaceChangedArgs e) {

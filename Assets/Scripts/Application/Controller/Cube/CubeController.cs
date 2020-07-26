@@ -76,21 +76,25 @@ public class CubeController : ChristofellElement {
 
     public async void SetSpaceType(string spaceType) {
         ChangeSpace(spaceType);
-        await UpdateTextures();
+
     }
 
     private void ChangeSpace(string spaceType) {
         SetSpaceState(spaceType);
         Model.UpdateModel();
-        DispatchSpaceChangedEvent();
+        DispatchSpaceDataChangedEvent();
     }
 
     private void SetSpaceState(string spaceType) {
         Model.spaceType = spaceType;
     }
 
-    private void DispatchSpaceChangedEvent() {
-        App.spaceChanged.DispatchEvent(this, new SpaceChangedArgs(Model.Properties));
+    private void DispatchSpaceDataChangedEvent() {
+        App.spaceDataChanged.DispatchEvent(this, new SpaceChangedArgs(Model.Properties));
+    }
+
+    public async void UpdateCube() {
+        await UpdateTextures();
     }
 
     private async Task UpdateTextures() {

@@ -5,7 +5,7 @@ using Data;
 using UnityEngine;
 public class CubeModel : ChristofellElement {
     public float elementSize = 12;
-    public string spaceType;
+    public string spaceType = "Minkowski";
     public bool areZerosVisible;
     public float scaleFactor = 1;
 
@@ -39,7 +39,6 @@ public class CubeModel : ChristofellElement {
 
     private void Awake() {
         SpaceDataProvider.LoadResources();
-        spaceType = SpaceDictionaryNew.Keys.First();
     }
 
     public void UpdateModel() {
