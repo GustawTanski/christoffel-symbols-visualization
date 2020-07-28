@@ -1,8 +1,6 @@
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(CanvasGroup))]
-
 public class Popper : MonoBehaviour {
     public TMP_Text caption;
 
@@ -10,13 +8,13 @@ public class Popper : MonoBehaviour {
         caption.text = text;
     }
 
-    public void MoveAndShow(Vector3 localPosition) {
-        Move(localPosition);
+    public void MoveAndShow(Vector3 position) {
+        Move(position);
         Show();
     }
 
-    public void Move(Vector3 localPosition) {
-        transform.localPosition = localPosition;
+    public void Move(Vector3 position) {
+        transform.position = position;
     }
 
     public void Show() {

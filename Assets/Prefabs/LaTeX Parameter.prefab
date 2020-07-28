@@ -65,9 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4bbbe5cda5facc04ab585d0a821517cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae926cebc6731274ba11efcc00384e3d, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47085e722cee82f488b7dfa583eae854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heightLimit: 2147483647
 --- !u!1 &8042736203554348119
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +100,7 @@ GameObject:
   - component: {fileID: 8042736203554348107}
   - component: {fileID: 8042736203554348106}
   - component: {fileID: 8042736203554348112}
+  - component: {fileID: 2905610918114827995}
   m_Layer: 5
   m_Name: LaTeX Parameter
   m_TagString: Untagged
@@ -176,3 +178,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameterImage: {fileID: 2258802257524247637}
+--- !u!114 &2905610918114827995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042736203554348119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1332228a5f81bdf498b65ad9759b0a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popper: {fileID: 0}
+  message: 

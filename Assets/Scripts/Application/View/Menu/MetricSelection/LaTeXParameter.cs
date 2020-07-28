@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PopperShower))]
 [RequireComponent(typeof(RectTransform))]
 
 public class LaTeXParameter : MonoBehaviour, IChristoffelParameter {
@@ -15,8 +16,12 @@ public class LaTeXParameter : MonoBehaviour, IChristoffelParameter {
     }
 
     public string Description {
-        get;
-        set;
+        get => GetComponent<PopperShower>().message;
+        set => GetComponent<PopperShower>().message = value;
+    }
+
+    public Popper Popper {
+        set => GetComponent<PopperShower>().popper = value;
     }
 
     public async void UpdateImage() {

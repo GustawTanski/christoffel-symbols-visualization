@@ -15,6 +15,7 @@ public class MetricSelectionView : MenuElement {
     public TextParameter textParameterPrefab;
     public LaTeXParameter laTeXParameterPrefab;
     public GameObject parametersContainer;
+    public Popper popper;
     private static readonly Regex COMMAND_FILTER = new Regex(@"(\\not)?[\\][a-zA-Z]+(\{[a-zA-Z0-9]*\})?", RegexOptions.Compiled);
     private static readonly Regex SUPERSCRIPT_FILTER = new Regex(@"\^((\{[^\}]+\})|.)", RegexOptions.Compiled);
     private static readonly Regex SUBSCRIPT_FILTER = new Regex(@"_((\{[^\}]+\})|.)", RegexOptions.Compiled);
@@ -51,27 +52,25 @@ public class MetricSelectionView : MenuElement {
     private IChristoffelParameter CreateParameterDescription(TensorProperties.LaTeXCharacter parameter) {
         currentParameterData = parameter;
         try {
-            TryCreatingTextDescription();
+            TryCreatingTextParameter();
         } catch (KeyNotFoundException) {
             CreateLaTeXDescription();
         }
         return currentParameter;
     }
 
-    private void TryCreatingTextDescription() {
+    private void TryCreatingTextParameter() {
         string text = GetUnicodeFromCurrentParameter();
         currentParameter = Instantiate(textParameterPrefab, parametersContainer.transform);
         currentParameter.Parameter = text;
         currentParameter.Description = currentParameterData.Description;
+        currentParameter.Popper = popper;
     }
 
     private string GetUnicodeFromCurrentParameter() {
         string temp = currentParameterData.LaTeX + "";
         foreach (Regex filter in FILTERS) {
-            temp = filter.Replace(temp, (a) => {
-                Debug.Log(a);
-                return Model.LaTeXToUnicode[a.Value];
-            });
+            temp = filter.Replace(temp, (a) => Model.LaTeXToUnicode[a.Value]);
         }
         return temp;
     }

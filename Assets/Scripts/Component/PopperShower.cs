@@ -26,7 +26,7 @@ public class PopperShower : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private Vector3 CalculatePopperPosition() {
         Vector2 dist = GetPivotToLeftTopCornerTranslation();
-        return transform.localPosition - new Vector3(dist.x, dist.y, 0);
+        return transform.position - new Vector3(dist.x, dist.y, 0);
     }
 
     private Vector2 GetPivotToLeftTopCornerTranslation() {
