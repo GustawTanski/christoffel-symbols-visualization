@@ -84,6 +84,7 @@ public class ToolsController : ChristofellElement {
 
     private void ToggleTools() {
         ToggleActivityState();
+        DispatchToolsToggledEvent();
         SynchronizeVisibilityWithState();
     }
 
@@ -93,5 +94,8 @@ public class ToolsController : ChristofellElement {
 
     private void SynchronizeVisibilityWithState() {
         View.gameObject.SetActive(Model.IsActive);
+    }
+    private void DispatchToolsToggledEvent() {
+        App.toolsToggled.DispatchEvent(this, new ToolsToggledArgs(Model.IsActive));
     }
 }
