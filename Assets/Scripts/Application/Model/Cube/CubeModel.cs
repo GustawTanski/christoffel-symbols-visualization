@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
-public class CubeModel : ChristofellElement {
+public class CubeModel : ChristoffelElement {
     public float elementSize = 12;
     public string spaceType;
     public bool areZerosVisible;

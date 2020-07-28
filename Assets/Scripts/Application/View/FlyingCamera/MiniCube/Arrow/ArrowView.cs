@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
-public class ArrowView : ChristofellElement {
+public class ArrowView : ChristoffelElement {
     public DynamicSprite indexSprite;
     public uint index;
     private string laTeX;

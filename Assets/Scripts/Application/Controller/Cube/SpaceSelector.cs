@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using ParameterFlag = System.UInt32;
 using System.Linq;
 
-public class SpaceSelector : ChristofellElement {
+public class SpaceSelector : ChristoffelElement {
 
     private const ParameterFlag nullFlag = 0;
     private const ParameterFlag M = 0b1;

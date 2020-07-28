@@ -1,4 +1,4 @@
-public class ChristofellView : ChristofellElement {
+public class ChristofellView : ChristoffelElement {
     public CubeView cube;
     public MenuView menu;
     public FlyingCameraView flyingCamera;

@@ -1,5 +1,5 @@
 using UnityEngine;
-public class FlyingCameraModel : ChristofellElement {
+public class FlyingCameraModel : ChristoffelElement {
 
     public MiniCubeModel miniCube;
     public float cameraSensitivity = 10;

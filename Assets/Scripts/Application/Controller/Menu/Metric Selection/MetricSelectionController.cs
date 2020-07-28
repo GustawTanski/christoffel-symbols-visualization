@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-public class MetricSelectionController : ChristofellElement {
+
+public class MetricSelectionController : ChristoffelElement {
     public ParametersPanelController parametersPanel;
     private MetricSelectionView View => App.view.menu.metricSelection;
+
 
     private void Awake() {
         SetListeners();
@@ -14,6 +16,7 @@ public class MetricSelectionController : ChristofellElement {
 
     private void OnSpaceDataChanged(object caller, SpaceChangedArgs e) {
         View.spacetimeName.text = e.tensorProperties.Name;
+        View.UpdateParameters(e.tensorProperties.Parameters);
     }
 
     private void Start() {

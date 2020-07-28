@@ -1,4 +1,4 @@
-public class MenuView : ChristofellElement {
+public class MenuView : ChristoffelElement {
     public MainMenuView mainMenu;
     public GraphicsView graphics;
     public KeyBindingsView keyBindings;

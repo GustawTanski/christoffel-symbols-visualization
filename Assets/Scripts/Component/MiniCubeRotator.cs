@@ -2,7 +2,7 @@ using Data;
 using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 
-public class MiniCubeRotator : ChristofellElement {
+public class MiniCubeRotator : ChristoffelElement {
     public Direction axis;
     public float rotationAngle;
     public float growFactor;

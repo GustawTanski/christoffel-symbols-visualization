@@ -1,6 +1,6 @@
 using System;
 using UnityEngine.Events;
-public class ParametersPanelController : ChristofellElement {
+public class ParametersPanelController : ChristoffelElement {
     private ParametersPanelView View => App.view.menu.metricSelection.parametersPanel;
     private ParametersPanelModel Model => App.model.menu.metricSelection.parametersPanel;
 

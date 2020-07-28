@@ -1,4 +1,4 @@
-public class MenuController : ChristofellElement {
+public class MenuController : ChristoffelElement {
     public MainMenuController mainMenu;
     public GraphicsController graphics;
     public KeyBindingsController keyBindings;

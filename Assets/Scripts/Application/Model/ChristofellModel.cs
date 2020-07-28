@@ -1,4 +1,4 @@
-public class ChristofellModel : ChristofellElement {
+public class ChristofellModel : ChristoffelElement {
     public CubeModel cube;
     public MenuModel menu;
     public FlyingCameraModel flyingCamera;

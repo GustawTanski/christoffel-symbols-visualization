@@ -1,4 +1,4 @@
-public class ParametersPanelModel : ChristofellElement {
+public class ParametersPanelModel : ChristoffelElement {
     public bool Lambda { get; set; }
     public bool M { get; set; }
     public bool n { get; set; }

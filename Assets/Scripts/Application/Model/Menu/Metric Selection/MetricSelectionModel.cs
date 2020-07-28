@@ -1,3 +1,3 @@
-public class MetricSelectionModel : ChristofellElement {
+public class MetricSelectionModel : ChristoffelElement {
     public ParametersPanelModel parametersPanel;
 }

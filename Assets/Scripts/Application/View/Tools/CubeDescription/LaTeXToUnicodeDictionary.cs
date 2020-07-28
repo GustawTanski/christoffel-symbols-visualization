@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 public partial class CubeDescriptionView {
-    private Dictionary<string, string> LaTeXToUnicode = new Dictionary<string, string> {
+    public static Dictionary<string, string> LaTeXToUnicode = new Dictionary<string, string> {
         [@"\alpha"] = @"α",
         [@"\Alpha"] = @"Α",
         [@"\beta"] = @"β",

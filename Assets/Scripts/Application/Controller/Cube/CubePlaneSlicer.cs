@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Data;
 using UnityEngine;
-public class CubePlaneSlicer : ChristofellElement {
+public class CubePlaneSlicer : ChristoffelElement {
 
     private Dimension planeDimension;
     private int planeIndex;

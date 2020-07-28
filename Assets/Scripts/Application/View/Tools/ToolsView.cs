@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToolsView : ChristofellElement {
+public class ToolsView : ChristoffelElement {
     public Toggle zerosToggle;
     public Button resetButton;
     public LineRenderer line;

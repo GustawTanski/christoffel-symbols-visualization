@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public partial class FlyingCameraController : ChristofellElement {
+public partial class FlyingCameraController : ChristoffelElement {
 
     public MiniCubeController miniCube;
     private TranslationCalculator translationCalculator;

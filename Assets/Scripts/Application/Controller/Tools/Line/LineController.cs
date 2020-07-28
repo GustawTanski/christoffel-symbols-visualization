@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LineController : ChristofellElement {
+public class LineController : ChristoffelElement {
 
     private RaycastHit hit;
     private bool isHit = false;

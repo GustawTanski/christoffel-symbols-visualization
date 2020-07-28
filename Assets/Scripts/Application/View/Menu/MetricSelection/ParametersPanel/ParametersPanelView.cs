@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-public class ParametersPanelView : ChristofellElement {
+public class ParametersPanelView : ChristoffelElement {
     public Toggle Lambda;
     public Toggle M;
     public Toggle Q;

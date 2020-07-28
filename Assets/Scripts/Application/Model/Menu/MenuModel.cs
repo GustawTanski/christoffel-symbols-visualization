@@ -1,4 +1,4 @@
-public class MenuModel : ChristofellElement {
+public class MenuModel : ChristoffelElement {
     public GraphicsModel graphics;
     public KeyBindingsModel keyBindings;
     public MetricSelectionModel metricSelection;

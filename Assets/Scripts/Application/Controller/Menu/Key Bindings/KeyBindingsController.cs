@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
-public class KeyBindingsController : ChristofellElement {
+public class KeyBindingsController : ChristoffelElement {
     private KeyBindingsModel Model => App.model.menu.keyBindings;
     private KeyBindingsView View => App.view.menu.keyBindings;
 

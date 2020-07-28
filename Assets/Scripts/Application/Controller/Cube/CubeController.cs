@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-public class CubeController : ChristofellElement {
+public class CubeController : ChristoffelElement {
     public CubePlaneSlicer cubePlaneSlicer;
     public SpaceSelector spaceSelector;
     private CubeModel Model => App.model.cube;

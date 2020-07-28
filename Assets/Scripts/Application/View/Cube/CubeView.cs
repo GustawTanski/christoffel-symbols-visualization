@@ -3,7 +3,7 @@ using System.Linq;
 using BetterMultidimensionalArray;
 using Data;
 using UnityEngine;
-public class CubeView : ChristofellElement {
+public class CubeView : ChristoffelElement {
     public CubeElement cubeElementPrefab;
     private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
     private readonly Quaternion zeroRotation = Quaternion.Euler(0, -90, 90);

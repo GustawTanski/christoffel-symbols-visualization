@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class KeyBindingsModel : ChristofellElement {
+public class KeyBindingsModel : ChristoffelElement {
 
     public InputAction moveAction;
     public readonly string MEMORY_PREFIX = "keyBinding";

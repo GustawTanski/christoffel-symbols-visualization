@@ -1,5 +1,5 @@
 using UnityEngine;
-public class ToolsModel : ChristofellElement {
+public class ToolsModel : ChristoffelElement {
 
     public bool IsActive = false;
     public Pivot LineStartPivot {

@@ -5,7 +5,7 @@ using Data;
 using TMPro;
 using UnityEngine;
 
-public partial class CubeDescriptionView : ChristofellElement {
+public partial class CubeDescriptionView : ChristoffelElement {
     public TextMeshProUGUI title;
     public TextDescription textDescriptionPrefab;
     public LaTeXDescription laTeXDescriptionPrefab;

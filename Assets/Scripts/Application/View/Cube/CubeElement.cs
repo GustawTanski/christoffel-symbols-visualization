@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class CubeElement : ChristofellElement {
+public class CubeElement : ChristoffelElement {
     public Material invisibleMaterial;
     public Material visibleMaterial;
     public DynamicSprite dynamicSpritePrefab;
