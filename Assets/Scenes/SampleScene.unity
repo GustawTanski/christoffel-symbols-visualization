@@ -70220,7 +70220,9 @@ MonoBehaviour:
   warning: {fileID: 226081080}
   textParameterPrefab: {fileID: 2910476335619430347, guid: ab84a32a50517c847913d7b2848e75d1,
     type: 3}
-  ParametersContainer: {fileID: 1062424479}
+  laTeXParameterPrefab: {fileID: 8042736203554348112, guid: b18f2297fa5489041b36fa4e9d08d2cb,
+    type: 3}
+  parametersContainer: {fileID: 1062424479}
 --- !u!1 &1727199430
 GameObject:
   m_ObjectHideFlags: 0
