@@ -5,9 +5,14 @@ public class ToolsController : ChristofellElement {
     public ToolsModel Model => App.model.tools;
 
     private void Start() {
+        InitializeVisibility();
         InitializeToggle();
         InitializeResetButton();
         InitializeLabelSlider();
+    }
+
+    private void InitializeVisibility() {
+        SynchronizeVisibilityWithState();
     }
 
     private void InitializeToggle() {
@@ -79,14 +84,14 @@ public class ToolsController : ChristofellElement {
 
     private void ToggleTools() {
         ToggleActivityState();
-        ToggleVisibility();
+        SynchronizeVisibilityWithState();
     }
 
     private void ToggleActivityState() {
         Model.IsActive = !Model.IsActive;
     }
 
-    private void ToggleVisibility() {
+    private void SynchronizeVisibilityWithState() {
         View.gameObject.SetActive(Model.IsActive);
     }
 }
