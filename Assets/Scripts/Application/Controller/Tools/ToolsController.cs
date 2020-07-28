@@ -6,12 +6,16 @@ public class ToolsController : ChristofellElement {
     public ToolsModel Model => App.model.tools;
 
     private void Awake() {
-        App.spaceVisualizedByCubeChanged.listOfHandlers += (caller, e) => {
-            Debug.Log("Woof");
-            View.spacetimeName.text = e.tensorProperties.Name;
-        };
+        SetListeners();
     }
 
+    private void SetListeners() {
+        App.spaceVisualizedByCubeChanged.listOfHandlers += OnSpaceVisualizedByCubeChanged;
+    }
+
+    private void OnSpaceVisualizedByCubeChanged(object caller, SpaceChangedArgs e) {
+        View.spacetimeName.text = e.tensorProperties.Name;
+    }
     private void Start() {
         InitializeVisibility();
         InitializeToggle();
