@@ -62,10 +62,31 @@ public class ToolsController : ChristofellElement {
     }
 
     private void Update() {
-        if (!App.model.menu.isMenuOn)
-            if (App.model.menu.keyBindings.ToolsToggle.WasReleasedThisFrame()) {
-                Model.IsActive = !Model.IsActive;
-                View.gameObject.SetActive(Model.IsActive);
-            }
+        if (WasToolsToggleReleasedWhenMenuIsHided()) ToggleTools();
+    }
+
+    private bool WasToolsToggleReleasedWhenMenuIsHided() {
+        return IsMenuHided() && WasToolsToggleReleased();
+    }
+
+    private bool IsMenuHided() {
+        return !App.model.menu.isMenuOn;
+    }
+
+    private bool WasToolsToggleReleased() {
+        return App.model.menu.keyBindings.ToolsToggle.WasReleasedThisFrame();
+    }
+
+    private void ToggleTools() {
+        ToggleActivityState();
+        ToggleVisibility();
+    }
+
+    private void ToggleActivityState() {
+        Model.IsActive = !Model.IsActive;
+    }
+
+    private void ToggleVisibility() {
+        View.gameObject.SetActive(Model.IsActive);
     }
 }
