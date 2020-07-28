@@ -12,6 +12,10 @@ public class MenuController : ChristofellElement {
         App.menuChanged.DispatchEvent(this, new MenuChangedArgs(newMenu, Model.isMenuOn));
     }
 
+    public void HideMenu() {
+        App.menuChanged.DispatchEvent(this, new MenuChangedArgs(Model.currentMenu, false));
+    }
+
     private void Awake() {
         App.menuChanged.listOfHandlers += OnMenuChanged;
     }
