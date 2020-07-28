@@ -70218,7 +70218,7 @@ MonoBehaviour:
   spacetimeName: {fileID: 949743577}
   applyButton: {fileID: 1055317395}
   warning: {fileID: 226081080}
-  christoffelParameterPrefab: {fileID: 8452015237431848723, guid: ab84a32a50517c847913d7b2848e75d1,
+  textParameterPrefab: {fileID: 2910476335619430347, guid: ab84a32a50517c847913d7b2848e75d1,
     type: 3}
   ParametersContainer: {fileID: 1062424479}
 --- !u!1 &1727199430

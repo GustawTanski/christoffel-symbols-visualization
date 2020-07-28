@@ -12,7 +12,7 @@ public class MetricSelectionView : MenuElement {
     public TMP_Text spacetimeName;
     public Button applyButton;
     public GameObject warning;
-    public ChristoffelParameter christoffelParameterPrefab;
+    public TextParameter textParameterPrefab;
     public GameObject ParametersContainer;
     private static readonly Regex COMMAN_FILTER = new Regex(@"(\\not)?[\\][a-zA-Z]+(\{[a-zA-Z0-9]*\})?", RegexOptions.Compiled);
     private static readonly Regex SUPERSCRIPT_FILTER = new Regex(@"\^[a-zA-Z0-9]", RegexOptions.Compiled);
@@ -25,17 +25,17 @@ public class MetricSelectionView : MenuElement {
         LETTER_FILTER
     };
 
-    private List<ChristoffelParameter> christoffelParameters = new List<ChristoffelParameter>();
+    private List<IChristoffelParameter> christoffelParameters = new List<IChristoffelParameter>();
     public void UpdateParameters(TensorProperties.LaTeXCharacter[] parameters) {
-        christoffelParameters.ForEach(parameter => Destroy(parameter.gameObject));
+        christoffelParameters.ForEach(parameter => parameter.Destroy());
         christoffelParameters = parameters.Select(parameter => {
-            ChristoffelParameter a = Instantiate(christoffelParameterPrefab, ParametersContainer.transform);
+            TextParameter a = Instantiate(textParameterPrefab, ParametersContainer.transform);
             string temp = parameter.LaTeX + "";
             foreach (Regex filter in FILTERS) {
                 temp = filter.Replace(temp, (b) => CubeDescriptionView.LaTeXToUnicode[b.Value]);
             }
-            a.text.text = temp;
-            return a;
+            a.Parameter = temp;
+            return a as IChristoffelParameter;
         }).ToList();
     }
 

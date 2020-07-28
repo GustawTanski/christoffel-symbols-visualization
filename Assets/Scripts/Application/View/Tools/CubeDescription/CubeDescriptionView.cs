@@ -7,13 +7,13 @@ using UnityEngine;
 
 public partial class CubeDescriptionView : ChristoffelElement {
     public TextMeshProUGUI title;
-    public TextDescription textDescriptionPrefab;
-    public LaTeXDescription laTeXDescriptionPrefab;
+    public TextParameter textDescriptionPrefab;
+    public LaTeXParameter laTeXDescriptionPrefab;
     public GameObject descriptionContainer;
 
-    private IParameterDescription[] parameterDescriptions = new IParameterDescription[0];
+    private IChristoffelParameter[] parameterDescriptions = new IChristoffelParameter[0];
     private SpaceChangedArgs spaceChangedArgs;
-    private IParameterDescription currentDescAsset;
+    private IChristoffelParameter currentDescAsset;
     private TensorProperties.LaTeXCharacter currentParameter;
     private static readonly Regex COMMAN_FILTER = new Regex(@"(\\not)?[\\][a-zA-Z]+(\{[a-zA-Z0-9]*\})?", RegexOptions.Compiled);
     private static readonly Regex SUPERSCRIPT_FILTER = new Regex(@"\^[a-zA-Z0-9]", RegexOptions.Compiled);
@@ -45,7 +45,7 @@ public partial class CubeDescriptionView : ChristoffelElement {
     }
 
     private void CleanDescription() {
-        foreach (IParameterDescription desc in parameterDescriptions) {
+        foreach (IChristoffelParameter desc in parameterDescriptions) {
             desc.Destroy();
         }
     }
@@ -58,7 +58,7 @@ public partial class CubeDescriptionView : ChristoffelElement {
             .ToArray();
     }
 
-    private IParameterDescription CreateParameterDescription(TensorProperties.LaTeXCharacter parameter) {
+    private IChristoffelParameter CreateParameterDescription(TensorProperties.LaTeXCharacter parameter) {
         currentParameter = parameter;
         try {
             TryCreatingTextDescription();

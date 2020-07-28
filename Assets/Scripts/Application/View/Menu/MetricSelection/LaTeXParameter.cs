@@ -5,11 +5,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(HorizontalLayoutGroup))]
 
-public class LaTeXDescription : MonoBehaviour, IParameterDescription {
-    private string parameter;
-
+public class LaTeXParameter : MonoBehaviour, IChristoffelParameter {
     public DynamicImage parameterImage;
-    public TextMeshProUGUI description;
+    private string parameter;
 
     public string Parameter {
         get => parameter;
@@ -20,8 +18,8 @@ public class LaTeXDescription : MonoBehaviour, IParameterDescription {
     }
 
     public string Description {
-        get => description.text;
-        set => description.text = "— " + value;
+        get;
+        set;
     }
 
     public async void UpdateImage() {
