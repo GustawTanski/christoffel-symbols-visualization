@@ -36,11 +36,11 @@ public class CubePlaneSlicer : ChristofellElement {
     }
 
     private bool IsHit() {
-        return App.controller.menu.toolsMenu.line.IsElementHit();
+        return App.controller.tools.line.IsElementHit();
     }
 
     private bool IsDifferenceVectorLongEnough() {
-        return App.model.menu.toolsMenu.LineDifferenceVector.magnitude >= MINIMAL_DIFFERENCE_MAGNITUDE;
+        return App.model.tools.LineDifferenceVector.magnitude >= MINIMAL_DIFFERENCE_MAGNITUDE;
     }
 
     private void SelectPlane() {
@@ -74,7 +74,7 @@ public class CubePlaneSlicer : ChristofellElement {
     }
 
     private bool IsOnHitPlane(Vector3 vector) {
-        Vector3 projection = Vector3.ProjectOnPlane(vector, App.model.menu.toolsMenu.LineStartPivot.PlaneNormal);
+        Vector3 projection = Vector3.ProjectOnPlane(vector, App.model.tools.LineStartPivot.PlaneNormal);
         return projection.magnitude > 1E-4;
     }
 
@@ -88,7 +88,7 @@ public class CubePlaneSlicer : ChristofellElement {
     }
 
     private float ProjectOnDifferenceVector(Vector3 vector) {
-        Vector3 normalizedDifference = App.model.menu.toolsMenu.LineDifferenceVector.normalized;
+        Vector3 normalizedDifference = App.model.tools.LineDifferenceVector.normalized;
         return Vector3.Project(normalizedDifference, vector).magnitude;
     }
 

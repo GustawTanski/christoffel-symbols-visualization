@@ -1,7 +1,7 @@
-public class ToolsMenuController : ChristofellElement {
+public class ToolsController : ChristofellElement {
     public LineController line;
 
-    public ToolsMenuView View => App.view.menu.toolsMenu;
+    public ToolsView View => App.view.tools;
 
     private void Start() {
         InitializeToggle();

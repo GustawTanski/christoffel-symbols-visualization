@@ -45,7 +45,7 @@ public class LineController : ChristofellElement {
     }
 
     private void AttachStartPivot() {
-        App.model.menu.toolsMenu.LineStartPivot = new Pivot() {
+        App.model.tools.LineStartPivot = new Pivot() {
             Position = hit.point,
             PlaneNormal = hit.normal,
             IsAttached = true
@@ -57,7 +57,7 @@ public class LineController : ChristofellElement {
     }
 
     private void OnMousePressed() {
-        if (App.model.menu.toolsMenu.LineStartPivot.IsAttached) {
+        if (App.model.tools.LineStartPivot.IsAttached) {
             MouseRaycast();
             if (IsElementHit() && IsSamePlane()) AttachEndPivotAndDrawLine();
             else DetachEndPivotAndDrawLine();
@@ -65,7 +65,7 @@ public class LineController : ChristofellElement {
     }
 
     private bool IsSamePlane() {
-        return hit.normal == App.model.menu.toolsMenu.LineStartPivot.PlaneNormal;
+        return hit.normal == App.model.tools.LineStartPivot.PlaneNormal;
     }
 
     private void AttachEndPivotAndDrawLine() {
@@ -74,7 +74,7 @@ public class LineController : ChristofellElement {
     }
 
     private void AttachEndPivot() {
-        App.model.menu.toolsMenu.LineEndPivot = new Pivot() {
+        App.model.tools.LineEndPivot = new Pivot() {
             Position = hit.point,
             PlaneNormal = hit.normal,
             IsAttached = true
@@ -82,7 +82,7 @@ public class LineController : ChristofellElement {
     }
 
     private void DrawLine() {
-        App.view.menu.toolsMenu.DrawLine();
+        App.view.tools.DrawLine();
     }
 
     private void DetachEndPivotAndDrawLine() {
@@ -91,11 +91,11 @@ public class LineController : ChristofellElement {
     }
 
     private void DetachEndPivot() {
-        App.model.menu.toolsMenu.LineEndPivot.Detach();
+        App.model.tools.LineEndPivot.Detach();
     }
 
     private void HideLine() {
-        App.view.menu.toolsMenu.HideLine();
+        App.view.tools.HideLine();
     }
 
     private bool WasMouseButtonReleased() {
@@ -114,6 +114,6 @@ public class LineController : ChristofellElement {
     }
 
     private void DetachStartPivot() {
-        App.model.menu.toolsMenu.LineStartPivot.Detach();
+        App.model.tools.LineStartPivot.Detach();
     }
 }

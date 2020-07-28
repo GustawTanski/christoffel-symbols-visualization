@@ -1,5 +1,5 @@
 using UnityEngine;
-public class ToolsMenuModel : ChristofellElement {
+public class ToolsModel : ChristofellElement {
     public Pivot LineStartPivot {
         get;
         set;

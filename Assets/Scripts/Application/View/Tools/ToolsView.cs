@@ -2,8 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToolsMenuView : MenuElement {
-    public Dropdown dropdown;
+public class ToolsView : ChristofellElement {
     public Toggle zerosToggle;
     public Button resetButton;
     public LineRenderer line;
@@ -18,6 +17,6 @@ public class ToolsMenuView : MenuElement {
 
     public void DrawLine() {
         line.startWidth = line.endWidth = 0.1f;
-        line.SetPositions(new Vector3[] { App.model.menu.toolsMenu.LineStartPivot.Position, App.model.menu.toolsMenu.LineEndPivot.Position });
+        line.SetPositions(new Vector3[] { App.model.tools.LineStartPivot.Position, App.model.tools.LineEndPivot.Position });
     }
 }
