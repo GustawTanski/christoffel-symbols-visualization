@@ -1,5 +1,7 @@
 using UnityEngine;
 public class ToolsModel : ChristofellElement {
+
+    public bool IsActive = false;
     public Pivot LineStartPivot {
         get;
         set;

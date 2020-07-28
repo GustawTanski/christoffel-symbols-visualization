@@ -22,14 +22,14 @@ public class KeyBindingsModel : ChristofellElement {
         ["Menu Toggle"] = "escape",
         ["Accelerate"] = "leftShift",
         ["Decelerate"] = "leftCtrl",
-        ["Index Toggle"] = "tab",
+        ["Index Toggle"] = "leftAlt",
         ["Up"] = "q",
         ["Down"] = "e",
         ["Forward"] = "w",
         ["Backward"] = "s",
         ["Left"] = "a",
         ["Right"] = "d",
-        ["Tools Toggle"] = "leftAlt"
+        ["Tools Toggle"] = "tab"
     };
 
     private void Awake() {
@@ -97,7 +97,8 @@ public class KeyBindingsModel : ChristofellElement {
             MenuToggle,
             Accelerate,
             Decelerate,
-            IndexToggle
+            IndexToggle,
+            ToolsToggle
         };
     }
 

@@ -2,6 +2,7 @@ public class ToolsController : ChristofellElement {
     public LineController line;
 
     public ToolsView View => App.view.tools;
+    public ToolsModel Model => App.model.tools;
 
     private void Start() {
         InitializeToggle();
@@ -25,7 +26,6 @@ public class ToolsController : ChristofellElement {
     private void OnZerosToggleChange(bool _) {
         App.zerosHided.DispatchEvent(this, new ZerosHidedArgs());
     }
-
 
     private void InitializeResetButton() {
         View.resetButton.onClick.AddListener(OnResetButtonPressed);
@@ -59,5 +59,13 @@ public class ToolsController : ChristofellElement {
 
     private void SetInitialValueToLabelSlider() {
         View.labelSlider.value = App.model.cube.scaleFactor;
+    }
+
+    private void Update() {
+        if (!App.model.menu.isMenuOn)
+            if (App.model.menu.keyBindings.ToolsToggle.WasReleasedThisFrame()) {
+                Model.IsActive = !Model.IsActive;
+                View.gameObject.SetActive(Model.IsActive);
+            }
     }
 }
