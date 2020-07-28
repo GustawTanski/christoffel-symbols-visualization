@@ -1,8 +1,16 @@
+using UnityEngine;
 public class ToolsController : ChristofellElement {
     public LineController line;
 
     public ToolsView View => App.view.tools;
     public ToolsModel Model => App.model.tools;
+
+    private void Awake() {
+        App.spaceVisualizedByCubeChanged.listOfHandlers += (caller, e) => {
+            Debug.Log("Woof");
+            View.spacetimeName.text = e.tensorProperties.Name;
+        };
+    }
 
     private void Start() {
         InitializeVisibility();

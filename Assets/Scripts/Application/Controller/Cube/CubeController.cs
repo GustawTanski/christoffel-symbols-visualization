@@ -95,6 +95,7 @@ public class CubeController : ChristofellElement {
 
     public async void UpdateCube() {
         await UpdateTextures();
+        DispatchSpaceVisualizedByCubeChangedEvent();
     }
 
     private async Task UpdateTextures() {
@@ -116,5 +117,9 @@ public class CubeController : ChristofellElement {
 
     private void IfInvisibleUpdateZeros() {
         if (!Model.areZerosVisible) View.UpdateZeros();
+    }
+
+    private void DispatchSpaceVisualizedByCubeChangedEvent() {
+        App.spaceVisualizedByCubeChanged.DispatchEvent(this, new SpaceChangedArgs(Model.Properties));
     }
 }

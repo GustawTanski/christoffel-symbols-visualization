@@ -8,6 +8,7 @@ public class ToolsView : ChristofellElement {
     public LineRenderer line;
     public Slider labelSlider;
     public TMP_Text labelSliderCaption;
+    public TMP_Text spacetimeName;
 
     public CubeDescriptionView cubeDescription;
 
