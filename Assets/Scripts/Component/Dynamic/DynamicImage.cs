@@ -11,14 +11,14 @@ public class DynamicImage : MonoBehaviour {
         set => SetTexture(value);
     }
 
-    private Texture2D texture;
+    protected Texture2D texture;
 
     private void SetTexture(Texture2D texture) {
         this.texture = texture;
-        Image.sprite = SpriteCreator.Create(texture, GetPixelsPerUnit(texture));
+        Image.sprite = SpriteCreator.Create(texture, GetPixelsPerUnit());
     }
 
-    protected virtual int GetPixelsPerUnit(Texture2D texture) {
+    protected virtual int GetPixelsPerUnit() {
         return 100;
     }
 }

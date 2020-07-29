@@ -81,7 +81,7 @@
 		{
 			"char": "\\Sigma",
 			"color": "#aaaa00",
-			"description": "r^2 + l^2",
+			"description": "\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}",
 			"isLaTeXDescription": true
 		},
 		{
