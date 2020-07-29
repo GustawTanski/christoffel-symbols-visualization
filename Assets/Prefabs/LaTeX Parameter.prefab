@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2258802257524247636}
   - component: {fileID: 2258802257524247639}
   - component: {fileID: 2258802257524247638}
-  - component: {fileID: 2258802257524247637}
+  - component: {fileID: 1851377043036331449}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2258802257524247637
+--- !u!114 &1851377043036331449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,10 +84,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2258802257524247627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47085e722cee82f488b7dfa583eae854, type: 3}
+  m_Script: {fileID: 11500000, guid: c833a8060d9fd86458cd2fcfefa15323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightLimit: 2147483647
 --- !u!1 &8042736203554348119
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +99,6 @@ GameObject:
   - component: {fileID: 8042736203554348107}
   - component: {fileID: 8042736203554348106}
   - component: {fileID: 8042736203554348112}
-  - component: {fileID: 2905610918114827995}
   m_Layer: 5
   m_Name: LaTeX Parameter
   m_TagString: Untagged
@@ -177,18 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814e3a977bc19c84fa3af82a1d61db97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameterImage: {fileID: 2258802257524247637}
---- !u!114 &2905610918114827995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042736203554348119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1332228a5f81bdf498b65ad9759b0a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popper: {fileID: 0}
-  message: 
+  parameterImage: {fileID: 1851377043036331449}

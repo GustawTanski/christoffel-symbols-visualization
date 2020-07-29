@@ -1,12 +1,12 @@
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(DynamicImage))]
 
 public class GraphicPopper : MonoBehaviour {
+    public DynamicImage Image;
 
     public void SetTexture(Texture2D texture) {
-        GetComponent<DynamicImage>().Texture = texture;
+        Image.Texture = texture;
     }
 
     public void MoveAndShow(Vector3 position) {

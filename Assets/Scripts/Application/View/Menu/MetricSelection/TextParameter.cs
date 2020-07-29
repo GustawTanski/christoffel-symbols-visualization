@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-[RequireComponent(typeof(PopperShower))]
 
 public class TextParameter : MonoBehaviour, IChristoffelParameter {
 
@@ -13,12 +12,8 @@ public class TextParameter : MonoBehaviour, IChristoffelParameter {
     }
 
     public string Description {
-        get => GetComponent<PopperShower>().message;
-        set => GetComponent<PopperShower>().message = value;
-    }
-
-    public Popper Popper {
-        set => GetComponent<PopperShower>().popper = value;
+        get;
+        set;
     }
 
     public void Destroy() {

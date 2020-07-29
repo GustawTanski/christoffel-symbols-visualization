@@ -16,6 +16,8 @@ public class MetricSelectionView : MenuElement {
     public LaTeXParameter laTeXParameterPrefab;
     public GameObject parametersContainer;
     public Popper popper;
+    public GraphicPopper graphicPopper;
+    public Texture2D graphicPopperPlaceholder;
     private static readonly Regex COMMAND_FILTER = new Regex(@"(\\not)?[\\][a-zA-Z]+(\{[a-zA-Z0-9]*\})?", RegexOptions.Compiled);
     private static readonly Regex SUPERSCRIPT_FILTER = new Regex(@"\^((\{[^\}]+\})|.)", RegexOptions.Compiled);
     private static readonly Regex SUBSCRIPT_FILTER = new Regex(@"_((\{[^\}]+\})|.)", RegexOptions.Compiled);
@@ -56,6 +58,17 @@ public class MetricSelectionView : MenuElement {
         } catch (KeyNotFoundException) {
             CreateLaTeXDescription();
         }
+        if (parameter.IsLaTeXDescription) {
+            var shower = (currentParameter as MonoBehaviour).gameObject.AddComponent<GraphicPopperShower>();
+            shower.laTeX = currentParameter.Description;
+            shower.texture = graphicPopperPlaceholder;
+            shower.FetchTexture();
+            shower.popper = graphicPopper;
+        } else {
+            var shower = (currentParameter as MonoBehaviour).gameObject.AddComponent<PopperShower>();
+            shower.message = currentParameter.Description;
+            shower.popper = popper;
+        }
         return currentParameter;
     }
 
@@ -64,7 +77,6 @@ public class MetricSelectionView : MenuElement {
         currentParameter = Instantiate(textParameterPrefab, parametersContainer.transform);
         currentParameter.Parameter = text;
         currentParameter.Description = currentParameterData.Description;
-        currentParameter.Popper = popper;
     }
 
     private string GetUnicodeFromCurrentParameter() {

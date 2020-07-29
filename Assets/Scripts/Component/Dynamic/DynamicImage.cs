@@ -15,7 +15,10 @@ public class DynamicImage : MonoBehaviour {
 
     private void SetTexture(Texture2D texture) {
         this.texture = texture;
-        int PIXELS_PER_UNIT = (int) ((float) texture.height / RectTransform.rect.height);
-        Image.sprite = SpriteCreator.Create(texture, PIXELS_PER_UNIT);
+        Image.sprite = SpriteCreator.Create(texture, GetPixelsPerUnit(texture));
+    }
+
+    protected virtual int GetPixelsPerUnit(Texture2D texture) {
+        return 100;
     }
 }
