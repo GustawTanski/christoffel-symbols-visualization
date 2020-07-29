@@ -34,6 +34,9 @@ namespace Data {
             public string Description { get; set; } = "";
             [JsonProperty("color")]
             public string Color { get; set; } = "#ffffff";
+
+            [JsonProperty("isLaTeXDescription")]
+            public bool IsLaTeXDescription { get; set; } = false;
         }
 
         public class Index : LaTeXCharacter {

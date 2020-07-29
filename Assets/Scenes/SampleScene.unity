@@ -28373,7 +28373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1332228a5f81bdf498b65ad9759b0a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popper: {fileID: 0}
+  popper: {fileID: 700292638}
   message: Kerr parameter (J/M)
 --- !u!114 &268606847
 MonoBehaviour:
@@ -28694,7 +28694,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17306
+  m_Name: pb_Mesh17312
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -41832,8 +41832,9 @@ RectTransform:
   - {fileID: 1683668733}
   - {fileID: 577200305}
   - {fileID: 949743576}
-  - {fileID: 706544000}
   - {fileID: 1062424480}
+  - {fileID: 2060566303}
+  - {fileID: 706544000}
   m_Father: {fileID: 1715164107}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42118,7 +42119,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16678
+  m_Name: pb_Mesh16676
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -44809,18 +44810,19 @@ RectTransform:
   m_AnchoredPosition: {x: -514, y: 49.525}
   m_SizeDelta: {x: 257.21, y: 30.479027}
   m_Pivot: {x: 0, y: 0}
---- !u!225 &700292638
-CanvasGroup:
+--- !u!114 &700292638
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700292636}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81da4f8e49381b4880d5fa1556b85ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caption: {fileID: 242166313}
 --- !u!114 &700292640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45005,7 +45007,7 @@ RectTransform:
   - {fileID: 304801736}
   - {fileID: 1055317394}
   m_Father: {fileID: 385563362}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -57415,7 +57417,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17510
+  m_Name: pb_Mesh17524
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -57716,7 +57718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1332228a5f81bdf498b65ad9759b0a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popper: {fileID: 0}
+  popper: {fileID: 700292638}
   message: black hole's acceleration
 --- !u!114 &793527963
 MonoBehaviour:
@@ -58118,7 +58120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1332228a5f81bdf498b65ad9759b0a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popper: {fileID: 0}
+  popper: {fileID: 700292638}
   message: mass
 --- !u!114 &848164700
 MonoBehaviour:
@@ -58846,7 +58848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1332228a5f81bdf498b65ad9759b0a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popper: {fileID: 0}
+  popper: {fileID: 700292638}
   message: electric charge
 --- !u!114 &926124234
 MonoBehaviour:
@@ -60666,10 +60668,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2060566303}
+  m_Children: []
   m_Father: {fileID: 385563362}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -66672,7 +66673,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17406
+  m_Name: pb_Mesh17412
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -66941,7 +66942,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1312
+  m_Name: pb_Mesh-1366
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -67861,7 +67862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1332228a5f81bdf498b65ad9759b0a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popper: {fileID: 0}
+  popper: {fileID: 700292638}
   message: cosmological constant
 --- !u!114 &1543630684
 MonoBehaviour:
@@ -68242,7 +68243,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17240
+  m_Name: pb_Mesh17246
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -69869,7 +69870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1332228a5f81bdf498b65ad9759b0a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popper: {fileID: 0}
+  popper: {fileID: 700292638}
   message: dual mass
 --- !u!114 &1713067614
 MonoBehaviour:
@@ -69924,7 +69925,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17628
+  m_Name: pb_Mesh17642
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -95615,15 +95616,15 @@ RectTransform:
   m_GameObject: {fileID: 2060566302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.85374993, y: 0.85374993, z: 0.85374993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1765374250}
-  m_Father: {fileID: 1062424480}
-  m_RootOrder: 0
+  m_Father: {fileID: 385563362}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -912.3652, y: 23.125381}
+  m_AnchoredPosition: {x: -1074.5452, y: 267.70532}
   m_SizeDelta: {x: 257.21, y: 30.479027}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2060566305
@@ -95905,7 +95906,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16872
+  m_Name: pb_Mesh16870
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
