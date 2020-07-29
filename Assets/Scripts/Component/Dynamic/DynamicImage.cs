@@ -5,7 +5,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(RectTransform))]
 
 public class DynamicImage : MonoBehaviour {
-    public int heightLimit = int.MaxValue;
     public RectTransform RectTransform => GetComponent<RectTransform>();
     private Image Image => GetComponent<Image>();
     public Texture2D Texture {
