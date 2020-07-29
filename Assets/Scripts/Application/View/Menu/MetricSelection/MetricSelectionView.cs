@@ -33,6 +33,9 @@ public class MetricSelectionView : MenuElement {
     private TensorProperties.LaTeXCharacter[] parametersData;
     private TensorProperties.LaTeXCharacter currentParameterData;
     private IChristoffelParameter currentParameter;
+
+    private GraphicPopperSwitch graphicPopperSwitch;
+    private PopperSwitch textPopperSwitch;
     public void UpdateParameters(TensorProperties.LaTeXCharacter[] parameters) {
         parametersData = parameters;
         RemoveAllParameters();
@@ -45,31 +48,29 @@ public class MetricSelectionView : MenuElement {
     }
 
     private void CreateParameters() {
-        christoffelParameters = parametersData
+        christoffelParameters = MapParametrsDataWithDescriptionToChristoffelParametrs();
+    }
+
+    private List<IChristoffelParameter> MapParametrsDataWithDescriptionToChristoffelParametrs() {
+        return parametersData
             .Where(parameter => parameter.Description.Length > 0)
-            .Select(CreateParameterDescription)
+            .Select(CreateChristoffelParameter)
             .ToList();
     }
 
-    private IChristoffelParameter CreateParameterDescription(TensorProperties.LaTeXCharacter parameter) {
-        currentParameterData = parameter;
+    private IChristoffelParameter CreateChristoffelParameter(TensorProperties.LaTeXCharacter parameterData) {
+        currentParameterData = parameterData;
+        CreateParameterWithoutPopperSwitch();
+        AddPopperSwitchToParameter();
+        return currentParameter;
+    }
+
+    private void CreateParameterWithoutPopperSwitch() {
         try {
             TryCreatingTextParameter();
         } catch (KeyNotFoundException) {
             CreateLaTeXDescription();
         }
-        if (parameter.IsLaTeXDescription) {
-            var shower = (currentParameter as MonoBehaviour).gameObject.AddComponent<GraphicPopperShower>();
-            shower.laTeX = currentParameter.Description;
-            shower.texture = graphicPopperPlaceholder;
-            shower.FetchTexture();
-            shower.popper = graphicPopper;
-        } else {
-            var shower = (currentParameter as MonoBehaviour).gameObject.AddComponent<PopperShower>();
-            shower.message = currentParameter.Description;
-            shower.popper = popper;
-        }
-        return currentParameter;
     }
 
     private void TryCreatingTextParameter() {
@@ -82,7 +83,7 @@ public class MetricSelectionView : MenuElement {
     private string GetUnicodeFromCurrentParameter() {
         string temp = currentParameterData.LaTeX + "";
         foreach (Regex filter in FILTERS) {
-            temp = filter.Replace(temp, (a) => Model.LaTeXToUnicode[a.Value]);
+            temp = filter.Replace(temp, (a) => Model.laTeXToUnicode[a.Value]);
         }
         return temp;
     }
@@ -91,6 +92,48 @@ public class MetricSelectionView : MenuElement {
         currentParameter = Instantiate(laTeXParameterPrefab, parametersContainer.transform);
         currentParameter.Parameter = currentParameterData.LaTeX;
         currentParameter.Description = currentParameterData.Description;
+    }
+
+    private bool IsCurrentDescriptionLaTeX() {
+        return currentParameterData.IsLaTeXDescription;
+    }
+
+    private void AddPopperSwitchToParameter() {
+        if (IsCurrentDescriptionLaTeX()) AddGraphicPopperSwitchToParameter();
+        else AddTextPopperSwitchToParameter();
+    }
+
+    private void AddGraphicPopperSwitchToParameter() {
+        AddRawGraphicPopperSwitchToParameter();
+        FillGraphicPopperSwitchWithData();
+        FetchGraphicPopperSwitchTexture();
+    }
+    private void AddRawGraphicPopperSwitchToParameter() {
+        graphicPopperSwitch = (currentParameter as MonoBehaviour).gameObject.AddComponent<GraphicPopperSwitch>();
+    }
+
+    private void FillGraphicPopperSwitchWithData() {
+        graphicPopperSwitch.laTeX = currentParameter.Description;
+        graphicPopperSwitch.popper = graphicPopper;
+        graphicPopperSwitch.texture = graphicPopperPlaceholder;
+    }
+
+    private void FetchGraphicPopperSwitchTexture() {
+        graphicPopperSwitch.FetchTexture();
+    }
+
+    private void AddTextPopperSwitchToParameter() {
+        AddRawTextPopperSwitchToParameter();
+        FillTextPopperSwitchWithData();
+    }
+
+    private void AddRawTextPopperSwitchToParameter() {
+        textPopperSwitch = (currentParameter as MonoBehaviour).gameObject.AddComponent<PopperSwitch>();
+    }
+
+    private void FillTextPopperSwitchWithData() {
+        textPopperSwitch.message = currentParameter.Description;
+        textPopperSwitch.popper = popper;
     }
 
 }

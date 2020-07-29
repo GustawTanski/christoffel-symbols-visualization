@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
@@ -20,7 +21,11 @@ public class LaTeXParameter : MonoBehaviour, IChristoffelParameter {
     }
 
     public async void UpdateImage() {
-        parameterImage.Texture = await LaTeXTextureDownloader.FetchOneTexture(parameter);
+        parameterImage.Texture = await GetUpToDateTexture();
+    }
+
+    public Task<Texture2D> GetUpToDateTexture() {
+        return LaTeXTextureDownloader.FetchOneTexture(parameter);
     }
 
     public void Destroy() {

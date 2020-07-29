@@ -7,22 +7,17 @@ public class CubeController : ChristoffelElement {
     private CubeModel Model => App.model.cube;
     private CubeView View => App.view.cube;
 
+    private const string INITIAL_SPACE_TYPE = "Minkowski";
+
     private void Awake() {
         SetEventListeners();
         SetZerosVisibility();
     }
 
     private void Start() {
-        SetSpaceType("Minkowski");
+        SetSpaceType(INITIAL_SPACE_TYPE);
         UpdateCube();
     }
-
-    // private void Start() {
-    //     var system = new EasySaveDataSystem();
-    //     foreach(var asset in Model.SpaceDictionaryNew.Values) {
-    //         system.Save(asset);
-    //     }
-    // }
     private void SetEventListeners() {
         App.zerosHided.listOfHandlers += OnZerosHided;
         App.labelSliderValueChanged.listOfHandlers += OnLabelSliderValueChanged;

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 public class MetricSelectionModel : ChristoffelElement {
     public ParametersPanelModel parametersPanel;
-    public Dictionary<string, string> LaTeXToUnicode = new Dictionary<string, string> {
+    public Dictionary<string, string> laTeXToUnicode = new Dictionary<string, string> {
         [@"\alpha"] = @"α",
         [@"\Alpha"] = @"Α",
         [@"\beta"] = @"β",

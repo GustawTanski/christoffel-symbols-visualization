@@ -1,23 +1,31 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PopperShower : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-    public Popper popper;
-    public string message;
+public class GraphicPopperSwitch : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    public GraphicPopper popper;
+    public string laTeX;
+
+    public Texture2D texture;
 
     private RectTransform rectTransform;
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
+        if (laTeX != "") FetchTexture();
+    }
+
+    public async Task FetchTexture() {
+        texture = await LaTeXTextureDownloader.FetchOneTexture(laTeX);
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        SetMessageAsPopperText();
+        SetTextureAsPopperContent();
         MoveAndShowPopper();
     }
 
-    private void SetMessageAsPopperText() {
-        popper.SetText(message);
+    private void SetTextureAsPopperContent() {
+        popper.SetTexture(texture);
     }
 
     private void MoveAndShowPopper() {

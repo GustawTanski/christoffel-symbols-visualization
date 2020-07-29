@@ -5,7 +5,6 @@ public class MetricSelectionController : ChristoffelElement {
     public ParametersPanelController parametersPanel;
     private MetricSelectionView View => App.view.menu.metricSelection;
 
-
     private void Awake() {
         SetListeners();
     }
@@ -29,10 +28,14 @@ public class MetricSelectionController : ChristoffelElement {
         SetDropdownListener();
     }
     private void PopulateDropdown() {
-        List<string> names = App.model.cube.SpaceDictionaryNew.Keys
+        List<string> names = GetNameOfSpaceTypesThatAreNotHandledBySpaceSelector();
+        View.dropdown.AddOptions(names);
+    }
+
+    private List<string> GetNameOfSpaceTypesThatAreNotHandledBySpaceSelector() {
+        return App.model.cube.SpaceDictionaryNew.Keys
             .Where(IsNotHandledBySpaceSelector)
             .ToList();
-        View.dropdown.AddOptions(names);
     }
 
     private bool IsNotHandledBySpaceSelector(string spaceType) {

@@ -10,8 +10,6 @@ public class ToolsView : ChristoffelElement {
     public TMP_Text labelSliderCaption;
     public TMP_Text spacetimeName;
 
-    public CubeDescriptionView cubeDescription;
-
     public void HideLine() {
         line.startWidth = line.endWidth = 0;
     }
