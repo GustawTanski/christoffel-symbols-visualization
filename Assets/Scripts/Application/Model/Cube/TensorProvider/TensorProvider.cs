@@ -15,7 +15,7 @@ public static class TensorProvider {
     }
 
     public static string[, , ] GetIndexTensor() {
-        return new string[4, 4, 4].Select<string,string>(new IndexToLaTeXConverter(Properties));
+        return new string[4, 4, 4].Select<string, string>(new IndexToLaTeXConverter(Properties));
     }
 
     public static string[, , ] GetFormulaTensor() {
