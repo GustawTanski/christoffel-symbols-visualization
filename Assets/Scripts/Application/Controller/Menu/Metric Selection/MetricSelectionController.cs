@@ -3,6 +3,7 @@ using System.Linq;
 
 public class MetricSelectionController : ChristoffelElement {
     public ParametersPanelController parametersPanel;
+    public MetricController metric;
     private MetricSelectionView View => App.view.menu.metricSelection;
 
     private void Awake() {

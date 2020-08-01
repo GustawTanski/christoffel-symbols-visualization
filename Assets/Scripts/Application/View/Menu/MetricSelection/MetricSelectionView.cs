@@ -15,6 +15,7 @@ public class MetricSelectionView : MenuElement {
     public TextParameter textParameterPrefab;
     public LaTeXParameter laTeXParameterPrefab;
     public GameObject parametersContainer;
+    public MetricView metric;
     public Popper popper;
     public GraphicPopper graphicPopper;
     public Texture2D graphicPopperPlaceholder;

@@ -32,5 +32,11 @@
 		{ "char": "\\gamma", "position": "down" }
 	],
 	"symbol": "\\Gamma",
-	"coordinates": [{ "char": "t" }, { "char": "r" }, { "char": "\\theta" }, { "char": "\\varphi" }]
+	"coordinates": [{ "char": "t" }, { "char": "r" }, { "char": "\\theta" }, { "char": "\\varphi" }],
+	"metric": [
+		["-c^2", "0", "0", "0"],
+		["0", "1", "0", "0"],
+		["0", "0", "r^2", "0"],
+		["0", "0", "0", "r^2sin^2{\\theta}"]
+	]
 }
