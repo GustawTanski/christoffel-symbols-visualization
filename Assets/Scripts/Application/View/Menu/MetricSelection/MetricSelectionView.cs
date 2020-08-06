@@ -19,6 +19,9 @@ public class MetricSelectionView : MenuElement {
     public Popper popper;
     public GraphicPopper graphicPopper;
     public Texture2D graphicPopperPlaceholder;
+    public RectTransform descriptionContainer;
+    public TMP_Text spacetimeDescription;
+    
     private static readonly Regex COMMAND_FILTER = new Regex(@"(\\not)?[\\][a-zA-Z]+(\{[a-zA-Z0-9]*\})?", RegexOptions.Compiled);
     private static readonly Regex SUPERSCRIPT_FILTER = new Regex(@"\^((\{[^\}]+\})|.)", RegexOptions.Compiled);
     private static readonly Regex SUBSCRIPT_FILTER = new Regex(@"_((\{[^\}]+\})|.)", RegexOptions.Compiled);
@@ -34,13 +37,13 @@ public class MetricSelectionView : MenuElement {
     private TensorProperties.LaTeXCharacter[] parametersData;
     private TensorProperties.LaTeXCharacter currentParameterData;
     private IChristoffelParameter currentParameter;
-
     private GraphicPopperSwitch graphicPopperSwitch;
     private PopperSwitch textPopperSwitch;
     public void UpdateParameters(TensorProperties.LaTeXCharacter[] parameters) {
         parametersData = parameters;
         RemoveAllParameters();
         CreateParameters();
+        RebuildSpacetimeDescriptionLayout();
     }
 
     private void RemoveAllParameters() {
@@ -137,4 +140,7 @@ public class MetricSelectionView : MenuElement {
         textPopperSwitch.popper = popper;
     }
 
+    private void RebuildSpacetimeDescriptionLayout() {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(descriptionContainer);
+    }
 }

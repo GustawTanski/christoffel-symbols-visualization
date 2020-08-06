@@ -16,6 +16,7 @@ public class MetricSelectionController : ChristoffelElement {
 
     private void OnSpaceDataChanged(object caller, SpaceChangedArgs e) {
         View.spacetimeName.text = e.tensorProperties.Name;
+        View.spacetimeDescription.text = e.tensorProperties.Description;
         View.UpdateParameters(e.tensorProperties.Parameters);
     }
 

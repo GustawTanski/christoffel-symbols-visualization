@@ -77,5 +77,6 @@
 		["0", "\\frac{1}{1-r_s/r}", "0", "0"],
 		["0", "0", "r^2", "0"],
 		["0", "0", "0", "r^2\\sin^2{\\theta}"]
-	]
+	],
+	"description": "Spherical and massive body in the center."
 }

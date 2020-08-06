@@ -125,5 +125,6 @@
 			"0",
 			"\\left(r^2 + a^2  + \\frac{r_s a^2 r \\sin^2{\\theta}}{\\Sigma}\\right)\\sin^2{\\theta}"
 		]
-	]
+	],
+	"description": "Rotating, spherical and massive body in the center."
 }
