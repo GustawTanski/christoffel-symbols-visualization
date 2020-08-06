@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class MetricController : ChristoffelElement {
     private MetricView View => App.view.menu.metricSelection.metric;
-
     private TensorProperties tensorProperties;
     private string laTeXOfMetric;
     private Texture2D texture;
+
     private void Awake() {
         App.spaceDataChanged.listOfHandlers += OnSpaceDataChanged;
     }
@@ -17,6 +17,7 @@ public class MetricController : ChristoffelElement {
     private void OnSpaceDataChanged(object caller, SpaceChangedArgs e) {
         tensorProperties = e.tensorProperties;
         if (HasTensorAMetric()) FetchAndShowMetric();
+        else HideMetric();
     }
 
     private bool HasTensorAMetric() {
@@ -25,8 +26,9 @@ public class MetricController : ChristoffelElement {
 
     private async void FetchAndShowMetric() {
         laTeXOfMetric = GenerateLaTeXOfMetric();
+        string nameOfFetchedMetric = tensorProperties.Name;
         await FetchTexture();
-        ShowMetric();
+        IfNameOfFetchedIsCurrentTensorNameUpdateMetric(nameOfFetchedMetric);
     }
 
     private string GenerateLaTeXOfMetric() {
@@ -57,7 +59,28 @@ public class MetricController : ChristoffelElement {
         texture = await LaTeXTextureDownloader.FetchOneTexture(laTeXOfMetric);
     }
 
-    private void ShowMetric() {
+    private void IfNameOfFetchedIsCurrentTensorNameUpdateMetric(string nameOfFetched) {
+        if (IsNameOfFetchedTheCurrentTensorName(nameOfFetched)) UpdateMetric();
+    }
+
+    private bool IsNameOfFetchedTheCurrentTensorName(string nameOfFetched) {
+        return nameOfFetched == tensorProperties.Name;
+    }
+
+    private void UpdateMetric() {
+        SetViewTexture();
+        ShowMetric();
+    }
+
+    private void SetViewTexture() {
         View.Texture = texture;
+    }
+
+    private void ShowMetric() {
+        View.gameObject.SetActive(true);
+    }
+
+    private void HideMetric() {
+        View.gameObject.SetActive(false);
     }
 }
