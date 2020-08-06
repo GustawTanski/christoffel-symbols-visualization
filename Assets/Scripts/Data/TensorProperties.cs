@@ -30,6 +30,9 @@ namespace Data {
         [JsonProperty("metric")]
         public string[,] Metric { get; set; } = new string[0,0];
 
+        [JsonProperty("description")]
+        public string Description { get; set; } = "";
+
         public class LaTeXCharacter {
             [JsonProperty("char", Required = Required.Always)]
             public string LaTeX { get; set; }
