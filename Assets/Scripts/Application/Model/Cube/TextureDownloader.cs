@@ -56,7 +56,7 @@ public class LaTeXTextureDownloader {
         } catch (InvalidOperationException e) {
             Debug.LogError(e);
             return await FetchTexture(laTeX);
-        } 
+        }
     }
 
     private UnityWebRequest GeneratePutRequest(string laTeX) {

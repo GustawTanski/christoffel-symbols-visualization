@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BetterMultidimensionalArray;
 using Data;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MetricController : ChristoffelElement {
     private MetricView View => App.view.menu.metricSelection.metric;
@@ -17,7 +18,7 @@ public class MetricController : ChristoffelElement {
     private void OnSpaceDataChanged(object caller, SpaceChangedArgs e) {
         tensorProperties = e.tensorProperties;
         if (HasTensorAMetric()) FetchAndShowMetric();
-        else HideMetric();
+        else HideMetricAndLoader();
     }
 
     private bool HasTensorAMetric() {
@@ -27,6 +28,8 @@ public class MetricController : ChristoffelElement {
     private async void FetchAndShowMetric() {
         laTeXOfMetric = GenerateLaTeXOfMetric();
         string nameOfFetchedMetric = tensorProperties.Name;
+        HideMetric();
+        ShowLoader();
         await FetchTexture();
         IfNameOfFetchedIsCurrentTensorNameUpdateMetric(nameOfFetchedMetric);
     }
@@ -55,6 +58,14 @@ public class MetricController : ChristoffelElement {
         return $"g_{{\\mu\\nu}} = \\begin{{bmatrix}}{matrixBody}\\end{{bmatrix}}";
     }
 
+    private void HideMetric() {
+        View.HideMetric();
+    }
+
+    private void ShowLoader() {
+        View.ShowLoader();
+    }
+
     private async Task FetchTexture() {
         texture = await LaTeXTextureDownloader.FetchOneTexture(laTeXOfMetric);
     }
@@ -70,6 +81,7 @@ public class MetricController : ChristoffelElement {
     private void UpdateMetric() {
         SetViewTexture();
         ShowMetric();
+        HideLoader();
     }
 
     private void SetViewTexture() {
@@ -77,10 +89,16 @@ public class MetricController : ChristoffelElement {
     }
 
     private void ShowMetric() {
-        View.gameObject.SetActive(true);
+        View.ShowMetric();
     }
 
-    private void HideMetric() {
-        View.gameObject.SetActive(false);
+    private void HideLoader() {
+        View.HideLoader();
     }
+
+    private void HideMetricAndLoader() {
+        HideMetric();
+        HideLoader();
+    }
+
 }
