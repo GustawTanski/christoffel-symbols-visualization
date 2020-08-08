@@ -1,5 +1,6 @@
 using Data;
 using UnityEngine;
+using UnityEngine.InputSystem;
 [RequireComponent(typeof(MeshCollider))]
 
 public class MiniCubeRotator : ChristoffelElement {
@@ -11,4 +12,14 @@ public class MiniCubeRotator : ChristoffelElement {
         App.miniCubeRotatorClicked.DispatchEvent(this, e);
     }
 
+    private void Update() {
+        Ray ray;
+        RaycastHit hit;
+        ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out hit)) {
+            if (hit.transform == transform && Mouse.current.press.wasReleasedThisFrame) {
+                OnMouseUp();
+            }
+        }
+    }
 }
