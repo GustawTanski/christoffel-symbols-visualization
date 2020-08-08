@@ -7,19 +7,36 @@ public class MiniCubeRotator : ChristoffelElement {
     public Direction axis;
     public float rotationAngle;
     public float growFactor;
-    private void OnMouseUp() {
+    private Ray ray;
+    private RaycastHit hit;
+
+    private void DispatchMinuCubeRotatorClickedEvent() {
         MiniCubeRotatorClickedArgs e = new MiniCubeRotatorClickedArgs(new Dimension(axis), rotationAngle);
         App.miniCubeRotatorClicked.DispatchEvent(this, e);
     }
 
     private void Update() {
-        Ray ray;
-        RaycastHit hit;
+        if (IsHit()) HandleHit();
+    }
+
+    private bool IsHit() {
         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out hit)) {
-            if (hit.transform == transform && Mouse.current.press.wasReleasedThisFrame) {
-                OnMouseUp();
-            }
-        }
+        return Physics.Raycast(ray, out hit);
+    }
+
+    private void HandleHit() {
+        if (IsHittedAndMouseUp()) DispatchMinuCubeRotatorClickedEvent();
+    }
+
+    private bool IsHittedAndMouseUp() {
+        return IsHitted() && WasMouseReleasedThisFrame();
+    }
+
+    private bool IsHitted() {
+        return hit.transform == transform;
+    }
+
+    private bool WasMouseReleasedThisFrame() {
+        return Mouse.current.press.wasReleasedThisFrame;
     }
 }

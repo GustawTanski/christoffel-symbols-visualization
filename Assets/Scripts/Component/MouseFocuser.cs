@@ -9,23 +9,28 @@ public class MouseFocuser : MonoBehaviour {
     public Material focusMaterial;
 
     private bool isFocused = false;
+    private Ray ray;
+    private RaycastHit hit;
 
     private void Update() {
-        Ray ray;
-        RaycastHit hit;
-        ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out hit)) {
-            if (hit.transform == transform) {
-                if (!isFocused)
-                    Focus();
-            } else if (isFocused) {
-                Debug.Log("Blurrin...");
-                Blur();
-            }
-        }
+        if (IsHit() && IsHitted()) IfIsNotFocusedFocus();
+        else IfIsFocusedBlur();
     }
 
-    public void Focus() {
+    private bool IsHit() {
+        ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        return Physics.Raycast(ray, out hit);
+    }
+
+    private bool IsHitted() {
+        return hit.transform == transform;
+    }
+
+    private void IfIsNotFocusedFocus() {
+        if (!isFocused) Focus();
+    }
+
+    private void Focus() {
         Cursor.SetCursor(focusCursor, Vector2.zero, CursorMode.Auto);
         SetMaterialOnAllChildren(focusMaterial);
         isFocused = true;
@@ -40,8 +45,8 @@ public class MouseFocuser : MonoBehaviour {
         if (renderer != null) renderer.materials = new [] { material };
     }
 
-    private void OnMouseExit() {
-        Blur();
+    private void IfIsFocusedBlur() {
+        if (isFocused) Blur();
     }
 
     private void Blur() {
