@@ -28,8 +28,8 @@
 	],
 	"indexes": [
 		{ "char": "\\alpha", "position": "up" },
-		{ "char": "\\beta", "position": "down" },
-		{ "char": "\\gamma", "position": "down" }
+		{ "char": "\\mu", "position": "down" },
+		{ "char": "\\nu", "position": "down" }
 	],
 	"symbol": "\\Gamma",
 	"coordinates": [{ "char": "t" }, { "char": "r" }, { "char": "\\theta" }, { "char": "\\varphi" }],
