@@ -13,6 +13,7 @@ public class SpaceSelector : ChristoffelElement {
     private const ParameterFlag Lambda = 0b1000;
     private const ParameterFlag n = 0b1_0000;
     private const ParameterFlag alpha = 0b10_0000;
+    private const ParameterFlag H = 0b100_0000;
 
     private const string NOT_HANDLED = "Nothing";
 
@@ -25,6 +26,7 @@ public class SpaceSelector : ChristoffelElement {
         [nullFlag] = "Minkowski",
         [M] = "Schwarzschild",
         [Lambda] = "de Sitter",
+        [H] = "Friedman-Robertson-Walker",
         [M | Q] = "Reissner-Nordstrøm",
         [M | a] = "Kerr",
         [M | Lambda] = "Kottler",

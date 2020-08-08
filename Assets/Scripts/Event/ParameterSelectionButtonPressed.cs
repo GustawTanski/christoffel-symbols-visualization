@@ -5,7 +5,8 @@ public enum SpaceParameter {
     a = 0b100,
     Lambda = 0b1000,
     n = 0b1_0000,
-    alpha = 0b10_0000
+    alpha = 0b10_0000,
+    H = 0b100_0000
 }
 
 public class ParameterSelectionButtonPressedArgs : EventArgs {

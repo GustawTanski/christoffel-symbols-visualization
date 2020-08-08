@@ -5,4 +5,5 @@ public class ParametersPanelModel : ChristoffelElement {
     public bool a { get; set; }
     public bool Q { get; set; }
     public bool alpha { get; set; }
+    public bool H { get; set; }
 }
