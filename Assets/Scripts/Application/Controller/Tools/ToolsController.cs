@@ -71,7 +71,7 @@ public class ToolsController : ChristoffelElement {
     }
 
     private void UpdateLabelSliderCaption(float value) {
-        View.labelSliderCaption.text = $"Labels × {value:G2}";
+        View.labelSliderCaption.text = $"Size × {value:G2}";
     }
 
     private void SetInitialValueToLabelSlider() {
