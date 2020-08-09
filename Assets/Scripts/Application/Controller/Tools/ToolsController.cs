@@ -38,19 +38,19 @@ public class ToolsController : ChristoffelElement {
     }
 
     private void SetZerosToggleListener() {
-        View.zerosToggle.onValueChanged.AddListener(OnZerosToggleChange);
+        View.zerosToggle.onValueChanged.AddListener(OnZerosToggleChanged);
     }
 
-    private void OnZerosToggleChange(bool _) {
+    private void OnZerosToggleChanged(bool _) {
         App.zerosHided.DispatchEvent(this, new ZerosHidedArgs());
     }
 
     private void InitializeCubesToggle() {
         View.cubesToggle.isOn = App.model.cube.areCubesVisible;
-        View.cubesToggle.onValueChanged.AddListener(OnCubesToggleChange);
+        View.cubesToggle.onValueChanged.AddListener(OnCubesToggleChanged);
     }
 
-    private void OnCubesToggleChange(bool isOn) {
+    private void OnCubesToggleChanged(bool isOn) {
         App.cubesToggled.DispatchEvent(this, new CubesToggledArgs(isOn));
     }
 

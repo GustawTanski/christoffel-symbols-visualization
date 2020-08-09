@@ -21,10 +21,7 @@ public class CubeController : ChristoffelElement {
     private void SetEventListeners() {
         App.zerosHided.listOfHandlers += OnZerosHided;
         App.labelSliderValueChanged.listOfHandlers += OnLabelSliderValueChanged;
-        App.cubesToggled.listOfHandlers += (sender, e) => {
-            Model.areCubesVisible = e.areOn;
-            View.SetCubesVisibility(e.areOn);
-        };
+        App.cubesToggled.listOfHandlers += OnCubesToggled;
     }
 
     private void OnZerosHided(object sender, EventArgs e) {
@@ -43,6 +40,19 @@ public class CubeController : ChristoffelElement {
     private void OnLabelSliderValueChanged(object caller, LabelSliderValueChangedArgs e) {
         Model.scaleFactor = e.value;
         View.ScaleLabelsTo(e.value);
+    }
+
+    private void OnCubesToggled(object caller, CubesToggledArgs e) {
+        SetCubesVisibilityState(e.areOn);
+        SetCubesVisibility(e.areOn);
+    }
+
+    private void SetCubesVisibilityState(bool areOn) {
+        Model.areCubesVisible = areOn;
+    }
+
+    private void SetCubesVisibility(bool areOn) {
+        View.SetCubesVisibility(areOn);
     }
 
     private void Update() {
