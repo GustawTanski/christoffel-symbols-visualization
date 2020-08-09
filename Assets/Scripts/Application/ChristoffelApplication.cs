@@ -15,4 +15,5 @@ public class ChristoffelApplication : MonoBehaviour {
     public ChristoffelEvent<ParameterSelectionButtonPressedArgs> parameterSelectionButtonPressed =
         new ChristoffelEvent<ParameterSelectionButtonPressedArgs>();
     public ChristoffelEvent<ToolsToggledArgs> toolsToggled = new ChristoffelEvent<ToolsToggledArgs>();
+    public ChristoffelEvent<CubesToggledArgs> cubesToggled = new ChristoffelEvent<CubesToggledArgs>();
 }

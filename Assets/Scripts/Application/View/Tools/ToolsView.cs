@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ToolsView : ChristoffelElement {
     public Toggle zerosToggle;
+    public Toggle cubesToggle;
     public Button resetButton;
     public LineRenderer line;
     public Slider labelSlider;

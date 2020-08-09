@@ -6,6 +6,7 @@ public class CubeModel : ChristoffelElement {
     public float elementSize = 12;
     public string spaceType;
     public bool areZerosVisible;
+    public bool areCubesVisible;
     public float scaleFactor = 1;
 
     public string[, , ] IndexTensor {

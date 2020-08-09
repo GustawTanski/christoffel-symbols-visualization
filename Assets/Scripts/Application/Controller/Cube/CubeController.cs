@@ -21,6 +21,10 @@ public class CubeController : ChristoffelElement {
     private void SetEventListeners() {
         App.zerosHided.listOfHandlers += OnZerosHided;
         App.labelSliderValueChanged.listOfHandlers += OnLabelSliderValueChanged;
+        App.cubesToggled.listOfHandlers += (sender, e) => {
+            Model.areCubesVisible = e.areOn;
+            View.SetCubesVisibility(e.areOn);
+        };
     }
 
     private void OnZerosHided(object sender, EventArgs e) {
@@ -71,7 +75,7 @@ public class CubeController : ChristoffelElement {
     }
 
     private void SelectAllElementsOfPlane(CubeElement[, ] plane) {
-        foreach (CubeElement element in plane) element.Select();
+        foreach (CubeElement element in plane) element.ShowCube();
     }
 
     public void SetSpaceType(string spaceType) {

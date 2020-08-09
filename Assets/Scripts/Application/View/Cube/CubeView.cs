@@ -110,10 +110,14 @@ public class CubeView : ChristoffelElement {
     }
 
     public void DeselectAllElements() {
-        elements.ForEach(element => element.Deselect());
+        elements.ForEach(element => element.HideCube());
     }
 
     public void ScaleLabelsTo(float scale) {
         elements.ForEach(element => element.ScaleTo(scale));
+    }
+
+    public void SetCubesVisibility(bool areVisible) {
+        elements.ForEach(element => element.SetVisibilityOfCube(areVisible));
     }
 }

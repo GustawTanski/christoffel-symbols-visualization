@@ -119,11 +119,16 @@ public class CubeElement : ChristoffelElement {
         formula.GetComponent<SpriteRenderer>().color = color;
     }
 
-    public void Select() {
+    public void SetVisibilityOfCube(bool isVisible) {
+        if (isVisible) ShowCube();
+        else HideCube();
+    }
+
+    public void ShowCube() {
         GetComponent<MeshRenderer>().material = visibleMaterial;
     }
 
-    public void Deselect() {
+    public void HideCube() {
         GetComponent<MeshRenderer>().material = invisibleMaterial;
     }
 

@@ -18,7 +18,8 @@ public class ToolsController : ChristoffelElement {
     }
     private void Start() {
         InitializeVisibility();
-        InitializeToggle();
+        InitializeZerosToggle();
+        InitializeCubesToggle();
         InitializeResetButton();
         InitializeLabelSlider();
     }
@@ -27,7 +28,7 @@ public class ToolsController : ChristoffelElement {
         SynchronizeVisibilityWithState();
     }
 
-    private void InitializeToggle() {
+    private void InitializeZerosToggle() {
         SetZerosToggleState();
         SetZerosToggleListener();
     }
@@ -42,6 +43,15 @@ public class ToolsController : ChristoffelElement {
 
     private void OnZerosToggleChange(bool _) {
         App.zerosHided.DispatchEvent(this, new ZerosHidedArgs());
+    }
+
+    private void InitializeCubesToggle() {
+        View.cubesToggle.isOn = App.model.cube.areCubesVisible;
+        View.cubesToggle.onValueChanged.AddListener(OnCubesToggleChange);
+    }
+
+    private void OnCubesToggleChange(bool isOn) {
+        App.cubesToggled.DispatchEvent(this, new CubesToggledArgs(isOn));
     }
 
     private void InitializeResetButton() {
