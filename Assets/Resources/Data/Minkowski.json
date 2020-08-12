@@ -39,5 +39,6 @@
 		["0", "0", "r^2", "0"],
 		["0", "0", "0", "r^2sin^2{\\theta}"]
 	],
-	"description": "Plain spacetime."
+	"description": "Plain spacetime.",
+	"wikipedia-path": "Minkowski_space"
 }

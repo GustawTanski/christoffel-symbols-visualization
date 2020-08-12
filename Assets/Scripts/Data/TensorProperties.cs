@@ -33,6 +33,9 @@ namespace Data {
         [JsonProperty("description")]
         public string Description { get; set; } = "";
 
+        [JsonProperty("wikipedia-path")]
+        public string WikipediaPath { get; set; } = "";
+
         public class LaTeXCharacter {
             [JsonProperty("char", Required = Required.Always)]
             public string LaTeX { get; set; }

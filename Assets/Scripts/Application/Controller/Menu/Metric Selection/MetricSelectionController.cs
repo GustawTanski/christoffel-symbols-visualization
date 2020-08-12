@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using Data;
+using TMPro;
 
 public class MetricSelectionController : ChristoffelElement {
     public ParametersPanelController parametersPanel;
     public MetricController metric;
     private MetricSelectionView View => App.view.menu.metricSelection;
+
+    private TensorProperties tensorProperties;
 
     private void Awake() {
         SetListeners();
@@ -15,9 +19,25 @@ public class MetricSelectionController : ChristoffelElement {
     }
 
     private void OnSpaceDataChanged(object caller, SpaceChangedArgs e) {
-        View.spacetimeName.text = e.tensorProperties.Name;
+        tensorProperties = e.tensorProperties;
+        SetNewTitle();
         View.spacetimeDescription.text = e.tensorProperties.Description;
         View.UpdateParameters(e.tensorProperties.Parameters);
+    }
+
+    private void SetNewTitle() {
+        if (tensorProperties.WikipediaPath.Length > 0) SetHyperlinkTitle();
+        else SetNormalTitle();
+    }
+
+    private void SetHyperlinkTitle() {
+        View.spacetimeName.fontStyle |= FontStyles.Underline;
+        View.spacetimeName.text = $"<link=https://en.wikipedia.org/wiki/{tensorProperties.WikipediaPath}>{tensorProperties.Name}</link>";
+    }
+
+    private void SetNormalTitle() {
+        View.spacetimeName.fontStyle &= ~FontStyles.Underline;
+        View.spacetimeName.text = tensorProperties.Name;
     }
 
     private void Start() {
