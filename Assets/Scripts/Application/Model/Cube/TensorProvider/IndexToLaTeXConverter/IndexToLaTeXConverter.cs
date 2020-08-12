@@ -23,7 +23,7 @@ public partial class IndexToLaTeXConverter {
         cubeIndexes = new [] { i, j, k };
     }
 
-    private string GetLaTeX() {
+    protected string GetLaTeX() {
         return properties.Symbol + GetIndexesLaTeXString();;
     }
 
@@ -39,7 +39,7 @@ public partial class IndexToLaTeXConverter {
             .Select(GroupToLaTeXStringConverter.Convert);
     }
 
-    private IndexWrapper ConvertToWrappers(TensorProperties.Index index, int n) {
+    protected virtual IndexWrapper ConvertToWrappers(TensorProperties.Index index, int n) {
         return new IndexWrapper {
             CoordinateLaTeX = properties.Coordinates[cubeIndexes[n]].LaTeX,
                 Number = n,
