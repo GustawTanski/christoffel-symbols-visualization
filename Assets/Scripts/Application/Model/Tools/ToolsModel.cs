@@ -1,6 +1,8 @@
 using UnityEngine;
 public class ToolsModel : ChristoffelElement {
 
+    public SymbolModel symbol;
+
     public bool IsActive = false;
     public Pivot LineStartPivot {
         get;

@@ -1,6 +1,7 @@
 using UnityEngine;
 public class ToolsController : ChristoffelElement {
     public LineController line;
+    public SymbolController symbol;
 
     public ToolsView View => App.view.tools;
     public ToolsModel Model => App.model.tools;
