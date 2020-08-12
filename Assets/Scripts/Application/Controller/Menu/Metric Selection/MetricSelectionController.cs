@@ -31,13 +31,29 @@ public class MetricSelectionController : ChristoffelElement {
     }
 
     private void SetHyperlinkTitle() {
+        SetTitleUnderlined();
+        SetHyperlinkAsTitleText();
+    }
+
+    private void SetHyperlinkAsTitleText() {
+        View.spacetimeName.text = CreateHyperLink();
+    }
+
+    private void SetTitleUnderlined() {
         View.spacetimeName.fontStyle |= FontStyles.Underline;
-        View.spacetimeName.text = $"<link=https://en.wikipedia.org/wiki/{tensorProperties.WikipediaPath}>{tensorProperties.Name}</link>";
+    }
+
+    private string CreateHyperLink() {
+        return $"<link=https://en.wikipedia.org/wiki/{tensorProperties.WikipediaPath}>{tensorProperties.Name}</link>";
     }
 
     private void SetNormalTitle() {
-        View.spacetimeName.fontStyle &= ~FontStyles.Underline;
+        UnsetTitleUnderlined();
         View.spacetimeName.text = tensorProperties.Name;
+    }
+
+    private void UnsetTitleUnderlined() {
+        View.spacetimeName.fontStyle &= ~FontStyles.Underline;
     }
 
     private void Start() {
