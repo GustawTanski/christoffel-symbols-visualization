@@ -1,6 +1,6 @@
-public class MenuView : ChristofellElement {
+public class MenuView : ChristoffelElement {
     public MainMenuView mainMenu;
-    public ToolsMenuView toolsMenu;
     public GraphicsView graphics;
     public KeyBindingsView keyBindings;
+    public MetricSelectionView metricSelection;
 }

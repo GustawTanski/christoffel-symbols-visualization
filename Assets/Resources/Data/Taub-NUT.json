@@ -78,7 +78,17 @@
 	"parameters": [
 		{ "char": "M", "description": "mass of the black hole", "color": "#aa0000" },
 		{ "char": "l", "description": "magnetic monopol strength", "color": "#ad9aaa" },
-		{"char": "\\Sigma", "color": "#aaaa00"},
-		{"char": "\\Delta", "color": "#aa00aa"}
+		{
+			"char": "\\Sigma",
+			"color": "#aaaa00",
+			"description": "r^2 + l^2",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "\\Delta",
+			"color": "#aa00aa",
+			"description": "r^2 - 2Mr - l^2",
+			"isLaTeXDescription": true
+		}
 	]
 }

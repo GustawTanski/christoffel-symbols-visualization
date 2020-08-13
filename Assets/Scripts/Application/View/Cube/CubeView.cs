@@ -3,7 +3,7 @@ using System.Linq;
 using BetterMultidimensionalArray;
 using Data;
 using UnityEngine;
-public class CubeView : ChristofellElement {
+public class CubeView : ChristoffelElement {
     public CubeElement cubeElementPrefab;
     private CubeElement[, , ] elements = new CubeElement[4, 4, 4];
     private readonly Quaternion zeroRotation = Quaternion.Euler(0, -90, 90);
@@ -53,10 +53,10 @@ public class CubeView : ChristofellElement {
     }
 
     public void SetFormulaTextures() {
-        elements.ForEach(SetFormalaTexture);
+        elements.ForEach(SetFormulaTexture);
     }
 
-    private void SetFormalaTexture(CubeElement element, int i, int j, int k) {
+    private void SetFormulaTexture(CubeElement element, int i, int j, int k) {
         element.FormulaTexture = App.model.cube.FormulaTextures[i, j, k];
     }
 
@@ -110,10 +110,14 @@ public class CubeView : ChristofellElement {
     }
 
     public void DeselectAllElements() {
-        elements.ForEach(element => element.Deselect());
+        elements.ForEach(element => element.HideCube());
     }
 
     public void ScaleLabelsTo(float scale) {
         elements.ForEach(element => element.ScaleTo(scale));
+    }
+
+    public void SetCubesVisibility(bool areVisible) {
+        elements.ForEach(element => element.SetVisibilityOfCube(areVisible));
     }
 }

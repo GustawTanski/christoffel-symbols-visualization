@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine.UI;
-public class RowView : ChristofellElement {
+public class RowView : ChristoffelElement {
     public TMP_Text command;
     public TMP_Text key;
     public Button keyButton;

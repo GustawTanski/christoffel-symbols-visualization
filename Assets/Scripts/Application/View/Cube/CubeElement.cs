@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class CubeElement : ChristofellElement {
+public class CubeElement : ChristoffelElement {
     public Material invisibleMaterial;
     public Material visibleMaterial;
     public DynamicSprite dynamicSpritePrefab;
@@ -119,11 +119,16 @@ public class CubeElement : ChristofellElement {
         formula.GetComponent<SpriteRenderer>().color = color;
     }
 
-    public void Select() {
+    public void SetVisibilityOfCube(bool isVisible) {
+        if (isVisible) ShowCube();
+        else HideCube();
+    }
+
+    public void ShowCube() {
         GetComponent<MeshRenderer>().material = visibleMaterial;
     }
 
-    public void Deselect() {
+    public void HideCube() {
         GetComponent<MeshRenderer>().material = invisibleMaterial;
     }
 

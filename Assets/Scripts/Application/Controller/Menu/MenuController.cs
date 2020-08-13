@@ -1,8 +1,8 @@
-public class MenuController : ChristofellElement {
+public class MenuController : ChristoffelElement {
     public MainMenuController mainMenu;
-    public ToolsMenuController toolsMenu;
     public GraphicsController graphics;
     public KeyBindingsController keyBindings;
+    public MetricSelectionController metricSelection;
 
     public MenuElement[] menus;
 
@@ -10,6 +10,10 @@ public class MenuController : ChristofellElement {
 
     public void ChangeMenu(MenuElement newMenu) {
         App.menuChanged.DispatchEvent(this, new MenuChangedArgs(newMenu, Model.isMenuOn));
+    }
+
+    public void HideMenu() {
+        App.menuChanged.DispatchEvent(this, new MenuChangedArgs(Model.currentMenu, false));
     }
 
     private void Awake() {

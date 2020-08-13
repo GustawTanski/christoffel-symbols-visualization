@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-public class GraphicsController : ChristofellElement {
+public class GraphicsController : ChristoffelElement {
 
     public GraphicsModel Model => App.model.menu.graphics;
     public GraphicsView View => App.view.menu.graphics;

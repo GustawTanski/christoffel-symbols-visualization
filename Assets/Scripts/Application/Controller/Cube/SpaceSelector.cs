@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using ParameterFlag = System.UInt32;
 using System.Linq;
 
-public class SpaceSelector : ChristofellElement {
+public class SpaceSelector : ChristoffelElement {
 
     private const ParameterFlag nullFlag = 0;
     private const ParameterFlag M = 0b1;
@@ -13,6 +13,7 @@ public class SpaceSelector : ChristofellElement {
     private const ParameterFlag Lambda = 0b1000;
     private const ParameterFlag n = 0b1_0000;
     private const ParameterFlag alpha = 0b10_0000;
+    private const ParameterFlag H = 0b100_0000;
 
     private const string NOT_HANDLED = "Nothing";
 
@@ -25,6 +26,7 @@ public class SpaceSelector : ChristofellElement {
         [nullFlag] = "Minkowski",
         [M] = "Schwarzschild",
         [Lambda] = "de Sitter",
+        [H] = "Friedman-Robertson-Walker",
         [M | Q] = "Reissner-Nordstrøm",
         [M | a] = "Kerr",
         [M | Lambda] = "Kottler",
@@ -115,11 +117,11 @@ public class SpaceSelector : ChristofellElement {
     }
 
     private void HideNotHandledCombinationWarning() {
-        App.view.menu.toolsMenu.warning.SetActive(false);
+        App.view.menu.metricSelection.warning.SetActive(false);
     }
 
     private void ShowNotHandledCombinationWarning() {
-        App.view.menu.toolsMenu.warning.SetActive(true);
+        App.view.menu.metricSelection.warning.SetActive(true);
     }
 
     private void Start() {
@@ -127,11 +129,11 @@ public class SpaceSelector : ChristofellElement {
     }
 
     private void InitializeState() {
-        SelectionCrossModel crossModel = App.model.menu.toolsMenu.selectionCross;
-        if (crossModel.M) state |= M;
-        if (crossModel.Q) state |= Q;
-        if (crossModel.a) state |= a;
-        if (crossModel.Lambda) state |= Lambda;
-        if (crossModel.n) state |= n;
+        ParametersPanelModel panelModel = App.model.menu.metricSelection.parametersPanel;
+        if (panelModel.M) state |= M;
+        if (panelModel.Q) state |= Q;
+        if (panelModel.a) state |= a;
+        if (panelModel.Lambda) state |= Lambda;
+        if (panelModel.n) state |= n;
     }
 }

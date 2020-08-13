@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public partial class FlyingCameraController : ChristofellElement {
+public partial class FlyingCameraController : ChristoffelElement {
 
     public MiniCubeController miniCube;
     private TranslationCalculator translationCalculator;
@@ -16,11 +16,20 @@ public partial class FlyingCameraController : ChristofellElement {
 
     private void SetListeners() {
         App.menuChanged.listOfHandlers += OnMenuChanged;
+        App.toolsToggled.listOfHandlers += OnToolsToggled;
         App.resetButtonClicked.listOfHandlers += OnResetButtonClicked;
     }
 
     private void OnMenuChanged(object caller, MenuChangedArgs e) {
-        SetCameraActive(!e.isOn);
+        if (IsToolsOverlayNotActive()) SetCameraActive(!e.isOn);
+    }
+
+    private bool IsToolsOverlayNotActive() {
+        return !App.model.tools.IsActive;
+    }
+
+    private void OnToolsToggled(object caller, ToolsToggledArgs e) {
+        SetCameraActive(!e.isActive);
     }
 
     private void SetCameraActive(bool isCameraActive) {

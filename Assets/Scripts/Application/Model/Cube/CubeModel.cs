@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Data;
 using UnityEngine;
-public class CubeModel : ChristofellElement {
+public class CubeModel : ChristoffelElement {
     public float elementSize = 12;
     public string spaceType;
     public bool areZerosVisible;
+    public bool areCubesVisible;
     public float scaleFactor = 1;
 
     public string[, , ] IndexTensor {
@@ -39,7 +39,6 @@ public class CubeModel : ChristofellElement {
 
     private void Awake() {
         SpaceDataProvider.LoadResources();
-        spaceType = SpaceDictionaryNew.Keys.First();
     }
 
     public void UpdateModel() {

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class KeyBindingsModel : ChristofellElement {
+public class KeyBindingsModel : ChristoffelElement {
 
     public InputAction moveAction;
     public readonly string MEMORY_PREFIX = "keyBinding";
+    public KeyBinding ToolsToggle { get; private set; }
     public KeyBinding MenuToggle { get; private set; }
     public KeyBinding Accelerate { get; private set; }
     public KeyBinding Decelerate { get; private set; }
@@ -21,13 +22,14 @@ public class KeyBindingsModel : ChristofellElement {
         ["Menu Toggle"] = "escape",
         ["Accelerate"] = "leftShift",
         ["Decelerate"] = "leftCtrl",
-        ["Index Toggle"] = "tab",
+        ["Index Toggle"] = "leftAlt",
         ["Up"] = "q",
         ["Down"] = "e",
         ["Forward"] = "w",
         ["Backward"] = "s",
         ["Left"] = "a",
-        ["Right"] = "d"
+        ["Right"] = "d",
+        ["Tools Toggle"] = "tab"
     };
 
     private void Awake() {
@@ -43,6 +45,7 @@ public class KeyBindingsModel : ChristofellElement {
         IndexToggle = GetInitialKeyBinding("Index Toggle");
         Up = GetInitialKeyBinding("Up");
         Down = GetInitialKeyBinding("Down");
+        ToolsToggle = GetInitialKeyBinding("Tools Toggle");
     }
 
     private KeyBinding GetInitialKeyBinding(string commandName) {
@@ -94,7 +97,8 @@ public class KeyBindingsModel : ChristofellElement {
             MenuToggle,
             Accelerate,
             Decelerate,
-            IndexToggle
+            IndexToggle,
+            ToolsToggle
         };
     }
 

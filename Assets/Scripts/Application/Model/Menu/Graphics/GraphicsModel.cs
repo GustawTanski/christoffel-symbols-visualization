@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GraphicsModel : ChristofellElement {
+public class GraphicsModel : ChristoffelElement {
 
     public List<Resolution> Resolutions { get; set; }
 

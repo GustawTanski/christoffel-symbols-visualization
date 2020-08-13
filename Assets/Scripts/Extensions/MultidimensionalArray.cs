@@ -135,5 +135,18 @@ namespace BetterMultidimensionalArray {
             }
             return plane;
         }
+
+        static public T[][] ToJagged<T>(this T[, ] array) {
+            T[] row;
+            T[][] newArray = new T[array.GetLength(1)][];
+            for (int i = 0; i < array.GetLength(0); i++) {
+                row = new T[array.GetLength(0)];
+                for (int j = 0; j < array.GetLength(1); j++) {
+                    row[j] = array[j, i];
+                }
+                newArray[i] = row;
+            }
+            return newArray;
+        }
     }
 }

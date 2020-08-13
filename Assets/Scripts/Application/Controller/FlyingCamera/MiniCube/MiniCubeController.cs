@@ -1,7 +1,7 @@
 using Data;
 using UnityEngine;
 
-public class MiniCubeController : ChristofellElement {
+public class MiniCubeController : ChristoffelElement {
 
     private MiniCubeView View => App.view.flyingCamera.miniCube;
     private MiniCubeModel Model => App.model.flyingCamera.miniCube;

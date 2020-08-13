@@ -1,6 +1,6 @@
 using Data;
 using UnityEngine;
-public class MiniCubeView : ChristofellElement {
+public class MiniCubeView : ChristoffelElement {
     public ArrowView arrowX;
     public ArrowView arrowY;
     public ArrowView arrowZ;

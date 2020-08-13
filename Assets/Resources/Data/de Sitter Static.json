@@ -55,5 +55,11 @@
 			"char": "\\varphi"
 		}
 	],
-	"parameters": [{ "char": "\\Lambda", "description": "cosmological constant", "color": "#BADA55" }]
+	"parameters": [
+		{
+			"char": "\\Lambda",
+			"description": "cosmological constant",
+			"color": "#BADA55"
+		}
+	]
 }
