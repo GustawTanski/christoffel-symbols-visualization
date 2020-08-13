@@ -1,7 +1,7 @@
 using Data;
 using UnityEngine;
 
-public class MiniCubeController : ChristofellElement {
+public class MiniCubeController : ChristoffelElement {
 
     private MiniCubeView View => App.view.flyingCamera.miniCube;
     private MiniCubeModel Model => App.model.flyingCamera.miniCube;
@@ -21,7 +21,7 @@ public class MiniCubeController : ChristofellElement {
         App.resetButtonClicked.listOfHandlers += OnResetButtonClicked;
     }
 
-    private void OnCubeRotationStarted(object sender, MiniCubeRotatorClickedEventArgs e) {
+    private void OnCubeRotationStarted(object sender, MiniCubeRotatorClickedArgs e) {
         RotateAroundAxis(e.axis, e.angle);
     }
 

@@ -55,5 +55,8 @@
     },
     "cSpell.words": [
         "Mathf"
+    ],
+    "cSpell.enableFiletypes": [
+        "csharp"
     ]
 }

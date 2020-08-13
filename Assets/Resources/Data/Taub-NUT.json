@@ -1,0 +1,124 @@
+{
+	"name": "TaubNUT",
+	"data": [
+		[
+			[
+				"0",
+				"\\frac{1}{2} \\left(\\frac{\\Delta '(r)}{\\Delta (r)}-\\frac{\\Sigma '(r)}{\\Sigma (r)}\\right)",
+				"-\\frac{2 l^2 \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
+				"0"
+			],
+			[
+				"\\frac{1}{2} \\left(\\frac{\\Delta '(r)}{\\Delta (r)}-\\frac{\\Sigma '(r)}{\\Sigma (r)}\\right)",
+				"0",
+				"0",
+				"l \\cos (\\theta ) \\left(\\frac{\\Delta '(r)}{\\Delta (r)}-\\frac{2 \\Sigma '(r)}{\\Sigma (r)}\\right)"
+			],
+			[
+				"-\\frac{2 l^2 \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
+				"0",
+				"0",
+				"-\\frac{4 l^3 \\cos (\\theta ) \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}-\\frac{1}{2} l (\\cos (2 \\theta )+3) \\csc (\\theta )"
+			],
+			[
+				"0",
+				"l \\cos (\\theta ) \\left(\\frac{\\Delta '(r)}{\\Delta (r)}-\\frac{2 \\Sigma '(r)}{\\Sigma (r)}\\right)",
+				"-\\frac{4 l^3 \\cos (\\theta ) \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}-\\frac{1}{2} l (\\cos (2 \\theta )+3) \\csc (\\theta )",
+				"0"
+			]
+		],
+		[
+			[
+				"\\frac{\\Delta (r) \\left(\\Sigma (r) \\Delta '(r)-\\Delta (r) \\Sigma '(r)\\right)}{2 \\Sigma (r)^3}",
+				"0",
+				"0",
+				"\\frac{l \\cos (\\theta ) \\Delta (r) \\left(\\Sigma (r) \\Delta '(r)-\\Delta (r) \\Sigma '(r)\\right)}{\\Sigma (r)^3}"
+			],
+			[
+				"0",
+				"\\frac{1}{2} \\left(\\frac{\\Sigma '(r)}{\\Sigma (r)}-\\frac{\\Delta '(r)}{\\Delta (r)}\\right)",
+				"0",
+				"0"
+			],
+			["0", "0", "-\\frac{\\Delta (r) \\Sigma '(r)}{2 \\Sigma (r)}", "0"],
+			[
+				"\\frac{l \\cos (\\theta ) \\Delta (r) \\left(\\Sigma (r) \\Delta '(r)-\\Delta (r) \\Sigma '(r)\\right)}{\\Sigma (r)^3}",
+				"0",
+				"0",
+				"-\\frac{\\Delta (r) \\left(-4 l^2 \\cos ^2(\\theta ) \\Sigma (r) \\Delta '(r)+4 l^2 \\cos ^2(\\theta ) \\Delta (r) \\Sigma '(r)+\\sin ^2(\\theta ) \\Sigma (r)^2 \\Sigma '(r)\\right)}{2 \\Sigma (r)^3}"
+			]
+		],
+		[
+			["0", "0", "0", "-\\frac{l \\sin (\\theta ) \\Delta (r)}{\\Sigma (r)^2}"],
+			["0", "0", "\\frac{\\Sigma '(r)}{2 \\Sigma (r)}", "0"],
+			["0", "\\frac{\\Sigma '(r)}{2 \\Sigma (r)}", "0", "0"],
+			[
+				"-\\frac{l \\sin (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
+				"0",
+				"0",
+				"-\\frac{\\sin (\\theta ) \\cos (\\theta ) \\left(4 l^2 \\Delta (r)+\\Sigma (r)^2\\right)}{\\Sigma (r)^2}"
+			]
+		],
+		[
+			["0", "0", "\\frac{l \\csc (\\theta ) \\Delta (r)}{\\Sigma (r)^2}", "0"],
+			["0", "0", "0", "\\frac{\\Sigma '(r)}{2 \\Sigma (r)}"],
+			[
+				"\\frac{l \\csc (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
+				"0",
+				"0",
+				"\\cot (\\theta )+\\frac{2 l^2 \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}"
+			],
+			[
+				"0",
+				"\\frac{\\Sigma '(r)}{2 \\Sigma (r)}",
+				"\\cot (\\theta )+\\frac{2 l^2 \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
+				"0"
+			]
+		]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\beta",
+			"position": "down"
+		},
+		{
+			"char": "\\gamma",
+			"position": "down"
+		}
+	],
+	"symbol": "\\Gamma",
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\theta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
+	"parameters": [
+		{ "char": "M", "description": "mass of the black hole", "color": "#aa0000" },
+		{ "char": "l", "description": "magnetic monopol strength", "color": "#ad9aaa" },
+		{
+			"char": "\\Sigma",
+			"color": "#aaaa00",
+			"description": "r^2 + l^2",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "\\Delta",
+			"color": "#aa00aa",
+			"description": "r^2 - 2Mr - l^2",
+			"isLaTeXDescription": true
+		}
+	]
+}

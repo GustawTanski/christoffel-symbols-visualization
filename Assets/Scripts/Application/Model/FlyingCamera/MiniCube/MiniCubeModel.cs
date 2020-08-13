@@ -1,5 +1,5 @@
 using UnityEngine;
-public class MiniCubeModel : ChristofellElement {
+public class MiniCubeModel : ChristoffelElement {
     public Quaternion TargetRotation { get; set; }
     public Quaternion ZeroRotation { get; set; }
     public Quaternion LocalRotation { get; set; }

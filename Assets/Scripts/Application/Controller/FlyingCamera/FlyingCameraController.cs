@@ -1,5 +1,7 @@
+using System.Threading.Tasks;
 using UnityEngine;
-public partial class FlyingCameraController : ChristofellElement {
+using UnityEngine.InputSystem;
+public partial class FlyingCameraController : ChristoffelElement {
 
     public MiniCubeController miniCube;
     private TranslationCalculator translationCalculator;
@@ -7,45 +9,97 @@ public partial class FlyingCameraController : ChristofellElement {
     private FlyingCameraModel Model => App.model.flyingCamera;
     private FlyingCameraView View => App.view.flyingCamera;
 
+    private void Awake() {
+        Model.InitialPosition = View.transform.localPosition;
+        SetListeners();
+    }
+
+    private void SetListeners() {
+        App.menuChanged.listOfHandlers += OnMenuChanged;
+        App.toolsToggled.listOfHandlers += OnToolsToggled;
+        App.resetButtonClicked.listOfHandlers += OnResetButtonClicked;
+    }
+
+    private void OnMenuChanged(object caller, MenuChangedArgs e) {
+        if (IsToolsOverlayNotActive()) SetCameraActive(!e.isOn);
+    }
+
+    private bool IsToolsOverlayNotActive() {
+        return !App.model.tools.IsActive;
+    }
+
+    private void OnToolsToggled(object caller, ToolsToggledArgs e) {
+        SetCameraActive(!e.isActive);
+    }
+
+    private void SetCameraActive(bool isCameraActive) {
+        if (isCameraActive) ActivateCamera();
+        else DisactivateCamera();
+    }
+
+    private void ActivateCamera() {
+        DisactivateCursor();
+        Model.isActive = true;
+    }
+
+    private void DisactivateCursor() {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void DisactivateCamera() {
+        ActivateCursor();
+        Model.isActive = false;
+    }
+
+    private void ActivateCursor() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void OnResetButtonClicked(object caller, ResetButtonClickedArgs e) {
+        ResetRotation();
+        ResetViewPosition();
+    }
+
+    private void ResetRotation() {
+        ResetRotationData();
+        ResetViewRotation();
+    }
+
+    private void ResetRotationData() {
+        Model.FromXAxisAngle = 0;
+        Model.FromYAxisAngle = 0;
+    }
+
+    private void ResetViewRotation() {
+        View.RotateTo(Quaternion.identity);
+    }
+
+    private void ResetViewPosition() {
+        View.TranslateTo(Model.InitialPosition);
+    }
+
     private void Start() {
         InitializeTranslationCalculator();
         InitializeRotationCalculator();
-        HideAndLockCursor();
-        DispatchCursorStateChangedEvent();
-    }
-
-    private void DispatchCursorStateChangedEvent() {
-        App.cursorStateChanged.DispatchEvent(this, new CursorStateChangedEventArgs(IsCursorActive()));
-    }
-
-    private bool IsCursorActive() {
-        return !Model.IsActive;
+        InitializeCamera();
     }
 
     private void InitializeTranslationCalculator() {
-        translationCalculator = new TranslationCalculator(View, Model);
+        translationCalculator = new TranslationCalculator(View, Model, App.model.menu.keyBindings);
     }
 
     private void InitializeRotationCalculator() {
         rotationCalculator = new RotationCalculator(Model);
     }
 
-    private void HideAndLockCursor() {
-        HideCursor();
-        LockCursor();
-    }
-
-    private void HideCursor() {
-        Cursor.visible = false;
-    }
-
-    private void LockCursor() {
-        Cursor.lockState = CursorLockMode.Locked;
+    private void InitializeCamera() {
+        SetCameraActive(!App.model.menu.isMenuOn);
     }
 
     private void Update() {
-        if (Model.IsActive) RotateAndMove();
-        if (Input.GetKeyDown(KeyCode.Escape)) ToggleCursorAndActivityState();
+        if (Model.isActive) RotateAndMove();
     }
 
     private void RotateAndMove() {
@@ -63,35 +117,4 @@ public partial class FlyingCameraController : ChristofellElement {
         View.Translate(translationCalculator.Translation);
     }
 
-    private void ToggleCursorAndActivityState() {
-        ToggleCursor();
-        ToggleActivityState();
-        DispatchCursorStateChangedEvent();
-    }
-
-    private void ToggleCursor() {
-        if (IsCursorLocked()) FreeAndShowCursor();
-        else HideAndLockCursor();
-    }
-
-    private bool IsCursorLocked() {
-        return Cursor.lockState == CursorLockMode.Locked;
-    }
-
-    private void FreeAndShowCursor() {
-        FreeCursor();
-        ShowCursor();
-    }
-
-    private void FreeCursor() {
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    private void ShowCursor() {
-        Cursor.visible = true;
-    }
-
-    private void ToggleActivityState() {
-        Model.IsActive = !Model.IsActive;
-    }
 }

@@ -1,5 +1,7 @@
-public class ChristofellView : ChristofellElement {
+public class ChristofellView : ChristoffelElement {
     public CubeView cube;
-    public UIView uI;
+    public MenuView menu;
     public FlyingCameraView flyingCamera;
+
+    public ToolsView tools;
 }

@@ -10,7 +10,8 @@ namespace Data {
             [TensorProperties.Index.IndexPosition.down] = "_"
         };
         [JsonProperty("name", Required = Required.Always)]
-        public string Name { get; set; } 
+        public string Name { get; set; }
+
         [JsonProperty("data", Required = Required.Always)]
         public string[, , ] Data { get; set; }
 
@@ -26,6 +27,15 @@ namespace Data {
         [JsonProperty("coordinates", Required = Required.Always)]
         public LaTeXCharacter[] Coordinates { get; set; }
 
+        [JsonProperty("metric")]
+        public string[,] Metric { get; set; } = new string[0,0];
+
+        [JsonProperty("description")]
+        public string Description { get; set; } = "";
+
+        [JsonProperty("wikipedia-path")]
+        public string WikipediaPath { get; set; } = "";
+
         public class LaTeXCharacter {
             [JsonProperty("char", Required = Required.Always)]
             public string LaTeX { get; set; }
@@ -34,6 +44,9 @@ namespace Data {
             public string Description { get; set; } = "";
             [JsonProperty("color")]
             public string Color { get; set; } = "#ffffff";
+
+            [JsonProperty("isLaTeXDescription")]
+            public bool IsLaTeXDescription { get; set; } = false;
         }
 
         public class Index : LaTeXCharacter {
