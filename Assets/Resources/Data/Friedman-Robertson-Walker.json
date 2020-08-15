@@ -1,30 +1,13 @@
 {
 	"name": "Friedman-Robertson-Walker",
-	"data": [
-		[
-			["0", "0", "0", "0"],
-			["0", "\\frac{R(t) R'(t)}{c^2 \\left(1-\\eta ^2 k\\right)}", "0", "0"],
-			["0", "0", "\\frac{\\eta ^2 R(t) R'(t)}{c^2}", "0"],
-			["0", "0", "0", "\\frac{\\eta ^2 \\sin ^2(\\theta ) R(t) R'(t)}{c^2}"]
-		],
-		[
-			["0", "\\frac{R'(t)}{R(t)}", "0", "0"],
-			["\\frac{R'(t)}{R(t)}", "\\frac{\\eta  k}{1-\\eta ^2 k}", "0", "0"],
-			["0", "0", "\\eta  \\left(\\eta ^2 k-1\\right)", "0"],
-			["0", "0", "0", "\\eta  \\sin ^2(\\theta ) \\left(\\eta ^2 k-1\\right)"]
-		],
-		[
-			["0", "0", "\\frac{R'(t)}{R(t)}", "0"],
-			["0", "0", "\\frac{1}{\\eta }", "0"],
-			["\\frac{R'(t)}{R(t)}", "\\frac{1}{\\eta }", "0", "0"],
-			["0", "0", "0", "\\sin (\\theta ) (-\\cos (\\theta ))"]
-		],
-		[
-			["0", "0", "0", "\\frac{R'(t)}{R(t)}"],
-			["0", "0", "0", "\\frac{1}{\\eta }"],
-			["0", "0", "0", "\\cot (\\theta )"],
-			["\\frac{R'(t)}{R(t)}", "\\frac{1}{\\eta }", "\\cot (\\theta )", "0"]
-		]
+	"description": "Homogenous, isotropic filled with matter spacetime.",
+	"wikipedia-path": "Friedmann–Lemaître–Robertson–Walker_metric",
+	"symbol": "\\Gamma",
+	"metric": [
+		["-c^2", "0", "0", "0"],
+		["0", "(R(t))^2\\left(\\frac{1}{1-kr^2}\\right)", "0", "0"],
+		["0", "0", "r^2", "0"],
+		["0", "0", "0", "r^2\\sin^2(\\vartheta)"]
 	],
 	"indexes": [
 		{
@@ -32,34 +15,62 @@
 			"position": "up"
 		},
 		{
-			"char": "\\beta",
+			"char": "\\mu",
 			"position": "down"
 		},
 		{
-			"char": "\\gamma",
+			"char": "\\nu",
 			"position": "down"
 		}
 	],
-	"symbol": "\\Gamma",
+	"parameters": [
+		{
+			"char": "R(t)",
+			"description": "scale coefficient"
+		},
+		{
+			"char": "k",
+			"description": "constant describing curvature"
+		}
+	],
 	"coordinates": [
 		{
 			"char": "t"
 		},
 		{
-			"char": "\\eta"
+			"char": "r"
 		},
 		{
-			"char": "\\theta"
+			"char": "\\vartheta"
 		},
 		{
 			"char": "\\varphi"
 		}
 	],
-	"parameters": [
-		{
-			"char": "R'(t)",
-			"color": "#2233ff"
-		},
-		{ "char": "R(t)", "description": "arbitrary function of time", "color": "#BADA55" }
+	"data": [
+		[
+			["0", "0", "0", "0"],
+			["0", "\\frac{R(t) R'(t)}{c^2 \\left(1-k r^2\\right)}", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"]
+		],
+		[
+			["0", "\\frac{R'(t)}{R(t)}", "0", "0"],
+			["\\frac{R'(t)}{R(t)}", "\\frac{k r}{1-k r^2}", "0", "0"],
+			["0", "0", "\\frac{r \\left(k r^2-1\\right)}{R(t)^2}", "0"],
+			["0", "0", "0", "\\frac{r \\left(k r^2-1\\right) \\sin ^2(\\vartheta )}{R(t)^2}"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "\\frac{1}{r}", "0"],
+			["0", "\\frac{1}{r}", "0", "0"],
+			["0", "0", "0", "\\sin (\\vartheta ) (-\\cos (\\vartheta ))"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "\\frac{1}{r}"],
+			["0", "0", "0", "\\cot (\\vartheta )"],
+			["0", "\\frac{1}{r}", "\\cot (\\vartheta )", "0"]
+		]
 	]
 }

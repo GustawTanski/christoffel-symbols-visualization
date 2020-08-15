@@ -1,30 +1,13 @@
 {
 	"name": "Schwarzschild",
-	"data": [
-		[
-			["0", "-\\frac{M}{2 M r-r^2}", "0", "0"],
-			["-\\frac{M}{2 M r-r^2}", "0", "0", "0"],
-			["0", "0", "0", "0"],
-			["0", "0", "0", "0"]
-		],
-		[
-			["-\\frac{c^2 M (2 M-r)}{r^3}", "0", "0", "0"],
-			["0", "\\frac{M}{2 M r-r^2}", "0", "0"],
-			["0", "0", "2 M-r", "0"],
-			["0", "0", "0", "\\sin ^2(\\theta ) (2 M-r)"]
-		],
-		[
-			["0", "0", "0", "0"],
-			["0", "0", "\\frac{1}{r}", "0"],
-			["0", "\\frac{1}{r}", "0", "0"],
-			["0", "0", "0", "\\sin (\\theta ) (-\\cos (\\theta ))"]
-		],
-		[
-			["0", "0", "0", "0"],
-			["0", "0", "0", "\\frac{1}{r}"],
-			["0", "0", "0", "\\cot (\\theta )"],
-			["0", "\\frac{1}{r}", "\\cot (\\theta )", "0"]
-		]
+	"description": "Spherical and massive body in the center.",
+	"wikipedia-path": "Schwarzschild_metric",
+	"symbol": "\\Gamma",
+	"metric": [
+		["-\\left(1-\\frac{r_s}{r}\\right)c^2", "0", "0", "0"],
+		["0", "\\frac{1}{1-\\frac{r_s}{r}}", "0", "0"],
+		["0", "0", "r^2", "0"],
+		["0", "0", "0", "r^2\\sin^2(\\vartheta)"]
 	],
 	"indexes": [
 		{
@@ -32,15 +15,29 @@
 			"position": "up"
 		},
 		{
-			"char": "\\beta",
+			"char": "\\mu",
 			"position": "down"
 		},
 		{
-			"char": "\\gamma",
+			"char": "\\nu",
 			"position": "down"
 		}
 	],
-	"symbol": "\\Gamma",
+	"parameters": [
+		{
+			"char": "M",
+			"description": "mass"
+		},
+		{
+			"char": "G",
+			"description": "gravitational constant"
+		},
+		{
+			"char": "r_s",
+			"description": "\\frac{2GM}{c^2}",
+			"isLaTeXDescription": true
+		}
+	],
 	"coordinates": [
 		{
 			"char": "t"
@@ -49,34 +46,36 @@
 			"char": "r"
 		},
 		{
-			"char": "\\theta"
+			"char": "\\vartheta"
 		},
 		{
 			"char": "\\varphi"
 		}
 	],
-	"parameters": [
-		{
-			"char": "M",
-			"description": "mass",
-			"color": "#9B59B6"
-		},
-		{
-			"char": "G",
-			"description": "gravitation constant",
-			"color": "#ffff00"
-		},
-		{
-			"char": "r_s",
-			"description": "Schwarzschild radius",
-			"color": "#BADA55"
-		}
-	],
-	"metric": [
-		["-\\left(1-\\frac{r_s}{r}\\right)c^2", "0", "0", "0"],
-		["0", "\\frac{1}{1-r_s/r}", "0", "0"],
-		["0", "0", "r^2", "0"],
-		["0", "0", "0", "r^2\\sin^2{\\theta}"]
-	],
-	"description": "Spherical and massive body in the center."
+	"data": [
+		[
+			["0", "\\frac{r_s}{2 r^2-2 r r_s}", "0", "0"],
+			["\\frac{r_s}{2 r^2-2 r r_s}", "0", "0", "0"],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"]
+		],
+		[
+			["\\frac{c^2 \\left(r-r_s\\right) r_s}{2 r^3}", "0", "0", "0"],
+			["0", "-\\frac{r_s}{2 r^2-2 r r_s}", "0", "0"],
+			["0", "0", "r_s-r", "0"],
+			["0", "0", "0", "\\left(r-r_s\\right) \\left(-\\sin ^2(\\vartheta )\\right)"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "\\frac{1}{r}", "0"],
+			["0", "\\frac{1}{r}", "0", "0"],
+			["0", "0", "0", "\\sin (\\vartheta ) (-\\cos (\\vartheta ))"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "\\frac{1}{r}"],
+			["0", "0", "0", "\\cot (\\vartheta )"],
+			["0", "\\frac{1}{r}", "\\cot (\\vartheta )", "0"]
+		]
+	]
 }
