@@ -1,0 +1,115 @@
+{
+	"name": "(A)dS-Reissner-Nordstrøm",
+	"description": "Charged black hole. Cosmological constant is non-zero.",
+	"wikipedia-path": "",
+	"symbol": "\\Gamma",
+	"metric": [
+		["-A_{dSRN} c^2", "0", "0", "0"],
+		["0", "A_{dSRN}^{-1}", "0", "0"],
+		["0", "0", "r^2", "0"],
+		["0", "0", "0", "r^2\\sin^2(\\vartheta)"]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\mu",
+			"position": "down"
+		},
+		{
+			"char": "\\nu",
+			"position": "down"
+		}
+	],
+	"parameters": [
+		{
+			"char": "A_{dSRN}",
+			"description": "\\left( 1- \\frac{r_s}{r} + \\frac{\\rho Q^2}{r^2} - \\frac{\\Lambda r^2}{3} \\right)",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "r_s",
+			"description": "Schwarzschild radius"
+		},
+		{
+			"char": "\\rho",
+			"description": "\\frac{G}{\\varepsilon_0 c^4}",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "Q",
+			"description": "electric charge"
+		},
+		{
+			"char": "\\Lambda",
+			"description": "cosmological constant"
+		}
+	],
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\vartheta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
+	"data": [
+		[
+			[
+				"0",
+				"-\\frac{6 \\rho  Q^2+2 \\Lambda  r^4-3 r r_s}{6 \\rho  Q^2 r-2 \\Lambda  r^5+6 r^3-6 r^2 r_s}",
+				"0",
+				"0"
+			],
+			[
+				"-\\frac{6 \\rho  Q^2+2 \\Lambda  r^4-3 r r_s}{6 \\rho  Q^2 r-2 \\Lambda  r^5+6 r^3-6 r^2 r_s}",
+				"0",
+				"0",
+				"0"
+			],
+			["0", "0", "0", "0"],
+			["0", "0", "0", "0"]
+		],
+		[
+			[
+				"\\frac{c^2 \\left(6 \\rho  Q^2+2 \\Lambda  r^4-3 r r_s\\right) \\left(-3 \\rho  Q^2+\\Lambda  r^4-3 r^2+3 r r_s\\right)}{18 r^5}",
+				"0",
+				"0",
+				"0"
+			],
+			[
+				"0",
+				"\\frac{6 \\rho  Q^2+2 \\Lambda  r^4-3 r r_s}{6 \\rho  Q^2 r-2 \\Lambda  r^5+6 r^3-6 r^2 r_s}",
+				"0",
+				"0"
+			],
+			["0", "0", "-\\frac{\\rho  Q^2}{r}+\\frac{\\Lambda  r^3}{3}+r_s-r", "0"],
+			[
+				"0",
+				"0",
+				"0",
+				"\\frac{\\sin ^2(\\vartheta ) \\left(-3 \\rho  Q^2+\\Lambda  r^4-3 r^2+3 r r_s\\right)}{3 r}"
+			]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "\\frac{1}{r}", "0"],
+			["0", "\\frac{1}{r}", "0", "0"],
+			["0", "0", "0", "\\sin (\\vartheta ) (-\\cos (\\vartheta ))"]
+		],
+		[
+			["0", "0", "0", "0"],
+			["0", "0", "0", "\\frac{1}{r}"],
+			["0", "0", "0", "\\cot (\\vartheta )"],
+			["0", "\\frac{1}{r}", "\\cot (\\vartheta )", "0"]
+		]
+	]
+}

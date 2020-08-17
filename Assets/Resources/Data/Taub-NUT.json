@@ -1,79 +1,17 @@
 {
-	"name": "TaubNUT",
-	"data": [
+	"name": "Taub-NUT",
+	"description": "Black hole with gravitomagnetic monopole. (assuming c=G=1)",
+	"wikipedia-path": "Taub–NUT_space",
+	"symbol": "\\Gamma",
+	"metric": [
+		["-\\frac{\\Delta}{\\Sigma}", "0", "0", "-\\frac{\\Delta}{\\Sigma}2 l \\cos(\\vartheta)"],
+		["0", "\\frac{\\Sigma}{\\Delta}", "0", "0"],
+		["0", "0", "\\Sigma", "0"],
 		[
-			[
-				"0",
-				"\\frac{1}{2} \\left(\\frac{\\Delta '(r)}{\\Delta (r)}-\\frac{\\Sigma '(r)}{\\Sigma (r)}\\right)",
-				"-\\frac{2 l^2 \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
-				"0"
-			],
-			[
-				"\\frac{1}{2} \\left(\\frac{\\Delta '(r)}{\\Delta (r)}-\\frac{\\Sigma '(r)}{\\Sigma (r)}\\right)",
-				"0",
-				"0",
-				"l \\cos (\\theta ) \\left(\\frac{\\Delta '(r)}{\\Delta (r)}-\\frac{2 \\Sigma '(r)}{\\Sigma (r)}\\right)"
-			],
-			[
-				"-\\frac{2 l^2 \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
-				"0",
-				"0",
-				"-\\frac{4 l^3 \\cos (\\theta ) \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}-\\frac{1}{2} l (\\cos (2 \\theta )+3) \\csc (\\theta )"
-			],
-			[
-				"0",
-				"l \\cos (\\theta ) \\left(\\frac{\\Delta '(r)}{\\Delta (r)}-\\frac{2 \\Sigma '(r)}{\\Sigma (r)}\\right)",
-				"-\\frac{4 l^3 \\cos (\\theta ) \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}-\\frac{1}{2} l (\\cos (2 \\theta )+3) \\csc (\\theta )",
-				"0"
-			]
-		],
-		[
-			[
-				"\\frac{\\Delta (r) \\left(\\Sigma (r) \\Delta '(r)-\\Delta (r) \\Sigma '(r)\\right)}{2 \\Sigma (r)^3}",
-				"0",
-				"0",
-				"\\frac{l \\cos (\\theta ) \\Delta (r) \\left(\\Sigma (r) \\Delta '(r)-\\Delta (r) \\Sigma '(r)\\right)}{\\Sigma (r)^3}"
-			],
-			[
-				"0",
-				"\\frac{1}{2} \\left(\\frac{\\Sigma '(r)}{\\Sigma (r)}-\\frac{\\Delta '(r)}{\\Delta (r)}\\right)",
-				"0",
-				"0"
-			],
-			["0", "0", "-\\frac{\\Delta (r) \\Sigma '(r)}{2 \\Sigma (r)}", "0"],
-			[
-				"\\frac{l \\cos (\\theta ) \\Delta (r) \\left(\\Sigma (r) \\Delta '(r)-\\Delta (r) \\Sigma '(r)\\right)}{\\Sigma (r)^3}",
-				"0",
-				"0",
-				"-\\frac{\\Delta (r) \\left(-4 l^2 \\cos ^2(\\theta ) \\Sigma (r) \\Delta '(r)+4 l^2 \\cos ^2(\\theta ) \\Delta (r) \\Sigma '(r)+\\sin ^2(\\theta ) \\Sigma (r)^2 \\Sigma '(r)\\right)}{2 \\Sigma (r)^3}"
-			]
-		],
-		[
-			["0", "0", "0", "-\\frac{l \\sin (\\theta ) \\Delta (r)}{\\Sigma (r)^2}"],
-			["0", "0", "\\frac{\\Sigma '(r)}{2 \\Sigma (r)}", "0"],
-			["0", "\\frac{\\Sigma '(r)}{2 \\Sigma (r)}", "0", "0"],
-			[
-				"-\\frac{l \\sin (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
-				"0",
-				"0",
-				"-\\frac{\\sin (\\theta ) \\cos (\\theta ) \\left(4 l^2 \\Delta (r)+\\Sigma (r)^2\\right)}{\\Sigma (r)^2}"
-			]
-		],
-		[
-			["0", "0", "\\frac{l \\csc (\\theta ) \\Delta (r)}{\\Sigma (r)^2}", "0"],
-			["0", "0", "0", "\\frac{\\Sigma '(r)}{2 \\Sigma (r)}"],
-			[
-				"\\frac{l \\csc (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
-				"0",
-				"0",
-				"\\cot (\\theta )+\\frac{2 l^2 \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}"
-			],
-			[
-				"0",
-				"\\frac{\\Sigma '(r)}{2 \\Sigma (r)}",
-				"\\cot (\\theta )+\\frac{2 l^2 \\cot (\\theta ) \\Delta (r)}{\\Sigma (r)^2}",
-				"0"
-			]
+			"-\\frac{\\Delta}{\\Sigma}2 l \\cos(\\vartheta)",
+			"0",
+			"0",
+			"\\Sigma\\sin^2(\\vartheta)-\\frac{4l^2\\cos^2(\\vartheta)\\Delta}{\\Sigma}"
 		]
 	],
 	"indexes": [
@@ -82,15 +20,34 @@
 			"position": "up"
 		},
 		{
-			"char": "\\beta",
+			"char": "\\mu",
 			"position": "down"
 		},
 		{
-			"char": "\\gamma",
+			"char": "\\nu",
 			"position": "down"
 		}
 	],
-	"symbol": "\\Gamma",
+	"parameters": [
+		{
+			"char": "\\Delta",
+			"description": "r^2 - 2Mr - l^2",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "\\Sigma",
+			"description": "r^2 + l^2",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "M",
+			"description": "mass"
+		},
+		{
+			"char": "l",
+			"description": "gravitomagnetic monopole moment"
+		}
+	],
 	"coordinates": [
 		{
 			"char": "t"
@@ -99,26 +56,91 @@
 			"char": "r"
 		},
 		{
-			"char": "\\theta"
+			"char": "\\vartheta"
 		},
 		{
 			"char": "\\varphi"
 		}
 	],
-	"parameters": [
-		{ "char": "M", "description": "mass of the black hole", "color": "#aa0000" },
-		{ "char": "l", "description": "magnetic monopol strength", "color": "#ad9aaa" },
-		{
-			"char": "\\Sigma",
-			"color": "#aaaa00",
-			"description": "r^2 + l^2",
-			"isLaTeXDescription": true
-		},
-		{
-			"char": "\\Delta",
-			"color": "#aa00aa",
-			"description": "r^2 - 2Mr - l^2",
-			"isLaTeXDescription": true
-		}
+	"data": [
+		[
+			[
+				"0",
+				"\\frac{1}{2} \\left(\\frac{2 r}{\\Delta }-\\frac{2 r}{\\Sigma }\\right)",
+				"-\\frac{2 \\Delta  l^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma ^2 \\sin ^2(\\vartheta )+4 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )}",
+				"0"
+			],
+			[
+				"\\frac{1}{2} \\left(\\frac{2 r}{\\Delta }-\\frac{2 r}{\\Sigma }\\right)",
+				"0",
+				"0",
+				"\\frac{l \\Sigma  \\sin ^2(\\vartheta ) \\cos (\\vartheta ) (2 r \\Sigma -4 \\Delta  r)}{\\Delta  \\left(\\Sigma ^2 \\sin ^2(\\vartheta )+4 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )\\right)}"
+			],
+			[
+				"-\\frac{2 \\Delta  l^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma ^2 \\sin ^2(\\vartheta )+4 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )}",
+				"0",
+				"0",
+				"-\\frac{l \\sin (\\vartheta ) \\left(8 \\Delta  \\cos ^2(\\vartheta )+\\Sigma ^2 (\\cos (2 \\vartheta )+3)\\right)}{2 \\Sigma ^2 \\sin ^2(\\vartheta )+8 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )}"
+			],
+			[
+				"0",
+				"\\frac{l \\Sigma  \\sin ^2(\\vartheta ) \\cos (\\vartheta ) (2 r \\Sigma -4 \\Delta  r)}{\\Delta  \\left(\\Sigma ^2 \\sin ^2(\\vartheta )+4 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )\\right)}",
+				"-\\frac{l \\sin (\\vartheta ) \\left(8 \\Delta  \\cos ^2(\\vartheta )+\\Sigma ^2 (\\cos (2 \\vartheta )+3)\\right)}{2 \\Sigma ^2 \\sin ^2(\\vartheta )+8 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )}",
+				"0"
+			]
+		],
+		[
+			[
+				"\\frac{\\Delta  (2 r \\Sigma -2 \\Delta  r)}{2 \\Sigma ^3}",
+				"0",
+				"0",
+				"\\frac{\\Delta  l \\cos (\\vartheta ) (2 r \\Sigma -2 \\Delta  r)}{\\Sigma ^3}"
+			],
+			["0", "\\frac{1}{2} \\left(\\frac{2 r}{\\Sigma }-\\frac{2 r}{\\Delta }\\right)", "0", "0"],
+			["0", "0", "-\\frac{\\Delta  r}{\\Sigma }", "0"],
+			[
+				"\\frac{\\Delta  l \\cos (\\vartheta ) (2 r \\Sigma -2 \\Delta  r)}{\\Sigma ^3}",
+				"0",
+				"0",
+				"-\\frac{\\Delta  \\left(8 \\Delta  r \\cos ^2(\\vartheta )+2 r \\Sigma ^2 \\sin ^2(\\vartheta )-8 r \\Sigma  \\cos ^2(\\vartheta )\\right)}{2 \\Sigma ^3}"
+			]
+		],
+		[
+			["0", "0", "0", "-\\frac{\\Delta  l \\sin (\\vartheta )}{\\Sigma ^2}"],
+			["0", "0", "\\frac{r}{\\Sigma }", "0"],
+			["0", "\\frac{r}{\\Sigma }", "0", "0"],
+			[
+				"-\\frac{\\Delta  l \\sin (\\vartheta )}{\\Sigma ^2}",
+				"0",
+				"0",
+				"-\\frac{\\left(4 \\Delta +\\Sigma ^2\\right) \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma ^2}"
+			]
+		],
+		[
+			[
+				"0",
+				"0",
+				"\\frac{\\Delta  l \\sin (\\vartheta )}{\\Sigma ^2 \\sin ^2(\\vartheta )+4 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )}",
+				"0"
+			],
+			[
+				"0",
+				"0",
+				"0",
+				"\\frac{-8 \\Delta  \\left(l^2-1\\right) r \\cos ^2(\\vartheta )+8 \\left(l^2-1\\right) r \\Sigma  \\cos ^2(\\vartheta )+2 r \\Sigma ^2 \\sin ^2(\\vartheta )}{2 \\Sigma ^3 \\sin ^2(\\vartheta )+8 \\Delta  \\left(l^2-1\\right) \\Sigma  \\cos ^2(\\vartheta )}"
+			],
+			[
+				"\\frac{\\Delta  l \\sin (\\vartheta )}{\\Sigma ^2 \\sin ^2(\\vartheta )+4 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )}",
+				"0",
+				"0",
+				"-\\frac{\\sin (2 \\vartheta ) \\left(2 \\Delta  \\left(l^2-2\\right)-\\Sigma ^2\\right)}{2 \\Sigma ^2 \\sin ^2(\\vartheta )+8 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )}"
+			],
+			[
+				"0",
+				"\\frac{-8 \\Delta  \\left(l^2-1\\right) r \\cos ^2(\\vartheta )+8 \\left(l^2-1\\right) r \\Sigma  \\cos ^2(\\vartheta )+2 r \\Sigma ^2 \\sin ^2(\\vartheta )}{2 \\Sigma ^3 \\sin ^2(\\vartheta )+8 \\Delta  \\left(l^2-1\\right) \\Sigma  \\cos ^2(\\vartheta )}",
+				"-\\frac{\\sin (2 \\vartheta ) \\left(2 \\Delta  \\left(l^2-2\\right)-\\Sigma ^2\\right)}{2 \\Sigma ^2 \\sin ^2(\\vartheta )+8 \\Delta  \\left(l^2-1\\right) \\cos ^2(\\vartheta )}",
+				"0"
+			]
+		]
 	]
 }

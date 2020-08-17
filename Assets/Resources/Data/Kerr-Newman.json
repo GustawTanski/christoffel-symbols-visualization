@@ -102,21 +102,21 @@
 				"\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }-\\frac{a^2 \\sin (2 \\theta ) \\left(a^2 \\cos (2 \\theta )+3 a^2-2 \\Delta +4 r^2\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
 				"0",
 				"0",
-				"\\frac{4 a^3 \\sin ^3(\\theta ) \\cos (\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}"
+				"\\frac{4 a^3 \\sin ^3(\\theta ) \\cos (\\theta ) \\left(r r_s-\\rho  Q^2\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}"
 			],
 			[
 				"0",
 				"-\\frac{a \\sin ^2(\\theta ) \\left(h \\left(2 r \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)+4 h r\\right)-2 \\Delta  r \\left(a^2 \\cos (2 \\theta )+3 a^2+4 r^2\\right)\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
-				"\\frac{4 a^3 \\sin ^3(\\theta ) \\cos (\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"\\frac{4 a^3 \\sin ^3(\\theta ) \\cos (\\theta ) \\left(r r_s-\\rho  Q^2\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
 				"0"
 			]
 		],
 		[
 			[
-				"\\frac{\\Delta  \\left(2 r \\left(a^2 \\sin ^2(\\theta )-a^2-\\rho  Q^2-r^2-r r_s\\right)+2 r \\Sigma \\right)}{2 \\Sigma ^3}",
+				"\\frac{\\Delta  \\left(2 r \\left(a^2 \\sin ^2(\\theta )-a^2-\\rho  Q^2-r^2+r r_s\\right)+2 r \\Sigma \\right)}{2 \\Sigma ^3}",
 				"0",
 				"0",
-				"-\\frac{a \\Delta  r \\sin ^2(\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\Sigma ^3}"
+				"-\\frac{a \\Delta  r \\sin ^2(\\theta ) \\left(r r_s-\\rho  Q^2\\right)}{\\Sigma ^3}"
 			],
 			[
 				"0",
@@ -131,7 +131,7 @@
 				"0"
 			],
 			[
-				"-\\frac{a \\Delta  r \\sin ^2(\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\Sigma ^3}",
+				"-\\frac{a \\Delta  r \\sin ^2(\\theta ) \\left(r r_s-\\rho  Q^2\\right)}{\\Sigma ^3}",
 				"0",
 				"0",
 				"\\frac{\\Delta  \\sin ^2(\\theta ) \\left(2 r \\left(h^2-a^2 \\Delta  \\sin ^2(\\theta )\\right)+\\Sigma  \\left(2 a^2 r \\sin ^2(\\theta )-4 h r\\right)\\right)}{2 \\Sigma ^3}"
@@ -142,7 +142,7 @@
 				"-\\frac{a^2 \\Sigma  \\sin (2 \\theta )-2 a^2 \\sin (\\theta ) \\cos (\\theta ) \\left(\\Delta -a^2 \\sin ^2(\\theta )\\right)}{2 \\Sigma ^3}",
 				"0",
 				"0",
-				"\\frac{a \\sin (\\theta ) \\left(-\\rho  Q^2-r r_s\\right) \\left(2 a^2 \\sin ^2(\\theta ) \\cos (\\theta )+2 \\Sigma  \\cos (\\theta )\\right)}{2 \\Sigma ^3}"
+				"\\frac{a \\sin (\\theta ) \\left(r r_s-\\rho  Q^2\\right) \\left(2 a^2 \\sin ^2(\\theta ) \\cos (\\theta )+2 \\Sigma  \\cos (\\theta )\\right)}{2 \\Sigma ^3}"
 			],
 			[
 				"0",
@@ -152,7 +152,7 @@
 			],
 			["0", "\\frac{r}{\\Sigma }", "-\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }", "0"],
 			[
-				"\\frac{a \\sin (\\theta ) \\left(-\\rho  Q^2-r r_s\\right) \\left(2 a^2 \\sin ^2(\\theta ) \\cos (\\theta )+2 \\Sigma  \\cos (\\theta )\\right)}{2 \\Sigma ^3}",
+				"\\frac{a \\sin (\\theta ) \\left(r r_s-\\rho  Q^2\\right) \\left(2 a^2 \\sin ^2(\\theta ) \\cos (\\theta )+2 \\Sigma  \\cos (\\theta )\\right)}{2 \\Sigma ^3}",
 				"0",
 				"0",
 				"-\\frac{\\sin (\\theta ) \\left(2 \\Sigma  \\cos (\\theta ) \\left(h^2-2 a^2 \\Delta  \\sin ^2(\\theta )\\right)-2 a^2 \\sin ^2(\\theta ) \\cos (\\theta ) \\left(a^2 \\Delta  \\sin ^2(\\theta )-h^2\\right)\\right)}{2 \\Sigma ^3}"
@@ -162,7 +162,7 @@
 			[
 				"0",
 				"\\frac{2 a \\left(2 r \\left(h-a^2 \\sin ^2(\\theta )\\right)+2 a^2 r \\sin ^2(\\theta )-2 \\Delta  r\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
-				"-\\frac{4 a \\cot (\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"-\\frac{4 a \\cot (\\theta ) \\left(r r_s-\\rho  Q^2\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
 				"0"
 			],
 			[
@@ -172,7 +172,7 @@
 				"\\frac{2 \\Delta  r \\left(a^2 \\cos (2 \\theta )+3 a^2+4 r^2\\right)-a^2 \\sin ^2(\\theta ) \\left(2 r \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)+4 h r\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }"
 			],
 			[
-				"-\\frac{4 a \\cot (\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"-\\frac{4 a \\cot (\\theta ) \\left(r r_s-\\rho  Q^2\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
 				"0",
 				"0",
 				"\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }+\\frac{\\cot (\\theta ) \\left(a^4 \\cos (4 \\theta )+3 a^4-4 a^2 \\Delta  \\sin ^2(\\theta )+4 a^2 r^2 \\cos (2 \\theta )+4 a^2 r^2+4 r^4\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}"
