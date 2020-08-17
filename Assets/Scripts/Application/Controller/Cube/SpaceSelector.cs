@@ -34,7 +34,7 @@ public class SpaceSelector : ChristoffelElement {
         [M | alpha] = "C-metric",
         [M | Q | a] = "Kerr-Newman",
         [M | Q | Lambda] = "(A)dS-Reissner-Nordstrøm",
-        [M | a | Lambda] = "Kerr-de Sitter",
+        [M | a | Lambda] = "(A)dS-Kerr",
         [M | n | Lambda] = "Taub-NUT-de Sitter",
         [M | Q | a | Lambda] = "Kerr-Newman-de Sitter",
         [M | Q | a | Lambda | n | alpha] = "Plebański-Demiański"
