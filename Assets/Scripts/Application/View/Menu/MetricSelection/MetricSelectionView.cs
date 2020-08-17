@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Data;
 using TMPro;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class MetricSelectionView : MenuElement {
     public Texture2D graphicPopperPlaceholder;
     public RectTransform descriptionContainer;
     public TMP_Text spacetimeDescription;
-    
+
     private static readonly Regex COMMAND_FILTER = new Regex(@"(\\not)?[\\][a-zA-Z]+(\{[a-zA-Z0-9]*\})?", RegexOptions.Compiled);
     private static readonly Regex SUPERSCRIPT_FILTER = new Regex(@"\^((\{[^\}]+\})|.)", RegexOptions.Compiled);
     private static readonly Regex SUBSCRIPT_FILTER = new Regex(@"_((\{[^\}]+\})|.)", RegexOptions.Compiled);
@@ -140,7 +141,8 @@ public class MetricSelectionView : MenuElement {
         textPopperSwitch.popper = popper;
     }
 
-    private void RebuildSpacetimeDescriptionLayout() {
+    private async void RebuildSpacetimeDescriptionLayout() {
+        await Task.Delay(1);
         LayoutRebuilder.ForceRebuildLayoutImmediate(descriptionContainer);
     }
 }
