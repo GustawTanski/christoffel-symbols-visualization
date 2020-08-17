@@ -1,138 +1,188 @@
 {
-    "name": "Kerr-Newman <placeholder>",
-    "data": [
-        [
-            [
-                "0",
-                "0",
-                "0",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "0",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "0",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "0",
-                "0"
-            ]
-        ],
-        [
-            [
-                "0",
-                "0",
-                "0",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "0",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "-r",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "0",
-                "-r \\sin ^2(\\theta )"
-            ]
-        ],
-        [
-            [
-                "0",
-                "0",
-                "0",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "\\frac{1}{r}",
-                "0"
-            ],
-            [
-                "0",
-                "\\frac{1}{r}",
-                "0",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "0",
-                "\\sin (\\theta ) (-\\cos (\\theta ))"
-            ]
-        ],
-        [
-            [
-                "0",
-                "0",
-                "0",
-                "0"
-            ],
-            [
-                "0",
-                "0",
-                "0",
-                "\\frac{1}{r}"
-            ],
-            [
-                "0",
-                "0",
-                "0",
-                "\\cot (\\theta )"
-            ],
-            [
-                "0",
-                "\\frac{1}{r}",
-                "\\cot (\\theta )",
-                "0"
-            ]
-        ]
-    ],
-    "indexes": [
-        {
-            "char": "\\alpha",
-            "position": "up"
-        },
-        {
-            "char": "\\beta",
-            "position": "down"
-        },
-        {
-            "char": "\\gamma",
-            "position": "down"
-        }
-    ],
-    "symbol": "\\Gamma",
-    "coordinates": [
-        {
-            "char": "t"
-        },
-        {
-            "char": "r"
-        },
-        {
-            "char": "\\theta"
-        },
-        {
-            "char": "\\varphi"
-        }
-    ]
+	"name": "Kerr-Newman",
+	"description": "Rotating and charged black hole.",
+	"wikipedia-path": "Kerr–Newman_metric",
+	"symbol": "\\Gamma",
+	"metric": [
+		[
+			"\\frac{-\\Delta + a^2 \\sin^2(\\vartheta)}{\\Sigma}",
+			"0",
+			"0",
+			"\\frac{-a(a^2+r^2 - \\Delta)\\sin^2(\\vartheta)}{\\Sigma}"
+		],
+		["0", "\\frac{\\Sigma}{\\Delta}", "0", "0"],
+		["0", "0", "\\Sigma", "0"],
+		[
+			"\\frac{-a(a^2+r^2 - \\Delta)\\sin^2(\\vartheta)}{\\Sigma}",
+			"0",
+			"0",
+			"\\frac{(2(a^2+r^2)^2-a^2 \\Delta + a^2 \\Delta\\cos{2\\vartheta})\\sin^2(\\vartheta)}{2\\Sigma}"
+		]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\mu",
+			"position": "down"
+		},
+		{
+			"char": "\\nu",
+			"position": "down"
+		}
+	],
+	"parameters": [
+		{
+			"char": "\\Sigma",
+			"description": "r^2 + a^2\\cos^2(\\vartheta)",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "\\Delta",
+			"description": "r^2 - r_s r + a^2 + \\rho Q^2",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "h",
+			"description": "r^2 + a^2",
+			"isLaTeXDescription": true
+		},
+		{
+			"char": "a",
+			"description": "J/cM"
+		},
+		{
+			"char": "J",
+			"description": "angular momentum"
+		},
+		{
+			"char": "M",
+			"description": "mass"
+		},
+		{
+			"char": "r_s",
+			"description": "Schwarzschild radius"
+		},
+		{
+			"char": "Q",
+			"description": "electric charge"
+		}
+	],
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\vartheta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
+	"data": [
+		[
+			[
+				"0",
+				"\\frac{2 \\left(h \\left(2 r \\left(h-a^2 \\sin ^2(\\theta )\\right)+2 a^2 r \\sin ^2(\\theta )\\right)-2 a^2 \\Delta  r \\sin ^2(\\theta )\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }",
+				"\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }-\\frac{a^2 \\sin (2 \\theta ) \\left(a^2 \\cos (2 \\theta )+3 a^2-2 \\Delta +4 r^2\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"0"
+			],
+			[
+				"\\frac{2 \\left(h \\left(2 r \\left(h-a^2 \\sin ^2(\\theta )\\right)+2 a^2 r \\sin ^2(\\theta )\\right)-2 a^2 \\Delta  r \\sin ^2(\\theta )\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }",
+				"0",
+				"0",
+				"-\\frac{a \\sin ^2(\\theta ) \\left(h \\left(2 r \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)+4 h r\\right)-2 \\Delta  r \\left(a^2 \\cos (2 \\theta )+3 a^2+4 r^2\\right)\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}"
+			],
+			[
+				"\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }-\\frac{a^2 \\sin (2 \\theta ) \\left(a^2 \\cos (2 \\theta )+3 a^2-2 \\Delta +4 r^2\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"0",
+				"0",
+				"\\frac{4 a^3 \\sin ^3(\\theta ) \\cos (\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}"
+			],
+			[
+				"0",
+				"-\\frac{a \\sin ^2(\\theta ) \\left(h \\left(2 r \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)+4 h r\\right)-2 \\Delta  r \\left(a^2 \\cos (2 \\theta )+3 a^2+4 r^2\\right)\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"\\frac{4 a^3 \\sin ^3(\\theta ) \\cos (\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"0"
+			]
+		],
+		[
+			[
+				"\\frac{\\Delta  \\left(2 r \\left(a^2 \\sin ^2(\\theta )-a^2-\\rho  Q^2-r^2-r r_s\\right)+2 r \\Sigma \\right)}{2 \\Sigma ^3}",
+				"0",
+				"0",
+				"-\\frac{a \\Delta  r \\sin ^2(\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\Sigma ^3}"
+			],
+			[
+				"0",
+				"\\frac{1}{2} \\left(\\frac{2 r}{\\Sigma }-\\frac{2 r}{\\Delta }\\right)",
+				"-\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }",
+				"0"
+			],
+			[
+				"0",
+				"-\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }",
+				"-\\frac{\\Delta  r}{\\Sigma }",
+				"0"
+			],
+			[
+				"-\\frac{a \\Delta  r \\sin ^2(\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\Sigma ^3}",
+				"0",
+				"0",
+				"\\frac{\\Delta  \\sin ^2(\\theta ) \\left(2 r \\left(h^2-a^2 \\Delta  \\sin ^2(\\theta )\\right)+\\Sigma  \\left(2 a^2 r \\sin ^2(\\theta )-4 h r\\right)\\right)}{2 \\Sigma ^3}"
+			]
+		],
+		[
+			[
+				"-\\frac{a^2 \\Sigma  \\sin (2 \\theta )-2 a^2 \\sin (\\theta ) \\cos (\\theta ) \\left(\\Delta -a^2 \\sin ^2(\\theta )\\right)}{2 \\Sigma ^3}",
+				"0",
+				"0",
+				"\\frac{a \\sin (\\theta ) \\left(-\\rho  Q^2-r r_s\\right) \\left(2 a^2 \\sin ^2(\\theta ) \\cos (\\theta )+2 \\Sigma  \\cos (\\theta )\\right)}{2 \\Sigma ^3}"
+			],
+			[
+				"0",
+				"\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Delta  \\Sigma }",
+				"\\frac{r}{\\Sigma }",
+				"0"
+			],
+			["0", "\\frac{r}{\\Sigma }", "-\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }", "0"],
+			[
+				"\\frac{a \\sin (\\theta ) \\left(-\\rho  Q^2-r r_s\\right) \\left(2 a^2 \\sin ^2(\\theta ) \\cos (\\theta )+2 \\Sigma  \\cos (\\theta )\\right)}{2 \\Sigma ^3}",
+				"0",
+				"0",
+				"-\\frac{\\sin (\\theta ) \\left(2 \\Sigma  \\cos (\\theta ) \\left(h^2-2 a^2 \\Delta  \\sin ^2(\\theta )\\right)-2 a^2 \\sin ^2(\\theta ) \\cos (\\theta ) \\left(a^2 \\Delta  \\sin ^2(\\theta )-h^2\\right)\\right)}{2 \\Sigma ^3}"
+			]
+		],
+		[
+			[
+				"0",
+				"\\frac{2 a \\left(2 r \\left(h-a^2 \\sin ^2(\\theta )\\right)+2 a^2 r \\sin ^2(\\theta )-2 \\Delta  r\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"-\\frac{4 a \\cot (\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"0"
+			],
+			[
+				"\\frac{2 a \\left(2 r \\left(h-a^2 \\sin ^2(\\theta )\\right)+2 a^2 r \\sin ^2(\\theta )-2 \\Delta  r\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"0",
+				"0",
+				"\\frac{2 \\Delta  r \\left(a^2 \\cos (2 \\theta )+3 a^2+4 r^2\\right)-a^2 \\sin ^2(\\theta ) \\left(2 r \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)+4 h r\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }"
+			],
+			[
+				"-\\frac{4 a \\cot (\\theta ) \\left(-\\rho  Q^2-r r_s\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"0",
+				"0",
+				"\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }+\\frac{\\cot (\\theta ) \\left(a^4 \\cos (4 \\theta )+3 a^4-4 a^2 \\Delta  \\sin ^2(\\theta )+4 a^2 r^2 \\cos (2 \\theta )+4 a^2 r^2+4 r^4\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}"
+			],
+			[
+				"0",
+				"\\frac{2 \\Delta  r \\left(a^2 \\cos (2 \\theta )+3 a^2+4 r^2\\right)-a^2 \\sin ^2(\\theta ) \\left(2 r \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)+4 h r\\right)}{\\Delta  \\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }",
+				"\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }+\\frac{\\cot (\\theta ) \\left(a^4 \\cos (4 \\theta )+3 a^4-4 a^2 \\Delta  \\sin ^2(\\theta )+4 a^2 r^2 \\cos (2 \\theta )+4 a^2 r^2+4 r^4\\right)}{\\left(a^2 \\cos (2 \\theta )+a^2+2 r^2\\right)^2}",
+				"0"
+			]
+		]
+	]
 }
