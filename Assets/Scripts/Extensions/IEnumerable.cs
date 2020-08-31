@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ForEach {
+namespace IEnumerableExtension {
     static class IEnumerableExtension {
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T, int, IEnumerable<T>> cb) {
             int i = 0;
@@ -18,6 +18,16 @@ namespace ForEach {
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action cb) {
             ForEach(enumerable, (el, i, nothing) => cb());
         }
+
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>
+            (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) {
+                HashSet<TKey> seenKeys = new HashSet<TKey>();
+                foreach (TSource element in source) {
+                    if (seenKeys.Add(keySelector(element))) {
+                        yield return element;
+                    }
+                }
+            }
     }
 
 }
