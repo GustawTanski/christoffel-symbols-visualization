@@ -29,10 +29,6 @@
 			"description": "mass"
 		},
 		{
-			"char": "G",
-			"description": "gravitational constant"
-		},
-		{
 			"char": "r_s",
 			"description": "\\frac{2GM}{c^2}",
 			"isLaTeXDescription": true

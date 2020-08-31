@@ -66,18 +66,12 @@ public class MetricSelectionController : ChristoffelElement {
         SetDropdownListener();
     }
     private void PopulateDropdown() {
-        List<string> names = GetNameOfSpaceTypesThatAreNotHandledBySpaceSelector();
+        List<string> names = GetNameOfSpaceTypes();
         View.dropdown.AddOptions(names);
     }
 
-    private List<string> GetNameOfSpaceTypesThatAreNotHandledBySpaceSelector() {
-        return App.model.cube.SpaceDictionaryNew.Keys
-            .Where(IsNotHandledBySpaceSelector)
-            .ToList();
-    }
-
-    private bool IsNotHandledBySpaceSelector(string spaceType) {
-        return !App.controller.cube.spaceSelector.handledSpaces.Contains(spaceType);
+    private List<string> GetNameOfSpaceTypes() {
+        return App.model.cube.SpaceDictionaryNew.Keys.ToList();
     }
 
     private void InitializeDropdownState() {
