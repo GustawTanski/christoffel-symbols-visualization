@@ -16,11 +16,12 @@ public class SpaceSelector : ChristoffelElement {
     private const ParameterFlag H = 0b10_0000;
 
     private const string NOT_HANDLED = "Nothing";
+    private const string INITIAL_SPACE_TYPE = "Minkowski";
 
     private ParameterFlag state = nullFlag;
-    private string spaceType;
+    private string spaceType = INITIAL_SPACE_TYPE;
 
-    private List<SpaceParameter> pressedParameters;
+    private List<SpaceParameter> pressedParameters = new List<SpaceParameter>();
 
     private readonly Dictionary<ParameterFlag, string> stateToSpaceType = new Dictionary<ParameterFlag, string> {
         [nullFlag] = "Minkowski",
@@ -200,16 +201,9 @@ public class SpaceSelector : ChristoffelElement {
     }
 
     private void Start() {
-        InitializeState();
-    }
-
-    private void InitializeState() {
-        ParametersPanelModel panelModel = App.model.menu.metricSelection.parametersPanel;
-        if (panelModel.M) state |= M;
-        if (panelModel.Q) state |= Q;
-        if (panelModel.a) state |= a;
-        if (panelModel.Lambda) state |= Lambda;
-        if (panelModel.n) state |= n;
-        if (panelModel.H) state |= H;
+        state = GetStateCorrespondingWithSpaceType();
+        ChangeSpaceTypeOfCubeOrShowWarning();
+        ForceParametersState();
+        ForceDropdownState();
     }
 }
