@@ -19,7 +19,6 @@ public class ParametersPanelController : ChristoffelElement {
         View.Q.isOn = Model.Q;
         View.n.isOn = Model.n;
         View.M.isOn = Model.M;
-        View.alpha.isOn = Model.alpha;
         View.H.isOn = Model.H;
     }
 
@@ -29,7 +28,6 @@ public class ParametersPanelController : ChristoffelElement {
         View.Q.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.Q));
         View.n.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.n));
         View.M.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.M));
-        View.alpha.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.alpha));
         View.H.onValueChanged.AddListener(OnButtonChangeCreator(SpaceParameter.H));
     }
 

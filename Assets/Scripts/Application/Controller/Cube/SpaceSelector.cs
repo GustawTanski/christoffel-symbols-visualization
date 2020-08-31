@@ -12,8 +12,7 @@ public class SpaceSelector : ChristoffelElement {
     private const ParameterFlag a = 0b100;
     private const ParameterFlag Lambda = 0b1000;
     private const ParameterFlag n = 0b1_0000;
-    private const ParameterFlag alpha = 0b10_0000;
-    private const ParameterFlag H = 0b100_0000;
+    private const ParameterFlag H = 0b10_0000;
 
     private const string NOT_HANDLED = "Nothing";
 
@@ -31,13 +30,11 @@ public class SpaceSelector : ChristoffelElement {
         [M | a] = "Kerr",
         [M | Lambda] = "(A)dS-Schwarzschild",
         [M | n] = "Taub-NUT",
-        [M | alpha] = "C-metric",
         [M | Q | a] = "Kerr-Newman",
         [M | Q | Lambda] = "(A)dS-Reissner-Nordstrøm",
         [M | a | Lambda] = "(A)dS-Kerr",
         [M | n | Lambda] = "Taub-NUT-de Sitter",
-        [M | Q | a | Lambda] = "Kerr-Newman-de Sitter",
-        [M | Q | a | Lambda | n | alpha] = "Plebański-Demiański"
+        [M | Q | a | Lambda] = "Kerr-Newman-de Sitter"
     };
 
     private void Awake() {
