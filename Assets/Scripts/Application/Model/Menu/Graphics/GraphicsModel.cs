@@ -40,7 +40,6 @@ public class GraphicsModel : ChristoffelElement {
     }
 
     private List<Resolution> GetSortedResolutions() {
-        Debug.Log(string.Join("\n", Screen.resolutions));
         return Screen.resolutions
             .DistinctBy(res => $"{res.width} {res.height}")
             .OrderByDescending(res => res.height)

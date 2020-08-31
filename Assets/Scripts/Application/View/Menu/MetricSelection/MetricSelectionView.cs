@@ -12,7 +12,8 @@ public class MetricSelectionView : MenuElement {
     public TMP_Dropdown dropdown;
     public TMP_Text spacetimeName;
     public Button applyButton;
-    public GameObject warning;
+    public GameObject notHandledWarning;
+    public GameObject noCombinationWarning;
     public TextParameter textParameterPrefab;
     public LaTeXParameter laTeXParameterPrefab;
     public GameObject parametersContainer;

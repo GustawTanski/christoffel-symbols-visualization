@@ -9,6 +9,7 @@ public class MetricSelectionController : ChristoffelElement {
     private MetricSelectionView View => App.view.menu.metricSelection;
 
     private TensorProperties tensorProperties;
+    private string spaceType;
 
     private void Awake() {
         SetListeners();
@@ -83,6 +84,28 @@ public class MetricSelectionController : ChristoffelElement {
     }
     private void OnSpaceDropdownChanged(int value) {
         string spaceType = View.dropdown.options[value].text;
-        App.controller.cube.SetSpaceType(spaceType);
+        SpacetimeDropdownChangedArgs eventArgs = new SpacetimeDropdownChangedArgs(spaceType);
+        App.spacetimeDropdownChanged.DispatchEvent(View.dropdown, eventArgs);
+    }
+
+    public void ForceDropdownState(string spaceType) {
+        this.spaceType = spaceType;
+        if (IsSpaceTypeInDropdown()) SetDropdownSpaceType();
+    }
+
+    private bool IsSpaceTypeInDropdown() {
+        return IsRealIndex(FindIndexOfSpaceType());
+    }
+
+    private int FindIndexOfSpaceType() {
+        return View.dropdown.options.FindIndex(option => option.text == spaceType);
+    }
+
+    private bool IsRealIndex(int index) {
+        return index >= 0;
+    }
+
+    private void SetDropdownSpaceType() {
+        View.dropdown.SetValueWithoutNotify(FindIndexOfSpaceType());
     }
 }
