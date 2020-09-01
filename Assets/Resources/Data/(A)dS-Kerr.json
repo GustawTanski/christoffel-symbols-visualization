@@ -1,11 +1,11 @@
 {
 	"name": "(A)dS-Kerr",
-	"description": "Rotating black hole. Cosmological constant is non-zero.",
+	"description": "Rotating black hole. . Cosmological constant is non-zero.",
 	"wikipedia-path": "",
 	"symbol": "\\Gamma",
 	"metric": [
 		[
-			"\\frac{\\Delta + a^2 \\sin^2(\\vartheta) \\Phi}{\\Sigma}",
+			"\\frac{-\\Delta + a^2 \\sin^2(\\vartheta) \\Phi}{\\Sigma}",
 			"0",
 			"0",
 			"\\frac{a \\sin^2(\\vartheta)(h \\Phi - \\Delta)}{\\Sigma \\Xi}"
@@ -13,10 +13,10 @@
 		["0", "\\frac{\\Sigma}{\\Delta}", "0", "0"],
 		["0", "0", "\\frac{\\Sigma}{\\Phi}", "0"],
 		[
-			"\\frac{a \\sin^2(\\vartheta)(h \\Phi - \\Delta)}{\\Sigma \\Xi}",
+			"-\\frac{a \\sin^2(\\vartheta)(h \\Phi - \\Delta)}{\\Sigma \\Xi}",
 			"0",
 			"0",
-			"\\frac{\\sin^2(\\vartheta)}{\\Sigma \\Xi^2}(h^2 - \\Delta a^2 \\sin^2(\\vartheta))"
+			"-\\frac{\\sin^2(\\vartheta)}{\\Sigma \\Xi^2}(h^2\\Phi - \\Delta a^2 \\sin^2(\\vartheta))"
 		]
 	],
 	"indexes": [
@@ -41,17 +41,17 @@
 		},
 		{
 			"char": "\\Delta",
-			"description": "\\left(r^2 + a^2)(1-\\frac{\\Lambda^2 r^2}{9}\\right)- r_s r",
+			"description": "\\left(r^2 + a^2)(1-\\frac{\\Lambda r^2}{3}\\right)- r_s r",
 			"isLaTeXDescription": true
 		},
 		{
 			"char": "\\Phi",
-			"description": "1 + \\frac{\\Lambda a^2 \\cos^2(\\vartheta)}{9}",
+			"description": "1 + \\frac{\\Lambda a^2 \\cos^2(\\vartheta)}{3}",
 			"isLaTeXDescription": true
 		},
 		{
 			"char": "\\Xi",
-			"description": "1+ \\frac{\\Lambda^2 a^2}{9}",
+			"description": "1+ \\frac{\\Lambda a^2}{3}",
 			"isLaTeXDescription": true
 		},
 		{
@@ -75,7 +75,10 @@
 			"char": "r_s",
 			"description": "Schwarzschild radius"
 		},
-		{ "char": "\\Lambda", "description": "cosmological constant" }
+		{
+			"char": "\\Lambda",
+			"description": "cosmological constant"
+		}
 	],
 	"coordinates": [
 		{
@@ -95,104 +98,104 @@
 		[
 			[
 				"0",
-				"\\frac{4 a^2 r \\sin ^2(\\vartheta ) \\left(h \\Lambda ^2 \\left(h+r^2\\right)-9 \\Delta \\right)-18 h r_s \\left(h-a^2 \\sin ^2(\\vartheta )\\right)-4 h^2 r \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)}{9 \\Delta  \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }",
-				"a^2 \\left(\\frac{\\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }-\\frac{\\sin (2 \\vartheta ) \\left(a^2 \\cos (2 \\vartheta )+3 a^2-2 \\Delta +4 r^2\\right)}{\\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}\\right)",
+				"\\frac{\\frac{h \\left(2 a^2 r \\Phi  \\sin ^2(\\theta )-\\frac{1}{3} \\left(h-a^2 \\sin ^2(\\theta )\\right) \\left(2 r \\left(\\Lambda  \\left(h+r^2\\right)-3\\right)+3 r_s\\right)\\right)}{-\\frac{1}{3} h \\Lambda  r^2+h-r r_s}-\\frac{2 r \\left(\\left(h-a^2 \\sin ^2(\\theta )\\right)^2+a^2 \\Sigma  \\sin ^2(\\theta )\\right)}{\\Sigma }}{2 \\left(h-a^2 \\sin ^2(\\theta )\\right)^2}",
+				"\\frac{a^2 \\sin (2 \\theta ) \\left(a^4 \\sin ^4(\\theta ) (3 \\Phi -\\Lambda  \\Sigma )+a^2 \\sin ^2(\\theta ) (h \\Lambda  \\Sigma -6 h \\Phi +3 \\Sigma  \\Phi )+h \\left(3 h \\Phi -\\Sigma  \\left(\\Lambda  r^2+6 \\Phi -3\\right)\\right)-3 r \\Sigma  r_s\\right)}{6 \\Sigma  \\Phi  \\left(h-a^2 \\sin ^2(\\theta )\\right)^2}",
 				"0"
 			],
 			[
-				"\\frac{4 a^2 r \\sin ^2(\\vartheta ) \\left(h \\Lambda ^2 \\left(h+r^2\\right)-9 \\Delta \\right)-18 h r_s \\left(h-a^2 \\sin ^2(\\vartheta )\\right)-4 h^2 r \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)}{9 \\Delta  \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }",
+				"\\frac{\\frac{h \\left(2 a^2 r \\Phi  \\sin ^2(\\theta )-\\frac{1}{3} \\left(h-a^2 \\sin ^2(\\theta )\\right) \\left(2 r \\left(\\Lambda  \\left(h+r^2\\right)-3\\right)+3 r_s\\right)\\right)}{-\\frac{1}{3} h \\Lambda  r^2+h-r r_s}-\\frac{2 r \\left(\\left(h-a^2 \\sin ^2(\\theta )\\right)^2+a^2 \\Sigma  \\sin ^2(\\theta )\\right)}{\\Sigma }}{2 \\left(h-a^2 \\sin ^2(\\theta )\\right)^2}",
 				"0",
 				"0",
-				"-\\frac{a \\sin ^2(\\vartheta ) \\left(h \\left(4 h r-\\frac{1}{9} \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right) \\left(2 r \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)+9 r_s\\right)\\right)-2 \\Delta  r \\left(a^2 \\cos (2 \\vartheta )+3 a^2+4 r^2\\right)\\right)}{\\Delta  \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}"
+				"\\frac{a \\sin ^2(\\theta ) \\left(2 h^2 r \\left(a^2 \\Lambda  \\sin ^2(\\theta )-h \\Lambda +\\Lambda  r^2+3 \\Phi -3\\right)-3 r_s \\left(h \\left(h-4 r^2\\right)-a^2 \\left(h-2 r^2\\right) \\sin ^2(\\theta )\\right)\\right)}{2 \\Xi  \\left(h-a^2 \\sin ^2(\\theta )\\right)^2 \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right)}"
 			],
 			[
-				"a^2 \\left(\\frac{\\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }-\\frac{\\sin (2 \\vartheta ) \\left(a^2 \\cos (2 \\vartheta )+3 a^2-2 \\Delta +4 r^2\\right)}{\\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}\\right)",
+				"\\frac{a^2 \\sin (2 \\theta ) \\left(a^4 \\sin ^4(\\theta ) (3 \\Phi -\\Lambda  \\Sigma )+a^2 \\sin ^2(\\theta ) (h \\Lambda  \\Sigma -6 h \\Phi +3 \\Sigma  \\Phi )+h \\left(3 h \\Phi -\\Sigma  \\left(\\Lambda  r^2+6 \\Phi -3\\right)\\right)-3 r \\Sigma  r_s\\right)}{6 \\Sigma  \\Phi  \\left(h-a^2 \\sin ^2(\\theta )\\right)^2}",
 				"0",
 				"0",
-				"\\frac{4 a^3 \\sin ^3(\\vartheta ) \\cos (\\vartheta ) \\left(\\frac{1}{9} \\left(a^2+r^2\\right) \\left(\\Lambda ^2 r^2-9\\right)+h+r r_s\\right)}{\\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}"
+				"\\frac{a^3 \\sin ^3(\\theta ) \\cos (\\theta ) \\left(h \\left(-a^2 \\Lambda  \\cos (2 \\theta )+a^2 \\Lambda -2 h \\Lambda +2 \\Lambda  r^2+6 \\Phi -6\\right)+6 r r_s\\right)}{6 \\Xi  \\Phi  \\left(h-a^2 \\sin ^2(\\theta )\\right)^2}"
 			],
 			[
 				"0",
-				"-\\frac{a \\sin ^2(\\vartheta ) \\left(h \\left(4 h r-\\frac{1}{9} \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right) \\left(2 r \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)+9 r_s\\right)\\right)-2 \\Delta  r \\left(a^2 \\cos (2 \\vartheta )+3 a^2+4 r^2\\right)\\right)}{\\Delta  \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}",
-				"\\frac{4 a^3 \\sin ^3(\\vartheta ) \\cos (\\vartheta ) \\left(\\frac{1}{9} \\left(a^2+r^2\\right) \\left(\\Lambda ^2 r^2-9\\right)+h+r r_s\\right)}{\\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}",
+				"\\frac{a \\sin ^2(\\theta ) \\left(2 h^2 r \\left(a^2 \\Lambda  \\sin ^2(\\theta )-h \\Lambda +\\Lambda  r^2+3 \\Phi -3\\right)-3 r_s \\left(h \\left(h-4 r^2\\right)-a^2 \\left(h-2 r^2\\right) \\sin ^2(\\theta )\\right)\\right)}{2 \\Xi  \\left(h-a^2 \\sin ^2(\\theta )\\right)^2 \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right)}",
+				"\\frac{a^3 \\sin ^3(\\theta ) \\cos (\\theta ) \\left(h \\left(-a^2 \\Lambda  \\cos (2 \\theta )+a^2 \\Lambda -2 h \\Lambda +2 \\Lambda  r^2+6 \\Phi -6\\right)+6 r r_s\\right)}{6 \\Xi  \\Phi  \\left(h-a^2 \\sin ^2(\\theta )\\right)^2}",
 				"0"
 			]
 		],
 		[
 			[
-				"\\frac{2 \\Delta  r \\left(9 a^2 \\sin ^2(\\vartheta )+\\Lambda ^2 \\Sigma  \\left(-\\left(h+r^2\\right)\\right)+h \\left(\\Lambda ^2 r^2-9\\right)+9 \\Sigma \\right)+9 \\Delta  r_s \\left(2 r^2-\\Sigma \\right)}{18 \\Sigma ^3}",
+				"\\frac{\\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right) \\left(2 r \\left(-3 a^2 \\Phi  \\sin ^2(\\theta )+\\Lambda  \\Sigma  \\left(h+r^2\\right)+h \\left(3-\\Lambda  r^2\\right)-3 \\Sigma \\right)+3 r_s \\left(\\Sigma -2 r^2\\right)\\right)}{18 \\Sigma ^3}",
 				"0",
 				"0",
-				"\\frac{a \\Delta  \\sin ^2(\\vartheta ) \\left(2 r \\left(a^2 \\left(9-\\Lambda ^2 r^2\\right)+\\Lambda ^2 \\left(\\Sigma  \\left(h+r^2\\right)-r^4\\right)-9 h+9 r^2\\right)+9 r_s \\left(\\Sigma -2 r^2\\right)\\right)}{18 \\Sigma ^3}"
+				"\\frac{a \\sin ^2(\\theta ) \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right) \\left(2 h r \\left(-\\Lambda  \\Sigma +\\Lambda  r^2+3 \\Phi -3\\right)-2 r \\Sigma  \\left(\\Lambda  r^2+3 \\Phi -3\\right)+r_s \\left(6 r^2-3 \\Sigma \\right)\\right)}{18 \\Xi  \\Sigma ^3}"
 			],
 			[
 				"0",
-				"\\frac{2 r \\left(9 \\Delta +\\Sigma  \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)\\right)+9 \\Sigma  r_s}{18 \\Delta  \\Sigma }",
-				"-\\frac{a^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }",
+				"\\frac{-2 \\Lambda  r \\left(h+r^2\\right)-3 r_s+6 r}{2 h \\left(\\Lambda  r^2-3\\right)+6 r r_s}+\\frac{r}{\\Sigma }",
+				"-\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }",
 				"0"
 			],
 			[
 				"0",
-				"-\\frac{a^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }",
-				"-\\frac{\\Delta  r}{\\Sigma }",
+				"-\\frac{a^2 \\sin (\\theta ) \\cos (\\theta )}{\\Sigma }",
+				"\\frac{r \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right)}{3 \\Sigma  \\Phi }",
 				"0"
 			],
 			[
-				"\\frac{a \\Delta  \\sin ^2(\\vartheta ) \\left(2 r \\left(a^2 \\left(9-\\Lambda ^2 r^2\\right)+\\Lambda ^2 \\left(\\Sigma  \\left(h+r^2\\right)-r^4\\right)-9 h+9 r^2\\right)+9 r_s \\left(\\Sigma -2 r^2\\right)\\right)}{18 \\Sigma ^3}",
+				"\\frac{a \\sin ^2(\\theta ) \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right) \\left(2 h r \\left(-\\Lambda  \\Sigma +\\Lambda  r^2+3 \\Phi -3\\right)-2 r \\Sigma  \\left(\\Lambda  r^2+3 \\Phi -3\\right)+r_s \\left(6 r^2-3 \\Sigma \\right)\\right)}{18 \\Xi  \\Sigma ^3}",
 				"0",
 				"0",
-				"\\frac{2 \\Delta  r \\sin ^2(\\vartheta ) \\left(9 h (h-2 \\Sigma )-a^2 \\sin ^2(\\vartheta ) \\left(9 \\Delta +\\Sigma  \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)\\right)\\right)-9 a^2 \\Delta  \\Sigma  \\sin ^4(\\vartheta ) r_s}{18 \\Sigma ^3}"
+				"\\frac{\\sin ^2(\\theta ) \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right) \\left(2 a^2 r \\sin ^2(\\theta ) \\left(\\Lambda  \\Sigma  \\left(h+r^2\\right)+h \\left(3-\\Lambda  r^2\\right)-3 \\Sigma \\right)+3 a^2 \\sin ^2(\\theta ) r_s \\left(\\Sigma -2 r^2\\right)-6 h r \\Phi  (h-2 \\Sigma )\\right)}{18 \\Xi ^2 \\Sigma ^3}"
 			]
 		],
 		[
 			[
-				"\\frac{a^2 \\sin (2 \\vartheta ) \\left(a^2 \\cos (2 \\vartheta )-a^2+2 \\Delta -2 \\Sigma \\right)}{4 \\Sigma ^3}",
+				"\\frac{a^2 \\Phi  \\sin (2 \\theta ) \\left(a^2 \\cos (2 \\theta ) (3 \\Phi -\\Lambda  \\Sigma )+a^2 \\Lambda  \\Sigma -3 \\Phi  \\left(a^2+2 \\Sigma \\right)-2 h \\Lambda  r^2+6 h-6 r r_s\\right)}{12 \\Sigma ^3}",
 				"0",
 				"0",
-				"\\frac{a \\sin (\\vartheta ) \\cos (\\vartheta ) \\left(a^2 \\sin ^2(\\vartheta )+\\Sigma \\right) \\left(\\frac{1}{9} \\left(a^2+r^2\\right) \\left(\\Lambda ^2 r^2-9\\right)+h+r r_s\\right)}{\\Sigma ^3}"
+				"\\frac{a \\Phi  \\sin (\\theta ) \\cos (\\theta ) \\left(a^2 h \\sin ^2(\\theta ) \\left(-\\Lambda  \\Sigma +\\Lambda  r^2+3 \\Phi -3\\right)+3 r r_s \\left(a^2 \\sin ^2(\\theta )+\\Sigma \\right)+h \\Sigma  \\left(\\Lambda  r^2+3 \\Phi -3\\right)\\right)}{3 \\Xi  \\Sigma ^3}"
 			],
 			[
 				"0",
-				"\\frac{a^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Delta  \\Sigma }",
+				"-\\frac{3 a^2 \\Phi  \\sin (\\theta ) \\cos (\\theta )}{h \\Lambda  r^2 \\Sigma -3 h \\Sigma +3 r \\Sigma  r_s}",
 				"\\frac{r}{\\Sigma }",
 				"0"
 			],
 			[
 				"0",
 				"\\frac{r}{\\Sigma }",
-				"-\\frac{a^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }",
+				"\\frac{a^2 \\sin (2 \\theta ) (\\Lambda  \\Sigma -3 \\Phi )}{6 \\Sigma  \\Phi }",
 				"0"
 			],
 			[
-				"\\frac{a \\sin (\\vartheta ) \\cos (\\vartheta ) \\left(a^2 \\sin ^2(\\vartheta )+\\Sigma \\right) \\left(\\frac{1}{9} \\left(a^2+r^2\\right) \\left(\\Lambda ^2 r^2-9\\right)+h+r r_s\\right)}{\\Sigma ^3}",
+				"\\frac{a \\Phi  \\sin (\\theta ) \\cos (\\theta ) \\left(a^2 h \\sin ^2(\\theta ) \\left(-\\Lambda  \\Sigma +\\Lambda  r^2+3 \\Phi -3\\right)+3 r r_s \\left(a^2 \\sin ^2(\\theta )+\\Sigma \\right)+h \\Sigma  \\left(\\Lambda  r^2+3 \\Phi -3\\right)\\right)}{3 \\Xi  \\Sigma ^3}",
 				"0",
 				"0",
-				"\\frac{\\sin (\\vartheta ) \\cos (\\vartheta ) \\left(a^4 \\Delta  \\sin ^4(\\vartheta )-a^2 \\sin ^2(\\vartheta ) \\left(h^2-2 \\Delta  \\Sigma \\right)-h^2 \\Sigma \\right)}{\\Sigma ^3}"
+				"-\\frac{\\Phi  \\sin (\\theta ) \\cos (\\theta ) \\left(3 a^2 r \\sin ^2(\\theta ) r_s \\left(a^2 \\sin ^2(\\theta )+2 \\Sigma \\right)+h \\left(a^4 \\sin ^4(\\theta ) \\left(\\Lambda  r^2-3\\right)+a^2 \\sin ^2(\\theta ) \\left(3 h \\Phi -\\Sigma  \\left(h \\Lambda -2 \\Lambda  r^2+6\\right)\\right)+3 h \\Sigma  \\Phi \\right)\\right)}{3 \\Xi ^2 \\Sigma ^3}"
 			]
 		],
 		[
 			[
 				"0",
-				"\\frac{2 a \\left(-\\frac{1}{9} \\left(h-a^2 \\sin ^2(\\vartheta )\\right) \\left(2 r \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)+9 r_s\\right)+2 a^2 r \\sin ^2(\\vartheta )-2 \\Delta  r\\right)}{\\Delta  \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}",
-				"-\\frac{4 a \\cot (\\vartheta ) \\left(\\frac{1}{9} \\left(a^2+r^2\\right) \\left(\\Lambda ^2 r^2-9\\right)+h+r r_s\\right)}{\\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}",
+				"\\frac{a \\Xi  \\csc ^2(\\theta ) \\left(\\csc ^2(\\theta ) \\left(2 h^2 \\Lambda  r+3 \\left(h-2 r^2\\right) r_s\\right)-a^2 \\left(2 r \\left(h \\Lambda +\\Lambda  r^2+3 \\Phi -3\\right)+3 r_s\\right)\\right)}{2 \\left(a^2-h \\csc ^2(\\theta )\\right)^2 \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right)}",
+				"-\\frac{a \\Xi  \\cot (\\theta ) \\left(a^4 \\Lambda -a^2 h \\Lambda  \\csc ^2(\\theta )+\\csc ^4(\\theta ) \\left(h \\left(\\Lambda  r^2+3 \\Phi -3\\right)+3 r r_s\\right)\\right)}{3 \\Phi  \\left(a^2-h \\csc ^2(\\theta )\\right)^2}",
 				"0"
 			],
 			[
-				"\\frac{2 a \\left(-\\frac{1}{9} \\left(h-a^2 \\sin ^2(\\vartheta )\\right) \\left(2 r \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)+9 r_s\\right)+2 a^2 r \\sin ^2(\\vartheta )-2 \\Delta  r\\right)}{\\Delta  \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}",
+				"\\frac{a \\Xi  \\csc ^2(\\theta ) \\left(\\csc ^2(\\theta ) \\left(2 h^2 \\Lambda  r+3 \\left(h-2 r^2\\right) r_s\\right)-a^2 \\left(2 r \\left(h \\Lambda +\\Lambda  r^2+3 \\Phi -3\\right)+3 r_s\\right)\\right)}{2 \\left(a^2-h \\csc ^2(\\theta )\\right)^2 \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right)}",
 				"0",
 				"0",
-				"\\frac{2 \\Delta  r \\left(a^2 \\cos (2 \\vartheta )+3 a^2+4 r^2\\right)-a^2 \\sin ^2(\\vartheta ) \\left(4 h r-\\frac{1}{9} \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right) \\left(2 r \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)+9 r_s\\right)\\right)}{\\Delta  \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }"
+				"\\frac{2 r \\left(a^4 \\sin ^4(\\theta ) \\left(\\Lambda  \\Sigma  \\left(h+r^2\\right)+h \\left(3-\\Lambda  r^2\\right)-3 \\Sigma \\right)+a^2 h \\sin ^2(\\theta ) \\left(h \\left(-\\Lambda  \\Sigma +2 \\Lambda  r^2-6\\right)+\\Sigma  \\left(-2 \\Lambda  r^2+3 \\Phi +6\\right)\\right)-h^2 (h-2 \\Sigma ) \\left(\\Lambda  r^2-3\\right)\\right)-3 r_s \\left(a^4 \\sin ^4(\\theta ) \\left(2 r^2-\\Sigma \\right)+a^2 \\sin ^2(\\theta ) \\left(-4 h r^2+h \\Sigma +2 r^2 \\Sigma \\right)+2 h r^2 (h-2 \\Sigma )\\right)}{2 \\Sigma  \\left(h-a^2 \\sin ^2(\\theta )\\right)^2 \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right)}"
 			],
 			[
-				"-\\frac{4 a \\cot (\\vartheta ) \\left(\\frac{1}{9} \\left(a^2+r^2\\right) \\left(\\Lambda ^2 r^2-9\\right)+h+r r_s\\right)}{\\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}",
+				"-\\frac{a \\Xi  \\cot (\\theta ) \\left(a^4 \\Lambda -a^2 h \\Lambda  \\csc ^2(\\theta )+\\csc ^4(\\theta ) \\left(h \\left(\\Lambda  r^2+3 \\Phi -3\\right)+3 r r_s\\right)\\right)}{3 \\Phi  \\left(a^2-h \\csc ^2(\\theta )\\right)^2}",
 				"0",
 				"0",
-				"\\frac{a^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }+\\frac{\\cot (\\vartheta ) \\left(3 a^4+a^2 \\left(a^2 \\cos (4 \\vartheta )-4 \\Delta  \\sin ^2(\\vartheta )+4 r^2 \\cos (2 \\vartheta )\\right)+4 a^2 r^2+4 r^4\\right)}{\\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}"
+				"\\frac{3 a^6 \\Phi  \\sin (\\theta ) \\cos (\\theta )+a^4 \\cot (\\theta ) (h \\Lambda  \\Sigma -6 h \\Phi +6 \\Sigma  \\Phi )+a^2 \\cot (\\theta ) \\csc ^2(\\theta ) \\left(h \\left(3 h \\Phi -\\Sigma  \\left(h \\Lambda -\\Lambda  r^2+6 \\Phi +3\\right)\\right)+3 r \\Sigma  r_s\\right)+3 h^2 \\Sigma  \\Phi  \\cot (\\theta ) \\csc ^4(\\theta )}{3 \\Sigma  \\Phi  \\left(a^2-h \\csc ^2(\\theta )\\right)^2}"
 			],
 			[
 				"0",
-				"\\frac{2 \\Delta  r \\left(a^2 \\cos (2 \\vartheta )+3 a^2+4 r^2\\right)-a^2 \\sin ^2(\\vartheta ) \\left(4 h r-\\frac{1}{9} \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right) \\left(2 r \\left(\\Lambda ^2 \\left(h+r^2\\right)-9\\right)+9 r_s\\right)\\right)}{\\Delta  \\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}-\\frac{r}{\\Sigma }",
-				"\\frac{a^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }+\\frac{\\cot (\\vartheta ) \\left(3 a^4+a^2 \\left(a^2 \\cos (4 \\vartheta )-4 \\Delta  \\sin ^2(\\vartheta )+4 r^2 \\cos (2 \\vartheta )\\right)+4 a^2 r^2+4 r^4\\right)}{\\left(a^2 \\cos (2 \\vartheta )+a^2+2 r^2\\right)^2}",
+				"\\frac{2 r \\left(a^4 \\sin ^4(\\theta ) \\left(\\Lambda  \\Sigma  \\left(h+r^2\\right)+h \\left(3-\\Lambda  r^2\\right)-3 \\Sigma \\right)+a^2 h \\sin ^2(\\theta ) \\left(h \\left(-\\Lambda  \\Sigma +2 \\Lambda  r^2-6\\right)+\\Sigma  \\left(-2 \\Lambda  r^2+3 \\Phi +6\\right)\\right)-h^2 (h-2 \\Sigma ) \\left(\\Lambda  r^2-3\\right)\\right)-3 r_s \\left(a^4 \\sin ^4(\\theta ) \\left(2 r^2-\\Sigma \\right)+a^2 \\sin ^2(\\theta ) \\left(-4 h r^2+h \\Sigma +2 r^2 \\Sigma \\right)+2 h r^2 (h-2 \\Sigma )\\right)}{2 \\Sigma  \\left(h-a^2 \\sin ^2(\\theta )\\right)^2 \\left(h \\left(\\Lambda  r^2-3\\right)+3 r r_s\\right)}",
+				"\\frac{3 a^6 \\Phi  \\sin (\\theta ) \\cos (\\theta )+a^4 \\cot (\\theta ) (h \\Lambda  \\Sigma -6 h \\Phi +6 \\Sigma  \\Phi )+a^2 \\cot (\\theta ) \\csc ^2(\\theta ) \\left(h \\left(3 h \\Phi -\\Sigma  \\left(h \\Lambda -\\Lambda  r^2+6 \\Phi +3\\right)\\right)+3 r \\Sigma  r_s\\right)+3 h^2 \\Sigma  \\Phi  \\cot (\\theta ) \\csc ^4(\\theta )}{3 \\Sigma  \\Phi  \\left(a^2-h \\csc ^2(\\theta )\\right)^2}",
 				"0"
 			]
 		]
