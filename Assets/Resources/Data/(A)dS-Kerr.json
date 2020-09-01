@@ -1,6 +1,6 @@
 {
 	"name": "(A)dS-Kerr",
-	"description": "Rotating black hole. . Cosmological constant is non-zero.",
+	"description": "Rotating black hole. Cosmological constant is non-zero.",
 	"wikipedia-path": "",
 	"symbol": "\\Gamma",
 	"metric": [
@@ -157,7 +157,12 @@
 				"\\frac{r}{\\Sigma }",
 				"0"
 			],
-			["0", "\\frac{r}{\\Sigma }", "-\\frac{a^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }", "0"],
+			[
+				"0",
+				"\\frac{r}{\\Sigma }",
+				"-\\frac{a^2 \\sin (\\vartheta ) \\cos (\\vartheta )}{\\Sigma }",
+				"0"
+			],
 			[
 				"\\frac{a \\sin (\\vartheta ) \\cos (\\vartheta ) \\left(a^2 \\sin ^2(\\vartheta )+\\Sigma \\right) \\left(\\frac{1}{9} \\left(a^2+r^2\\right) \\left(\\Lambda ^2 r^2-9\\right)+h+r r_s\\right)}{\\Sigma ^3}",
 				"0",
