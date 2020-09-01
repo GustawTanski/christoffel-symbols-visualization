@@ -35,8 +35,7 @@ public class SpaceSelector : ChristoffelElement {
         [M | Q | a] = "Kerr-Newman",
         [M | Q | Lambda] = "(A)dS-Reissner-Nordstrøm",
         [M | a | Lambda] = "(A)dS-Kerr",
-        [M | n | Lambda] = "Taub-NUT-de Sitter",
-        [M | Q | a | Lambda] = "Kerr-Newman-de Sitter"
+        [M | Q | a | Lambda] = "(A)dS-Kerr-Newman"
     };
 
     private void Awake() {
