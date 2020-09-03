@@ -3,4 +3,5 @@ public class MenuView : ChristoffelElement {
     public GraphicsView graphics;
     public KeyBindingsView keyBindings;
     public MetricSelectionView metricSelection;
+    public AboutView about;
 }
