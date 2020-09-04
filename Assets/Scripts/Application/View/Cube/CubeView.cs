@@ -16,7 +16,7 @@ public class CubeView : ChristoffelElement {
             transform.localRotation = value * zeroRotation;
         }
     }
-    
+
     private void Awake() {
         elements = elements.Select(CreateElement);
     }
@@ -42,9 +42,10 @@ public class CubeView : ChristoffelElement {
     }
 
     public void ToggleIndexes() {
-        elements.ForEach((element) => {
-            element.ToggleIndex();
-        });
+        elements.ForEach((element) => element.ToggleIndex());
+    }
+    public void SetIndexesActive(bool areActive) {
+        elements.ForEach((element) => element.SetIndexActive(areActive));
     }
 
     public void SetAllTextures() {

@@ -7,15 +7,11 @@ public class CubeController : ChristoffelElement {
     private CubeModel Model => App.model.cube;
     private CubeView View => App.view.cube;
 
-
     private void Awake() {
         SetEventListeners();
         SetZerosVisibility();
     }
 
-    private void Start() {
-        UpdateCube();
-    }
     private void SetEventListeners() {
         App.zerosHided.listOfHandlers += OnZerosHided;
         App.labelSliderValueChanged.listOfHandlers += OnLabelSliderValueChanged;
@@ -69,7 +65,9 @@ public class CubeController : ChristoffelElement {
     }
 
     private void ToggleIndexes() {
-        App.view.cube.ToggleIndexes();
+        View.ToggleIndexes();
+        Model.areIndexesVisible = !Model.areIndexesVisible;
+        App.controller.tools.SetIndexesToggleState(Model.areIndexesVisible);
     }
 
     private void UpdateSelectionOfElements() {
@@ -98,6 +96,20 @@ public class CubeController : ChristoffelElement {
 
     private void DispatchSpaceDataChangedEvent() {
         App.spaceDataChanged.DispatchEvent(this, new SpaceChangedArgs(Model.Properties));
+    }
+
+    private void Start() {
+        InitializeCube();
+    }
+
+    private void InitializeCube() {
+        SetIndexesActive(Model.areIndexesVisible);
+        UpdateCube();
+    }
+
+    public void SetIndexesActive(bool areActive) {
+        View.SetIndexesActive(areActive);
+        Model.areIndexesVisible = areActive;
     }
 
     public async void UpdateCube() {

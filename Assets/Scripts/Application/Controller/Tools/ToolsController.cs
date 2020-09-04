@@ -21,8 +21,10 @@ public class ToolsController : ChristoffelElement {
         InitializeVisibility();
         InitializeZerosToggle();
         InitializeCubesToggle();
+        InitializeIndexesToggle();
         InitializeResetButton();
         InitializeLabelSlider();
+        InitializeSecondNavigationKeys();
     }
 
     private void InitializeVisibility() {
@@ -53,6 +55,15 @@ public class ToolsController : ChristoffelElement {
 
     private void OnCubesToggleChanged(bool isOn) {
         App.cubesToggled.DispatchEvent(this, new CubesToggledArgs(isOn));
+    }
+
+    private void InitializeIndexesToggle() {
+        View.indexesToggle.isOn = App.model.cube.areIndexesVisible;
+        View.indexesToggle.onValueChanged.AddListener(OnIndexesToggleChanged);
+    }
+
+    private void OnIndexesToggleChanged(bool isOn) {
+        App.controller.cube.SetIndexesActive(isOn);
     }
 
     private void InitializeResetButton() {
@@ -89,8 +100,14 @@ public class ToolsController : ChristoffelElement {
         View.labelSlider.value = App.model.cube.scaleFactor;
     }
 
+    private void InitializeSecondNavigationKeys() {
+        View.secondNavigationKeys.gameObject.SetActive(Model.isNavigationKeysVisible);
+    }
+
     private void Update() {
         if (WasToolsToggleReleasedWhenMenuIsHided()) ToggleTools();
+        if (WasShowNavigationKeysPressed()) SetNavigationKeysVisible(true);
+        if (WasShowNavigationKeysRealesed()) SetNavigationKeysVisible(false);
     }
 
     private bool WasToolsToggleReleasedWhenMenuIsHided() {
@@ -102,7 +119,7 @@ public class ToolsController : ChristoffelElement {
     }
 
     private bool WasToolsToggleReleased() {
-        return App.model.menu.keyBindings.ToolsToggle.WasReleasedThisFrame();
+        return App.model.menu.keyBindings.ActivateCamera.WasReleasedThisFrame();
     }
 
     private void ToggleTools() {
@@ -120,5 +137,22 @@ public class ToolsController : ChristoffelElement {
     }
     private void DispatchToolsToggledEvent() {
         App.toolsToggled.DispatchEvent(this, new ToolsToggledArgs(Model.IsActive));
+    }
+
+    private bool WasShowNavigationKeysPressed() {
+        return App.model.menu.keyBindings.ShowNavigationKeys.WasPressedThisFrame();
+    }
+
+    public void SetNavigationKeysVisible(bool isVisible) {
+        Model.isNavigationKeysVisible = isVisible;
+        View.secondNavigationKeys.gameObject.SetActive(isVisible);
+    }
+
+    private bool WasShowNavigationKeysRealesed() {
+        return App.model.menu.keyBindings.ShowNavigationKeys.WasReleasedThisFrame();
+    }
+
+    public void SetIndexesToggleState(bool isOn) {
+        View.indexesToggle.SetIsOnWithoutNotify(isOn);
     }
 }

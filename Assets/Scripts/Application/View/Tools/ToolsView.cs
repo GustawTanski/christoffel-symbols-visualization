@@ -5,12 +5,14 @@ using UnityEngine.UI;
 public class ToolsView : ChristoffelElement {
     public Toggle zerosToggle;
     public Toggle cubesToggle;
+    public Toggle indexesToggle;
     public Button resetButton;
     public LineRenderer line;
     public Slider labelSlider;
     public TMP_Text labelSliderCaption;
     public TMP_Text spacetimeName;
     public SymbolView symbol;
+    public KeyBindingsView secondNavigationKeys;
 
     public void HideLine() {
         line.startWidth = line.endWidth = 0;

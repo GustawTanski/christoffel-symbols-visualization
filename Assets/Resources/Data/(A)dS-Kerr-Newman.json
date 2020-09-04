@@ -1,6 +1,6 @@
 {
 	"name": "(A)dS-Kerr-Newman",
-	"description": "Rotating black hole. Cosmological constant is non-zero.",
+	"description": "Rotating and charged black hole. Cosmological constant is non-zero.",
 	"wikipedia-path": "",
 	"symbol": "\\Gamma",
 	"metric": [

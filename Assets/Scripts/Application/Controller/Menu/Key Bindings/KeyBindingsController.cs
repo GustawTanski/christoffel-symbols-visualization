@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 public class KeyBindingsController : ChristoffelElement {
+    public KeyBindingsView secondView;
     private KeyBindingsModel Model => App.model.menu.keyBindings;
     private KeyBindingsView View => App.view.menu.keyBindings;
 
@@ -76,6 +77,7 @@ public class KeyBindingsController : ChristoffelElement {
     }
     private void UpdateRowOfCurrentBinding() {
         View.UpdateBinding(currentlyChangedBinding);
+        secondView.UpdateBinding(currentlyChangedBinding);
     }
 
     private void StopListeningAndHidePopUp() {

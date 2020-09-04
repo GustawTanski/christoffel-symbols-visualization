@@ -98,6 +98,11 @@ public class CubeElement : ChristoffelElement {
         index.ToggleAppear();
     }
 
+    public void SetIndexActive(bool isActive) {
+        if (isActive) index.Appear();
+        else index.Disappear();
+    }
+
     public void ToggleVisibility() {
         if (IsVisible()) Disappear();
         else Appear();

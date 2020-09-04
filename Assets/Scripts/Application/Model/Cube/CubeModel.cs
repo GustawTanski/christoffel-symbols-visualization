@@ -7,6 +7,7 @@ public class CubeModel : ChristoffelElement {
     public string spaceType;
     public bool areZerosVisible;
     public bool areCubesVisible;
+    public bool areIndexesVisible;
     public float scaleFactor = 1;
 
     public string[, , ] IndexTensor {
