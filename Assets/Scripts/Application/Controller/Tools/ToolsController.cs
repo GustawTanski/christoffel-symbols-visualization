@@ -106,10 +106,8 @@ public class ToolsController : ChristoffelElement {
 
     private void Update() {
         if (WasToolsToggleReleasedWhenMenuIsHided()) ToggleTools();
-        if (App.model.menu.keyBindings.ShowNavigationKeys.WasPressedThisFrame())
-            SetNavigationKeysVisible(true);
-        if (App.model.menu.keyBindings.ShowNavigationKeys.WasReleasedThisFrame())
-            SetNavigationKeysVisible(false);
+        if (WasShowNavigationKeysPressed()) SetNavigationKeysVisible(true);
+        if (WasShowNavigationKeysRealesed()) SetNavigationKeysVisible(false);
     }
 
     private bool WasToolsToggleReleasedWhenMenuIsHided() {
@@ -141,9 +139,17 @@ public class ToolsController : ChristoffelElement {
         App.toolsToggled.DispatchEvent(this, new ToolsToggledArgs(Model.IsActive));
     }
 
+    private bool WasShowNavigationKeysPressed() {
+        return App.model.menu.keyBindings.ShowNavigationKeys.WasPressedThisFrame();
+    }
+
     public void SetNavigationKeysVisible(bool isVisible) {
         Model.isNavigationKeysVisible = isVisible;
         View.secondNavigationKeys.gameObject.SetActive(isVisible);
+    }
+
+    private bool WasShowNavigationKeysRealesed() {
+        return App.model.menu.keyBindings.ShowNavigationKeys.WasReleasedThisFrame();
     }
 
     public void SetIndexesToggleState(bool isOn) {
