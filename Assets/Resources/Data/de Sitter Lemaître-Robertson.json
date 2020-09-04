@@ -1,30 +1,13 @@
 {
-	"name": "de Sitter \n(Lemaître-Robertson form)",
-	"data": [
-		[
-			["0", "0", "0", "0"],
-			["0", "\\frac{H e^{2 H t}}{c^2}", "0", "0"],
-			["0", "0", "\\frac{H r^2 e^{2 H t}}{c^2}", "0"],
-			["0", "0", "0", "\\frac{H r^2 \\sin ^2(\\theta ) e^{2 H t}}{c^2}"]
-		],
-		[
-			["0", "H", "0", "0"],
-			["H", "0", "0", "0"],
-			["0", "0", "-r", "0"],
-			["0", "0", "0", "-r \\sin ^2(\\theta )"]
-		],
-		[
-			["0", "0", "H", "0"],
-			["0", "0", "\\frac{1}{r}", "0"],
-			["H", "\\frac{1}{r}", "0", "0"],
-			["0", "0", "0", "\\sin (\\theta ) (-\\cos (\\theta ))"]
-		],
-		[
-			["0", "0", "0", "H"],
-			["0", "0", "0", "\\frac{1}{r}"],
-			["0", "0", "0", "\\cot (\\theta )"],
-			["H", "\\frac{1}{r}", "\\cot (\\theta )", "0"]
-		]
+	"name": "de Sitter (Lemaître-Robertson form)",
+	"description": "Empty spacetime with positive cosmological constant.",
+	"wikipedia-path": "De_Sitter_space",
+	"symbol": "\\Gamma",
+	"metric": [
+		["-c^2", "0", "0", "0"],
+		["0", "e^{2H t}", "0", "0"],
+		["0", "0", "e^{2H t} r^2", "0"],
+		["0", "0", "0", "e^{2H t} r^2 \\sin^2(\\vartheta)"]
 	],
 	"indexes": [
 		{
@@ -32,15 +15,20 @@
 			"position": "up"
 		},
 		{
-			"char": "\\beta",
+			"char": "\\mu",
 			"position": "down"
 		},
 		{
-			"char": "\\gamma",
+			"char": "\\nu",
 			"position": "down"
 		}
 	],
-	"symbol": "\\Gamma",
+	"parameters": [
+		{
+			"char": "H",
+			"description": "Hubble Parameter (time-independent)"
+		}
+	],
 	"coordinates": [
 		{
 			"char": "t"
@@ -49,13 +37,36 @@
 			"char": "r"
 		},
 		{
-			"char": "\\theta"
+			"char": "\\vartheta"
 		},
 		{
 			"char": "\\varphi"
 		}
 	],
-	"parameters": [
-		{ "char": "H", "description": "Hubble Parameter (time-independent)", "color": "#ddaa00" }
+	"data": [
+		[
+			["0", "0", "0", "0"],
+			["0", "\\frac{H e^{2 H t}}{c^2}", "0", "0"],
+			["0", "0", "\\frac{H r^2 e^{2 H t}}{c^2}", "0"],
+			["0", "0", "0", "\\frac{H r^2 e^{2 H t} \\sin ^2(\\vartheta )}{c^2}"]
+		],
+		[
+			["0", "H", "0", "0"],
+			["H", "0", "0", "0"],
+			["0", "0", "-r", "0"],
+			["0", "0", "0", "-r \\sin ^2(\\vartheta )"]
+		],
+		[
+			["0", "0", "H", "0"],
+			["0", "0", "\\frac{1}{r}", "0"],
+			["H", "\\frac{1}{r}", "0", "0"],
+			["0", "0", "0", "\\sin (\\vartheta ) (-\\cos (\\vartheta ))"]
+		],
+		[
+			["0", "0", "0", "H"],
+			["0", "0", "0", "\\frac{1}{r}"],
+			["0", "0", "0", "\\cot (\\vartheta )"],
+			["H", "\\frac{1}{r}", "\\cot (\\vartheta )", "0"]
+		]
 	]
 }

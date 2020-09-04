@@ -1,5 +1,43 @@
 {
 	"name": "Minkowski",
+	"description": "Plain spacetime.",
+	"wikipedia-path": "Minkowski_space",
+	"metric": [
+		["-c^2", "0", "0", "0"],
+		["0", "1", "0", "0"],
+		["0", "0", "r^2", "0"],
+		["0", "0", "0", "r^2\\sin^2(\\vartheta)"]
+	],
+	"indexes": [
+		{
+			"char": "\\alpha",
+			"position": "up"
+		},
+		{
+			"char": "\\mu",
+			"position": "down"
+		},
+		{
+			"char": "\\nu",
+			"position": "down"
+		}
+	],
+	"parameters": [],
+	"symbol": "\\Gamma",
+	"coordinates": [
+		{
+			"char": "t"
+		},
+		{
+			"char": "r"
+		},
+		{
+			"char": "\\vartheta"
+		},
+		{
+			"char": "\\varphi"
+		}
+	],
 	"data": [
 		[
 			["0", "0", "0", "0"],
@@ -11,34 +49,19 @@
 			["0", "0", "0", "0"],
 			["0", "0", "0", "0"],
 			["0", "0", "-r", "0"],
-			["0", "0", "0", "-r \\sin ^2(\\theta )"]
+			["0", "0", "0", "-r \\sin ^2(\\vartheta )"]
 		],
 		[
 			["0", "0", "0", "0"],
 			["0", "0", "\\frac{1}{r}", "0"],
 			["0", "\\frac{1}{r}", "0", "0"],
-			["0", "0", "0", "\\sin (\\theta ) (-\\cos (\\theta ))"]
+			["0", "0", "0", "\\sin (\\vartheta ) (-\\cos (\\vartheta ))"]
 		],
 		[
 			["0", "0", "0", "0"],
 			["0", "0", "0", "\\frac{1}{r}"],
-			["0", "0", "0", "\\cot (\\theta )"],
-			["0", "\\frac{1}{r}", "\\cot (\\theta )", "0"]
+			["0", "0", "0", "\\cot (\\vartheta )"],
+			["0", "\\frac{1}{r}", "\\cot (\\vartheta )", "0"]
 		]
-	],
-	"indexes": [
-		{ "char": "\\alpha", "position": "up" },
-		{ "char": "\\mu", "position": "down" },
-		{ "char": "\\nu", "position": "down" }
-	],
-	"symbol": "\\Gamma",
-	"coordinates": [{ "char": "t" }, { "char": "r" }, { "char": "\\theta" }, { "char": "\\varphi" }],
-	"metric": [
-		["-c^2", "0", "0", "0"],
-		["0", "1", "0", "0"],
-		["0", "0", "r^2", "0"],
-		["0", "0", "0", "r^2sin^2{\\theta}"]
-	],
-	"description": "Plain spacetime.",
-	"wikipedia-path": "Minkowski_space"
+	]
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using IEnumerableExtension;
 using UnityEngine;
 
 public class GraphicsModel : ChristoffelElement {
@@ -40,7 +41,7 @@ public class GraphicsModel : ChristoffelElement {
 
     private List<Resolution> GetSortedResolutions() {
         return Screen.resolutions
-            .Where(res => res.refreshRate == 60)
+            .DistinctBy(res => $"{res.width} {res.height}")
             .OrderByDescending(res => res.height)
             .OrderByDescending(res => res.width)
             .ToList();

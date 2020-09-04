@@ -22,7 +22,7 @@ public class KeyBindingsModel : ChristoffelElement {
         ["Menu Toggle"] = "escape",
         ["Accelerate"] = "leftShift",
         ["Decelerate"] = "leftCtrl",
-        ["Index Toggle"] = "leftAlt",
+        ["Index Toggle"] = "c",
         ["Up"] = "q",
         ["Down"] = "e",
         ["Forward"] = "w",

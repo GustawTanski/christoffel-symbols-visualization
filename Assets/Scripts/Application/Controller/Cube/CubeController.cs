@@ -7,7 +7,6 @@ public class CubeController : ChristoffelElement {
     private CubeModel Model => App.model.cube;
     private CubeView View => App.view.cube;
 
-    private const string INITIAL_SPACE_TYPE = "Minkowski";
 
     private void Awake() {
         SetEventListeners();
@@ -15,7 +14,6 @@ public class CubeController : ChristoffelElement {
     }
 
     private void Start() {
-        SetSpaceType(INITIAL_SPACE_TYPE);
         UpdateCube();
     }
     private void SetEventListeners() {
