@@ -21,6 +21,7 @@ public class ToolsController : ChristoffelElement {
         InitializeVisibility();
         InitializeZerosToggle();
         InitializeCubesToggle();
+        InitializeIndexesToggle();
         InitializeResetButton();
         InitializeLabelSlider();
     }
@@ -53,6 +54,15 @@ public class ToolsController : ChristoffelElement {
 
     private void OnCubesToggleChanged(bool isOn) {
         App.cubesToggled.DispatchEvent(this, new CubesToggledArgs(isOn));
+    }
+
+    private void InitializeIndexesToggle() {
+        View.indexesToggle.isOn = App.model.cube.areIndexesVisible;
+        View.indexesToggle.onValueChanged.AddListener(OnIndexesToggleChanged);
+    }
+
+    private void OnIndexesToggleChanged(bool isOn) {
+        App.controller.cube.SetIndexesActive(isOn);
     }
 
     private void InitializeResetButton() {
@@ -120,5 +130,9 @@ public class ToolsController : ChristoffelElement {
     }
     private void DispatchToolsToggledEvent() {
         App.toolsToggled.DispatchEvent(this, new ToolsToggledArgs(Model.IsActive));
+    }
+
+    public void SetIndexesToggleState(bool isOn) {
+        View.indexesToggle.SetIsOnWithoutNotify(isOn);
     }
 }
