@@ -6,6 +6,7 @@ public class KeyBindingsView : MenuElement {
     public GameObject content;
     public RowView rowPrefab;
     public GameObject popUp;
+    public bool isAllowedToRebind;
 
     private KeyBindingsModel Model => App.model.menu.keyBindings;
 
@@ -23,7 +24,8 @@ public class KeyBindingsView : MenuElement {
         RowView row = CreateEmptyRow();
         row.Command = binding.CommandName;
         row.Key = binding.DisplayKey;
-        row.keyButton.onClick.AddListener(() => App.controller.menu.keyBindings.StartListeningForKeyAndRebind(binding));
+        if (isAllowedToRebind) row.keyButton.onClick.AddListener(
+            () => App.controller.menu.keyBindings.StartListeningForKeyAndRebind(binding));
         return row;
     }
 

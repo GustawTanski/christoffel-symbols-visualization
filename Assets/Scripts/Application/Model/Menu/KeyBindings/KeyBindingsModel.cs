@@ -5,7 +5,9 @@ public class KeyBindingsModel : ChristoffelElement {
 
     public InputAction moveAction;
     public readonly string MEMORY_PREFIX = "keyBinding";
-    public KeyBinding ToolsToggle { get; private set; }
+
+    public KeyBinding ShowNavigationKeys { get; private set; }
+    public KeyBinding ActivateCamera { get; private set; }
     public KeyBinding MenuToggle { get; private set; }
     public KeyBinding Accelerate { get; private set; }
     public KeyBinding Decelerate { get; private set; }
@@ -29,7 +31,8 @@ public class KeyBindingsModel : ChristoffelElement {
         ["Backward"] = "s",
         ["Left"] = "a",
         ["Right"] = "d",
-        ["Tools Toggle"] = "tab"
+        ["Activate Camera"] = "tab",
+        ["Show Navigation Keys"] = "k"
     };
 
     private void Awake() {
@@ -45,7 +48,8 @@ public class KeyBindingsModel : ChristoffelElement {
         IndexToggle = GetInitialKeyBinding("Index Toggle");
         Up = GetInitialKeyBinding("Up");
         Down = GetInitialKeyBinding("Down");
-        ToolsToggle = GetInitialKeyBinding("Tools Toggle");
+        ActivateCamera = GetInitialKeyBinding("Activate Camera");
+        ShowNavigationKeys = GetInitialKeyBinding("Show Navigation Keys");
     }
 
     private KeyBinding GetInitialKeyBinding(string commandName) {
@@ -98,7 +102,8 @@ public class KeyBindingsModel : ChristoffelElement {
             Accelerate,
             Decelerate,
             IndexToggle,
-            ToolsToggle
+            ActivateCamera,
+            ShowNavigationKeys
         };
     }
 

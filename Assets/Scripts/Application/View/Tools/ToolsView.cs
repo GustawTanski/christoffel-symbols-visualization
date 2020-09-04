@@ -12,6 +12,7 @@ public class ToolsView : ChristoffelElement {
     public TMP_Text labelSliderCaption;
     public TMP_Text spacetimeName;
     public SymbolView symbol;
+    public KeyBindingsView secondNavigationKeys;
 
     public void HideLine() {
         line.startWidth = line.endWidth = 0;
