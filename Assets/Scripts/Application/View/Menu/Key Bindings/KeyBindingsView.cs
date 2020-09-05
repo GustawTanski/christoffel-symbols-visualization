@@ -34,7 +34,8 @@ public class KeyBindingsView : MenuElement {
     }
 
     public void UpdateBinding(KeyBinding binding) {
-        rows[GetIndexOfRowByBinding(binding)].Key = binding.DisplayKey;
+        if (rows.Count > 0)
+            rows[GetIndexOfRowByBinding(binding)].Key = binding.DisplayKey;
     }
 
     public int GetIndexOfRowByBinding(KeyBinding binding) {
