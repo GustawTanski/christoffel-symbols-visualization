@@ -5,9 +5,9 @@
 	"symbol": "\\Gamma",
 	"metric": [
 		["-c^2", "0", "0", "0"],
-		["0", "e^{2H t}", "0", "0"],
-		["0", "0", "e^{2H t} r^2", "0"],
-		["0", "0", "0", "e^{2H t} r^2 \\sin^2(\\vartheta)"]
+		["0", "e^{2\\mathcal{H} t}", "0", "0"],
+		["0", "0", "e^{2\\mathcal{H} t} r^2", "0"],
+		["0", "0", "0", "e^{2\\mathcal{H} t} r^2 \\sin^2(\\vartheta)"]
 	],
 	"indexes": [
 		{
@@ -25,7 +25,7 @@
 	],
 	"parameters": [
 		{
-			"char": "H",
+			"char": "\\mathcal{H}",
 			"description": "Hubble Parameter (time-independent)"
 		}
 	],
@@ -46,27 +46,27 @@
 	"data": [
 		[
 			["0", "0", "0", "0"],
-			["0", "\\frac{H e^{2 H t}}{c^2}", "0", "0"],
-			["0", "0", "\\frac{H r^2 e^{2 H t}}{c^2}", "0"],
-			["0", "0", "0", "\\frac{H r^2 e^{2 H t} \\sin ^2(\\vartheta )}{c^2}"]
+			["0", "\\frac{\\mathcal{H} e^{2 \\mathcal{H} t}}{c^2}", "0", "0"],
+			["0", "0", "\\frac{\\mathcal{H} r^2 e^{2 \\mathcal{H} t}}{c^2}", "0"],
+			["0", "0", "0", "\\frac{\\mathcal{H} r^2 e^{2 \\mathcal{H} t} \\sin ^2(\\vartheta )}{c^2}"]
 		],
 		[
-			["0", "H", "0", "0"],
-			["H", "0", "0", "0"],
+			["0", "\\mathcal{H}", "0", "0"],
+			["\\mathcal{H}", "0", "0", "0"],
 			["0", "0", "-r", "0"],
 			["0", "0", "0", "-r \\sin ^2(\\vartheta )"]
 		],
 		[
-			["0", "0", "H", "0"],
+			["0", "0", "\\mathcal{H}", "0"],
 			["0", "0", "\\frac{1}{r}", "0"],
-			["H", "\\frac{1}{r}", "0", "0"],
+			["\\mathcal{H}", "\\frac{1}{r}", "0", "0"],
 			["0", "0", "0", "\\sin (\\vartheta ) (-\\cos (\\vartheta ))"]
 		],
 		[
-			["0", "0", "0", "H"],
+			["0", "0", "0", "\\mathcal{H}"],
 			["0", "0", "0", "\\frac{1}{r}"],
 			["0", "0", "0", "\\cot (\\vartheta )"],
-			["H", "\\frac{1}{r}", "\\cot (\\vartheta )", "0"]
+			["\\mathcal{H}", "\\frac{1}{r}", "\\cot (\\vartheta )", "0"]
 		]
 	]
 }
