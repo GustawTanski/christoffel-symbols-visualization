@@ -155,4 +155,8 @@ public class ToolsController : ChristoffelElement {
     public void SetIndexesToggleState(bool isOn) {
         View.indexesToggle.SetIsOnWithoutNotify(isOn);
     }
+
+    public void SetSpacetimeLoaderActive(bool isActive) {
+        View.spacetimeLoader.gameObject.SetActive(isActive);
+    }
 }

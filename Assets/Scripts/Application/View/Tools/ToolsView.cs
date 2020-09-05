@@ -13,6 +13,11 @@ public class ToolsView : ChristoffelElement {
     public TMP_Text spacetimeName;
     public SymbolView symbol;
     public KeyBindingsView secondNavigationKeys;
+    public RawImage spacetimeLoader;
+
+    private void Awake() {
+        spacetimeLoader.gameObject.SetActive(false);
+    }
 
     public void HideLine() {
         line.startWidth = line.endWidth = 0;

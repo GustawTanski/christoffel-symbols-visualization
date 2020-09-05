@@ -114,7 +114,9 @@ public class CubeController : ChristoffelElement {
 
     public async void UpdateCube() {
         DispatchSpaceVisualizedByCubeChangedEvent();
+        App.controller.tools.SetSpacetimeLoaderActive(true);
         await UpdateTextures();
+        App.controller.tools.SetSpacetimeLoaderActive(false);
     }
 
     private void DispatchSpaceVisualizedByCubeChangedEvent() {
