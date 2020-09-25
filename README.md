@@ -4,3 +4,8 @@
 
 ## How to run
 In order to run this project open it with Unity 2019.4.4f1 or higher. After that open scene named MainScene.
+
+## Screenshots
+![screenshot](./previewImages/1.png)
+![screenshot](./previewImages/2.png)
+![screenshot](./previewImages/3.png)
